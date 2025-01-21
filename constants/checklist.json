@@ -1,0 +1,962 @@
+{
+  "1": [
+    {
+      "id": "3bed1fa2-609d-45d3-ab79-142d47e4c19a",
+      "task": "Wake up for Suhoor and hydrate well.",
+      "isChecked": false
+    },
+    {
+      "id": "02ae374b-3dda-4bc1-a12c-08ab509666bc",
+      "task": "Pray Fajr and recite Surah Al-Fatihah with reflection.",
+      "isChecked": false
+    },
+    {
+      "id": "64b4d452-3a29-42e6-8c8e-ea9cf63738bb",
+      "task": "Start reading the first Juz of the Qur'an (Surah Al-Baqarah 1-74).",
+      "isChecked": false
+    },
+    {
+      "id": "af1ced66-f28f-468d-a01a-4a34c368aa47",
+      "task": "Pray Dhuhr and give sadaqah (charity).",
+      "isChecked": false
+    },
+    {
+      "id": "f6caf609-e6f3-4048-95ed-8f3e065dd45d",
+      "task": "Break your fast with dates and water, and reflect on your intentions for Ramadan.",
+      "isChecked": false
+    },
+    {
+      "id": "0dd741a9-5d09-4f2c-9e2b-0e134381c1d5",
+      "task": "Pray Isha and Taraweeh. Write down your dua goals for the month.",
+      "isChecked": false
+    }
+  ],
+  "2": [
+    {
+      "id": "633c187d-0f9b-4377-ab9c-83e1ba061e67",
+      "task": "Focus on a nutritious Suhoor with fruits and protein.",
+      "isChecked": false
+    },
+    {
+      "id": "6eeaac97-d13e-4789-87a5-455b5151fb4d",
+      "task": "Pray Fajr and recite Surah Al-Baqarah (75-141).",
+      "isChecked": false
+    },
+    {
+      "id": "555807a2-af0a-4bcf-9cc2-eae36db5f0f9",
+      "task": "Memorize a short dua for forgiveness.",
+      "isChecked": false
+    },
+    {
+      "id": "ae6835ae-f9b5-4d8e-ad8f-773e3e9b0dc9",
+      "task": "Pray Dhuhr and perform extra dhikr.",
+      "isChecked": false
+    },
+    {
+      "id": "dc093f93-9a3d-4f49-9868-07761a2440d6",
+      "task": "Assist in preparing iftar or share food with someone in need.",
+      "isChecked": false
+    },
+    {
+      "id": "58063e52-5061-4c13-a6d9-a99f267d8be1",
+      "task": "Pray Taraweeh and make dua for steadfastness.",
+      "isChecked": false
+    }
+  ],
+  "3": [
+    {
+      "id": "4e7dae87-e5a2-45f9-95e9-a6d97985bd27",
+      "task": "Wake up early and reflect on the blessings of fasting.",
+      "isChecked": false
+    },
+    {
+      "id": "ab45a03e-c827-49c9-89d2-c1ba231fbb65",
+      "task": "Pray Fajr and read Surah Al-Baqarah (142-202).",
+      "isChecked": false
+    },
+    {
+      "id": "77041f04-ec7f-4b9a-8080-4e040caa09af",
+      "task": "Take a short midday nap (Qailulah) after Dhuhr prayer.",
+      "isChecked": false
+    },
+    {
+      "id": "5550cb68-6ca7-45d0-a2a4-cdb6f8bb55b7",
+      "task": "Give sadaqah to a local charity or help someone directly.",
+      "isChecked": false
+    },
+    {
+      "id": "0fa4c213-0fa1-4b08-8a39-0814d56a48b7",
+      "task": "Break your fast mindfully and thank Allah for His blessings.",
+      "isChecked": false
+    },
+    {
+      "id": "81ecae82-b631-4013-a9d6-2db7c8439c8c",
+      "task": "Spend extra time in Qiyam-ul-Layl for personal dua.",
+      "isChecked": false
+    }
+  ],
+  "4": [
+    {
+      "id": "f7f2ede0-1389-48a6-b5da-fabf1fe85c0c",
+      "task": "Prepare for the day with a healthy Suhoor.",
+      "isChecked": false
+    },
+    {
+      "id": "e871080c-73eb-4b6b-851b-da759dac0d6d",
+      "task": "Pray Fajr and recite Surah Al-Baqarah (203-252).",
+      "isChecked": false
+    },
+    {
+      "id": "16458a8b-9c3c-4762-a977-870834d37868",
+      "task": "Reflect on the story of Prophet Ibrahim (AS) in the Qur'an.",
+      "isChecked": false
+    },
+    {
+      "id": "2b59b608-3ad3-4298-86ca-ed7fec2ca01f",
+      "task": "Pray Dhuhr and read about the virtues of patience in Islam.",
+      "isChecked": false
+    },
+    {
+      "id": "af003b2f-3477-41bc-ab62-23f2977a9c20",
+      "task": "Call or message a family member to strengthen ties.",
+      "isChecked": false
+    },
+    {
+      "id": "67ab6653-e9fa-444b-a4cd-868fa1d064c6",
+      "task": "Pray Isha and Taraweeh. Focus on asking for forgiveness.",
+      "isChecked": false
+    }
+  ],
+  "5": [
+    {
+      "id": "e44594cf-6d80-49b4-87b7-d6d972cb64b4",
+      "task": "Wake up for Suhoor and recite a short dua for gratitude.",
+      "isChecked": false
+    },
+    {
+      "id": "197a6ca9-7f53-4bc0-9285-5558932b021e",
+      "task": "Pray Fajr and read Surah Al-Baqarah (253-286) to complete the first Juz.",
+      "isChecked": false
+    },
+    {
+      "id": "73f2ac33-d915-42d5-93da-2a7526b46027",
+      "task": "Review the goals you set for the first 5 days of Ramadan.",
+      "isChecked": false
+    },
+    {
+      "id": "d309b43c-e9c1-4df3-b7c4-ec4f881f2af5",
+      "task": "Pray Dhuhr and spend time in quiet reflection or journaling.",
+      "isChecked": false
+    },
+    {
+      "id": "b0c5c0e5-99a4-46af-985e-34229c27deb3",
+      "task": "Break your fast with dates and water. Reflect on the gift of guidance.",
+      "isChecked": false
+    },
+    {
+      "id": "e10796dd-a37e-4743-b6ba-13d7acab844c",
+      "task": "Spend the night in dua, asking for protection and blessings.",
+      "isChecked": false
+    }
+  ],
+  "6": [
+    {
+      "id": "b264cbd9-b6e8-4dde-8e0f-6073f2e90b95",
+      "task": "Hydrate well during Suhoor and make your intention to fast.",
+      "isChecked": false
+    },
+    {
+      "id": "9a979471-b1fb-4864-a13e-7a73fba8d2fe",
+      "task": "Pray Fajr and start reading the second Juz of the Qur'an (Surah Al-Imran 1-50).",
+      "isChecked": false
+    },
+    {
+      "id": "fd69724b-e6d4-4a41-bb71-9a18b57ea14a",
+      "task": "Memorize a verse or dua that resonates with you.",
+      "isChecked": false
+    },
+    {
+      "id": "1904dc7c-3f0f-46c5-a7a4-f2e79880b13c",
+      "task": "Pray Dhuhr and engage in charity or a small act of kindness.",
+      "isChecked": false
+    },
+    {
+      "id": "cdf88e6c-c5f6-432e-aea0-ba396031cfa4",
+      "task": "Break your fast and pray Maghrib with gratitude.",
+      "isChecked": false
+    },
+    {
+      "id": "db3631d7-e9cf-4d01-8f6f-4bc0e06e37b9",
+      "task": "Pray Taraweeh and reflect on Allah's mercy.",
+      "isChecked": false
+    }
+  ],
+  "7": [
+    {
+      "id": "5c11b659-d506-4531-9d6b-d6cebdbef14b",
+      "task": "Eat a balanced Suhoor and stay hydrated.",
+      "isChecked": false
+    },
+    {
+      "id": "d176752d-858a-46f0-8f8f-776d7f03a013",
+      "task": "Pray Fajr and recite Surah Al-Imran (51-120).",
+      "isChecked": false
+    },
+    {
+      "id": "ff5db939-245d-49c4-b5c7-2f7774b9a66b",
+      "task": "Perform morning dhikr and reflect on the names of Allah.",
+      "isChecked": false
+    },
+    {
+      "id": "5cc24de4-2bd1-42ad-9427-a73fd0474e45",
+      "task": "Pray Dhuhr and read about the rewards of fasting in hadith.",
+      "isChecked": false
+    },
+    {
+      "id": "748fa023-32c6-4f43-b58e-ce30f3e332f6",
+      "task": "Share iftar with a friend or neighbor if possible.",
+      "isChecked": false
+    },
+    {
+      "id": "8378be55-061a-4c16-af90-842149133779",
+      "task": "Spend extra time after Taraweeh making dua for your goals.",
+      "isChecked": false
+    }
+  ],
+  "8": [
+    {
+      "id": "3b2033ef-d7ad-4ec6-9ae7-2067ba5309cb",
+      "task": "Wake up early for Suhoor and plan your Quran recitation for the day.",
+      "isChecked": false
+    },
+    {
+      "id": "a224b0f8-888f-405e-a1b6-c65ab3467b19",
+      "task": "Pray Fajr and recite Surah Al-Imran (121-200).",
+      "isChecked": false
+    },
+    {
+      "id": "4b6466ad-1a0b-4257-8727-70f7fb399c8b",
+      "task": "Give sadaqah and reflect on your blessings.",
+      "isChecked": false
+    },
+    {
+      "id": "7ffce030-e47b-4e23-b66c-03bd49797cf3",
+      "task": "Pray Dhuhr and take a moment to review your progress this Ramadan.",
+      "isChecked": false
+    },
+    {
+      "id": "e58d96bb-93a8-4be8-94c0-fecdd2629cf8",
+      "task": "Break your fast with gratitude, focusing on moderation.",
+      "isChecked": false
+    },
+    {
+      "id": "79162d58-cba4-42b2-a47f-0431a565a093",
+      "task": "Pray Taraweeh and spend extra time in dua for your personal goals.",
+      "isChecked": false
+    }
+  ],
+  "9": [
+    {
+      "id": "0870ee76-3a83-4b49-8354-1c05e57694bd",
+      "task": "Start your day with a hearty Suhoor and intention to fast.",
+      "isChecked": false
+    },
+    {
+      "id": "788940ac-2fdd-4534-bc32-1910c820ae06",
+      "task": "Pray Fajr and begin reading the third Juz of the Qur'an (Surah An-Nisa 1-57).",
+      "isChecked": false
+    },
+    {
+      "id": "84973443-5363-4ffe-ab31-8c30cd4ab4cf",
+      "task": "Reflect on the theme of justice in the Qur'an.",
+      "isChecked": false
+    },
+    {
+      "id": "12e7659b-c70e-4332-a71c-5f83a577c22c",
+      "task": "Pray Dhuhr and engage in a small act of kindness.",
+      "isChecked": false
+    },
+    {
+      "id": "36c493b1-081e-49a4-b12f-b5d21ef4661c",
+      "task": "Break your fast with your family or community if possible.",
+      "isChecked": false
+    },
+    {
+      "id": "bb1179ec-7622-46a5-b65c-5395003638df",
+      "task": "Pray Isha and Taraweeh, focusing on dua for the less fortunate.",
+      "isChecked": false
+    }
+  ],
+  "10": [
+    {
+      "id": "0b65ff9c-c743-47e0-bab8-146c66e62c9b",
+      "task": "Eat a light Suhoor and reflect on your spiritual growth.",
+      "isChecked": false
+    },
+    {
+      "id": "d1899bba-2a54-4b95-a8f2-7ac5e49cdfac",
+      "task": "Pray Fajr and recite Surah An-Nisa (58-176).",
+      "isChecked": false
+    },
+    {
+      "id": "adc8067a-ed3d-4566-8664-00e35b07334f",
+      "task": "Take some time to memorize a short surah or dua.",
+      "isChecked": false
+    },
+    {
+      "id": "21046117-1475-4451-99a2-36fcc232158e",
+      "task": "Pray Dhuhr and read about the importance of charity.",
+      "isChecked": false
+    },
+    {
+      "id": "1898ef06-95be-4e89-bcc9-c17adff2daeb",
+      "task": "Break your fast and spend time with loved ones.",
+      "isChecked": false
+    },
+    {
+      "id": "8841cb8f-b5d2-4b1a-9fae-51691c520327",
+      "task": "Pray Taraweeh and make a heartfelt dua for forgiveness.",
+      "isChecked": false
+    }
+  ],
+  "11": [
+    {
+      "id": "1a3602a6-9f14-4a97-9e91-c870d9ae9f4b",
+      "task": "Prepare for the day with a wholesome Suhoor.",
+      "isChecked": false
+    },
+    {
+      "id": "0e019b52-9628-4cb2-ba76-1eebe8640cd5",
+      "task": "Pray Fajr and read the fourth Juz of the Qur'an (Surah Al-Maidah 1-50).",
+      "isChecked": false
+    },
+    {
+      "id": "ffa75b56-3227-4716-84b7-afaeefc37bc8",
+      "task": "Perform extra dhikr and reflect on Allah's mercy.",
+      "isChecked": false
+    },
+    {
+      "id": "bb52d0b1-4c38-4c19-ba0d-514e7f325a89",
+      "task": "Pray Dhuhr and plan a small act of sadaqah.",
+      "isChecked": false
+    },
+    {
+      "id": "78804324-81bc-4fab-bcfb-afaf0599e23b",
+      "task": "Break your fast and reflect on the story of Prophet Musa (AS).",
+      "isChecked": false
+    },
+    {
+      "id": "f20e2260-a64d-41fb-b220-c2aaee483572",
+      "task": "Pray Taraweeh and focus on building patience.",
+      "isChecked": false
+    }
+  ],
+  "12": [
+    {
+      "id": "26ca53a6-6d07-474b-91df-d53990b386f5",
+      "task": "Wake up early and recite a dua for gratitude during Suhoor.",
+      "isChecked": false
+    },
+    {
+      "id": "bf0013d2-aa7f-45f8-8860-7685d7e78625",
+      "task": "Pray Fajr and read Surah Al-Maidah (51-120).",
+      "isChecked": false
+    },
+    {
+      "id": "91c9f0c8-ea47-4eb6-ad70-51c4738e0f71",
+      "task": "Memorize a verse that resonates with you from the Qur'an.",
+      "isChecked": false
+    },
+    {
+      "id": "3263e471-706c-42fe-a769-82bde7611d6e",
+      "task": "Pray Dhuhr and reflect on the importance of honesty.",
+      "isChecked": false
+    },
+    {
+      "id": "90bccaa1-3b23-48d5-8274-0982ae725469",
+      "task": "Break your fast and focus on being thankful for your blessings.",
+      "isChecked": false
+    },
+    {
+      "id": "251cf674-6a57-4d91-8211-10f2ba24393d",
+      "task": "Spend the night in Qiyam-ul-Layl for personal dua.",
+      "isChecked": false
+    }
+  ],
+  "13": [
+    {
+      "id": "874f2ce9-6a50-4f1b-a481-698af2fe8023",
+      "task": "Hydrate well during Suhoor and plan your Qur'an reading.",
+      "isChecked": false
+    },
+    {
+      "id": "b8dffd91-a5e9-4242-b80f-bfd23f377b3b",
+      "task": "Pray Fajr and begin reading the fifth Juz (Surah Al-An'am 1-110).",
+      "isChecked": false
+    },
+    {
+      "id": "d31e412e-2b23-4183-8d1a-8c1e0e8812c8",
+      "task": "Take a moment for reflection on Allah's signs in nature.",
+      "isChecked": false
+    },
+    {
+      "id": "82d26fc4-78d2-4a6d-b245-9058402c6580",
+      "task": "Pray Dhuhr and help someone in need.",
+      "isChecked": false
+    },
+    {
+      "id": "0924d594-25e4-4364-9cf7-2460b2743225",
+      "task": "Break your fast and share a meal with someone if possible.",
+      "isChecked": false
+    },
+    {
+      "id": "727bb195-6728-4142-b0f5-3dc8a26adeaa",
+      "task": "Pray Taraweeh and focus on building gratitude.",
+      "isChecked": false
+    }
+  ],
+  "14": [
+    {
+      "id": "899474dc-b942-4a38-a5af-9710c29e396e",
+      "task": "Wake up for Suhoor and make the intention to fast.",
+      "isChecked": false
+    },
+    {
+      "id": "a7eb31a8-ce38-4815-9570-e89c1621221c",
+      "task": "Pray Fajr and recite Surah Al-An'am (111-165) to complete the 6th Juz.",
+      "isChecked": false
+    },
+    {
+      "id": "855079d5-b8d5-4819-8d8e-8ba0d4c0af18",
+      "task": "Reflect on the lessons of tawheed (oneness of Allah) in your daily actions.",
+      "isChecked": false
+    },
+    {
+      "id": "9fd4f327-89a8-450a-a638-5580ad603584",
+      "task": "Pray Dhuhr and read about the importance of being truthful in Islam.",
+      "isChecked": false
+    },
+    {
+      "id": "ceabf651-cf80-472f-97d2-c1049c6a82a9",
+      "task": "Break your fast with dates and water, and make dua for ease in your life.",
+      "isChecked": false
+    },
+    {
+      "id": "908f0190-e9af-4dd2-989f-8e337fe20e56",
+      "task": "Pray Taraweeh and spend time in dua for protection from sin.",
+      "isChecked": false
+    }
+  ],
+  "15": [
+    {
+      "id": "e0f68086-d152-4ec4-b5ea-efcffea217ec",
+      "task": "Hydrate well at Suhoor and recite a short dua for strength.",
+      "isChecked": false
+    },
+    {
+      "id": "4f5014f7-412e-47dc-be74-240649895d74",
+      "task": "Pray Fajr and start reading the 7th Juz (Surah Al-A'raf 1-87).",
+      "isChecked": false
+    },
+    {
+      "id": "d931dd2e-5d07-4a34-838d-1fa2c5aa1cb7",
+      "task": "Take time to memorize a verse from Surah Al-A'raf about the Day of Judgment.",
+      "isChecked": false
+    },
+    {
+      "id": "e32c980b-5541-4a79-b18e-53b127dbe268",
+      "task": "Pray Dhuhr and give sadaqah to a local charity or a family in need.",
+      "isChecked": false
+    },
+    {
+      "id": "d86afb55-f669-4136-b7d6-3c724e1feb0e",
+      "task": "Break your fast and reflect on Allah’s mercy.",
+      "isChecked": false
+    },
+    {
+      "id": "4effa72b-0442-453e-ac9b-8e89b13cc0e4",
+      "task": "Pray Taraweeh and focus on dua for steadfastness in faith.",
+      "isChecked": false
+    }
+  ],
+  "16": [
+    {
+      "id": "047209c4-1e9b-4472-9a6d-9bb5808df117",
+      "task": "Wake up for Suhoor and recite a dua for forgiveness.",
+      "isChecked": false
+    },
+    {
+      "id": "2fc10615-978b-417b-a85b-6e9ebd4f1723",
+      "task": "Pray Fajr and recite Surah Al-A'raf (88-206) to complete the 7th Juz.",
+      "isChecked": false
+    },
+    {
+      "id": "0b969081-265f-4e61-8bb3-7ac56d82f495",
+      "task": "Reflect on the stories of past nations in Surah Al-A'raf and their lessons.",
+      "isChecked": false
+    },
+    {
+      "id": "0700f7ba-a9f1-4cb8-b4f6-dd12cee88faa",
+      "task": "Pray Dhuhr and perform additional dhikr (SubhanAllah, Alhamdulillah, Allahu Akbar).",
+      "isChecked": false
+    },
+    {
+      "id": "a3a9b7b5-fafc-4394-a5a2-58adf49d9639",
+      "task": "Break your fast and share a thoughtful reflection with your family.",
+      "isChecked": false
+    },
+    {
+      "id": "bc6ce07d-6be7-4721-bf3d-b6d32aa3933a",
+      "task": "Pray Taraweeh and make dua for the health and well-being of loved ones.",
+      "isChecked": false
+    }
+  ],
+  "17": [
+    {
+      "id": "c1ff107d-9aa2-4c19-8ed2-e3f9951eb827",
+      "task": "Prepare a balanced Suhoor and make a heartfelt intention to fast.",
+      "isChecked": false
+    },
+    {
+      "id": "68427ab8-5ff4-4419-a941-37be05930ede",
+      "task": "Pray Fajr and begin reading the 8th Juz (Surah Al-Anfal 1-75).",
+      "isChecked": false
+    },
+    {
+      "id": "a0e2a8f2-5b42-4afb-aea2-b0e553be2c0b",
+      "task": "Contemplate the lessons from the Battle of Badr as revealed in Surah Al-Anfal.",
+      "isChecked": false
+    },
+    {
+      "id": "59e41277-72a9-47ab-8396-1779be7e31b8",
+      "task": "Pray Dhuhr and commit to a small good deed for someone in your community.",
+      "isChecked": false
+    },
+    {
+      "id": "01d56d81-e4f8-42a3-b406-d04c3595e2b7",
+      "task": "Break your fast and recite a short dua before Maghrib prayer.",
+      "isChecked": false
+    },
+    {
+      "id": "cce33ac9-594f-4673-b2b4-d080c1061794",
+      "task": "Spend extra time in Qiyam-ul-Layl for personal dua and reflection.",
+      "isChecked": false
+    }
+  ],
+  "18": [
+    {
+      "id": "94dafb13-fa47-42f6-b9c1-be90d2f39d33",
+      "task": "Hydrate well at Suhoor and make a plan for your Qur'an reading.",
+      "isChecked": false
+    },
+    {
+      "id": "c39adc22-b97f-4c47-a008-99ea55d3b14c",
+      "task": "Pray Fajr and recite Surah At-Tawbah (1-93).",
+      "isChecked": false
+    },
+    {
+      "id": "89681c33-860e-4cc4-b733-4f869425bbb0",
+      "task": "Reflect on the concept of repentance and Allah’s mercy in Surah At-Tawbah.",
+      "isChecked": false
+    },
+    {
+      "id": "21b5d0bd-bb60-46e4-9f25-9de5dd876794",
+      "task": "Pray Dhuhr and make a specific dua for someone who has supported you.",
+      "isChecked": false
+    },
+    {
+      "id": "4c2939f4-a2dc-4025-86fe-e7e29afe54f7",
+      "task": "Break your fast with dates and water, and express gratitude for the day.",
+      "isChecked": false
+    },
+    {
+      "id": "e7e1c38b-ec5d-4665-a917-aeb4ef578929",
+      "task": "Pray Taraweeh and focus on asking for forgiveness for all your past sins.",
+      "isChecked": false
+    }
+  ],
+  "19": [
+    {
+      "id": "dc8280a9-2ae1-4503-8de9-c09c9a948c29",
+      "task": "Eat a light Suhoor and begin your day with a dua for barakah (blessings).",
+      "isChecked": false
+    },
+    {
+      "id": "0bfc3c5b-831a-422d-a25f-d6b1c9313862",
+      "task": "Pray Fajr and recite Surah At-Tawbah (94-129) to complete the 10th Juz.",
+      "isChecked": false
+    },
+    {
+      "id": "89fa0e1f-1c1c-4cfc-b06a-3292534d7550",
+      "task": "Spend time reflecting on the importance of sincerity in worship.",
+      "isChecked": false
+    },
+    {
+      "id": "939a42b3-e98a-454f-bb7b-75f7bf2d01de",
+      "task": "Pray Dhuhr and perform a small act of kindness for a family member.",
+      "isChecked": false
+    },
+    {
+      "id": "886fbb67-1646-48d5-a7fa-d2f08c708fb0",
+      "task": "Break your fast and make a list of things you are thankful for.",
+      "isChecked": false
+    },
+    {
+      "id": "f479f71e-8d8c-4c18-a562-adc0f2029386",
+      "task": "Pray Taraweeh and ask Allah for strength to finish Ramadan strong.",
+      "isChecked": false
+    }
+  ],
+  "20": [
+    {
+      "id": "7bbde44f-24f2-469d-9d2e-77a177060edc",
+      "task": "Wake up early and prepare for the last 10 days with extra determination.",
+      "isChecked": false
+    },
+    {
+      "id": "383f96b7-6fef-4f8c-b1f6-6239101a0011",
+      "task": "Pray Fajr and begin reading the 11th Juz (Surah Yunus 1-70).",
+      "isChecked": false
+    },
+    {
+      "id": "e156419d-00a6-4636-ab11-1e513f57ddfc",
+      "task": "Memorize a verse that highlights Allah’s mercy and forgiveness.",
+      "isChecked": false
+    },
+    {
+      "id": "4a4f20a6-1493-40b9-bbbf-1be3679186fc",
+      "task": "Pray Dhuhr and dedicate time to dhikr or reflection.",
+      "isChecked": false
+    },
+    {
+      "id": "77326c78-1ee5-4b0b-b104-ee4bc5e50cb1",
+      "task": "Break your fast and think about ways to maximize the remaining days.",
+      "isChecked": false
+    },
+    {
+      "id": "e666c4af-a78b-408d-8856-67354936d556",
+      "task": "Pray Taraweeh and make dua for acceptance of your fasts and deeds.",
+      "isChecked": false
+    }
+  ],
+  "21": [
+    {
+      "id": "20ed86d8-302d-4703-bb6f-8835932d5523",
+      "task": "Eat Suhoor and make a heartfelt dua for Laylatul Qadr (the Night of Decree).",
+      "isChecked": false
+    },
+    {
+      "id": "d04bf2ae-8f69-4066-9c63-8d1784067aba",
+      "task": "Pray Fajr and recite Surah Hud (1-60).",
+      "isChecked": false
+    },
+    {
+      "id": "914f43ee-28c6-45bb-8ac8-416f61eb8450",
+      "task": "Reflect on the story of Prophet Hud (AS) and its lessons.",
+      "isChecked": false
+    },
+    {
+      "id": "4ecaaa18-a517-49bc-bb08-c0323b4999a3",
+      "task": "Pray Dhuhr and read about the signs of Laylatul Qadr.",
+      "isChecked": false
+    },
+    {
+      "id": "e8e77eb6-1ed9-4fec-91f6-b4461039204d",
+      "task": "Break your fast and ask Allah for forgiveness.",
+      "isChecked": false
+    },
+    {
+      "id": "71dc35e3-b93e-44d5-a4d1-170ce9e74eb2",
+      "task": "Stay up for Qiyam-ul-Layl, focusing on the dua: 'Allahumma innaka afuwwun, tuhibbul afwa, fa'fu anni.'",
+      "isChecked": false
+    }
+  ],
+  "22": [
+    {
+      "id": "eac17d7d-ca52-4a18-85a1-ab747396af8e",
+      "task": "Prepare for Suhoor with the intention to seek Allah’s mercy.",
+      "isChecked": false
+    },
+    {
+      "id": "090cfd8c-e9e8-49f0-9fe9-f9a2701653fb",
+      "task": "Pray Fajr and recite Surah Hud (61-123) to complete the 12th Juz.",
+      "isChecked": false
+    },
+    {
+      "id": "bbf2c0da-fdaa-4981-8e6e-945cbeaea02b",
+      "task": "Reflect on Allah’s promises to the believers in the Qur'an.",
+      "isChecked": false
+    },
+    {
+      "id": "9d70a976-e08d-41a0-92f3-d6bc80daa0ad",
+      "task": "Pray Dhuhr and give sadaqah to someone anonymously.",
+      "isChecked": false
+    },
+    {
+      "id": "8027cb9f-3be9-4124-8aeb-64bebaf3e76c",
+      "task": "Break your fast and reflect on Allah’s infinite blessings.",
+      "isChecked": false
+    },
+    {
+      "id": "60f3bc92-8ce3-43a2-af03-1f28f65499cf",
+      "task": "Pray Taraweeh and dedicate your night to seeking Allah’s pleasure.",
+      "isChecked": false
+    }
+  ],
+  "23": [
+    {
+      "id": "5e00843a-67cb-4e53-ba78-2b9317e7328b",
+      "task": "Wake up early for Suhoor and recite a dua for acceptance of your fast.",
+      "isChecked": false
+    },
+    {
+      "id": "7bea80a7-5082-4e15-b0c8-53563e2b633b",
+      "task": "Pray Fajr and recite Surah Yusuf (1-50).",
+      "isChecked": false
+    },
+    {
+      "id": "a26d3c20-25fc-466b-beeb-5335bcdf7187",
+      "task": "Ponder the lessons of patience and trust in Allah from the story of Prophet Yusuf (AS).",
+      "isChecked": false
+    },
+    {
+      "id": "b9f6ffc3-8d7e-4f2a-9631-f06b23f211c9",
+      "task": "Pray Dhuhr and review your dua list, adding any new ones.",
+      "isChecked": false
+    },
+    {
+      "id": "9bd5c641-f289-4d49-b4a0-73a79f01d7b3",
+      "task": "Break your fast with family or friends and express gratitude.",
+      "isChecked": false
+    },
+    {
+      "id": "4e817478-cf1c-4c17-b153-a5a5f8a8838c",
+      "task": "Spend the night in Qiyam-ul-Layl seeking Allah’s mercy and forgiveness.",
+      "isChecked": false
+    }
+  ],
+  "24": [
+    {
+      "id": "af211ac4-e4c3-4ca1-aa0f-474082363da6",
+      "task": "Eat a nutritious Suhoor and reflect on your goals for the last 10 nights.",
+      "isChecked": false
+    },
+    {
+      "id": "99017e20-077a-42a2-91f1-e34ef2d87ea4",
+      "task": "Pray Fajr and recite Surah Yusuf (51-111) to complete the 13th Juz.",
+      "isChecked": false
+    },
+    {
+      "id": "40b78a38-8967-4909-bc18-1e323f0e5f5a",
+      "task": "Reflect on the themes of forgiveness and justice in Surah Yusuf.",
+      "isChecked": false
+    },
+    {
+      "id": "4a9c7fe8-2fbb-4671-afa4-2aee5858ccd6",
+      "task": "Pray Dhuhr and perform extra dhikr.",
+      "isChecked": false
+    },
+    {
+      "id": "6cf94abd-7c16-4ef2-9a31-37fe0b22712f",
+      "task": "Break your fast and make dua for guidance in your life.",
+      "isChecked": false
+    },
+    {
+      "id": "61a86ec4-4723-473f-9b70-4024d12c0ce0",
+      "task": "Pray Taraweeh and dedicate extra time to dua for Jannah (Paradise).",
+      "isChecked": false
+    }
+  ],
+  "25": [
+    {
+      "id": "69e72652-9b79-42bb-b3ca-6c532a85eb27",
+      "task": "Hydrate well at Suhoor and make your intention to fast with sincerity.",
+      "isChecked": false
+    },
+    {
+      "id": "b312265f-64c5-45e3-af88-ec7635bec496",
+      "task": "Pray Fajr and recite Surah Ar-Ra’d (1-43).",
+      "isChecked": false
+    },
+    {
+      "id": "aa8ee9c5-71c7-4363-a0db-5846610c5127",
+      "task": "Memorize a short verse from Surah Ar-Ra’d about the power of dua.",
+      "isChecked": false
+    },
+    {
+      "id": "45c7987d-a067-44b6-80c8-6d00098a97e0",
+      "task": "Pray Dhuhr and give charity, even if it’s a small amount.",
+      "isChecked": false
+    },
+    {
+      "id": "bb1cf57b-479e-4a47-8cb2-162e6d4d7371",
+      "task": "Break your fast and focus on reflecting on Allah’s mercy.",
+      "isChecked": false
+    },
+    {
+      "id": "d328f9fa-337a-410a-89b1-868ea481e101",
+      "task": "Spend the night in worship, asking Allah for His forgiveness and love.",
+      "isChecked": false
+    }
+  ],
+  "26": [
+    {
+      "id": "c513a4d1-b8e9-4fca-918f-e8255d7a5345",
+      "task": "Prepare for Suhoor with gratitude for reaching this far in Ramadan.",
+      "isChecked": false
+    },
+    {
+      "id": "38e57143-ae89-4215-a017-e87a736c74e8",
+      "task": "Pray Fajr and recite Surah Ibrahim (1-52).",
+      "isChecked": false
+    },
+    {
+      "id": "9135eda5-4b99-40c2-986d-bfcc06117c26",
+      "task": "Ponder the dua of Prophet Ibrahim (AS) for his family and guidance.",
+      "isChecked": false
+    },
+    {
+      "id": "6504f006-5836-4f3e-8f39-550f232da078",
+      "task": "Pray Dhuhr and engage in an act of kindness toward a neighbor or stranger.",
+      "isChecked": false
+    },
+    {
+      "id": "4ea54ed6-a24b-472b-b114-95902e1b0719",
+      "task": "Break your fast and pray for the ummah (Muslim community).",
+      "isChecked": false
+    },
+    {
+      "id": "acbf04a5-eb60-48a4-aeaf-cfe73e16027f",
+      "task": "Stay up for Qiyam-ul-Layl, focusing on Laylatul Qadr.",
+      "isChecked": false
+    }
+  ],
+  "27": [
+    {
+      "id": "715427a3-7fca-490e-9971-fdd0cde10197",
+      "task": "Make Suhoor special with extra dua for Laylatul Qadr.",
+      "isChecked": false
+    },
+    {
+      "id": "2dd0b0c4-10bd-47f2-a946-96e1a99f8e1b",
+      "task": "Pray Fajr and recite Surah Al-Hijr (1-99).",
+      "isChecked": false
+    },
+    {
+      "id": "45d71ae5-abd9-48d3-918e-ef418269fda9",
+      "task": "Reflect on Allah’s assurance of protection for the Qur'an.",
+      "isChecked": false
+    },
+    {
+      "id": "6adee7e7-b59a-4c55-a8e2-f14bee0fd25d",
+      "task": "Pray Dhuhr and review your dua list, ensuring to pray for the Hereafter.",
+      "isChecked": false
+    },
+    {
+      "id": "144787db-77b2-47fb-a57a-9bba132464ff",
+      "task": "Break your fast and ask for forgiveness from anyone you’ve wronged.",
+      "isChecked": false
+    },
+    {
+      "id": "c6e35674-f30c-4270-b77d-1ca6941663da",
+      "task": "Dedicate the night to worship, focusing on Allah’s mercy and forgiveness.",
+      "isChecked": false
+    }
+  ],
+  "28": [
+    {
+      "id": "44542380-dff9-40b9-bb5d-1dbed01e2ca0",
+      "task": "Eat Suhoor and reflect on the blessings of the Qur'an.",
+      "isChecked": false
+    },
+    {
+      "id": "c3d179c0-0267-4728-88e9-4c632fc48c90",
+      "task": "Pray Fajr and recite Surah An-Nahl (1-50).",
+      "isChecked": false
+    },
+    {
+      "id": "2d475099-a25c-4349-87e6-0e27b98f9a8c",
+      "task": "Contemplate the signs of Allah in the natural world.",
+      "isChecked": false
+    },
+    {
+      "id": "f76a2cdc-5221-4966-b965-6c591d9a7b8d",
+      "task": "Pray Dhuhr and offer additional dhikr and gratitude.",
+      "isChecked": false
+    },
+    {
+      "id": "4d7e0e2a-e80e-4123-ae13-190a7b117581",
+      "task": "Break your fast and make dua for an accepted Ramadan.",
+      "isChecked": false
+    },
+    {
+      "id": "92b378ad-f2b4-4ccf-b556-f6e63083807a",
+      "task": "Pray Taraweeh and focus on finishing the Qur'an.",
+      "isChecked": false
+    }
+  ],
+  "29": [
+    {
+      "id": "44719a9a-dde6-4624-926b-2b3adc52061d",
+      "task": "Wake up for Suhoor and recite a dua for steadfastness in faith.",
+      "isChecked": false
+    },
+    {
+      "id": "33f69ad5-dfce-4a6d-8cbe-3c25e0ccf7d2",
+      "task": "Pray Fajr and recite Surah An-Nahl (51-128) to complete the 14th Juz.",
+      "isChecked": false
+    },
+    {
+      "id": "e3582a4d-dd37-4a72-b8ab-8bb4f135a257",
+      "task": "Plan your Eid preparations while staying mindful of your spiritual goals.",
+      "isChecked": false
+    },
+    {
+      "id": "d8224d28-2258-4f4f-b108-1e62066a261c",
+      "task": "Pray Dhuhr and reflect on the lessons of Ramadan.",
+      "isChecked": false
+    },
+    {
+      "id": "c15adaff-ce97-4d44-9c63-f07bddb7c899",
+      "task": "Break your fast and express gratitude for the opportunity to fast.",
+      "isChecked": false
+    },
+    {
+      "id": "df5057ab-33b4-4cd4-8e8e-dbb22c9ee6d8",
+      "task": "Spend the night in worship, asking Allah to accept your deeds.",
+      "isChecked": false
+    }
+  ],
+  "30": [
+    {
+      "id": "a9b7176e-a06d-484e-825a-a37420e7fef2",
+      "task": "Celebrate the blessings of completing Ramadan with Suhoor.",
+      "isChecked": false
+    },
+    {
+      "id": "a984f4a0-d687-4221-ba11-b10d5178122c",
+      "task": "Pray Fajr and recite Surah Al-Isra (1-50).",
+      "isChecked": false
+    },
+    {
+      "id": "3dd28c8f-844f-49b9-9e44-327163e1e13b",
+      "task": "Reflect on your spiritual growth throughout Ramadan.",
+      "isChecked": false
+    },
+    {
+      "id": "27a18cf0-7dc8-4d76-a558-2b872effade1",
+      "task": "Pray Dhuhr and make plans to continue good habits after Ramadan.",
+      "isChecked": false
+    },
+    {
+      "id": "010e8505-4d57-4a88-b45a-a09fa07541e4",
+      "task": "Break your fast with a heartfelt dua of gratitude.",
+      "isChecked": false
+    },
+    {
+      "id": "e5c33bba-7976-45a1-bc72-3fb6c43fce6a",
+      "task": "Spend the night in worship, thanking Allah for allowing you to complete Ramadan.",
+      "isChecked": false
+    }
+  ]
+}
