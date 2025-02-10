@@ -9,7 +9,7 @@ import Animated, {
 
 import { useBottomTabOverflow } from '@/components/ui/TabBarBackground'
 
-const HEADER_HEIGHT = 300
+const HEADER_HEIGHT = 350
 
 type Props = PropsWithChildren<{
   headerImage: ReactElement
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     // gap: 16,
-    overflow: 'hidden',
+    // overflow: 'hidden',
   },
 })

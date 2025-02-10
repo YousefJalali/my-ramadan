@@ -135,7 +135,27 @@ export default function HomeScreen() {
 
   return (
     <ParallaxScrollView headerImage={<FastingTimeline />}>
-      <VStack className='py-6 bg-neutral-50 gap-8'>
+      <VStack className='relative py-6 pt-16 bg-neutral-50 gap-8'>
+        <Center className='absolute h-20 -top-10 left-0 w-full'>
+          <Center className='bg-neutral-50 h-full px-10 rounded-full rounded-b-2xl'>
+            <Text size='md'>
+              {new Intl.DateTimeFormat('en-us', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric',
+              }).format(Date.now())}
+            </Text>
+            <Text bold size='xl'>
+              {new Intl.DateTimeFormat('en-u-ca-islamic-umalqura-nu-latn', {
+                day: 'numeric',
+                month: 'long',
+                weekday: 'long',
+                year: 'numeric',
+              }).format(Date.now())}
+            </Text>
+          </Center>
+        </Center>
+
         <Progress />
 
         {/* <DaySelector day={selectedDay} onSelectDay={selectDayHandler} /> */}
