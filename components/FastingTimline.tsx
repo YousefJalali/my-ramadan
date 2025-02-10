@@ -9,12 +9,19 @@ import { Image } from './ui/image'
 import { useEffect, useState } from 'react'
 import prayerTime from '@/constants/prayerTime'
 import { timeStrToMilitaryTime } from '@/utils/timeStrToMilitaryTime'
+import { useLocation } from '@/hooks/useLocation'
+import { Icon } from './ui/icon'
+import { MapPin, MapPinned, Navigation } from 'lucide-react-native'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
 export default function FastingTimeline() {
   const [time, setTime] = useState(new Date())
   const [timeline, setTimeline] = useState(0)
+
+  const { error, location } = useLocation()
+
+  // console.log(location)
 
   const imsak = timeStrToMilitaryTime(prayerTime[0][0].time)
   const iftar = timeStrToMilitaryTime(prayerTime[0][3].time)
@@ -147,9 +154,12 @@ export default function FastingTimeline() {
         />
 
         <Center className='my-8.5 bg-[url(../assets/images/partial-react-logo.png)]'>
-          <Text size='xl' className='mb-2 text-primary-50'>
-            Dhuhr
-          </Text>
+          <HStack className='items-center mb-2 gap-1'>
+            <Text size='xl' className='text-primary-100'>
+              {error ? 'error' : `${location.city}, ${location.country}`}
+            </Text>
+            <Icon as={MapPin} size='md' className='text-primary-100' />
+          </HStack>
           <Heading size='3xl' className='text-primary-50'>
             {time.toLocaleTimeString()}
           </Heading>
