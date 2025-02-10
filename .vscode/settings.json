@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["Pressable"]
+  "cSpell.words": [
+    "Actionsheet",
+    "Firestore",
+    "Pressable",
+    "subcollection",
+    "subcollections",
+    "supabase"
+  ]
 }

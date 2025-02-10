@@ -1,53 +1,32 @@
-import type { PropsWithChildren } from 'react'
-import { StyleSheet } from 'react-native'
-import { ThemedView } from '@/components/ThemedView'
-import { ThemedText } from './ThemedText'
 import Rings from './Rings'
+import { Text } from '@/components/ui/text'
+import { VStack } from './ui/vstack'
+import { HStack } from './ui/hstack'
+import { Heading } from './ui/heading'
+import Section from './Section'
 
-type Props = PropsWithChildren<{
-  day: number
-}>
-
-export default function Progress({ children, day }: Props) {
+export default function Progress() {
   const data: { [key: string]: number[] } = {
-    total: [50, 100],
-    daily: [10, 22],
-    quran: [13, 60],
+    Prayers: [50, 150],
+    'Quran Reading': [5, 60],
+    Azkar: [3, 30],
   }
   return (
-    <ThemedView>
-      <ThemedView style={styles.container}>
-        <Rings total={data.total} daily={data.daily} quran={data.quran} />
+    <Section title='Monthly Progress'>
+      <HStack className='bg-neutral-100 rounded-2xl mt-2 gap-2'>
+        <Rings data={data} />
 
-        <ThemedView style={styles.label}>
-          {['total', 'daily', 'quran'].map((p) => (
-            <ThemedView key={p}>
-              <ThemedText type='defaultSemiBold'>{p}</ThemedText>
-              <ThemedText type='title'>
+        <VStack className='gap-4 justify-center'>
+          {Object.keys(data).map((p) => (
+            <VStack key={p}>
+              <Text className='capitalize'>{p}</Text>
+              <Text bold size='xl'>
                 {data[p][0]} / {data[p][1]}
-              </ThemedText>
-            </ThemedView>
+              </Text>
+            </VStack>
           ))}
-        </ThemedView>
-      </ThemedView>
-    </ThemedView>
+        </VStack>
+      </HStack>
+    </Section>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 24,
-    alignItems: 'center',
-    margin: 24,
-    overflow: 'hidden',
-  },
-  label: {
-    width: '50%',
-    gap: 8,
-    flex: 1,
-  },
-})

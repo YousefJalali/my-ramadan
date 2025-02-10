@@ -3,32 +3,33 @@ import { Dimensions } from 'react-native'
 import { ProgressChart } from 'react-native-chart-kit'
 
 type Props = {
-  total: number[]
-  daily: number[]
-  quran: number[]
+  data: {
+    [key: string]: number[]
+  }
 }
 
 const SIZE = Dimensions.get('window').width / 2
 
-export default function Rings({ total, daily, quran }: Props) {
-  const data = {
-    labels: ['Total', 'Daily', 'Quran'], // optional
-    data: [total[0] / total[1], daily[0] / daily[1], quran[0] / quran[1]],
-    colors: [
-      'rgba(255, 0, 0,0.5)',
-      'rgba(238, 130, 238,0.6)',
-      'rgba(106, 90, 205,0.5)',
+export default function Rings({ data }: Props) {
+  const values = Object.values(data)
+  const d = {
+    labels: Object.keys(data), // optional
+    data: [
+      values[0][0] / values[0][1],
+      values[1][0] / values[1][1],
+      values[2][0] / values[2][1],
     ],
+    colors: ['rgb(255 161 122)', 'rgb(86 171 239)', 'rgb(173 153 229)'],
   }
 
   return (
     <ProgressChart
-      data={data}
+      data={d}
       width={SIZE}
       height={SIZE}
       chartConfig={{
-        backgroundGradientFrom: 'transparent',
-        backgroundGradientTo: 'transparent',
+        backgroundGradientFromOpacity: 0,
+        backgroundGradientToOpacity: 0,
         color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
         style: {
           borderRadius: 16,

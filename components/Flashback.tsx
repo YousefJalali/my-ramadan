@@ -1,65 +1,78 @@
-import {
-  StyleSheet,
-  Pressable,
-  View,
-  ScrollView,
-  Dimensions,
-} from 'react-native'
-import flashback from '@/constants/flashback'
-import { ThemedText } from './ThemedText'
-import { ThemedView } from './ThemedView'
+import { ScrollView, Dimensions } from 'react-native'
+import { Text } from '@/components/ui/text'
+import { useEffect, useState, useTransition } from 'react'
 import { Link } from 'expo-router'
-import { ExternalLink } from './ExternalLink'
-// import * as Crypto from 'expo-crypto'
+import { Card } from '@/components/ui/card'
+import { Heading } from '@/components/ui/heading'
+import { HStack } from './ui/hstack'
+import { VStack } from './ui/vstack'
+import { Center } from './ui/center'
+import flashback from '@/constants/flashback'
+import Section from './Section'
 
 const WIDTH = Dimensions.get('screen').width - 48
 
-export default function Flashback({ day }: { day: number }) {
-  return (
-    <ThemedView style={styles.container}>
-      <ThemedText style={styles.title}>On This Day</ThemedText>
-      <ScrollView horizontal style={styles.list}>
-        {flashback[day - 1].map((f) => (
-          <ThemedView
-            key={f.id}
-            style={[
-              styles.item,
-              { width: flashback[day - 1].length > 1 ? WIDTH * 0.9 : WIDTH },
-            ]}
-          >
-            <ThemedText type='subtitle'>{f.title}</ThemedText>
-            <ThemedView>
-              <ThemedText numberOfLines={2} ellipsizeMode='tail'>
-                {f.description}
-              </ThemedText>
-              <ExternalLink href='/'>Read More</ExternalLink>
-            </ThemedView>
-          </ThemedView>
-        ))}
-      </ScrollView>
-    </ThemedView>
-  )
+type Flashback = {
+  id: string
+  title: string
+  description: string
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 32,
-  },
-  title: {
-    paddingHorizontal: 24,
-    marginBottom: 8,
-  },
-  list: {
-    paddingHorizontal: 24,
-    paddingRight: 12,
-  },
-  item: {
-    marginRight: 12,
-    width: '100%',
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 16,
-    padding: 12,
-    gap: 8,
-  },
-})
+export default function Flashback({ day }: { day: number }) {
+  const [flashbacks, setFlashbacks] = useState<Flashback[]>([])
+  const [isPending, startTransition] = useTransition()
+
+  async function getFlashbacks() {
+    try {
+      // const q = query(collection(db, 'flashbacks'), where('day', '==', day))
+      // const querySnapshot = await getDocs(q)
+      // const d: Flashback[] = []
+      // querySnapshot.forEach((doc) => {
+      //   d.push({
+      //     id: doc.id,
+      //     ...doc.data(),
+      //   } as Flashback)
+      // })
+      // setFlashbacks(d)
+      setFlashbacks(flashback[day - 1])
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    startTransition(() => {
+      getFlashbacks()
+    })
+  }, [day])
+
+  return (
+    <Section title='On This Day' className=''>
+      {isPending ? (
+        <Center>
+          <Text>Loading...</Text>
+        </Center>
+      ) : (
+        <ScrollView horizontal className='-mx-6'>
+          <HStack className='gap-6 mx-6'>
+            {flashbacks.map((f) => (
+              <Card
+                key={f.id}
+                size='lg'
+                variant='filled'
+                className='bg-neutral-100'
+                style={{ width: flashbacks.length > 1 ? WIDTH * 0.9 : WIDTH }}
+              >
+                <Heading size='md' className='mb-1'>
+                  {f.title}
+                </Heading>
+                <Text size='sm'>{f.description}</Text>
+                <Link href='/'>Read More</Link>
+              </Card>
+            ))}
+          </HStack>
+        </ScrollView>
+      )}
+    </Section>
+  )
+}

@@ -1,20 +1,36 @@
 import { Tabs } from 'expo-router'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Platform } from 'react-native'
-
 import { HapticTab } from '@/components/HapticTab'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import TabBarBackground from '@/components/ui/TabBarBackground'
-import { Colors } from '@/constants/Colors'
-import { useColorScheme } from '@/hooks/useColorScheme'
+import { supabase } from '@/utils/supabase'
+import { router } from 'expo-router'
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme()
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session) {
+        router.replace('/(tabs)')
+      } else {
+        console.log('no user')
+      }
+    })
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        router.replace('/(tabs)')
+      } else {
+        console.log('no user')
+        router.replace('/(auth)/login')
+      }
+    })
+  }, [])
 
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+        tabBarActiveTintColor: 'light',
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -36,19 +52,21 @@ export default function TabLayout() {
           ),
         }}
       />
+
       <Tabs.Screen
-        name='explore'
+        name='tracker'
         options={{
-          title: 'Explore',
+          title: 'Tracker',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name='paperplane.fill' color={color} />
           ),
         }}
       />
+
       <Tabs.Screen
-        name='checklist'
+        name='me'
         options={{
-          title: 'Checklist',
+          title: 'Me',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name='paperplane.fill' color={color} />
           ),
