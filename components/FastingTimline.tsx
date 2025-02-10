@@ -45,7 +45,7 @@ export default function FastingTimeline() {
   const d = {
     labels: [''],
     data: [timeline / 100],
-    colors: ['rgb(241 252 248)'],
+    colors: ['#95ffed'],
   }
 
   const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
@@ -153,7 +153,7 @@ export default function FastingTimeline() {
           }}
         />
 
-        <Center className='my-8.5 bg-[url(../assets/images/partial-react-logo.png)]'>
+        <Center className='my-8.5'>
           <HStack className='items-center mb-2 gap-1'>
             <Text size='xl' className='text-primary-100'>
               {error ? 'error' : `${location.city}, ${location.country}`}

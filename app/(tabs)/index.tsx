@@ -156,17 +156,17 @@ export default function HomeScreen() {
           </Center>
         </Center>
 
-        <Progress />
+        <Progress data={{ prayers: [4, 5], quran: [20, 20], azkar: [7, 10] }} />
 
         {/* <DaySelector day={selectedDay} onSelectDay={selectDayHandler} /> */}
 
         <Prayers day={selectedDay} />
 
-        <Flashback day={selectedDay} />
-
         <DailyDuaa day={selectedDay} />
 
         <QuranReading day={selectedDay} />
+
+        <Flashback day={selectedDay} />
 
         <Azkar />
       </VStack>

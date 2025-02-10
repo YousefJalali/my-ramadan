@@ -2,17 +2,27 @@ import Rings from './Rings'
 import { Text } from '@/components/ui/text'
 import { VStack } from './ui/vstack'
 import { HStack } from './ui/hstack'
-import { Heading } from './ui/heading'
 import Section from './Section'
 
-export default function Progress() {
-  const data: { [key: string]: number[] } = {
-    Prayers: [50, 150],
-    'Quran Reading': [5, 60],
-    Azkar: [3, 30],
+type Props = {
+  data: {
+    prayers: number[]
+    quran: number[]
+    azkar: number[]
   }
+}
+
+export default function Progress({
+  data: { prayers = [0, 5], quran = [0, 20], azkar = [0, 10] },
+}: Props) {
+  const data: { [key: string]: number[] } = {
+    Prayers: prayers,
+    'Quran Reading': quran,
+    Azkar: azkar,
+  }
+
   return (
-    <Section title='Monthly Progress'>
+    <Section title='Daily Progress'>
       <HStack className='bg-neutral-100 rounded-2xl mt-2 gap-2'>
         <Rings data={data} />
 
