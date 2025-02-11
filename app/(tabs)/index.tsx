@@ -10,11 +10,12 @@ import Prayers from '@/components/Prayers'
 import { VStack } from '@/components/ui/vstack'
 import { ScrollView } from '@/components/ui/scroll-view'
 import DailyDuaa from '@/components/DailyDuaa'
-import FastingTimeline from '@/components/FastingTimline'
+import FastingTimeline from '@/components/FastingTimeline'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import QuranReading from '@/components/QuranReading'
 import Azkar from '@/components/Azkar'
+import Qibla from '@/components/Qibla'
 
 export default function HomeScreen() {
   const [selectedDay, setSelectedDay] = useState(1)
@@ -155,6 +156,7 @@ export default function HomeScreen() {
             </Text>
           </Center>
         </Center>
+        <Qibla />
 
         <Progress data={{ prayers: [4, 5], quran: [20, 20], azkar: [7, 10] }} />
 
