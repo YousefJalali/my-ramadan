@@ -9,6 +9,7 @@ import { VStack } from './ui/vstack'
 import { Center } from './ui/center'
 import flashback from '@/constants/flashback'
 import Section from './Section'
+import { slugify } from '@/utils/slugify'
 
 const WIDTH = Dimensions.get('screen').width - 48
 
@@ -67,7 +68,7 @@ export default function Flashback({ day }: { day: number }) {
                   {f.title}
                 </Heading>
                 <Text size='sm'>{f.description}</Text>
-                <Link href='/'>Read More</Link>
+                <Link href={`/flashback/${slugify(f.title)}`}>Read More</Link>
               </Card>
             ))}
           </HStack>

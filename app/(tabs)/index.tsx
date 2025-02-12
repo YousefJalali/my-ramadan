@@ -156,7 +156,8 @@ export default function HomeScreen() {
             </Text>
           </Center>
         </Center>
-        <Qibla />
+
+        {/* <Qibla /> */}
 
         <Progress data={{ prayers: [4, 5], quran: [20, 20], azkar: [7, 10] }} />
 
