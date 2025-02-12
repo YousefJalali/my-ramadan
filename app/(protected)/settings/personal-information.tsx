@@ -26,6 +26,8 @@ import {
   AlertDialogBackdrop,
 } from '@/components/ui/alert-dialog'
 import { Heading } from '@/components/ui/heading'
+import { observer, use$, useObservable } from '@legendapp/state/react'
+import { store$ } from '@/store'
 
 const NAME = 'John Doe'
 
@@ -33,6 +35,9 @@ export default function PersonalInformation() {
   const [showAlertDialog, setShowAlertDialog] = useState(false)
   const [selectedValues, setSelectedValues] = useState<string[]>([])
   const [name, setName] = useState(NAME)
+
+  const email = use$(store$.email)
+  console.log(email)
 
   function closeAccordion() {
     if (name !== NAME) {

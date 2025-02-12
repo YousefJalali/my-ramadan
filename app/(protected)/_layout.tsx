@@ -4,6 +4,7 @@ import { supabase } from '@/utils/supabase'
 import { router } from 'expo-router'
 import GoBackBtn from '@/components/GoBackBtn'
 import { Platform } from 'react-native'
+import { store$ } from '@/store'
 
 export default function ProtectedLayout() {
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function ProtectedLayout() {
 
     supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
+        store$.email.set(session.user.email ?? '')
         router.replace('/(protected)/(tabs)')
       } else {
         console.log('no user')
