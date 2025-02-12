@@ -16,6 +16,10 @@ import { IconSymbol } from '@/components/ui/IconSymbol'
 import QuranReading from '@/components/QuranReading'
 import Azkar from '@/components/Azkar'
 import Qibla from '@/components/Qibla'
+import translations from '@/constants/translations'
+import { Pressable } from '@/components/ui/pressable'
+import { i18n } from '@/utils/i18n'
+import { getLocales } from 'expo-localization'
 
 export default function HomeScreen() {
   const [selectedDay, setSelectedDay] = useState(1)
@@ -137,6 +141,7 @@ export default function HomeScreen() {
   return (
     <ParallaxScrollView headerImage={<FastingTimeline />}>
       <VStack className='relative py-6 pt-16 bg-neutral-50 gap-8'>
+        {/* date */}
         <Center className='absolute h-20 -top-10 left-0 w-full'>
           <Center className='bg-neutral-50 h-full px-10 rounded-full rounded-b-2xl'>
             <Text size='md'>
@@ -156,6 +161,20 @@ export default function HomeScreen() {
             </Text>
           </Center>
         </Center>
+
+        {/* <VStack>
+          <Text>Current locale: {i18n.locale}</Text>
+          <Text>Device locale: {getLocales()[0].languageCode}</Text>
+          {Object.keys(translations).map((t) => (
+            <Pressable
+              key={t}
+              onPress={() => (i18n.locale = t)}
+              className='p-6'
+            >
+              <Text>{t}</Text>
+            </Pressable>
+          ))}
+        </VStack> */}
 
         {/* <Qibla /> */}
 

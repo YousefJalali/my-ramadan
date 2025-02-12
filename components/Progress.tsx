@@ -3,6 +3,7 @@ import { Text } from '@/components/ui/text'
 import { VStack } from './ui/vstack'
 import { HStack } from './ui/hstack'
 import Section from './Section'
+import { i18n } from '@/utils/i18n'
 
 type Props = {
   data: {
@@ -22,7 +23,7 @@ export default function Progress({
   }
 
   return (
-    <Section title='Daily Progress'>
+    <Section title={i18n.t('dailyProgress')}>
       <HStack className='bg-neutral-100 rounded-2xl mt-2 gap-2'>
         <Rings data={data} />
 
