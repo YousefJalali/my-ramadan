@@ -1,36 +1,16 @@
 import { Tabs } from 'expo-router'
-import React, { useEffect } from 'react'
 import { Platform } from 'react-native'
 import { HapticTab } from '@/components/HapticTab'
-import { IconSymbol } from '@/components/ui/IconSymbol'
 import TabBarBackground from '@/components/ui/TabBarBackground'
-import { supabase } from '@/utils/supabase'
-import { router } from 'expo-router'
+import { Icon } from '@/components/ui/icon'
+import { Activity, House, Settings } from 'lucide-react-native'
+import { colors } from '@/components/ui/gluestack-ui-provider/config'
 
 export default function TabLayout() {
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        router.replace('/(tabs)')
-      } else {
-        console.log('no user')
-      }
-    })
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
-        router.replace('/(tabs)')
-      } else {
-        console.log('no user')
-        router.replace('/(auth)/login')
-      }
-    })
-  }, [])
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: 'light',
+        tabBarActiveTintColor: `rgb(${colors.light['--color-primary-600']})`,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
@@ -48,7 +28,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='house.fill' color={color} />
+            <Icon as={House} size='xl' color={color} />
           ),
         }}
       />
@@ -58,17 +38,17 @@ export default function TabLayout() {
         options={{
           title: 'Tracker',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='paperplane.fill' color={color} />
+            <Icon as={Activity} size='xl' color={color} />
           ),
         }}
       />
 
       <Tabs.Screen
-        name='me'
+        name='settings'
         options={{
-          title: 'Me',
+          title: 'Settings',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name='paperplane.fill' color={color} />
+            <Icon as={Settings} size='xl' color={color} />
           ),
         }}
       />
