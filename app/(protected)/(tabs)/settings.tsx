@@ -45,7 +45,7 @@ const sections: Section[] = [
         iconName: Languages,
         subText: 'Language',
         endIcon: ChevronRight,
-        path: '/',
+        path: '/settings/language',
       },
       {
         iconName: Bell,
