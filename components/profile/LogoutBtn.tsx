@@ -1,17 +1,17 @@
 import { use$ } from '@legendapp/state/react'
 import { Button, ButtonText } from '../ui/button'
-import { user$ } from '@/store'
 import { Toast, ToastDescription, useToast } from '../ui/toast'
 import { supabase } from '@/utils/supabase'
+import { session$ } from '@/store'
 
 export default function LogoutBtn() {
   const toast = useToast()
 
-  let user = use$(user$.email)
+  const session = use$(session$)
 
   const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut()
-    if (error) {
+    try {
+      const { error } = await supabase.auth.signOut()
       toast.show({
         id: '' + Math.random(),
         placement: 'bottom',
@@ -20,9 +20,21 @@ export default function LogoutBtn() {
           const uniqueToastId = 'toast-' + id
           return (
             <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
-              <ToastDescription>
-                Error Signing Out, {error.message}
-              </ToastDescription>
+              <ToastDescription>Signed Out</ToastDescription>
+            </Toast>
+          )
+        },
+      })
+    } catch (error) {
+      toast.show({
+        id: '' + Math.random(),
+        placement: 'bottom',
+        duration: 3000,
+        render: ({ id }) => {
+          const uniqueToastId = 'toast-' + id
+          return (
+            <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
+              <ToastDescription>Error Signing Out</ToastDescription>
             </Toast>
           )
         },
@@ -30,7 +42,7 @@ export default function LogoutBtn() {
     }
   }
 
-  return user ? (
+  return session ? (
     <Button variant='link' action='negative' onPress={handleLogout}>
       <ButtonText>Log out</ButtonText>
     </Button>

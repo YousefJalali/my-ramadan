@@ -1,5 +1,4 @@
-import { user$ } from '@/store'
-import { use$ } from '@legendapp/state/react'
+import { session$ } from '@/store'
 import { Center } from '../ui/center'
 import {
   Avatar,
@@ -7,7 +6,7 @@ import {
   AvatarFallbackText,
   AvatarImage,
 } from '@/components/ui/avatar'
-import UploadAvatar from '../UploadAvatar'
+import UploadAvatar from './UploadAvatar'
 import { VStack } from '../ui/vstack'
 import { Text } from '@/components/ui/text'
 import { supabaseUrl } from '@/utils/supabase'
@@ -15,11 +14,12 @@ import { HStack } from '../ui/hstack'
 import { Heading } from '../ui/heading'
 import { Link } from 'expo-router'
 import { HelloWave } from '../HelloWave'
+import { use$ } from '@legendapp/state/react'
 
 export default function Profile() {
-  let user = use$(user$.email)
+  const session = use$(session$)
 
-  return user ? (
+  return session ? (
     <Center className='mt-6 w-full pb-4'>
       <Avatar size='xl'>
         <AvatarFallbackText>Jane Doe</AvatarFallbackText>
@@ -28,18 +28,16 @@ export default function Profile() {
           height={200}
           width={200}
           source={{
-            uri: `${supabaseUrl}/storage/v1/object/public/avatars/${use$(
-              user$.avatar
-            )}`,
+            uri: `${supabaseUrl}/storage/v1/object/public/avatars/${session.user.user_metadata.avatar_url}`,
           }}
         />
+        <UploadAvatar />
       </Avatar>
-      <UploadAvatar />
       <VStack className='gap-1 w-full items-center'>
-        <Text size='2xl' className='font-roboto text-dark'>
-          {use$(user$.name)}
+        <Text size='2xl' className='mt-2 text-neutral-950'>
+          {session.user.user_metadata.name}
         </Text>
-        <Text className='font-roboto text-sm'>United States</Text>
+        {/* <Text className='font-roboto text-sm'>United States</Text> */}
       </VStack>
     </Center>
   ) : (

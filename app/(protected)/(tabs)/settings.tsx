@@ -16,10 +16,10 @@ import { Heading } from '@/components/ui/heading'
 import { ScrollView } from '@/components/ui/scroll-view'
 import { Divider } from '@/components/ui/divider'
 import { Href, Link } from 'expo-router'
-import { use$ } from '@legendapp/state/react'
-import { user$ } from '@/store'
 import Profile from '@/components/profile/Profile'
 import LogoutBtn from '@/components/profile/LogoutBtn'
+import { session$ } from '@/store'
+import { use$ } from '@legendapp/state/react'
 
 type Section = {
   sectionTitle: string
@@ -62,20 +62,20 @@ const sections: Section[] = [
         iconName: BookText,
         subText: 'Terms of Service',
         endIcon: ChevronRight,
-        path: '/',
+        path: '/settings/terms-of-service',
       },
       {
         iconName: BookText,
         subText: 'Privacy Policy',
         endIcon: ChevronRight,
-        path: '/',
+        path: '/settings/privacy-policy',
       },
     ],
   },
 ]
 
 export default function Settings() {
-  let user = use$(user$.email)
+  const session = use$(session$)
 
   return (
     <VStack className='h-full w-full my-12'>
@@ -121,7 +121,8 @@ export default function Settings() {
                 <VStack className='justify-between items-center'>
                   {list.map(({ iconName, endIcon, subText, path }, index) => {
                     //hide personal information
-                    if (!user && subText === 'Personal Information') return null
+                    if (!session && subText === 'Personal Information')
+                      return null
                     return (
                       <React.Fragment key={index}>
                         <Link href={path}>

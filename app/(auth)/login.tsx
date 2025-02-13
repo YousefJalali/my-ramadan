@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Toast, ToastTitle, useToast } from '@/components/ui/toast'
 import { HStack } from '@/components/ui/hstack'
 import { VStack } from '@/components/ui/vstack'
 import { Heading } from '@/components/ui/heading'
@@ -28,16 +27,13 @@ import {
   EyeOffIcon,
   Icon,
 } from '@/components/ui/icon'
-import { Button, ButtonText, ButtonIcon } from '@/components/ui/button'
+import { Button, ButtonText } from '@/components/ui/button'
 import { Keyboard } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-// import { AlertTriangle } from "lucide-react-native";
-// import { GoogleIcon } from "./assets/icons/google";
-import { Pressable } from '@/components/ui/pressable'
 import { supabase } from '@/utils/supabase'
-import { Link, useRouter } from 'expo-router'
+import { Link } from 'expo-router'
 // import useRouter from "@unitools/router";
 // import { AuthLayout } from "../layout";
 
@@ -58,36 +54,13 @@ export default function Login() {
   } = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
   })
-  const toast = useToast()
+
   const [validated, setValidated] = useState({
     emailValid: true,
     passwordValid: true,
   })
 
-  const router = useRouter()
-
   const onSubmit = async (data: LoginSchemaType) => {
-    // const user = USERS.find((element) => element.email === data.email);
-    // if (user) {
-    //   if (user.password !== data.password)
-    //     setValidated({ emailValid: true, passwordValid: false });
-    //   else {
-    //     setValidated({ emailValid: true, passwordValid: true });
-    //     toast.show({
-    //       placement: "bottom right",
-    //       render: ({ id }) => {
-    //         return (
-    //           <Toast nativeID={id} variant="accent" action="success">
-    //             <ToastTitle>Logged in successfully!</ToastTitle>
-    //           </Toast>
-    //         );
-    //       },
-    //     });
-    //     reset();
-    //   }
-    // } else {
-    //   setValidated({ emailValid: false, passwordValid: true });
-    // }
     const {
       error,
       data: { session },
@@ -117,17 +90,6 @@ export default function Login() {
   return (
     <VStack className='max-w-[440px] w-full' space='md'>
       <VStack className='md:items-center' space='md'>
-        {/* <Pressable
-          onPress={() => {
-            router.back();
-          }}
-        >
-          <Icon
-            as={ArrowLeftIcon}
-            className="md:hidden text-background-800"
-            size="xl"
-          />
-        </Pressable> */}
         <VStack>
           <Heading className='md:text-center' size='3xl'>
             Log in

@@ -1,14 +1,4 @@
 import { observable } from '@legendapp/state'
+import { Session } from '@supabase/supabase-js'
 
-interface User {
-  name: string
-  email: string
-  avatar: string | undefined
-}
-
-// Create a global observable for the Todos
-export const user$ = observable<User>({
-  name: '',
-  email: '',
-  avatar: undefined,
-})
+export const session$ = observable<Session | null>(null)

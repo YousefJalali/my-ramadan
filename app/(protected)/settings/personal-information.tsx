@@ -31,15 +31,26 @@ import {
   AlertDialogBackdrop,
 } from '@/components/ui/alert-dialog'
 import { Heading } from '@/components/ui/heading'
-import { use$ } from '@legendapp/state/react'
-import { user$ } from '@/store'
 import { supabase } from '@/utils/supabase'
 // import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import colors from 'tailwindcss/colors'
+import { session$ } from '@/store'
+import { use$ } from '@legendapp/state/react'
+import { Redirect } from 'expo-router'
 
 export default function PersonalInformation() {
-  let storeName = use$(user$.name)
-  let storeEmail = use$(user$.email)
+  const session = use$(session$)
+
+  if (!session) {
+    return <Redirect href='/(protected)/(tabs)/settings' />
+  }
+
+  const {
+    user: {
+      email: storeEmail,
+      user_metadata: { name: storeName },
+    },
+  } = session
 
   const [showAlertDialog, setShowAlertDialog] = useState(false)
   const [selectedValues, setSelectedValues] = useState<string[]>([])
@@ -67,6 +78,7 @@ export default function PersonalInformation() {
   }
 
   async function submitHandler(field: string) {
+    if (!email) return
     if (name.trim() === storeName && email.trim() === storeEmail) {
       setSelectedValues([])
       return
@@ -88,14 +100,14 @@ export default function PersonalInformation() {
         },
       } = data
 
-      if (field === 'name') {
-        user$.name.set(updatedName)
-        storeName = updatedName
-      }
-      if (updatedEmail && field === 'email') {
-        user$.name.set(updatedEmail)
-        storeEmail = updatedEmail
-      }
+      // if (field === 'name') {
+      //   user$.name.set(updatedName)
+      //   storeName = updatedName
+      // }
+      // if (updatedEmail && field === 'email') {
+      //   user$.name.set(updatedEmail)
+      //   storeEmail = updatedEmail
+      // }
 
       setSelectedValues([])
     } catch (error) {
