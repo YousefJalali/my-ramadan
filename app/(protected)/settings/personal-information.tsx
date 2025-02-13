@@ -1,7 +1,12 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { HStack } from '@/components/ui/hstack'
 import { VStack } from '@/components/ui/vstack'
-import { Button, ButtonText } from '@/components/ui/button'
+import {
+  Button,
+  ButtonIcon,
+  ButtonSpinner,
+  ButtonText,
+} from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import { Input, InputField } from '@/components/ui/input'
 import {
@@ -26,21 +31,24 @@ import {
   AlertDialogBackdrop,
 } from '@/components/ui/alert-dialog'
 import { Heading } from '@/components/ui/heading'
-import { observer, use$, useObservable } from '@legendapp/state/react'
-import { store$ } from '@/store'
-
-const NAME = 'John Doe'
+import { use$ } from '@legendapp/state/react'
+import { user$ } from '@/store'
+import { supabase } from '@/utils/supabase'
+// import { colors } from '@/components/ui/gluestack-ui-provider/config'
+import colors from 'tailwindcss/colors'
 
 export default function PersonalInformation() {
+  let storeName = use$(user$.name)
+  let storeEmail = use$(user$.email)
+
   const [showAlertDialog, setShowAlertDialog] = useState(false)
   const [selectedValues, setSelectedValues] = useState<string[]>([])
-  const [name, setName] = useState(NAME)
-
-  const email = use$(store$.email)
-  console.log(email)
+  const [name, setName] = useState(storeName)
+  const [email, setEmail] = useState(storeEmail)
+  const [saving, setSaving] = useState(false)
 
   function closeAccordion() {
-    if (name !== NAME) {
+    if (name !== storeName || email !== storeEmail) {
       setShowAlertDialog(true)
     } else {
       setSelectedValues([])
@@ -52,9 +60,51 @@ export default function PersonalInformation() {
   }
 
   function discardChanges(item: string) {
-    if (item === 'name') setName(NAME)
+    if (item === 'name') setName(storeName)
+    if (item === 'email') setEmail(storeEmail)
     setSelectedValues([])
     setShowAlertDialog(false)
+  }
+
+  async function submitHandler(field: string) {
+    if (name.trim() === storeName && email.trim() === storeEmail) {
+      setSelectedValues([])
+      return
+    }
+
+    try {
+      setSaving(true)
+      const { data, error } = await supabase.auth.updateUser({
+        ...(field === 'email' && { email: email }),
+        ...(field === 'name' && { data: { name: name } }),
+      })
+
+      if (!data.user || error) throw error
+
+      const {
+        user: {
+          email: updatedEmail,
+          user_metadata: { name: updatedName },
+        },
+      } = data
+
+      if (field === 'name') {
+        user$.name.set(updatedName)
+        storeName = updatedName
+      }
+      if (updatedEmail && field === 'email') {
+        user$.name.set(updatedEmail)
+        storeEmail = updatedEmail
+      }
+
+      setSelectedValues([])
+    } catch (error) {
+      setName(storeName)
+      setEmail(storeEmail)
+      console.log(error)
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -64,62 +114,92 @@ export default function PersonalInformation() {
         variant='filled'
         type='single'
         isCollapsible={true}
-        isDisabled={false}
         className='shadow-none p-0'
         value={selectedValues}
         onValueChange={(item) => setSelectedValues(item)}
       >
-        <AccordionItem value='name'>
-          <AccordionHeader>
-            <HStack className='items-start'>
-              <VStack className='flex-1' space='xs'>
-                <Text bold>Name</Text>
-                {selectedValues[0] === 'name' ? (
-                  <Text>Update your name</Text>
-                ) : (
-                  <Text>{name}</Text>
-                )}
-              </VStack>
-              {selectedValues[0] === 'name' ? (
-                <Button variant='link' onPress={closeAccordion}>
-                  <ButtonText>Cancel</ButtonText>
+        {[
+          { field: 'name', value: name, setValue: setName },
+          { field: 'email', value: email, setValue: setEmail },
+        ].map(({ field, value, setValue }) => (
+          <Fragment key={field}>
+            <AccordionItem value={field}>
+              <AccordionHeader>
+                <HStack className='items-start'>
+                  <VStack className='flex-1' space='xs'>
+                    <Text bold className='capitalize'>
+                      {field}
+                    </Text>
+                    {selectedValues[0] === field ? (
+                      <Text>Update your {field}</Text>
+                    ) : (
+                      <Text>{value}</Text>
+                    )}
+                  </VStack>
+                  {selectedValues[0] === field ? (
+                    <Button
+                      variant='link'
+                      onPress={closeAccordion}
+                      disabled={saving}
+                      className='group'
+                    >
+                      <ButtonText className='group-disabled:text-neutral-200'>
+                        Cancel
+                      </ButtonText>
+                    </Button>
+                  ) : (
+                    <Button
+                      variant='link'
+                      onPress={() => openAccordion(field)}
+                      disabled={
+                        !!selectedValues[0]?.length &&
+                        selectedValues[0] !== field
+                      }
+                      className='group'
+                    >
+                      <ButtonText className='group-disabled:text-neutral-200'>
+                        Edit
+                      </ButtonText>
+                    </Button>
+                  )}
+                </HStack>
+              </AccordionHeader>
+              <AccordionContent className='p-0 my-4'>
+                <FormControl>
+                  <Input
+                    variant='outline'
+                    size='lg'
+                    isDisabled={saving}
+                    isInvalid={false}
+                    isReadOnly={false}
+                  >
+                    <InputField
+                      value={value}
+                      onChange={(e) => setValue(e.nativeEvent.text)}
+                      placeholder={`Enter ${field} here...`}
+                    />
+                  </Input>
+
+                  <FormControlError>
+                    <FormControlErrorIcon />
+                    <FormControlErrorText />
+                  </FormControlError>
+                </FormControl>
+
+                <Button
+                  className='w-fit self-start mt-4'
+                  onPress={() => submitHandler(field)}
+                >
+                  {saving ? <ButtonSpinner color={colors.gray[50]} /> : null}
+                  <ButtonText className='text-primary-50'>
+                    {saving ? 'Saving...' : 'Save'}
+                  </ButtonText>
                 </Button>
-              ) : (
-                <Button variant='link' onPress={() => openAccordion('name')}>
-                  <ButtonText>Edit</ButtonText>
-                </Button>
-              )}
-            </HStack>
-          </AccordionHeader>
-          <AccordionContent className='p-0 my-4'>
-            <FormControl>
-              <Input
-                variant='outline'
-                size='lg'
-                isDisabled={false}
-                isInvalid={false}
-                isReadOnly={false}
-              >
-                <InputField
-                  value={name}
-                  onChange={(e) => setName(e.nativeEvent.text)}
-                  placeholder='Enter Name here...'
-                />
-              </Input>
-
-              <FormControlError>
-                <FormControlErrorIcon />
-                <FormControlErrorText />
-              </FormControlError>
-            </FormControl>
-
-            <Button className='w-fit self-start mt-4' onPress={closeAccordion}>
-              <ButtonText className='text-primary-50'>Save</ButtonText>
-            </Button>
-          </AccordionContent>
-        </AccordionItem>
-
-        <Divider className='my-6' />
+              </AccordionContent>
+            </AccordionItem>
+            <Divider className='my-6' />
+          </Fragment>
+        ))}
       </Accordion>
 
       <AlertDialog

@@ -7,7 +7,7 @@ interface User {
 }
 
 // Create a global observable for the Todos
-export const store$ = observable<User>({
+export const user$ = observable<User>({
   name: '',
   email: '',
   avatar: undefined,

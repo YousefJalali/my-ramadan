@@ -154,12 +154,14 @@ export default function FastingTimeline() {
         />
 
         <Center className='my-8.5'>
-          <HStack className='items-center mb-2 gap-1'>
-            <Text size='xl' className='text-primary-100'>
-              {error ? 'error' : `${location.city}, ${location.country}`}
-            </Text>
-            <Icon as={MapPin} size='md' className='text-primary-100' />
-          </HStack>
+          {location.city ? (
+            <HStack className='items-center mb-2 gap-1'>
+              <Text size='xl' className='text-primary-100'>
+                {`${location.city}, ${location.country}`}
+              </Text>
+              <Icon as={MapPin} size='md' className='text-primary-100' />
+            </HStack>
+          ) : null}
           <Heading size='3xl' className='text-primary-50'>
             {time.toLocaleTimeString()}
           </Heading>

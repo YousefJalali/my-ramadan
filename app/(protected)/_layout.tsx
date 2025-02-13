@@ -4,29 +4,32 @@ import { supabase } from '@/utils/supabase'
 import { router } from 'expo-router'
 import GoBackBtn from '@/components/GoBackBtn'
 import { Platform } from 'react-native'
-import { store$ } from '@/store'
+import { user$ } from '@/store'
 
 export default function ProtectedLayout() {
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (session) {
-        router.replace('/(protected)/(tabs)')
-      } else {
-        console.log('no user')
-      }
-    })
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      if (session) {
-        store$.email.set(session.user.email ?? '')
-        store$.name.set(session.user.user_metadata.name ?? '')
-        store$.avatar.set(session.user.user_metadata.avatar_url ?? '')
-        router.replace('/(protected)/(tabs)')
-      } else {
-        console.log('no user')
-        router.replace('/(auth)/signup')
-      }
-    })
+    // router.replace('/(protected)/(tabs)')
+    // supabase.auth.getSession().then(({ data: { session } }) => {
+    //   // console.log('called: supabase.auth.getSession()')
+    //   if (session) {
+    //     user$.email.set(session.user.email ?? '')
+    //     user$.name.set(session.user.user_metadata.name ?? '')
+    //     user$.avatar.set(session.user.user_metadata.avatar_url ?? '')
+    //     router.replace('/(protected)/(tabs)')
+    //   } else {
+    //     console.log('no user')
+    //   }
+    // })
+    // supabase.auth.onAuthStateChange((_event, session) => {
+    //   // console.log('called: supabase.auth.onAuthStateChange')
+    //   // if (session) {
+    //   //   router.replace('/(protected)/(tabs)')
+    //   // } else {
+    //   //   console.log('no user')
+    //   //   router.replace('/(auth)/signup')
+    //   // }
+    //   if (!session) router.replace('/(auth)/signup')
+    // })
   }, [])
 
   // return <Slot />
