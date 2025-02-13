@@ -51,7 +51,7 @@ const sections: Section[] = [
         iconName: Bell,
         subText: 'Notifications',
         endIcon: ChevronRight,
-        path: '/',
+        path: '/settings/notifications',
       },
     ],
   },

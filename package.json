@@ -36,6 +36,7 @@
     "@gluestack-ui/pressable": "^0.1.17",
     "@gluestack-ui/radio": "^0.1.34",
     "@gluestack-ui/select": "^0.1.30",
+    "@gluestack-ui/switch": "^0.1.23",
     "@gluestack-ui/toast": "^1.0.8",
     "@hookform/resolvers": "^3.10.0",
     "@legendapp/motion": "^2.4.0",
