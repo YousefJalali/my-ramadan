@@ -9,25 +9,25 @@ import { colors } from '@/components/ui/gluestack-ui-provider/config'
 export default function Notifications() {
   return (
     <VStack>
-      {['Prayer', 'Azkar', 'Quran reading'].map((n, i, arr) => (
+      {['Prayers', 'Azkar', 'Quran reading'].map((n, i, arr) => (
         <React.Fragment key={n}>
           <HStack className='items-center justify-between'>
             <Text size='lg'>{n} notifications</Text>
 
             <Switch
-              size='lg'
+              size='md'
               trackColor={{
                 false: `rgb(${colors.light['--color-neutral-100']})`,
                 true: `rgb(${colors.light['--color-primary-600']})`,
               }}
-              thumbColor={`rgb(${colors.light['--color-neutral-200']})`}
+              thumbColor={`rgb(${colors.light['--color-neutral-300']})`}
               // activeThumbColor={colors.gray[50]}
-              ios_backgroundColor={`rgb(${colors.light['--color-neutral-200']})`}
+              ios_backgroundColor={`rgb(${colors.light['--color-primary-50']})`}
             />
           </HStack>
 
           {i !== arr.length - 1 ? (
-            <Divider className='my-2 bg-neutral-100' />
+            <Divider className='my-4 bg-neutral-100' />
           ) : null}
         </React.Fragment>
       ))}

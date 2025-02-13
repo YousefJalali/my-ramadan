@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
 import { supabase } from '@/utils/supabase'
-import { Button, ButtonSpinner, ButtonText } from './ui/button'
+import { Button, ButtonSpinner, ButtonText } from '@/components/ui/button'
+import { Pressable } from '../ui/pressable'
 
 export default function UploadAvatar() {
   const [uploading, setUploading] = useState(false)
@@ -69,7 +70,14 @@ export default function UploadAvatar() {
   }
 
   return (
-    <Button onPress={uploadAvatar}>
+    <Pressable
+      onPress={uploadAvatar}
+      className='absolute top-0 left-0 w-full h-full'
+    />
+  )
+
+  return (
+    <Button>
       {uploading ? <ButtonSpinner /> : null}
       <ButtonText>Upload</ButtonText>
     </Button>

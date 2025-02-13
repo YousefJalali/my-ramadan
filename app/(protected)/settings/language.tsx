@@ -27,24 +27,20 @@ export default function Language() {
   const [values, setValues] = useState('en')
 
   return (
-    <VStack>
-      <ScrollView>
-        <RadioGroup value={values} onChange={setValues}>
-          <VStack space='xl'>
-            {Object.keys(translations).map((t) => (
-              <Fragment key={t}>
-                <Radio size='lg' value={t}>
-                  <RadioLabel className='flex-1'>{l[t].name}</RadioLabel>
-                  <RadioIndicator className='border-0 h-7 w-7'>
-                    <RadioIcon as={Check} className='fill-none w-full h-full' />
-                  </RadioIndicator>
-                </Radio>
-                <Divider />
-              </Fragment>
-            ))}
-          </VStack>
-        </RadioGroup>
-      </ScrollView>
-    </VStack>
+    <RadioGroup value={values} onChange={setValues}>
+      <VStack space='xl'>
+        {Object.keys(translations).map((t) => (
+          <Fragment key={t}>
+            <Radio size='lg' value={t}>
+              <RadioLabel className='flex-1'>{l[t].name}</RadioLabel>
+              <RadioIndicator className='border-0 h-7 w-7'>
+                <RadioIcon as={Check} className='fill-none w-full h-full' />
+              </RadioIndicator>
+            </Radio>
+            <Divider />
+          </Fragment>
+        ))}
+      </VStack>
+    </RadioGroup>
   )
 }

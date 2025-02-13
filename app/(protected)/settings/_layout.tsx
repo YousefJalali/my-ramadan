@@ -1,17 +1,17 @@
 import { Heading } from '@/components/ui/heading'
-import { VStack } from '@/components/ui/vstack'
 import { Slot } from 'expo-router'
-import { useSearchParams, useSegments } from 'expo-router/build/hooks'
+import { useSegments } from 'expo-router/build/hooks'
+import { ScrollView } from 'react-native'
 
 export default function SettingsLayout() {
   const segments = useSegments()
 
   return (
-    <VStack className='p-6 bg-white flex-1'>
-      <Heading size='3xl' className='capitalize mb-14'>
+    <ScrollView className='p-6 pb-12 mb-12 bg-white flex-1'>
+      <Heading size='3xl' className='capitalize mb-10'>
         {segments[segments.length - 1].replaceAll('-', ' ')}
       </Heading>
       <Slot />
-    </VStack>
+    </ScrollView>
   )
 }
