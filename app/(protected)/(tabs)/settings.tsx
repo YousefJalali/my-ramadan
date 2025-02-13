@@ -14,21 +14,12 @@ import { Icon } from '@/components/ui/icon'
 import { Button, ButtonText } from '@/components/ui/button'
 import { Heading } from '@/components/ui/heading'
 import { ScrollView } from '@/components/ui/scroll-view'
-import {
-  Avatar,
-  AvatarBadge,
-  AvatarFallbackText,
-  AvatarImage,
-} from '@/components/ui/avatar'
-import { SafeAreaView } from '@/components/ui/safe-area-view'
-import { Center } from '@/components/ui/center'
 import { Divider } from '@/components/ui/divider'
 import { Href, Link } from 'expo-router'
-import { supabase, supabaseUrl } from '@/utils/supabase'
-import { Toast, ToastDescription, useToast } from '@/components/ui/toast'
 import { use$ } from '@legendapp/state/react'
-import { store$ } from '@/store'
-import UploadAvatar from '@/components/UploadAvatar'
+import { user$ } from '@/store'
+import Profile from '@/components/profile/Profile'
+import LogoutBtn from '@/components/profile/LogoutBtn'
 
 type Section = {
   sectionTitle: string
@@ -84,30 +75,7 @@ const sections: Section[] = [
 ]
 
 export default function Settings() {
-  const toast = useToast()
-
-  console.log(use$(store$.avatar))
-
-  const handleLogout = async () => {
-    const { error } = await supabase.auth.signOut()
-    if (error) {
-      toast.show({
-        id: '' + Math.random(),
-        placement: 'bottom',
-        duration: 3000,
-        render: ({ id }) => {
-          const uniqueToastId = 'toast-' + id
-          return (
-            <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
-              <ToastDescription>
-                Error Signing Out, {error.message}
-              </ToastDescription>
-            </Toast>
-          )
-        },
-      })
-    }
-  }
+  let user = use$(user$.email)
 
   return (
     <VStack className='h-full w-full my-12'>
@@ -119,41 +87,8 @@ export default function Settings() {
         }}
       >
         <VStack className='h-full w-full pb-8' space='2xl'>
-          <Center className='mt-6 w-full pb-4'>
-            <VStack space='lg' className='items-center'>
-              <Avatar size='xl'>
-                <AvatarFallbackText>Jane Doe</AvatarFallbackText>
-                <AvatarImage
-                  alt='Profile Image'
-                  height={200}
-                  width={200}
-                  source={{
-                    uri: `${supabaseUrl}/storage/v1/object/public/avatars/${use$(
-                      store$.avatar
-                    )}`,
-                  }}
-                />
-              </Avatar>
+          <Profile />
 
-              <UploadAvatar />
-              <VStack className='gap-1 w-full items-center'>
-                <Text size='2xl' className='font-roboto text-dark'>
-                  {use$(store$.name)}
-                </Text>
-                <Text className='font-roboto text-sm'>United States</Text>
-              </VStack>
-
-              {/* <Button
-                variant='outline'
-                action='secondary'
-                onPress={() => setShowModal(true)}
-                className='gap-3 relative'
-              >
-                <ButtonText className='text-dark'>Edit Profile</ButtonText>
-                <ButtonIcon as={Settings} />
-              </Button> */}
-            </VStack>
-          </Center>
           <VStack className='mx-6' space='2xl'>
             {/* invite */}
             <HStack
@@ -184,21 +119,20 @@ export default function Settings() {
                   {sectionTitle}
                 </Heading>
                 <VStack className='justify-between items-center'>
-                  {list.map((item, index) => {
+                  {list.map(({ iconName, endIcon, subText, path }, index) => {
+                    //hide personal information
+                    if (!user && subText === 'Personal Information') return null
                     return (
                       <React.Fragment key={index}>
-                        <Link
-                          href={item.path}
-                          onPress={() => console.log(item.path)}
-                        >
+                        <Link href={path}>
                           <HStack className='justify-between items-center w-full flex-1 py-3'>
                             <HStack className='items-center' space='lg'>
-                              <Icon as={item.iconName} size='xl' />
+                              <Icon as={iconName} size='xl' />
                               <Text size='lg' className='text-neutral-900'>
-                                {item.subText}
+                                {subText}
                               </Text>
                             </HStack>
-                            <Icon as={item.endIcon} />
+                            <Icon as={endIcon} />
                           </HStack>
                         </Link>
                         {list.length - 1 !== index && (
@@ -212,9 +146,7 @@ export default function Settings() {
             ))}
           </VStack>
 
-          <Button variant='link' action='negative' onPress={handleLogout}>
-            <ButtonText>Log out</ButtonText>
-          </Button>
+          <LogoutBtn />
         </VStack>
       </ScrollView>
     </VStack>

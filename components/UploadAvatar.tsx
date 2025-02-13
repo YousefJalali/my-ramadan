@@ -55,8 +55,6 @@ export default function UploadAvatar() {
         console.log('User updated successfully:')
       }
 
-      console.log('data', data)
-
       // onUpload(data.path)
     } catch (error) {
       console.log('error', error)

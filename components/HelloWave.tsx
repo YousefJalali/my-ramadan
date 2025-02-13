@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import { StyleSheet } from 'react-native'
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -9,7 +8,7 @@ import Animated, {
 } from 'react-native-reanimated'
 import { Text } from '@/components/ui/text'
 
-export function HelloWave() {
+export function HelloWave({ className = '' }: { className?: string }) {
   const rotationAnimation = useSharedValue(0)
 
   useEffect(() => {
@@ -28,15 +27,7 @@ export function HelloWave() {
 
   return (
     <Animated.View style={animatedStyle}>
-      <Text style={styles.text}>👋</Text>
+      <Text className={`text-xl ${className || ''}`}>👋</Text>
     </Animated.View>
   )
 }
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 28,
-    lineHeight: 32,
-    marginTop: -6,
-  },
-})
