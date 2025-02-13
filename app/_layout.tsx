@@ -31,15 +31,6 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name='(auth)' options={{ headerShown: false }} />
         <Stack.Screen name='(protected)' options={{ headerShown: false }} />
-        {/* <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-        <Stack.Screen
-          name='flashback/[title]'
-          options={{ headerShown: true }}
-        />
-        <Stack.Screen
-          name='settings/personal-information'
-          options={{ headerShown: true }}
-        /> */}
         <Stack.Screen name='+not-found' />
       </Stack>
 

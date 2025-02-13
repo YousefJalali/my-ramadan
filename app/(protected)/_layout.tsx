@@ -19,10 +19,12 @@ export default function ProtectedLayout() {
     supabase.auth.onAuthStateChange((_event, session) => {
       if (session) {
         store$.email.set(session.user.email ?? '')
+        store$.name.set(session.user.user_metadata.name ?? '')
+        store$.avatar.set(session.user.user_metadata.avatar_url ?? '')
         router.replace('/(protected)/(tabs)')
       } else {
         console.log('no user')
-        router.replace('/(auth)/login')
+        router.replace('/(auth)/signup')
       }
     })
   }, [])

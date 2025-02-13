@@ -35,8 +35,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Pressable } from '@/components/ui/pressable'
 import { supabase } from '@/utils/supabase'
 import { Link } from 'expo-router'
+import { AlertTriangle } from 'lucide-react-native'
 
 const signUpSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
   email: z.string().min(1, 'Email is required').email(),
   password: z
     .string()
@@ -74,37 +76,17 @@ export default function SignUp() {
   const toast = useToast()
 
   const onSubmit = async (data: SignUpSchemaType) => {
-    // if (data.password === data.confirmpassword) {
-    //   toast.show({
-    //     placement: "bottom right",
-    //     render: ({ id }) => {
-    //       return (
-    //         <Toast nativeID={id} variant="accent" action="success">
-    //           <ToastTitle>Success</ToastTitle>
-    //         </Toast>
-    //       );
-    //     },
-    //   });
-    //   reset();
-    // } else {
-    //   toast.show({
-    //     placement: "bottom right",
-    //     render: ({ id }) => {
-    //       return (
-    //         <Toast nativeID={id} variant="accent" action="error">
-    //           <ToastTitle>Passwords do not match</ToastTitle>
-    //         </Toast>
-    //       );
-    //     },
-    //   });
-    // }
-
     const {
       data: { session },
       error,
     } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
+      options: {
+        data: {
+          name: data.name,
+        },
+      },
     })
 
     if (error) alert(error.message)
@@ -130,27 +112,55 @@ export default function SignUp() {
 
   return (
     <VStack className='max-w-[440px] w-full' space='md'>
-      <VStack className='md:items-center' space='md'>
-        {/* <Pressable
-          onPress={() => {
-            router.back();
-          }}
-        >
-          <Icon
-            as={ArrowLeftIcon}
-            className="md:hidden stroke-background-800"
-            size="xl"
-          />
-        </Pressable> */}
-        <VStack>
-          <Heading className='md:text-center' size='3xl'>
-            Sign up
-          </Heading>
-          <Text>Sign up and start using gluestack</Text>
-        </VStack>
+      <VStack className='mb-6' space='sm'>
+        <Heading className='md:text-center' size='3xl'>
+          Sign up
+        </Heading>
+        <Text>Sign up and start using gluestack</Text>
       </VStack>
       <VStack className='w-full'>
         <VStack space='xl' className='w-full'>
+          <FormControl isInvalid={!!errors.name}>
+            <FormControlLabel>
+              <FormControlLabelText>Name</FormControlLabelText>
+            </FormControlLabel>
+            <Controller
+              name='name'
+              defaultValue=''
+              control={control}
+              rules={{
+                validate: async (value) => {
+                  try {
+                    await signUpSchema.parseAsync({ name: value })
+                    return true
+                  } catch (error: any) {
+                    return error.message
+                  }
+                },
+              }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <Input>
+                  <InputField
+                    className='text-sm'
+                    placeholder='Name'
+                    type='text'
+                    value={value}
+                    onChangeText={onChange}
+                    onBlur={onBlur}
+                    onSubmitEditing={handleKeyPress}
+                    returnKeyType='done'
+                  />
+                </Input>
+              )}
+            />
+            <FormControlError>
+              <FormControlErrorIcon size='md' as={AlertTriangle} />
+              <FormControlErrorText>
+                {errors?.name?.message}
+              </FormControlErrorText>
+            </FormControlError>
+          </FormControl>
+
           <FormControl isInvalid={!!errors.email}>
             <FormControlLabel>
               <FormControlLabelText>Email</FormControlLabelText>
@@ -185,12 +195,13 @@ export default function SignUp() {
               )}
             />
             <FormControlError>
-              {/* <FormControlErrorIcon size="md" as={AlertTriangle} /> */}
+              <FormControlErrorIcon size='md' as={AlertTriangle} />
               <FormControlErrorText>
                 {errors?.email?.message}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>
+
           <FormControl isInvalid={!!errors.password}>
             <FormControlLabel>
               <FormControlLabelText>Password</FormControlLabelText>
@@ -230,7 +241,7 @@ export default function SignUp() {
               )}
             />
             <FormControlError>
-              {/* <FormControlErrorIcon size="sm" as={AlertTriangle} /> */}
+              <FormControlErrorIcon size='sm' as={AlertTriangle} />
               <FormControlErrorText>
                 {errors?.password?.message}
               </FormControlErrorText>
@@ -278,7 +289,7 @@ export default function SignUp() {
               )}
             />
             <FormControlError>
-              {/* <FormControlErrorIcon size="sm" as={AlertTriangle} /> */}
+              <FormControlErrorIcon size='sm' as={AlertTriangle} />
               <FormControlErrorText>
                 {errors?.confirmPassword?.message}
               </FormControlErrorText>

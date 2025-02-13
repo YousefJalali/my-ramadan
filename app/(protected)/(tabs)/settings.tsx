@@ -14,13 +14,21 @@ import { Icon } from '@/components/ui/icon'
 import { Button, ButtonText } from '@/components/ui/button'
 import { Heading } from '@/components/ui/heading'
 import { ScrollView } from '@/components/ui/scroll-view'
-import { Avatar, AvatarBadge, AvatarImage } from '@/components/ui/avatar'
+import {
+  Avatar,
+  AvatarBadge,
+  AvatarFallbackText,
+  AvatarImage,
+} from '@/components/ui/avatar'
 import { SafeAreaView } from '@/components/ui/safe-area-view'
 import { Center } from '@/components/ui/center'
 import { Divider } from '@/components/ui/divider'
 import { Href, Link } from 'expo-router'
-import { supabase } from '@/utils/supabase'
+import { supabase, supabaseUrl } from '@/utils/supabase'
 import { Toast, ToastDescription, useToast } from '@/components/ui/toast'
+import { use$ } from '@legendapp/state/react'
+import { store$ } from '@/store'
+import UploadAvatar from '@/components/UploadAvatar'
 
 type Section = {
   sectionTitle: string
@@ -75,8 +83,10 @@ const sections: Section[] = [
   },
 ]
 
-const MainContent = () => {
+export default function Settings() {
   const toast = useToast()
+
+  console.log(use$(store$.avatar))
 
   const handleLogout = async () => {
     const { error } = await supabase.auth.signOut()
@@ -90,7 +100,7 @@ const MainContent = () => {
           return (
             <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
               <ToastDescription>
-                Error Signing Out User, {error.message}
+                Error Signing Out, {error.message}
               </ToastDescription>
             </Toast>
           )
@@ -100,7 +110,7 @@ const MainContent = () => {
   }
 
   return (
-    <VStack className='h-full w-full mb-16'>
+    <VStack className='h-full w-full my-12'>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -111,22 +121,26 @@ const MainContent = () => {
         <VStack className='h-full w-full pb-8' space='2xl'>
           <Center className='mt-6 w-full pb-4'>
             <VStack space='lg' className='items-center'>
-              <Avatar size='2xl' className='bg-primary-600'>
+              <Avatar size='xl'>
+                <AvatarFallbackText>Jane Doe</AvatarFallbackText>
                 <AvatarImage
                   alt='Profile Image'
-                  height={100}
-                  width={100}
-                  source={require('@/assets/images/icon.png')}
+                  height={200}
+                  width={200}
+                  source={{
+                    uri: `${supabaseUrl}/storage/v1/object/public/avatars/${use$(
+                      store$.avatar
+                    )}`,
+                  }}
                 />
-                <AvatarBadge />
               </Avatar>
+
+              <UploadAvatar />
               <VStack className='gap-1 w-full items-center'>
                 <Text size='2xl' className='font-roboto text-dark'>
-                  Alexander Leslie
+                  {use$(store$.name)}
                 </Text>
-                <Text className='font-roboto text-sm text-typograpphy-700'>
-                  United States
-                </Text>
+                <Text className='font-roboto text-sm'>United States</Text>
               </VStack>
 
               {/* <Button
@@ -204,13 +218,5 @@ const MainContent = () => {
         </VStack>
       </ScrollView>
     </VStack>
-  )
-}
-
-export default function Profile() {
-  return (
-    <SafeAreaView className='h-full w-full my-10'>
-      <MainContent />
-    </SafeAreaView>
   )
 }
