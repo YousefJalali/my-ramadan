@@ -3,7 +3,7 @@ import { Text } from '@/components/ui/text'
 import { VStack } from './ui/vstack'
 import { HStack } from './ui/hstack'
 import Section from './Section'
-import { i18n } from '@/utils/i18n'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   data: {
@@ -16,6 +16,8 @@ type Props = {
 export default function Progress({
   data: { prayers = [0, 5], quran = [0, 20], azkar = [0, 10] },
 }: Props) {
+  const { t } = useTranslation()
+
   const data: { [key: string]: number[] } = {
     Prayers: prayers,
     'Quran Reading': quran,
@@ -23,7 +25,7 @@ export default function Progress({
   }
 
   return (
-    <Section title={i18n.t('dailyProgress')}>
+    <Section title={t('home.dailyProgress')}>
       <HStack className='bg-neutral-100 rounded-2xl mt-2 gap-2'>
         <Rings data={data} />
 

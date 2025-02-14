@@ -1,6 +1,4 @@
 import { VStack } from '@/components/ui/vstack'
-import { ScrollView } from 'react-native'
-import translations from '@/constants/translations'
 import {
   Radio,
   RadioGroup,
@@ -9,30 +7,39 @@ import {
   RadioIcon,
 } from '@/components/ui/radio'
 import { Check } from 'lucide-react-native'
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
 import { Divider } from '@/components/ui/divider'
+import { useTranslation } from 'react-i18next'
+import { settings$ } from '@/store'
 
-const l: { [key: string]: { name: string; flag: string } } = {
-  ar: {
+const l: { lang: string; name: string; flag: string }[] = [
+  {
+    lang: 'ar-SA',
     name: 'Arabic - العربية',
     flag: '🇸🇦',
   },
-  en: {
+  {
+    lang: 'en-US',
     name: 'English',
     flag: '🏴󠁧󠁢󠁥󠁮󠁧󠁿',
   },
-}
+]
 
 export default function Language() {
-  const [values, setValues] = useState('en')
+  const { i18n } = useTranslation()
+
+  const changeLanguage = async (lang: string) => {
+    settings$.language.set(lang)
+    i18n.changeLanguage(lang)
+  }
 
   return (
-    <RadioGroup value={values} onChange={setValues}>
+    <RadioGroup value={i18n.language} onChange={changeLanguage}>
       <VStack space='xl'>
-        {Object.keys(translations).map((t) => (
-          <Fragment key={t}>
-            <Radio size='lg' value={t}>
-              <RadioLabel className='flex-1'>{l[t].name}</RadioLabel>
+        {l.map(({ lang, name }) => (
+          <Fragment key={lang}>
+            <Radio size='lg' value={lang}>
+              <RadioLabel className='flex-1'>{name}</RadioLabel>
               <RadioIndicator className='border-0 h-7 w-7'>
                 <RadioIcon as={Check} className='fill-none w-full h-full' />
               </RadioIndicator>
