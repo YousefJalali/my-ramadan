@@ -21,8 +21,8 @@ export default function Section({
   className = '',
 }: Props) {
   return (
-    <VStack className={`mx-6 ${className}`}>
-      <HStack className='space-between w-full bg-blue-200'>
+    <VStack className={`mx-6 flex-1 ${className}`}>
+      <HStack className='space-between w-full '>
         <HStack className='items-center gap-2 flex-1'>
           <Heading size='xl' className='mb-1'>
             {title}

@@ -14,10 +14,13 @@ import Section from './Section'
 import { useTranslation } from 'react-i18next'
 
 export default function QuranReading({ day }: { day: number }) {
-  const { t } = useTranslation()
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation()
 
   //@ts-ignore
-  const q = ramadanQuranReading[day]
+  const q = ramadanQuranReading[language][day]
 
   return (
     <Section title={t('Quran Reading')} icon={BookOpen}>

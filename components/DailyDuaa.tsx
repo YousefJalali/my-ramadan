@@ -1,5 +1,4 @@
 import dailyDuaa from '@/constants/dailyDuaa'
-import { Center } from './ui/center'
 import { Text } from './ui/text'
 import Section from './Section'
 import { Sprout } from 'lucide-react-native'
@@ -10,13 +9,16 @@ type Props = {
 }
 
 export default function DailyDuaa({ day }: Props) {
-  const { t } = useTranslation()
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation()
 
   return (
     <Section title={t('Daily Duaa')} icon={Sprout}>
-      <Center className='bg-neutral-100 rounded-2xl p-4'>
-        <Text>{dailyDuaa[day]}</Text>
-      </Center>
+      <Text className='bg-neutral-100 rounded-2xl p-4 min-w-full'>
+        {dailyDuaa[language][day]}
+      </Text>
     </Section>
   )
 }

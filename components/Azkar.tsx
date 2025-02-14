@@ -45,7 +45,7 @@ export default function Azkar() {
 
   return (
     <Section title={t('Azkar')}>
-      <HStack className='gap-2 flex-wrap w-full bg-neutral-200'>
+      <HStack className='gap-2 flex-wrap w-full'>
         {prayers.map(({ prayer, icon }) => (
           <Pressable key={prayer} onPress={() => setSelectedPrayer(prayer)}>
             <VStack className='border border-neutral-200 p-3 rounded-2xl gap-2.5'>
