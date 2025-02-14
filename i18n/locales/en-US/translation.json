@@ -1,6 +1,29 @@
 {
   "language": "Language",
   "home": {
-    "dailyProgress": "daily progress"
-  }
+    "Next prayer in": "Next prayer in",
+    "Daily progress": "Daily progress"
+  },
+  "Prayers": "Prayers",
+  "Fajr": "Fajr",
+  "Dhuhr": "Dhuhr",
+  "Asr": "Asr",
+  "Maghrib": "Maghrib",
+  "Isha": "Isha",
+  "Iftar": "Iftar",
+  "completed": "completed",
+  "of": "of",
+  "Daily Duaa": "Daily Duaa",
+  "Quran Reading": "Quran Reading",
+  "Azkar": "Azkar",
+  "Page": "Page",
+  "to": "to",
+  "Hizb": "Hizb",
+  "On This Day": "On This Day",
+  "Read More": "Read More",
+  "Morning Prayers": "Morning Prayers",
+  "Evening Prayers": "Evening Prayers",
+  "Before Sleep Prayers": "Before Sleep Prayers",
+  "Wake Up Prayers": "Wake Up Prayers",
+  "Loading...": "Loading..."
 }

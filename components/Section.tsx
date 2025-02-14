@@ -22,7 +22,7 @@ export default function Section({
 }: Props) {
   return (
     <VStack className={`mx-6 ${className}`}>
-      <HStack className='space-between w-full items-center'>
+      <HStack className='space-between w-full bg-blue-200'>
         <HStack className='items-center gap-2 flex-1'>
           <Heading size='xl' className='mb-1'>
             {title}

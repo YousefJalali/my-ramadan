@@ -1,25 +1,15 @@
 import { useEffect, useState } from 'react'
-
 import Progress from '@/components/Progress'
 import Flashback from '@/components/Flashback'
-import DaySelector from '@/components/DaySelector'
-import { Heading } from '@/components/ui/heading'
 import { Center } from '@/components/ui/center'
 import { Text } from '@/components/ui/text'
 import Prayers from '@/components/Prayers'
 import { VStack } from '@/components/ui/vstack'
-import { ScrollView } from '@/components/ui/scroll-view'
 import DailyDuaa from '@/components/DailyDuaa'
 import FastingTimeline from '@/components/FastingTimeline'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
-import { IconSymbol } from '@/components/ui/IconSymbol'
 import QuranReading from '@/components/QuranReading'
 import Azkar from '@/components/Azkar'
-import Qibla from '@/components/Qibla'
-import translations from '@/constants/translations'
-import { Pressable } from '@/components/ui/pressable'
-import { i18n } from '@/utils/i18n'
-import { getLocales } from 'expo-localization'
 
 export default function HomeScreen() {
   const [selectedDay, setSelectedDay] = useState(1)

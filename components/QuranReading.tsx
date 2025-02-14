@@ -1,5 +1,4 @@
 import { ramadanQuranReading } from '@/constants/quranReading'
-import { Heading } from './ui/heading'
 import { HStack } from './ui/hstack'
 import { VStack } from './ui/vstack'
 import { Text } from './ui/text'
@@ -12,13 +11,16 @@ import {
 import { CheckIcon } from '@/components/ui/icon'
 import { BookOpen } from 'lucide-react-native'
 import Section from './Section'
+import { useTranslation } from 'react-i18next'
 
 export default function QuranReading({ day }: { day: number }) {
+  const { t } = useTranslation()
+
   //@ts-ignore
   const q = ramadanQuranReading[day]
 
   return (
-    <Section title='Quran Reading' icon={BookOpen}>
+    <Section title={t('Quran Reading')} icon={BookOpen}>
       <VStack className='bg-neutral-100 p-3 rounded-2xl'>
         <Text className='text-neutral-600'>{q.description}</Text>
         <Divider className='my-2 bg-neutral-200' />
@@ -28,7 +30,7 @@ export default function QuranReading({ day }: { day: number }) {
               {q.surah}
             </Text>
             <Text size='sm'>
-              Page {q.pageFrom} to {q.pageTo} ({q.hizb})
+              {t('Page')} {q.pageFrom} {t('to')} {q.pageTo} ({q.hizb})
             </Text>
           </VStack>
 

@@ -9,8 +9,7 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "extra": {
-      "supportsRTL": true,
-      "forcesRTL": true
+      "supportsRTL": true
     },
     "ios": {
       "supportsTablet": true,

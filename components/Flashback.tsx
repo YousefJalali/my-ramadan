@@ -10,6 +10,7 @@ import { Center } from './ui/center'
 import flashback from '@/constants/flashback'
 import Section from './Section'
 import { slugify } from '@/utils/slugify'
+import { useTranslation } from 'react-i18next'
 
 const WIDTH = Dimensions.get('screen').width - 48
 
@@ -22,6 +23,8 @@ type Flashback = {
 export default function Flashback({ day }: { day: number }) {
   const [flashbacks, setFlashbacks] = useState<Flashback[]>([])
   const [isPending, startTransition] = useTransition()
+
+  const { t } = useTranslation()
 
   async function getFlashbacks() {
     try {
@@ -48,10 +51,10 @@ export default function Flashback({ day }: { day: number }) {
   }, [day])
 
   return (
-    <Section title='On This Day' className=''>
+    <Section title={t('On This Day')} className=''>
       {isPending ? (
         <Center>
-          <Text>Loading...</Text>
+          <Text>{t('Loading...')}</Text>
         </Center>
       ) : (
         <ScrollView horizontal className='-mx-6'>
@@ -68,7 +71,9 @@ export default function Flashback({ day }: { day: number }) {
                   {f.title}
                 </Heading>
                 <Text size='sm'>{f.description}</Text>
-                <Link href={`/flashback/${slugify(f.title)}`}>Read More</Link>
+                <Link href={`/flashback/${slugify(f.title)}`}>
+                  {t('Read More')}
+                </Link>
               </Card>
             ))}
           </HStack>

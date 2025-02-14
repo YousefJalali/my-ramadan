@@ -10,18 +10,12 @@ import { CheckIcon } from './ui/icon'
 import { VStack } from './ui/vstack'
 import { HStack } from './ui/hstack'
 import { Center } from './ui/center'
-import { Heading } from './ui/heading'
-import checklist from '@/constants/checklist'
 import prayerTime from '@/constants/prayerTime'
 import Feather from '@expo/vector-icons/Feather'
 import { timeStrToMilitaryTime } from '@/utils/timeStrToMilitaryTime'
-import {
-  useToast,
-  Toast,
-  ToastTitle,
-  ToastDescription,
-} from '@/components/ui/toast'
+import { useToast, Toast, ToastDescription } from '@/components/ui/toast'
 import Section from './Section'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   day: number
@@ -38,14 +32,14 @@ type Prayer = {
   time: string
 }
 
-type QuranReading = {
-  description: string
-  hizb: string[]
-  pageCount: number
-  pageFrom: number
-  pageTo: number
-  surah: string
-}
+// type QuranReading = {
+//   description: string
+//   hizb: string[]
+//   pageCount: number
+//   pageFrom: number
+//   pageTo: number
+//   surah: string
+// }
 
 const icons = ['sunrise', 'sun', 'cloud', 'sunset', 'moon']
 
@@ -59,8 +53,9 @@ export default function Prayers({ day }: Props) {
     false,
     false,
   ])
-  const [quranReading, setQuranReading] = useState<QuranReading[]>([])
+  // const [quranReading, setQuranReading] = useState<QuranReading[]>([])
   const toast = useToast()
+  const { t } = useTranslation()
 
   async function fetchDayTasks() {
     try {
@@ -89,13 +84,13 @@ export default function Prayers({ day }: Props) {
     })
   }, [day])
 
-  function toggleTaskStatus(prayerId: string) {
-    // setPrayers((prayers) =>
-    //   prayers.map((prayer) =>
-    //     prayer.id === prayerId ? { ...prayer, isChecked: !prayer.isChecked } : prayer
-    //   )
-    // )
-  }
+  // function toggleTaskStatus(prayerId: string) {
+  //   // setPrayers((prayers) =>
+  //   //   prayers.map((prayer) =>
+  //   //     prayer.id === prayerId ? { ...prayer, isChecked: !prayer.isChecked } : prayer
+  //   //   )
+  //   // )
+  // }
 
   async function checkTask(prayerIdx: number) {
     const now = timeStrToMilitaryTime(new Date())
@@ -117,28 +112,13 @@ export default function Prayers({ day }: Props) {
     } else {
       setPrayersStatus((p) => p.map((e, i) => (i === prayerIdx ? !e : e)))
     }
-    // const auth = getAuth(app)
-    // const userId = auth.currentUser?.uid
-    // if (!userId) return
-    // const updatedTask = { ...prayers.find((prayer) => prayer.id === prayerId) }
-    // if (!updatedTask) return
-    // toggleTaskStatus(prayerId)
-    // try {
-    //   const dayDocRef = doc(db, `users/${userId}/tasks/${day}`)
-    //   // updatedTask.isChecked = !updatedTask?.isChecked
-    //   await updateDoc(dayDocRef, { [prayerId]: updatedTask })
-    //   console.log('Task updated successfully.')
-    // } catch (error) {
-    //   toggleTaskStatus(prayerId)
-    //   console.error(`Error updating task:`, error)
-    // }
   }
 
   return (
-    <Section title='Prayers'>
+    <Section title={t('Prayers')}>
       {isPending ? (
         <Center>
-          <Text>Loading...</Text>
+          <Text>{t('Loading...')}</Text>
         </Center>
       ) : prayers?.length ? (
         <Center className='w-full bg-neutral-100 p-4 rounded-2xl'>
@@ -155,7 +135,7 @@ export default function Prayers({ day }: Props) {
                 >
                   <Center className='justify-between gap-1'>
                     <CheckboxLabel className='data-[checked=true]:text-primary-500'>
-                      {prayer}
+                      {t(prayer)}
                     </CheckboxLabel>
 
                     <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2'>
@@ -179,7 +159,7 @@ export default function Prayers({ day }: Props) {
             ))}
           </HStack>
           <Text size='sm' className='mt-1 text-neutral-600'>
-            {prayersStatus.filter((e) => e).length} of 5 completed
+            {prayersStatus.filter((e) => e).length} {t('of')} 5 {t('completed')}
           </Text>
         </Center>
       ) : null}

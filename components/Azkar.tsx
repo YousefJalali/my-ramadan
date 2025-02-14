@@ -17,6 +17,7 @@ import { Pressable } from './ui/pressable'
 import Markdown from '@ronradtke/react-native-markdown-display'
 import { morning } from '@/constants/azkar'
 import Section from './Section'
+import { useTranslation } from 'react-i18next'
 
 const prayers = [
   {
@@ -40,14 +41,16 @@ const prayers = [
 export default function Azkar() {
   const [selectedPrayer, setSelectedPrayer] = useState<null | string>(null)
 
+  const { t } = useTranslation()
+
   return (
-    <Section title='Azkar'>
-      <HStack className='gap-2 flex-wrap w-full'>
+    <Section title={t('Azkar')}>
+      <HStack className='gap-2 flex-wrap w-full bg-neutral-200'>
         {prayers.map(({ prayer, icon }) => (
           <Pressable key={prayer} onPress={() => setSelectedPrayer(prayer)}>
             <VStack className='border border-neutral-200 p-3 rounded-2xl gap-2.5'>
               <Icon as={icon} size='xl' className='!text-primary-700' />
-              <Text>{prayer}</Text>
+              <Text>{t(prayer)}</Text>
             </VStack>
           </Pressable>
         ))}

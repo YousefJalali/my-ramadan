@@ -4,6 +4,7 @@ import { VStack } from './ui/vstack'
 import { HStack } from './ui/hstack'
 import Section from './Section'
 import { useTranslation } from 'react-i18next'
+import { Center } from './ui/center'
 
 type Props = {
   data: {
@@ -19,17 +20,17 @@ export default function Progress({
   const { t } = useTranslation()
 
   const data: { [key: string]: number[] } = {
-    Prayers: prayers,
-    'Quran Reading': quran,
-    Azkar: azkar,
+    [t('Prayers')]: prayers,
+    [t('Quran Reading')]: quran,
+    [t('Azkar')]: azkar,
   }
 
   return (
-    <Section title={t('home.dailyProgress')}>
-      <HStack className='bg-neutral-100 rounded-2xl mt-2 gap-2'>
+    <Section title={t('Daily progress')}>
+      <HStack className='bg-neutral-100 rounded-2xl mt-2 gap-2 items-center'>
         <Rings data={data} />
 
-        <VStack className='gap-4 justify-center'>
+        <VStack className='gap-4 flex-1'>
           {Object.keys(data).map((p) => (
             <VStack key={p}>
               <Text className='capitalize'>{p}</Text>

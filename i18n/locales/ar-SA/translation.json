@@ -1,6 +1,27 @@
 {
   "language": "اللغة",
-  "home": {
-    "dailyProgress": "التقدم اليومي"
-  }
+  "Next prayer in": "الصلوة التالية في",
+  "Daily progress": "التقدم اليومي",
+  "Prayers": "الصلوات",
+  "Fajr": "الفجر",
+  "Dhuhr": "الظهر",
+  "Asr": "العصر",
+  "Maghrib": "المغرب",
+  "Isha": "العشاء",
+  "Iftar": "الإفطار",
+  "completed": "مكتمل",
+  "of": "من",
+  "Daily Duaa": "الدعاء اليومي",
+  "Quran Reading": "قراءة القرآن",
+  "Azkar": "الأذكار",
+  "Page": "الصفحة",
+  "to": "إلى",
+  "Hizb": "الجزء",
+  "On This Day": "في هذا اليوم",
+  "Read More": "قراءة المزيد",
+  "Morning Prayers": "صلوات الصباح",
+  "Evening Prayers": "صلوات المساء",
+  "Before Sleep Prayers": "صلوات قبل النوم",
+  "Wake Up Prayers": "صلوات الاستيقاظ",
+  "Loading...": "جاري التحميل..."
 }
