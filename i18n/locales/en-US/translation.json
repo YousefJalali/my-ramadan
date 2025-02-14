@@ -1,9 +1,7 @@
 {
-  "language": "Language",
-  "home": {
-    "Next prayer in": "Next prayer in",
-    "Daily progress": "Daily progress"
-  },
+  "Language": "Language",
+  "Next prayer in": "Next prayer in",
+  "Daily progress": "Daily progress",
   "Prayers": "Prayers",
   "Fajr": "Fajr",
   "Dhuhr": "Dhuhr",
@@ -25,5 +23,14 @@
   "Evening Prayers": "Evening Prayers",
   "Before Sleep Prayers": "Before Sleep Prayers",
   "Wake Up Prayers": "Wake Up Prayers",
-  "Loading...": "Loading..."
+  "Loading...": "Loading...",
+  "Settings": "Settings",
+  "Tracker": "Tracker",
+  "Home": "Home",
+  "Personal Information": "Personal Information",
+  "Notifications": "Notifications",
+  "Legal": "Legal",
+  "Terms of Service": "Terms of Service",
+  "Privacy Policy": "Privacy Policy",
+  "Log out": "Log out"
 }

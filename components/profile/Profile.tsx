@@ -1,11 +1,6 @@
 import { session$ } from '@/store'
 import { Center } from '../ui/center'
-import {
-  Avatar,
-  AvatarBadge,
-  AvatarFallbackText,
-  AvatarImage,
-} from '@/components/ui/avatar'
+import { Avatar, AvatarFallbackText, AvatarImage } from '@/components/ui/avatar'
 import UploadAvatar from './UploadAvatar'
 import { VStack } from '../ui/vstack'
 import { Text } from '@/components/ui/text'
@@ -33,12 +28,9 @@ export default function Profile() {
         />
         <UploadAvatar />
       </Avatar>
-      <VStack className='gap-1 w-full items-center'>
-        <Text size='2xl' className='mt-2 text-neutral-950'>
-          {session.user.user_metadata.name}
-        </Text>
-        {/* <Text className='font-roboto text-sm'>United States</Text> */}
-      </VStack>
+      <Text size='2xl' className='mt-2 text-neutral-950'>
+        {session.user.user_metadata.name}
+      </Text>
     </Center>
   ) : (
     <HStack className='mx-6 mt-12' space='md'>

@@ -3,8 +3,10 @@ import { Button, ButtonText } from '../ui/button'
 import { Toast, ToastDescription, useToast } from '../ui/toast'
 import { supabase } from '@/utils/supabase'
 import { session$ } from '@/store'
+import { useTranslation } from 'react-i18next'
 
 export default function LogoutBtn() {
+  const { t } = useTranslation()
   const toast = useToast()
 
   const session = use$(session$)
@@ -43,8 +45,13 @@ export default function LogoutBtn() {
   }
 
   return session ? (
-    <Button variant='link' action='negative' onPress={handleLogout}>
-      <ButtonText>Log out</ButtonText>
+    <Button
+      variant='link'
+      action='negative'
+      onPress={handleLogout}
+      className='w-full'
+    >
+      <ButtonText>{t('Log out')}</ButtonText>
     </Button>
   ) : null
 }

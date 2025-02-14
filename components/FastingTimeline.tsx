@@ -4,7 +4,6 @@ import { Heading } from './ui/heading'
 import { Text } from './ui/text'
 import { Dimensions, ImageBackground } from 'react-native'
 import { HStack } from './ui/hstack'
-import { VStack } from './ui/vstack'
 import { Image } from './ui/image'
 import { useEffect, useState } from 'react'
 import prayerTime from '@/constants/prayerTime'
@@ -173,20 +172,33 @@ export default function FastingTimeline() {
         </Center>
       </Center>
 
-      <HStack className='justify-between w-full mt-1 px-6'>
-        <VStack>
+      <HStack className='justify-between w-full mt-2 px-5'>
+        {[
+          { prayer: 'Fajr', prayerIndex: 0 },
+          { prayer: 'Iftar', prayerIndex: 3 },
+        ].map(({ prayer, prayerIndex }, i) => (
+          <Center key={prayer}>
+            <Text size='lg' bold className='text-primary-50'>
+              {t(prayer)}
+            </Text>
+            <Text className='text-primary-100'>
+              {prayerTime[0][prayerIndex].time}
+            </Text>
+          </Center>
+        ))}
+        {/* <Center>
           <Text size='lg' bold className='text-primary-50'>
             {t('Fajr')}
           </Text>
           <Text className='text-primary-100'>{prayerTime[0][0].time}</Text>
-        </VStack>
+        </Center>
 
-        <VStack className='items-end'>
+        <Center>
           <Text size='lg' bold className='text-primary-50'>
             {t('Iftar')}
           </Text>
           <Text className='text-primary-100'>{prayerTime[0][3].time}</Text>
-        </VStack>
+        </Center> */}
       </HStack>
     </Center>
   )

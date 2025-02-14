@@ -1,4 +1,5 @@
-import { useTranslation } from 'react-i18next'
+import { settings$ } from '@/store'
+import { use$ } from '@legendapp/state/react'
 
 export function useRTL({
   className,
@@ -7,8 +8,8 @@ export function useRTL({
   className: string | undefined
   style: string
 }) {
-  const { i18n } = useTranslation()
-  const rtl = `${i18n.language === 'ar-SA' ? style : ''}`
+  const { language } = use$(settings$)
+  const rtl = `${language === 'ar-SA' ? style : ''}`
 
   return { cn: `${className || ''} ${rtl}` }
 }

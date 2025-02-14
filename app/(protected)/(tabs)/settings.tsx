@@ -5,6 +5,7 @@ import { VStack } from '@/components/ui/vstack'
 import {
   Bell,
   BookText,
+  ChevronLeft,
   ChevronRight,
   CircleUserRound,
   Languages,
@@ -20,13 +21,13 @@ import Profile from '@/components/profile/Profile'
 import LogoutBtn from '@/components/profile/LogoutBtn'
 import { session$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
+import { useTranslation } from 'react-i18next'
 
 type Section = {
   sectionTitle: string
   list: {
     iconName: LucideIcon
     subText: string
-    endIcon: LucideIcon
     path: Href
   }[]
 }
@@ -38,19 +39,16 @@ const sections: Section[] = [
       {
         iconName: CircleUserRound,
         subText: 'Personal Information',
-        endIcon: ChevronRight,
         path: '/settings/personal-information',
       },
       {
         iconName: Languages,
         subText: 'Language',
-        endIcon: ChevronRight,
         path: '/settings/language',
       },
       {
         iconName: Bell,
         subText: 'Notifications',
-        endIcon: ChevronRight,
         path: '/settings/notifications',
       },
     ],
@@ -61,13 +59,11 @@ const sections: Section[] = [
       {
         iconName: BookText,
         subText: 'Terms of Service',
-        endIcon: ChevronRight,
         path: '/settings/terms-of-service',
       },
       {
         iconName: BookText,
         subText: 'Privacy Policy',
-        endIcon: ChevronRight,
         path: '/settings/privacy-policy',
       },
     ],
@@ -76,6 +72,10 @@ const sections: Section[] = [
 
 export default function Settings() {
   const session = use$(session$)
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation()
 
   return (
     <VStack className='h-full w-full my-12'>
@@ -92,7 +92,7 @@ export default function Settings() {
           <VStack className='mx-6' space='2xl'>
             {/* invite */}
             <HStack
-              className='py-5 px-6 rounded-xl bg-neutral-100 justify-between items-center'
+              className='py-5 px-6 rounded-xl bg-neutral-100 justify-between items-center w-full'
               space='2xl'
             >
               <HStack space='2xl' className='items-center'>
@@ -116,24 +116,30 @@ export default function Settings() {
             {sections.map(({ sectionTitle, list }) => (
               <VStack key={sectionTitle}>
                 <Heading className='font-roboto mt-6 mb-3' size='xl'>
-                  {sectionTitle}
+                  {t(sectionTitle)}
                 </Heading>
                 <VStack className='justify-between items-center'>
-                  {list.map(({ iconName, endIcon, subText, path }, index) => {
+                  {list.map(({ iconName, subText, path }, index) => {
                     //hide personal information
                     if (!session && subText === 'Personal Information')
                       return null
                     return (
-                      <React.Fragment key={index}>
+                      <React.Fragment key={subText}>
                         <Link href={path}>
                           <HStack className='justify-between items-center w-full flex-1 py-3'>
                             <HStack className='items-center' space='lg'>
                               <Icon as={iconName} size='xl' />
                               <Text size='lg' className='text-neutral-900'>
-                                {subText}
+                                {t(subText)}
                               </Text>
                             </HStack>
-                            <Icon as={endIcon} />
+                            <Icon
+                              as={
+                                language === 'ar-SA'
+                                  ? ChevronLeft
+                                  : ChevronRight
+                              }
+                            />
                           </HStack>
                         </Link>
                         {list.length - 1 !== index && (

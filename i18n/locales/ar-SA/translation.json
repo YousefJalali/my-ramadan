@@ -1,5 +1,5 @@
 {
-  "language": "اللغة",
+  "Language": "اللغة",
   "Next prayer in": "الصلوة التالية في",
   "Daily progress": "التقدم اليومي",
   "Prayers": "الصلوات",
@@ -23,5 +23,14 @@
   "Evening Prayers": "صلوات المساء",
   "Before Sleep Prayers": "صلوات قبل النوم",
   "Wake Up Prayers": "صلوات الاستيقاظ",
-  "Loading...": "جاري التحميل..."
+  "Loading...": "جاري التحميل...",
+  "Settings": "الإعدادات",
+  "Tracker": "المتعقب",
+  "Home": "الرئيسية",
+  "Personal Information": "المعلومات الشخصية",
+  "Notifications": "الإشعارات",
+  "Legal": "قانوني",
+  "Terms of Service": "شروط الخدمة",
+  "Privacy Policy": "سياسة الخصوصية",
+  "Log out": "تسجيل الخروج"
 }
