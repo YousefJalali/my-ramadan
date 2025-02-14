@@ -188,6 +188,8 @@ module.exports = {
         body: ['Roboto', 'sans-serif'],
         mono: undefined,
         roboto: ['Roboto', 'sans-serif'],
+        arabicHeading: ['Cairo', 'sans-serif'],
+        arabicBody: ['Rubik', 'sans-serif'],
       },
       fontWeight: {
         extrablack: '950',

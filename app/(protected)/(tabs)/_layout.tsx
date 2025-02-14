@@ -5,8 +5,14 @@ import TabBarBackground from '@/components/ui/TabBarBackground'
 import { Icon } from '@/components/ui/icon'
 import { Activity, House, Settings } from 'lucide-react-native'
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
+import { settings$ } from '@/store'
+import { use$ } from '@legendapp/state/react'
+import { useTranslation } from 'react-i18next'
 
 export default function TabLayout() {
+  const { language } = use$(settings$)
+  const { t } = useTranslation()
+
   return (
     <Tabs
       screenOptions={{
@@ -19,14 +25,16 @@ export default function TabLayout() {
             // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
           },
-          default: {},
+          default: {
+            direction: language === 'ar-SA' ? 'rtl' : 'ltr',
+          },
         }),
       }}
     >
       <Tabs.Screen
         name='index'
         options={{
-          title: 'Home',
+          title: t('Home'),
           tabBarIcon: ({ color }) => (
             <Icon as={House} size='xl' color={color} />
           ),
@@ -36,7 +44,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name='tracker'
         options={{
-          title: 'Tracker',
+          title: t('Tracker'),
           tabBarIcon: ({ color }) => (
             <Icon as={Activity} size='xl' color={color} />
           ),
@@ -46,7 +54,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name='settings'
         options={{
-          title: 'Settings',
+          title: t('Settings'),
           tabBarIcon: ({ color }) => (
             <Icon as={Settings} size='xl' color={color} />
           ),

@@ -3,7 +3,6 @@ import React from 'react'
 import type { VariantProps } from '@gluestack-ui/nativewind-utils'
 import { Text as RNText } from 'react-native'
 import { textStyle } from './styles'
-import { useTranslation } from 'react-i18next'
 import { useRTL } from '@/hooks/useRTL'
 
 type ITextProps = React.ComponentProps<typeof RNText> &
@@ -25,7 +24,10 @@ const Text = React.forwardRef<React.ElementRef<typeof RNText>, ITextProps>(
     },
     ref
   ) => {
-    const { cn } = useRTL({ className, style: 'text-right' })
+    const { cn } = useRTL({
+      className,
+      style: 'text-right font-arabicBody',
+    })
 
     return (
       <RNText
