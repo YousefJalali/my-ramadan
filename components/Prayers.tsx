@@ -12,34 +12,19 @@ import { HStack } from './ui/hstack'
 import { Center } from './ui/center'
 import prayerTime from '@/constants/prayerTime'
 import Feather from '@expo/vector-icons/Feather'
-import { timeStrToMilitaryTime } from '@/utils/timeStrToMilitaryTime'
 import { useToast, Toast, ToastDescription } from '@/components/ui/toast'
 import Section from './Section'
 import { useTranslation } from 'react-i18next'
+import { formatTime } from '@/utils/formatTime'
 
 type Props = {
   day: number
-}
-
-type Task = {
-  id: string
-  task: string
-  isChecked: boolean
 }
 
 type Prayer = {
   prayer: string
   time: string
 }
-
-// type QuranReading = {
-//   description: string
-//   hizb: string[]
-//   pageCount: number
-//   pageFrom: number
-//   pageTo: number
-//   surah: string
-// }
 
 const icons = ['sunrise', 'sun', 'cloud', 'sunset', 'moon']
 
@@ -53,26 +38,13 @@ export default function Prayers({ day }: Props) {
     false,
     false,
   ])
-  // const [quranReading, setQuranReading] = useState<QuranReading[]>([])
+
   const toast = useToast()
   const { t } = useTranslation()
 
   async function fetchDayTasks() {
     try {
       setPrayers(prayerTime[day - 1])
-
-      // const dayDocRef = doc(db, `defaultTasks/${day}`)
-      // const tasksSnapshot = await getDoc(dayDocRef)
-      // const data = tasksSnapshot.data()
-      // if (!data) return
-      // const dayPrayers: Prayer[] = []
-      // for (let [key, value] of Object.entries(data.prayers)) {
-      //   dayPrayers.push({
-      //     id: key,
-      //     ...(value as {}),
-      //   } as Prayer)
-      // }
-      // setPrayers(dayPrayers.sort((a, b) => a.order - b.order))
     } catch (error) {
       console.error(`Error fetching tasks for User, Day ${day}:`, error)
     }
@@ -84,18 +56,19 @@ export default function Prayers({ day }: Props) {
     })
   }, [day])
 
-  // function toggleTaskStatus(prayerId: string) {
-  //   // setPrayers((prayers) =>
-  //   //   prayers.map((prayer) =>
-  //   //     prayer.id === prayerId ? { ...prayer, isChecked: !prayer.isChecked } : prayer
-  //   //   )
-  //   // )
-  // }
-
   async function checkTask(prayerIdx: number) {
-    const now = timeStrToMilitaryTime(new Date())
+    const today = new Date()
 
-    if (timeStrToMilitaryTime(prayers[prayerIdx].time) > now) {
+    const prayerDate = new Date(prayers[prayerIdx].time)
+
+    // Set the prayer date to today's date
+    prayerDate.setFullYear(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    )
+
+    if (prayerDate.getTime() > today.getTime()) {
       toast.show({
         id: '' + Math.random(),
         placement: 'bottom',
@@ -147,7 +120,7 @@ export default function Prayers({ day }: Props) {
                     </CheckboxLabel>
 
                     <CheckboxLabel className='data-[checked=true]:text-primary-500 text-sm'>
-                      {time}
+                      {formatTime(time)}
                     </CheckboxLabel>
                   </Center>
 
