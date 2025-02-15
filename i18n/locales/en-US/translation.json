@@ -1,5 +1,5 @@
 {
-  "Language": "Language",
+  "language": "Language",
   "Next prayer in": "Next prayer in",
   "Daily progress": "Daily progress",
   "Prayers": "Prayers",
@@ -28,9 +28,15 @@
   "Tracker": "Tracker",
   "Home": "Home",
   "Personal Information": "Personal Information",
-  "Notifications": "Notifications",
+  "notifications": "Notifications",
   "Legal": "Legal",
-  "Terms of Service": "Terms of Service",
-  "Privacy Policy": "Privacy Policy",
-  "Log out": "Log out"
+  "terms of service": "Terms of Service",
+  "privacy policy": "Privacy Policy",
+  "Log out": "Log out",
+  "Suhur": "Suhur",
+  "Arabic": "Arabic",
+  "English": "English",
+  "Prayers notifications": "Prayers notifications",
+  "Azkar notifications": "Azkar notifications",
+  "Quran reading notifications": "Quran reading notifications"
 }

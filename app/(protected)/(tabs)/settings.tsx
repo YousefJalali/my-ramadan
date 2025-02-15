@@ -43,12 +43,12 @@ const sections: Section[] = [
       },
       {
         iconName: Languages,
-        subText: 'Language',
+        subText: 'language',
         path: '/settings/language',
       },
       {
         iconName: Bell,
-        subText: 'Notifications',
+        subText: 'notifications',
         path: '/settings/notifications',
       },
     ],
@@ -58,12 +58,12 @@ const sections: Section[] = [
     list: [
       {
         iconName: BookText,
-        subText: 'Terms of Service',
+        subText: 'terms of service',
         path: '/settings/terms-of-service',
       },
       {
         iconName: BookText,
-        subText: 'Privacy Policy',
+        subText: 'privacy policy',
         path: '/settings/privacy-policy',
       },
     ],

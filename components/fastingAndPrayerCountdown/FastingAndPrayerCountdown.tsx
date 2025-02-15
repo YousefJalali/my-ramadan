@@ -104,7 +104,7 @@ export default function FastingTimeline({ day }: { day: number }) {
         }`}
       >
         {[
-          { prayer: 'Fajr', prayerIndex: 0 },
+          { prayer: 'Suhur', prayerIndex: 0 },
           { prayer: 'Iftar', prayerIndex: 3 },
         ].map(({ prayer, prayerIndex }, i) => (
           <Center key={prayer}>

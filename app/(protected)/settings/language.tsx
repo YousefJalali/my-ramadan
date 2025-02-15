@@ -15,7 +15,7 @@ import { settings$ } from '@/store'
 const l: { lang: string; name: string; flag: string }[] = [
   {
     lang: 'ar-SA',
-    name: 'Arabic - العربية',
+    name: 'Arabic',
     flag: '🇸🇦',
   },
   {
@@ -26,7 +26,7 @@ const l: { lang: string; name: string; flag: string }[] = [
 ]
 
 export default function Language() {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
 
   const changeLanguage = async (lang: string) => {
     settings$.language.set(lang)
@@ -38,8 +38,14 @@ export default function Language() {
       <VStack space='xl'>
         {l.map(({ lang, name }) => (
           <Fragment key={lang}>
-            <Radio size='lg' value={lang}>
-              <RadioLabel className='flex-1'>{name}</RadioLabel>
+            <Radio
+              size='lg'
+              value={lang}
+              className={`w-full justify-between ${
+                i18n.language === 'ar-SA' ? 'flex-row-reverse' : ''
+              }`}
+            >
+              <RadioLabel>{t(name)}</RadioLabel>
               <RadioIndicator className='border-0 h-7 w-7'>
                 <RadioIcon as={Check} className='fill-none w-full h-full' />
               </RadioIndicator>

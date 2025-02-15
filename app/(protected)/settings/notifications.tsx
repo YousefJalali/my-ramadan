@@ -5,14 +5,20 @@ import { Text } from '@/components/ui/text'
 import { Divider } from '@/components/ui/divider'
 import React from 'react'
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
+import { useTranslation } from 'react-i18next'
 
 export default function Notifications() {
+  const { t } = useTranslation()
   return (
     <VStack>
-      {['Prayers', 'Azkar', 'Quran reading'].map((n, i, arr) => (
+      {[
+        'Prayers notifications',
+        'Azkar notifications',
+        'Quran reading notifications',
+      ].map((n, i, arr) => (
         <React.Fragment key={n}>
-          <HStack className='items-center justify-between'>
-            <Text size='lg'>{n} notifications</Text>
+          <HStack className='items-center justify-between w-full'>
+            <Text size='lg'>{t(n)}</Text>
 
             <Switch
               size='md'
