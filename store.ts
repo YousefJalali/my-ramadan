@@ -4,19 +4,17 @@ import * as Localization from 'expo-localization'
 
 export const session$ = observable<Session | null>(null)
 
-// export const language$ = observable({
-//   lang:Localization.getLocales()[0]?.languageTag,
-//   change: (lang:string) => {
-//     language$.lang.set(lang)
+const getNormalizedLocale = () => {
+  const locale = Localization.getLocales()[0]?.languageTag
 
-//   }
-// })
+  if (locale.startsWith('en')) return 'en-US'
+  if (locale.startsWith('ar')) return 'ar-SA'
 
-export const settings$ = observable<{
-  language: string
-  notifications: { [key: string]: boolean }
-}>({
-  language: Localization.getLocales()[0]?.languageTag,
+  return locale
+}
+
+export const settings$ = observable({
+  language: getNormalizedLocale(),
   notifications: {
     prayers: true,
     azkar: true,
