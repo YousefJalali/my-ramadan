@@ -16,60 +16,72 @@ export default function PrayerCountdown({ day }: { day: number }) {
 
   const calculateTimeLeft = () => {
     const now = new Date()
-
-    // Get today's date (current date without time)
     const today = new Date()
-    today.setHours(now.getHours(), now.getMinutes(), now.getSeconds(), 0) // Set current time
+    today.setHours(now.getHours(), now.getMinutes(), now.getSeconds(), 0) // Set current time to today without milliseconds
 
-    let closestPrayer = null
-    let closestTimeDiff = Infinity
+    const hourLabel = language === 'ar-SA' ? 'ساعة' : 'h'
+    const minuteLabel = language === 'ar-SA' ? 'دقيقة' : 'min'
 
-    // Find the next prayer and the time difference
-    for (const prayer of prayerTime[day]) {
-      const prayerDate = new Date(prayer.time)
+    const getNextPrayer = (dayIndex: number) => {
+      let closestPrayer = null
+      let closestTimeDiff = Infinity
 
-      // Set the prayer date to today's date
+      // Find the next prayer for today or the next day
+      for (const prayer of prayerTime[dayIndex]) {
+        const prayerDate = new Date(prayer.time)
+        prayerDate.setFullYear(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate()
+        ) // Set prayer to today's date
+
+        const timeDiff = prayerDate.getTime() - now.getTime()
+
+        if (timeDiff > 0 && timeDiff < closestTimeDiff) {
+          closestPrayer = prayer
+          closestTimeDiff = timeDiff
+        }
+      }
+
+      return { closestPrayer, closestTimeDiff }
+    }
+
+    // Check for today's next prayer
+    let { closestPrayer, closestTimeDiff } = getNextPrayer(day)
+
+    if (!closestPrayer) {
+      // If no prayer for today, check for tomorrow's first prayer
+      const tomorrow = new Date()
+      tomorrow.setDate(today.getDate() + 1) // Move to tomorrow
+      const nextDay = (day + 1) % prayerTime.length // Next day's prayer index (wrap around if it's the last day)
+      const nextDayPrayer = prayerTime[nextDay][0] // Get the first prayer of tomorrow
+
+      // Set the prayer date to tomorrow
+      const prayerDate = new Date(nextDayPrayer.time)
       prayerDate.setFullYear(
-        today.getFullYear(),
-        today.getMonth(),
-        today.getDate()
+        tomorrow.getFullYear(),
+        tomorrow.getMonth(),
+        tomorrow.getDate()
       )
 
-      const timeDiff = prayerDate.getTime() - today.getTime()
-
-      if (timeDiff > 0 && timeDiff < closestTimeDiff) {
-        closestPrayer = prayer
-        closestTimeDiff = timeDiff
-      }
+      closestPrayer = nextDayPrayer
+      closestTimeDiff = prayerDate.getTime() - now.getTime()
     }
 
-    if (closestPrayer) {
-      setNextPrayer(closestPrayer.prayer)
+    // Format the countdown string
+    const remainingTime = closestTimeDiff
+    const hours = Math.floor(remainingTime / (1000 * 60 * 60))
+    const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60))
 
-      // Calculate the remaining time in hours and minutes
-      const remainingTime = closestTimeDiff
-
-      const hours = Math.floor(remainingTime / (1000 * 60 * 60))
-      const minutes = Math.floor(
-        (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
-      )
-
-      let countdownString = ''
-
-      // Format the countdown string based on Arabic or English
-      const hourLabel = language === 'ar-SA' ? 'ساعة' : 'h'
-      const minuteLabel = language === 'ar-SA' ? 'دقيقة' : 'min'
-
-      if (hours > 0) {
-        countdownString += `${hours} ${hourLabel} `
-      }
-
-      countdownString += `${minutes} ${minuteLabel}`
-
-      setTimeLeftToNextPrayer(countdownString)
-    } else {
-      setTimeLeftToNextPrayer(null) // No upcoming prayers today
+    let countdownString = ''
+    if (hours > 0) {
+      countdownString += `${hours} ${hourLabel} `
     }
+    countdownString += `${minutes} ${minuteLabel}`
+
+    // Set next prayer and time left to next prayer
+    setNextPrayer(closestPrayer.prayer)
+    setTimeLeftToNextPrayer(countdownString)
   }
 
   useEffect(() => {

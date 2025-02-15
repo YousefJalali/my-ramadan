@@ -86,12 +86,12 @@ export default function Settings() {
           flexGrow: 1,
         }}
       >
-        <VStack className='h-full w-full pb-8' space='2xl'>
+        <VStack className='h-full w-full pb-8' space='4xl'>
           <Profile />
 
           <VStack className='mx-6' space='2xl'>
             {/* invite */}
-            <HStack
+            {/* <HStack
               className='py-5 px-6 rounded-xl bg-neutral-100 justify-between items-center w-full'
               space='2xl'
             >
@@ -110,7 +110,7 @@ export default function Settings() {
                   Invite
                 </ButtonText>
               </Button>
-            </HStack>
+            </HStack> */}
 
             {/* App Settings */}
             {sections.map(({ sectionTitle, list }) => (
