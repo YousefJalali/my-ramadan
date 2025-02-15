@@ -41,12 +41,12 @@ export default function ParallaxScrollView({ children, headerImage }: Props) {
   })
 
   return (
-    <View style={styles.container}>
+    <View className='bg-neutral-50'>
       <Animated.ScrollView
         ref={scrollRef}
         scrollEventThrottle={16}
         scrollIndicatorInsets={{ bottom }}
-        contentContainerStyle={{ paddingBottom: bottom }}
+        contentContainerStyle={{ paddingBottom: bottom + 24 }}
       >
         <Animated.View
           className='bg-primary-600'
@@ -61,9 +61,6 @@ export default function ParallaxScrollView({ children, headerImage }: Props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   header: {
     height: HEADER_HEIGHT,
     overflow: 'hidden',

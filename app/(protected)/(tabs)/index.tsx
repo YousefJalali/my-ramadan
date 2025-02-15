@@ -133,7 +133,7 @@ export default function HomeScreen() {
     <ParallaxScrollView
       headerImage={<FastingAndPrayerCountdown day={selectedDay - 1} />}
     >
-      <VStack className='relative py-6 pt-16 bg-neutral-50 gap-8'>
+      <VStack className='relative py-6 pt-16 bg-neutral-50 gap-12'>
         {/* date */}
         <Center className='absolute h-20 -top-10 left-0 w-full'>
           <HijriAndGregorianDate />

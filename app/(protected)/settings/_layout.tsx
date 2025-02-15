@@ -10,14 +10,13 @@ export default function SettingsLayout() {
   const { t } = useTranslation()
 
   return (
-    <ScrollView
-      className='p-6 bg-white'
-      contentContainerStyle={{ paddingBottom: 200 }}
-    >
-      <Heading size='3xl' className='capitalize mb-10'>
-        {t(segments[segments.length - 1].replaceAll('-', ' ').trim())}
-      </Heading>
-      <Slot />
-    </ScrollView>
+    <VStack className='p-6 flex-1 bg-neutral-50'>
+      <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
+        <Heading size='3xl' className='capitalize mb-10'>
+          {t(segments[segments.length - 1].replaceAll('-', ' ').trim())}
+        </Heading>
+        <Slot />
+      </ScrollView>
+    </VStack>
   )
 }

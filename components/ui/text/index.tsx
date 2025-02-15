@@ -26,7 +26,7 @@ const Text = React.forwardRef<React.ElementRef<typeof RNText>, ITextProps>(
   ) => {
     const { cn } = useRTL({
       className,
-      style: 'text-right font-arabicBody',
+      style: 'text-left font-arabicBody',
     })
 
     return (

@@ -91,7 +91,7 @@ export default function FastingCountdown({ day }: { day: number }) {
         ) : null}
         <Heading size='3xl' className='text-primary-50'>
           {new Intl.DateTimeFormat(
-            language === 'ar-SA' ? 'ar-SA-u-nu-latn' : 'en-US',
+            language === 'ar-SA' ? 'ar-u-nu-latn' : 'en-US',
             {
               hour: 'numeric',
               minute: 'numeric',

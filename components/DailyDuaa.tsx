@@ -16,7 +16,7 @@ export default function DailyDuaa({ day }: Props) {
 
   return (
     <Section title={t('Daily Duaa')} icon={Sprout}>
-      <Text className='bg-neutral-100 rounded-2xl p-4 min-w-full'>
+      <Text className='bg-neutral-100 rounded-2xl p-4'>
         {dailyDuaa[language][day]}
       </Text>
     </Section>

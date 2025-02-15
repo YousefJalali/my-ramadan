@@ -5,12 +5,9 @@ import TabBarBackground from '@/components/ui/TabBarBackground'
 import { Icon } from '@/components/ui/icon'
 import { Activity, House, Settings } from 'lucide-react-native'
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
-import { settings$ } from '@/store'
-import { use$ } from '@legendapp/state/react'
 import { useTranslation } from 'react-i18next'
 
 export default function TabLayout() {
-  const { language } = use$(settings$)
   const { t } = useTranslation()
 
   return (
@@ -20,14 +17,15 @@ export default function TabLayout() {
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,
+
         tabBarStyle: Platform.select({
           ios: {
-            // Use a transparent background on iOS to show the blur effect
             position: 'absolute',
+            // direction: language === 'ar-SA' ? 'rtl' : 'ltr',
           },
-          default: {
-            direction: language === 'ar-SA' ? 'rtl' : 'ltr',
-          },
+          // default: {
+          //   direction: language === 'ar-SA' ? 'rtl' : 'ltr',
+          // },
         }),
       }}
     >

@@ -115,7 +115,7 @@ export default function Settings() {
             {/* App Settings */}
             {sections.map(({ sectionTitle, list }) => (
               <VStack key={sectionTitle}>
-                <Heading className='font-roboto mt-6 mb-3' size='xl'>
+                <Heading className='mt-6 mb-3' size='xl'>
                   {t(sectionTitle)}
                 </Heading>
                 <VStack className='justify-between items-center'>

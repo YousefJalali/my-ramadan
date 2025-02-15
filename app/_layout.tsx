@@ -7,6 +7,7 @@ import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
 import 'react-native-reanimated'
 import '../global.css'
 import '@/i18n'
+import { useTranslation } from 'react-i18next'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -17,6 +18,9 @@ export default function RootLayout() {
     Cairo: require('../assets/fonts/Cairo-VariableFont_wght.ttf'),
     Rubik: require('../assets/fonts/Rubik-VariableFont_wght.ttf'),
   })
+  const {
+    i18n: { language },
+  } = useTranslation()
 
   useEffect(() => {
     if (loaded) {
@@ -32,7 +36,15 @@ export default function RootLayout() {
     <GluestackUIProvider>
       <Stack>
         <Stack.Screen name='(auth)' options={{ headerShown: false }} />
-        <Stack.Screen name='(protected)' options={{ headerShown: false }} />
+        <Stack.Screen
+          name='(protected)'
+          options={{
+            headerShown: false,
+            contentStyle: {
+              direction: language === 'ar-SA' ? 'rtl' : 'ltr',
+            },
+          }}
+        />
         <Stack.Screen name='+not-found' />
       </Stack>
 

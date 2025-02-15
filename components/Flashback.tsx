@@ -1,6 +1,6 @@
 import { ScrollView, Dimensions } from 'react-native'
 import { Text } from '@/components/ui/text'
-import { useEffect, useRef, useState, useTransition } from 'react'
+import { useEffect, useState, useTransition } from 'react'
 import { Link } from 'expo-router'
 import { Card } from '@/components/ui/card'
 import { Heading } from '@/components/ui/heading'
@@ -23,7 +23,7 @@ type Flashback = {
 export default function Flashback({ day }: { day: number }) {
   const [flashbacks, setFlashbacks] = useState<Flashback[]>([])
   const [isPending, startTransition] = useTransition()
-  const ref = useRef<ScrollView>(null)
+
   const {
     t,
     i18n: { language },
@@ -38,13 +38,10 @@ export default function Flashback({ day }: { day: number }) {
   }
 
   useEffect(() => {
-    if (language === 'ar-SA') {
-      ref.current?.scrollToEnd()
-    }
     startTransition(() => {
       getFlashbacks()
     })
-  }, [day, language])
+  }, [day])
 
   return (
     <Section title={t('On This Day')}>
@@ -53,7 +50,7 @@ export default function Flashback({ day }: { day: number }) {
           <Text>{t('Loading...')}</Text>
         </Center>
       ) : (
-        <ScrollView ref={ref} horizontal className='-mx-6'>
+        <ScrollView horizontal className='-mx-6'>
           <HStack className='gap-6 mx-6'>
             {flashbacks.map((f) => {
               return (
@@ -67,10 +64,7 @@ export default function Flashback({ day }: { day: number }) {
                     {f.title}
                   </Heading>
                   <Text size='sm'>{f.description}</Text>
-                  <Link
-                    href={`/flashback/${slugify(f.title)}`}
-                    className='mt-2'
-                  >
+                  <Link href={`/flashback/${slugify(f.id)}`} className='mt-2'>
                     {t('Read More')}
                   </Link>
                 </VStack>

@@ -2,10 +2,12 @@ import { Slot, Stack } from 'expo-router'
 import { useEffect } from 'react'
 import { supabase } from '@/utils/supabase'
 import GoBackBtn from '@/components/GoBackBtn'
-import { Platform } from 'react-native'
-import { session$ } from '@/store'
+import { session$, settings$ } from '@/store'
+import { use$ } from '@legendapp/state/react'
 
 export default function ProtectedLayout() {
+  const { language } = use$(settings$)
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
@@ -26,16 +28,20 @@ export default function ProtectedLayout() {
   return (
     <Stack>
       <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-      <Stack.Screen name='flashback/[title]' options={{ headerShown: true }} />
+      <Stack.Screen
+        name='flashback/[title]'
+        options={{ headerShown: true, title: '' }}
+      />
       <Stack.Screen
         name='settings'
         options={{
           headerShown: true,
+          headerBackVisible: false,
           title: '',
-          headerLeft: () => (Platform.OS === 'ios' ? <></> : undefined),
-          headerRight: () => (Platform.OS === 'ios' ? <GoBackBtn /> : <></>),
+          headerLeft: () => (language === 'ar-SA' ? undefined : <GoBackBtn />),
+          headerRight: () => (language === 'ar-SA' ? <GoBackBtn /> : undefined),
           animation:
-            Platform.OS === 'ios' ? 'ios_from_left' : 'slide_from_right',
+            language === 'ar-SA' ? 'slide_from_left' : 'slide_from_right',
         }}
       />
     </Stack>

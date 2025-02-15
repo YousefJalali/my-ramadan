@@ -100,7 +100,7 @@ export default function FastingTimeline({ day }: { day: number }) {
 
       <HStack
         className={`justify-between w-full px-5 ${
-          language === 'ar-SA' ? '!flex-row' : ''
+          language === 'ar-SA' ? 'flex-row-reverse' : ''
         }`}
       >
         {[
