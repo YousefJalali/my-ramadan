@@ -191,7 +191,7 @@ const Heading = memo(
 
       const { cn } = useRTL({
         className,
-        style: '!font-arabicHeading !leading-normal text-left',
+        style: '!font-arabicHeading font-semibold !leading-normal text-left',
       })
 
       if (AsComp) {

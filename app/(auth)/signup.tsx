@@ -36,6 +36,7 @@ import { Pressable } from '@/components/ui/pressable'
 import { supabase } from '@/utils/supabase'
 import { Link } from 'expo-router'
 import { AlertTriangle } from 'lucide-react-native'
+import { useTranslation } from 'react-i18next'
 
 const signUpSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -65,6 +66,8 @@ const signUpSchema = z.object({
 type SignUpSchemaType = z.infer<typeof signUpSchema>
 
 export default function SignUp() {
+  const { t } = useTranslation()
+
   const {
     control,
     handleSubmit,
@@ -114,15 +117,15 @@ export default function SignUp() {
     <VStack className='max-w-[440px] w-full' space='md'>
       <VStack className='mb-6' space='sm'>
         <Heading className='md:text-center' size='3xl'>
-          Sign up
+          {t('sign up')}
         </Heading>
-        <Text>Sign up and start using gluestack</Text>
+        <Text>{t('sign up to start using the app')}</Text>
       </VStack>
       <VStack className='w-full'>
         <VStack space='xl' className='w-full'>
           <FormControl isInvalid={!!errors.name}>
             <FormControlLabel>
-              <FormControlLabelText>Name</FormControlLabelText>
+              <FormControlLabelText>{t('name')}</FormControlLabelText>
             </FormControlLabel>
             <Controller
               name='name'
@@ -142,7 +145,7 @@ export default function SignUp() {
                 <Input>
                   <InputField
                     className='text-sm'
-                    placeholder='Name'
+                    placeholder={t('type here...')}
                     type='text'
                     value={value}
                     onChangeText={onChange}
@@ -163,7 +166,7 @@ export default function SignUp() {
 
           <FormControl isInvalid={!!errors.email}>
             <FormControlLabel>
-              <FormControlLabelText>Email</FormControlLabelText>
+              <FormControlLabelText>{t('email')}</FormControlLabelText>
             </FormControlLabel>
             <Controller
               name='email'
@@ -183,7 +186,7 @@ export default function SignUp() {
                 <Input>
                   <InputField
                     className='text-sm'
-                    placeholder='Email'
+                    placeholder={t('type here...')}
                     type='text'
                     value={value}
                     onChangeText={onChange}
@@ -204,7 +207,7 @@ export default function SignUp() {
 
           <FormControl isInvalid={!!errors.password}>
             <FormControlLabel>
-              <FormControlLabelText>Password</FormControlLabelText>
+              <FormControlLabelText>{t('password')}</FormControlLabelText>
             </FormControlLabel>
             <Controller
               defaultValue=''
@@ -226,7 +229,7 @@ export default function SignUp() {
                 <Input>
                   <InputField
                     className='text-sm'
-                    placeholder='Password'
+                    placeholder={t('type here...')}
                     value={value}
                     onChangeText={onChange}
                     onBlur={onBlur}
@@ -234,7 +237,7 @@ export default function SignUp() {
                     returnKeyType='done'
                     type={showPassword ? 'text' : 'password'}
                   />
-                  <InputSlot onPress={handleState} className='pr-3'>
+                  <InputSlot onPress={handleState} className='px-3'>
                     <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
                   </InputSlot>
                 </Input>
@@ -249,7 +252,9 @@ export default function SignUp() {
           </FormControl>
           <FormControl isInvalid={!!errors.confirmPassword}>
             <FormControlLabel>
-              <FormControlLabelText>Confirm Password</FormControlLabelText>
+              <FormControlLabelText>
+                {t('confirm password')}
+              </FormControlLabelText>
             </FormControlLabel>
             <Controller
               defaultValue=''
@@ -270,7 +275,7 @@ export default function SignUp() {
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input>
                   <InputField
-                    placeholder='Confirm Password'
+                    placeholder={t('type here...')}
                     className='text-sm'
                     value={value}
                     onChangeText={onChange}
@@ -280,7 +285,7 @@ export default function SignUp() {
                     type={showConfirmPassword ? 'text' : 'password'}
                   />
 
-                  <InputSlot onPress={handleConfirmPwState} className='pr-3'>
+                  <InputSlot onPress={handleConfirmPwState} className='px-3'>
                     <InputIcon
                       as={showConfirmPassword ? EyeIcon : EyeOffIcon}
                     />
@@ -312,7 +317,7 @@ export default function SignUp() {
                   <CheckboxIcon as={CheckIcon} />
                 </CheckboxIndicator>
                 <CheckboxLabel>
-                  I accept the Terms of Use & Privacy Policy
+                  {t('I accept the Terms of Use & Privacy Policy')}
                 </CheckboxLabel>
               </Checkbox>
             )}
@@ -321,7 +326,7 @@ export default function SignUp() {
 
         <VStack className='w-full my-7' space='lg'>
           <Button className='w-full' onPress={handleSubmit(onSubmit)}>
-            <ButtonText className='font-medium'>Sign up</ButtonText>
+            <ButtonText className='font-medium'>{t('sign up')}</ButtonText>
           </Button>
           <Button
             variant='outline'
@@ -336,9 +341,9 @@ export default function SignUp() {
           </Button>
         </VStack>
         <HStack className='self-center' space='sm'>
-          <Text size='md'>Already have an account?</Text>
+          <Text size='md'>{t('already have an account?')}</Text>
           <Link href='/login'>
-            Login
+            {t('log in')}
             {/* <LinkText className='font-medium text-primary-700' size='md'>
             </LinkText> */}
           </Link>

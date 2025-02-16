@@ -44,9 +44,10 @@ export default function Profile() {
         <Icon as={User} className='w-3/4 h-3/4 text-primary-50' />
       </Avatar>
       <VStack className='justify-center'>
-        <Heading size='xl'>
-          {t('Salaam Alikum')} <HelloWave />
-        </Heading>
+        <HStack space='sm'>
+          <Heading size='xl'>{t('Salaam Alikum')}</Heading>
+          <HelloWave />
+        </HStack>
 
         <Text>
           {t('Tap to')}{' '}

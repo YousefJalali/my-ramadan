@@ -77,7 +77,9 @@ export default function Prayers({ day }: Props) {
           const uniqueToastId = 'toast-' + id
           return (
             <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
-              <ToastDescription>Not yet</ToastDescription>
+              <ToastDescription>
+                {t("Prayer time hasn't arrived yet")}
+              </ToastDescription>
             </Toast>
           )
         },

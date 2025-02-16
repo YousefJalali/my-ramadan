@@ -97,7 +97,7 @@ export default function PrivacyPolicy() {
   } = useTranslation()
 
   return (
-    <VStack className='flex-1 bg-neutral-100'>
+    <VStack className='flex-1'>
       {policy[language].map(({ section, content }) => (
         <React.Fragment key={section}>
           <Heading className='mt-6'>{section}</Heading>

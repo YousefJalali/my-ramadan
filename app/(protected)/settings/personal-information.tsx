@@ -37,9 +37,11 @@ import colors from 'tailwindcss/colors'
 import { session$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { Redirect } from 'expo-router'
+import { useTranslation } from 'react-i18next'
 
 export default function PersonalInformation() {
   const session = use$(session$)
+  const { t } = useTranslation()
 
   if (!session) {
     return <Redirect href='/(protected)/(tabs)/settings' />
@@ -120,13 +122,13 @@ export default function PersonalInformation() {
   }
 
   return (
-    <VStack className=''>
+    <VStack>
       <Accordion
         size='md'
         variant='filled'
         type='single'
         isCollapsible={true}
-        className='shadow-none p-0'
+        className='shadow-none p-0 bg-neutral-50'
         value={selectedValues}
         onValueChange={(item) => setSelectedValues(item)}
       >
@@ -135,15 +137,17 @@ export default function PersonalInformation() {
           { field: 'email', value: email, setValue: setEmail },
         ].map(({ field, value, setValue }) => (
           <Fragment key={field}>
-            <AccordionItem value={field}>
+            <AccordionItem value={field} className='bg-neutral-50'>
               <AccordionHeader>
                 <HStack className='items-start'>
                   <VStack className='flex-1' space='xs'>
                     <Text bold className='capitalize'>
-                      {field}
+                      {t(field)}
                     </Text>
                     {selectedValues[0] === field ? (
-                      <Text>Update your {field}</Text>
+                      <Text>
+                        {t('update your')} {t(field)}
+                      </Text>
                     ) : (
                       <Text>{value}</Text>
                     )}
@@ -156,7 +160,7 @@ export default function PersonalInformation() {
                       className='group'
                     >
                       <ButtonText className='group-disabled:text-neutral-200'>
-                        Cancel
+                        {t('cancel')}
                       </ButtonText>
                     </Button>
                   ) : (
@@ -170,7 +174,7 @@ export default function PersonalInformation() {
                       className='group'
                     >
                       <ButtonText className='group-disabled:text-neutral-200'>
-                        Edit
+                        {t('edit')}
                       </ButtonText>
                     </Button>
                   )}
@@ -184,11 +188,12 @@ export default function PersonalInformation() {
                     isDisabled={saving}
                     isInvalid={false}
                     isReadOnly={false}
+                    className='bg-white h-14 px-2'
                   >
                     <InputField
                       value={value}
                       onChange={(e) => setValue(e.nativeEvent.text)}
-                      placeholder={`Enter ${field} here...`}
+                      placeholder={t('type here...')}
                     />
                   </Input>
 
@@ -204,7 +209,7 @@ export default function PersonalInformation() {
                 >
                   {saving ? <ButtonSpinner color={colors.gray[50]} /> : null}
                   <ButtonText className='text-primary-50'>
-                    {saving ? 'Saving...' : 'Save'}
+                    {saving ? t('saving...') : t('save')}
                   </ButtonText>
                 </Button>
               </AccordionContent>
@@ -220,25 +225,24 @@ export default function PersonalInformation() {
         size='md'
       >
         <AlertDialogBackdrop />
-        <AlertDialogContent>
+
+        <AlertDialogContent className='items-center'>
           <AlertDialogHeader>
-            <Heading className='font-semibold' size='md'>
-              Unsaved changes
-            </Heading>
+            <Heading size='md'>{t('unsaved changes')}</Heading>
           </AlertDialogHeader>
           <AlertDialogBody className='mt-3 mb-4'>
-            <Text size='sm'>
-              Are you sure you want to discard your unsaved changes?
+            <Text size='sm' className='!text-center'>
+              {t('are you sure you want to discard your unsaved changes?')}
             </Text>
           </AlertDialogBody>
-          <AlertDialogFooter className=''>
+          <AlertDialogFooter>
             <Button
               variant='outline'
               action='secondary'
               onPress={() => setShowAlertDialog(false)}
               size='sm'
             >
-              <ButtonText>Cancel</ButtonText>
+              <ButtonText>{t('cancel')}</ButtonText>
             </Button>
             <Button
               variant='outline'
@@ -246,7 +250,7 @@ export default function PersonalInformation() {
               size='sm'
               onPress={() => discardChanges(selectedValues[0])}
             >
-              <ButtonText className='text-error-600'>Discard</ButtonText>
+              <ButtonText className='text-error-600'>{t('discard')}</ButtonText>
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>

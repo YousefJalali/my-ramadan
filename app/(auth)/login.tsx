@@ -34,6 +34,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { supabase } from '@/utils/supabase'
 import { Link } from 'expo-router'
+import { useTranslation } from 'react-i18next'
 // import useRouter from "@unitools/router";
 // import { AuthLayout } from "../layout";
 
@@ -46,6 +47,7 @@ const loginSchema = z.object({
 type LoginSchemaType = z.infer<typeof loginSchema>
 
 export default function Login() {
+  const { t } = useTranslation()
   const {
     control,
     handleSubmit,
@@ -89,22 +91,19 @@ export default function Login() {
 
   return (
     <VStack className='max-w-[440px] w-full' space='md'>
-      <VStack className='md:items-center' space='md'>
-        <VStack>
-          <Heading className='md:text-center' size='3xl'>
-            Log in
-          </Heading>
-          <Text>Login to start using gluestack</Text>
-        </VStack>
+      <VStack space='sm'>
+        <Heading size='3xl'>{t('log in')}</Heading>
+        <Text>{t('login to start using the app')}</Text>
       </VStack>
-      <VStack className='w-full'>
+
+      <VStack className='w-full mt-6'>
         <VStack space='xl' className='w-full'>
           <FormControl
             isInvalid={!!errors?.email || !validated.emailValid}
             className='w-full'
           >
             <FormControlLabel>
-              <FormControlLabelText>Email</FormControlLabelText>
+              <FormControlLabelText>{t('email')}</FormControlLabelText>
             </FormControlLabel>
             <Controller
               defaultValue=''
@@ -123,7 +122,7 @@ export default function Login() {
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input>
                   <InputField
-                    placeholder='Enter email'
+                    placeholder={t('type here...')}
                     value={value}
                     onChangeText={onChange}
                     onBlur={onBlur}
@@ -147,7 +146,7 @@ export default function Login() {
             className='w-full'
           >
             <FormControlLabel>
-              <FormControlLabelText>Password</FormControlLabelText>
+              <FormControlLabelText>{t('password')}</FormControlLabelText>
             </FormControlLabel>
             <Controller
               defaultValue=''
@@ -167,14 +166,14 @@ export default function Login() {
                 <Input>
                   <InputField
                     type={showPassword ? 'text' : 'password'}
-                    placeholder='Enter password'
+                    placeholder={t('type here...')}
                     value={value}
                     onChangeText={onChange}
                     onBlur={onBlur}
                     onSubmitEditing={handleKeyPress}
                     returnKeyType='done'
                   />
-                  <InputSlot onPress={handleState} className='pr-3'>
+                  <InputSlot onPress={handleState} className='px-3'>
                     <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
                   </InputSlot>
                 </Input>
@@ -184,11 +183,11 @@ export default function Login() {
               {/* <FormControlErrorIcon as={AlertTriangle} /> */}
               <FormControlErrorText>
                 {errors?.password?.message ||
-                  (!validated.passwordValid && 'Password was incorrect')}
+                  (!validated.passwordValid && 'Password incorrect')}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>
-          <HStack className='w-full justify-between '>
+          <HStack className='w-full justify-between'>
             <Controller
               name='rememberme'
               defaultValue={false}
@@ -204,20 +203,20 @@ export default function Login() {
                   <CheckboxIndicator>
                     <CheckboxIcon as={CheckIcon} />
                   </CheckboxIndicator>
-                  <CheckboxLabel>Remember me</CheckboxLabel>
+                  <CheckboxLabel>{t('remember me')}</CheckboxLabel>
                 </Checkbox>
               )}
             />
             <Link href='/login'>
               <LinkText className='font-medium text-sm text-primary-700 group-hover/link:text-primary-600'>
-                Forgot Password?
+                {t('forgot password?')}
               </LinkText>
             </Link>
           </HStack>
         </VStack>
         <VStack className='w-full my-7 ' space='lg'>
           <Button className='w-full' onPress={handleSubmit(onSubmit)}>
-            <ButtonText className='font-medium'>Log in</ButtonText>
+            <ButtonText className='font-medium'>{t('log in')}</ButtonText>
           </Button>
           <Button
             variant='outline'
@@ -232,13 +231,13 @@ export default function Login() {
           </Button>
         </VStack>
         <HStack className='self-center' space='sm'>
-          <Text size='md'>Don't have an account?</Text>
+          <Text size='md'>{t("don't have an account?")}</Text>
           <Link href='/signup'>
             <LinkText
               className='font-medium text-primary-700 group-hover/link:text-primary-600  group-hover/pressed:text-primary-700'
               size='md'
             >
-              Sign up
+              {t('sign up')}
             </LinkText>
           </Link>
         </HStack>

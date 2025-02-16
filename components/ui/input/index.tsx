@@ -10,6 +10,7 @@ import {
 import { cssInterop } from 'nativewind'
 import type { VariantProps } from '@gluestack-ui/nativewind-utils'
 import { PrimitiveIcon, UIIcon } from '@gluestack-ui/icon'
+import { useRTL } from '@/hooks/useRTL'
 
 const SCOPE = 'INPUT'
 
@@ -191,6 +192,8 @@ const InputField = React.forwardRef<
 >(({ className, ...props }, ref) => {
   const { variant: parentVariant, size: parentSize } = useStyleContext(SCOPE)
 
+  const { cn } = useRTL({ className, style: 'text-right' })
+
   return (
     <UIInput.Input
       ref={ref}
@@ -200,7 +203,7 @@ const InputField = React.forwardRef<
           variant: parentVariant,
           size: parentSize,
         },
-        class: className,
+        class: cn,
       })}
     />
   )

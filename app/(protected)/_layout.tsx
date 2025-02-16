@@ -5,6 +5,7 @@ import GoBackBtn from '@/components/GoBackBtn'
 import { session$, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
+import { colors } from '@/components/ui/gluestack-ui-provider/config'
 
 export default function ProtectedLayout() {
   const { language } = use$(settings$)
@@ -29,6 +30,9 @@ export default function ProtectedLayout() {
   const options: NativeStackNavigationOptions = {
     headerShown: true,
     headerBackVisible: false,
+    headerStyle: {
+      backgroundColor: `rgb(${colors.light['--color-neutral-50']})`,
+    },
     title: '',
     headerLeft: () => (language === 'ar-SA' ? undefined : <GoBackBtn />),
     headerRight: () => (language === 'ar-SA' ? <GoBackBtn /> : undefined),

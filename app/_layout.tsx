@@ -8,6 +8,7 @@ import 'react-native-reanimated'
 import '../global.css'
 import '@/i18n'
 import { useTranslation } from 'react-i18next'
+import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -32,19 +33,25 @@ export default function RootLayout() {
     return null
   }
 
+  const options: NativeStackNavigationOptions = {
+    headerShown: false,
+    contentStyle: {
+      direction: language === 'ar-SA' ? 'rtl' : 'ltr',
+    },
+  }
+
   return (
     <GluestackUIProvider>
       <Stack>
-        <Stack.Screen name='(auth)' options={{ headerShown: false }} />
         <Stack.Screen
-          name='(protected)'
+          name='(auth)'
           options={{
-            headerShown: false,
-            contentStyle: {
-              direction: language === 'ar-SA' ? 'rtl' : 'ltr',
-            },
+            ...options,
+            animation:
+              language === 'ar-SA' ? 'slide_from_left' : 'slide_from_right',
           }}
         />
+        <Stack.Screen name='(protected)' options={options} />
         <Stack.Screen name='+not-found' />
       </Stack>
 
