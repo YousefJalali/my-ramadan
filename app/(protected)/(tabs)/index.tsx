@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Progress from '@/components/Progress'
-import Flashback from '@/components/Flashback'
+import OnThisDayCard from '@/components/OnThisDayCard'
 import { Center } from '@/components/ui/center'
 import { Text } from '@/components/ui/text'
 import Prayers from '@/components/Prayers'
@@ -149,7 +149,7 @@ export default function HomeScreen() {
 
         <QuranReading day={selectedDay} />
 
-        <Flashback day={selectedDay} />
+        <OnThisDayCard day={selectedDay} />
 
         <Azkar />
       </VStack>

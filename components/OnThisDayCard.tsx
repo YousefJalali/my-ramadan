@@ -14,14 +14,14 @@ import { useTranslation } from 'react-i18next'
 
 const WIDTH = Dimensions.get('screen').width - 48
 
-type Flashback = {
+type Story = {
   id: string
   title: string
   description: string
 }
 
-export default function Flashback({ day }: { day: number }) {
-  const [flashbacks, setFlashbacks] = useState<Flashback[]>([])
+export default function OnThisDayCard({ day }: { day: number }) {
+  const [stories, setStories] = useState<Story[]>([])
   const [isPending, startTransition] = useTransition()
 
   const {
@@ -29,9 +29,9 @@ export default function Flashback({ day }: { day: number }) {
     i18n: { language },
   } = useTranslation()
 
-  async function getFlashbacks() {
+  async function getStories() {
     try {
-      setFlashbacks(flashback[language][day - 1])
+      setStories(flashback[language][day - 1])
     } catch (error) {
       console.log(error)
     }
@@ -39,7 +39,7 @@ export default function Flashback({ day }: { day: number }) {
 
   useEffect(() => {
     startTransition(() => {
-      getFlashbacks()
+      getStories()
     })
   }, [day, language])
 
@@ -52,12 +52,12 @@ export default function Flashback({ day }: { day: number }) {
       ) : (
         <ScrollView horizontal className='-mx-6'>
           <HStack className='gap-6 mx-6'>
-            {flashbacks.map((f) => {
+            {stories.map((f) => {
               return (
                 <VStack
                   key={f.id}
                   className='flex-1 bg-neutral-100 p-4 rounded-2xl'
-                  style={{ width: flashbacks.length > 1 ? WIDTH * 0.9 : WIDTH }}
+                  style={{ width: stories.length > 1 ? WIDTH * 0.9 : WIDTH }}
                   space='xs'
                 >
                   <Heading size='md' className='mb-1'>
@@ -67,7 +67,7 @@ export default function Flashback({ day }: { day: number }) {
                   <Text size='sm'>{f.description}</Text>
 
                   <Link
-                    href={`/flashback/${slugify(f.id)}`}
+                    href={`/on-this-day/${slugify(f.id)}`}
                     className='mt-2 text-left'
                   >
                     {t('Read More')}
