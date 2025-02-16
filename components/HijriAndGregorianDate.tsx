@@ -10,7 +10,7 @@ export default function HijriAndGregorianDate() {
     <Center className='bg-neutral-50 h-full px-10 rounded-full rounded-b-2xl'>
       <Text size='md'>
         {new Intl.DateTimeFormat(
-          language === 'ar-SA' ? 'ar-SA-u-nu-latn' : 'en-US',
+          language === 'ar-SA' ? 'ar-u-nu-latn' : 'en-US',
           {
             day: 'numeric',
             month: 'long',

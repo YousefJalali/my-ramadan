@@ -41,7 +41,7 @@ export default function Flashback({ day }: { day: number }) {
     startTransition(() => {
       getFlashbacks()
     })
-  }, [day])
+  }, [day, language])
 
   return (
     <Section title={t('On This Day')}>
@@ -63,8 +63,13 @@ export default function Flashback({ day }: { day: number }) {
                   <Heading size='md' className='mb-1'>
                     {f.title}
                   </Heading>
+
                   <Text size='sm'>{f.description}</Text>
-                  <Link href={`/flashback/${slugify(f.id)}`} className='mt-2'>
+
+                  <Link
+                    href={`/flashback/${slugify(f.id)}`}
+                    className='mt-2 text-left'
+                  >
                     {t('Read More')}
                   </Link>
                 </VStack>
