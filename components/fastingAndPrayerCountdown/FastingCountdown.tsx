@@ -31,15 +31,23 @@ export default function FastingCountdown({ day }: { day: number }) {
     }, 1000)
 
     const now = new Date()
-    const start = prayerTime[day][0].time
-    const end = prayerTime[day][3].time
+    const start = new Date(prayerTime[day][0].time) //Suhur
+    const end = new Date(prayerTime[day][3].time) //Iftar
+
+    const prayerDate = new Date(start)
+
+    now.setFullYear(
+      prayerDate.getFullYear(),
+      prayerDate.getMonth(),
+      prayerDate.getDate()
+    ) // Set [now] to prayer's date
 
     if (isDateBetween(now, start, end)) {
-      setTimeline((now.getTime() * 50) / new Date(end).getTime())
+      setTimeline(
+        ((now.getTime() - start.getTime()) * 50) /
+          (end.getTime() - start.getTime())
+      )
     }
-    // else {
-    //   setTimeline(50)
-    // }
 
     return () => {
       clearInterval(interval)
