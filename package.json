@@ -87,7 +87,8 @@
     "react-native-webview": "13.12.5",
     "tailwindcss": "^3.4.17",
     "zod": "^3.24.1",
-    "expo-updates": "~0.26.18"
+    "expo-updates": "~0.26.18",
+    "expo-linear-gradient": "~14.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
