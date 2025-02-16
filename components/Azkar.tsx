@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import { Heading } from './ui/heading'
 import { HStack } from './ui/hstack'
-import { Link, LinkText } from './ui/link'
 import { Text } from './ui/text'
 import { VStack } from './ui/vstack'
 import { Icon } from '@/components/ui/icon'
@@ -16,7 +14,6 @@ import {
 import { Pressable } from './ui/pressable'
 import Markdown from '@ronradtke/react-native-markdown-display'
 import { morning } from '@/constants/azkar'
-import Section from './Section'
 import { useTranslation } from 'react-i18next'
 
 const prayers = [
@@ -44,7 +41,7 @@ export default function Azkar() {
   const { t } = useTranslation()
 
   return (
-    <Section title={t('Azkar')}>
+    <>
       <HStack className='gap-2 flex-wrap w-full'>
         {prayers.map(({ prayer, icon }) => (
           <Pressable key={prayer} onPress={() => setSelectedPrayer(prayer)}>
@@ -70,6 +67,6 @@ export default function Azkar() {
           </Text>
         </ActionsheetContent>
       </Actionsheet>
-    </Section>
+    </>
   )
 }

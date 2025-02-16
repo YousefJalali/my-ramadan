@@ -13,12 +13,12 @@ import { Center } from './ui/center'
 import prayerTime from '@/constants/prayerTime'
 import Feather from '@expo/vector-icons/Feather'
 import { useToast, Toast, ToastDescription } from '@/components/ui/toast'
-import Section from './Section'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 
 type Props = {
   day: number
+  direction?: 'vertical' | 'horizontal'
 }
 
 type Prayer = {
@@ -28,7 +28,7 @@ type Prayer = {
 
 const icons = ['sunrise', 'sun', 'cloud', 'sunset', 'moon']
 
-export default function Prayers({ day }: Props) {
+export default function Prayers({ day, direction = 'horizontal' }: Props) {
   const [isPending, startTransition] = useTransition()
   const [prayers, setPrayers] = useState<Prayer[]>([])
   const [prayersStatus, setPrayersStatus] = useState<boolean[]>([
@@ -89,55 +89,51 @@ export default function Prayers({ day }: Props) {
     }
   }
 
-  return (
-    <Section title={t('Prayers')}>
-      {isPending ? (
-        <Center>
-          <Text>{t('Loading...')}</Text>
-        </Center>
-      ) : prayers?.length ? (
-        <Center className='w-full bg-neutral-100 p-4 rounded-2xl'>
-          <HStack className='justify-between w-full'>
-            {prayers.map(({ prayer, time }, i) => (
-              <VStack key={prayer}>
-                <Checkbox
-                  onChange={(_isChecked) => checkTask(i)}
-                  size='md'
-                  aria-label={prayer}
-                  value={prayer}
-                  isChecked={prayersStatus[i]}
-                  className='py-2.5 flex-col-reverse '
-                >
-                  <Center className='justify-between gap-1'>
-                    <CheckboxLabel className='data-[checked=true]:text-primary-500'>
-                      {t(prayer)}
-                    </CheckboxLabel>
+  return isPending ? (
+    <Center>
+      <Text>{t('Loading...')}</Text>
+    </Center>
+  ) : prayers?.length ? (
+    <Center className='w-full bg-neutral-100 p-4 rounded-2xl'>
+      <HStack className='justify-between w-full'>
+        {prayers.map(({ prayer, time }, i) => (
+          <VStack key={prayer}>
+            <Checkbox
+              onChange={(_isChecked) => checkTask(i)}
+              size='md'
+              aria-label={prayer}
+              value={prayer}
+              isChecked={prayersStatus[i]}
+              className='py-2.5 flex-col-reverse '
+            >
+              <Center className='justify-between gap-1'>
+                <CheckboxLabel className='data-[checked=true]:text-primary-500'>
+                  {t(prayer)}
+                </CheckboxLabel>
 
-                    <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2'>
-                      <Feather
-                        //@ts-ignore
-                        name={icons[i]}
-                        size={24}
-                      />
-                    </CheckboxLabel>
+                <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2'>
+                  <Feather
+                    //@ts-ignore
+                    name={icons[i]}
+                    size={24}
+                  />
+                </CheckboxLabel>
 
-                    <CheckboxLabel className='data-[checked=true]:text-primary-500 text-sm'>
-                      {formatTime(time)}
-                    </CheckboxLabel>
-                  </Center>
+                <CheckboxLabel className='data-[checked=true]:text-primary-500 text-sm'>
+                  {formatTime(time)}
+                </CheckboxLabel>
+              </Center>
 
-                  <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
-                    <CheckboxIcon as={CheckIcon} />
-                  </CheckboxIndicator>
-                </Checkbox>
-              </VStack>
-            ))}
-          </HStack>
-          <Text size='sm' className='mt-1 text-neutral-600'>
-            {prayersStatus.filter((e) => e).length} {t('of')} 5 {t('completed')}
-          </Text>
-        </Center>
-      ) : null}
-    </Section>
-  )
+              <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
+                <CheckboxIcon as={CheckIcon} />
+              </CheckboxIndicator>
+            </Checkbox>
+          </VStack>
+        ))}
+      </HStack>
+      <Text size='sm' className='mt-1 text-neutral-600'>
+        {prayersStatus.filter((e) => e).length} {t('of')} 5 {t('completed')}
+      </Text>
+    </Center>
+  ) : null
 }

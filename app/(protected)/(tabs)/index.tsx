@@ -11,6 +11,7 @@ import ParallaxScrollView from '@/components/ParallaxScrollView'
 import QuranReading from '@/components/QuranReading'
 import Azkar from '@/components/Azkar'
 import HijriAndGregorianDate from '@/components/HijriAndGregorianDate'
+import Section from '@/components/Section'
 
 export default function HomeScreen() {
   const [selectedDay, setSelectedDay] = useState(1)
@@ -139,19 +140,32 @@ export default function HomeScreen() {
           <HijriAndGregorianDate />
         </Center>
 
-        <Progress data={{ prayers: [4, 5], quran: [20, 20], azkar: [7, 10] }} />
+        <Section title='Daily progress'>
+          <Progress
+            data={{ prayers: [4, 5], quran: [20, 20], azkar: [7, 10] }}
+          />
+        </Section>
 
         {/* <DaySelector day={selectedDay} onSelectDay={selectDayHandler} /> */}
+        <Section title='Prayers'>
+          <Prayers day={selectedDay} />
+        </Section>
 
-        <Prayers day={selectedDay} />
+        <Section title='Daily Duaa'>
+          <DailyDuaa day={selectedDay} />
+        </Section>
 
-        <DailyDuaa day={selectedDay} />
+        <Section title='Quran Reading'>
+          <QuranReading day={selectedDay} />
+        </Section>
 
-        <QuranReading day={selectedDay} />
+        <Section title='On This Day'>
+          <OnThisDayCard day={selectedDay} />
+        </Section>
 
-        <OnThisDayCard day={selectedDay} />
-
-        <Azkar />
+        <Section title='Azkar'>
+          <Azkar />
+        </Section>
       </VStack>
     </ParallaxScrollView>
   )

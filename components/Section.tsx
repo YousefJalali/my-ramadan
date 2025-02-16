@@ -4,6 +4,7 @@ import { HStack } from './ui/hstack'
 import { Icon } from './ui/icon'
 import { Link, LinkText } from './ui/link'
 import { VStack } from './ui/vstack'
+import { useTranslation } from 'react-i18next'
 
 type Props = {
   children: ReactNode
@@ -20,11 +21,13 @@ export default function Section({
   link,
   className = '',
 }: Props) {
+  const { t } = useTranslation()
+
   return (
     <VStack className={`mx-6 flex-1 ${className}`}>
       <HStack className='space-between w-full '>
         <HStack className='items-center' space='sm'>
-          <Heading size='xl'>{title}</Heading>
+          <Heading size='xl'>{t(title)}</Heading>
           {icon ? <Icon as={icon} size='xl' /> : null}
         </HStack>
 

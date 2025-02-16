@@ -9,8 +9,6 @@ import {
   CheckboxIcon,
 } from '@/components/ui/checkbox'
 import { CheckIcon } from '@/components/ui/icon'
-import { BookOpen } from 'lucide-react-native'
-import Section from './Section'
 import { useTranslation } from 'react-i18next'
 
 export default function QuranReading({ day }: { day: number }) {
@@ -23,32 +21,25 @@ export default function QuranReading({ day }: { day: number }) {
   const q = ramadanQuranReading[language][day]
 
   return (
-    <Section title={t('Quran Reading')} icon={BookOpen}>
-      <VStack className='bg-neutral-100 p-3 rounded-2xl'>
-        <Text className='text-neutral-600'>{q.description}</Text>
-        <Divider className='my-2 bg-neutral-200' />
-        <HStack className='space-between w-full'>
-          <VStack className='flex-1'>
-            <Text bold size='lg'>
-              {q.surah}
-            </Text>
-            <Text size='sm'>
-              {t('Page')} {q.pageFrom} {t('to')} {q.pageTo} ({q.hizb})
-            </Text>
-          </VStack>
+    <VStack className='bg-neutral-100 p-3 rounded-2xl'>
+      <Text className='text-neutral-600'>{q.description}</Text>
+      <Divider className='my-2 bg-neutral-200' />
+      <HStack className='space-between w-full'>
+        <VStack className='flex-1'>
+          <Text bold size='lg'>
+            {q.surah}
+          </Text>
+          <Text size='sm'>
+            {t('Page')} {q.pageFrom} {t('to')} {q.pageTo} ({q.hizb})
+          </Text>
+        </VStack>
 
-          <Checkbox
-            value='false'
-            size='md'
-            isInvalid={false}
-            isDisabled={false}
-          >
-            <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
-              <CheckboxIcon as={CheckIcon} />
-            </CheckboxIndicator>
-          </Checkbox>
-        </HStack>
-      </VStack>
-    </Section>
+        <Checkbox value='false' size='md' isInvalid={false} isDisabled={false}>
+          <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
+            <CheckboxIcon as={CheckIcon} />
+          </CheckboxIndicator>
+        </Checkbox>
+      </HStack>
+    </VStack>
   )
 }
