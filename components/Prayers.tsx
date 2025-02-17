@@ -15,6 +15,9 @@ import Feather from '@expo/vector-icons/Feather'
 import { useToast, Toast, ToastDescription } from '@/components/ui/toast'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
+import { Badge, BadgeIcon, BadgeText } from '@/components/ui/badge'
+import { Check, GlobeIcon } from 'lucide-react-native'
+import PrayerCountdown from './PrayerCountdown'
 
 type Props = {
   day: number
@@ -89,13 +92,21 @@ export default function Prayers({ day, direction = 'horizontal' }: Props) {
     }
   }
 
+  function verticalStyle(classes: string) {
+    return direction === 'vertical' ? `${classes}` : ''
+  }
+
   return isPending ? (
     <Center>
       <Text>{t('Loading...')}</Text>
     </Center>
   ) : prayers?.length ? (
-    <Center className='w-full bg-neutral-100 p-4 rounded-2xl'>
-      <HStack className='justify-between w-full'>
+    <Center
+      className={`w-full bg-neutral-100 p-4 rounded-2xl ${verticalStyle(
+        'p-0 bg-transparent'
+      )}`}
+    >
+      <HStack className={`justify-between w-full ${verticalStyle('flex-col')}`}>
         {prayers.map(({ prayer, time }, i) => (
           <VStack key={prayer}>
             <Checkbox
@@ -104,20 +115,46 @@ export default function Prayers({ day, direction = 'horizontal' }: Props) {
               aria-label={prayer}
               value={prayer}
               isChecked={prayersStatus[i]}
-              className='py-2.5 flex-col-reverse '
+              className={`py-2.5 flex-col-reverse ${verticalStyle(
+                'flex-row space-between'
+              )}`}
             >
-              <Center className='justify-between gap-1'>
-                <CheckboxLabel className='data-[checked=true]:text-primary-500'>
-                  {t(prayer)}
-                </CheckboxLabel>
+              <Center
+                className={`justify-between gap-1 ${verticalStyle(
+                  'flex-row space-between flex-1'
+                )}`}
+              >
+                <Center
+                  className={verticalStyle(
+                    'flex-row-reverse gap-2 flex-1 justify-end'
+                  )}
+                >
+                  <CheckboxLabel className='data-[checked=true]:text-primary-500'>
+                    {t(prayer)}
+                  </CheckboxLabel>
 
-                <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2'>
-                  <Feather
-                    //@ts-ignore
-                    name={icons[i]}
-                    size={24}
-                  />
-                </CheckboxLabel>
+                  <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2'>
+                    <Feather
+                      //@ts-ignore
+                      name={icons[i]}
+                      size={24}
+                    />
+                  </CheckboxLabel>
+                </Center>
+
+                {direction === 'vertical' ? (
+                  <HStack className='flex-1 justify-end px-4'>
+                    <Badge
+                      size='md'
+                      variant='outline'
+                      action='success'
+                      className='gap-2 rounded-xl'
+                    >
+                      <BadgeText>{t('completed')}</BadgeText>
+                      <BadgeIcon as={Check} />
+                    </Badge>
+                  </HStack>
+                ) : null}
 
                 <CheckboxLabel className='data-[checked=true]:text-primary-500 text-sm'>
                   {formatTime(time)}
@@ -131,9 +168,12 @@ export default function Prayers({ day, direction = 'horizontal' }: Props) {
           </VStack>
         ))}
       </HStack>
-      <Text size='sm' className='mt-1 text-neutral-600'>
-        {prayersStatus.filter((e) => e).length} {t('of')} 5 {t('completed')}
-      </Text>
+      {direction === 'vertical' ? null : (
+        <PrayerCountdown day={day} />
+        // <Text size='sm' className='mt-1 text-neutral-600'>
+        //   {prayersStatus.filter((e) => e).length} {t('of')} 5 {t('completed')}
+        // </Text>
+      )}
     </Center>
   ) : null
 }
