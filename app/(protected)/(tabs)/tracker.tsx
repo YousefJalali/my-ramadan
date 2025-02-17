@@ -1,47 +1,45 @@
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import { VStack } from '@/components/ui/vstack'
 import { Heading } from '@/components/ui/heading'
 import { Text } from '@/components/ui/text'
 import { HStack } from '@/components/ui/hstack'
-import {
-  Radio,
-  RadioGroup,
-  RadioIndicator,
-  RadioLabel,
-  RadioIcon,
-} from '@/components/ui/radio'
-import { CircleIcon } from '@/components/ui/icon'
 import { Center } from '@/components/ui/center'
-import { ProgressChart } from 'react-native-chart-kit'
-import { Dimensions, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import Prayers from '@/components/Prayers'
 import QuranReading from '@/components/QuranReading'
 import Constants from 'expo-constants'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useTranslation } from 'react-i18next'
+import { Button, ButtonText } from '@/components/ui/button'
+import FastingStatus from '@/components/FastingStatus'
+import { TFunction } from 'i18next'
+import Calendar from '@/components/Calendar'
 
-const days = new Array(30).fill(0).map((e) => Math.floor(Math.random() * 101))
-
-const WIDTH = Dimensions.get('window').width
-
-const gap = (WIDTH - 48 * 7) / 6
-
-const calendarDays: { [key: string]: string[] } = {
-  'en-US': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  'ar-SA': [
-    'الأحد',
-    'الإثنين',
-    'الثلاثاء',
-    'الأربعاء',
-    'الخميس',
-    'الجمعة',
-    'السبت',
-  ],
+function Wrapper({
+  t,
+  title,
+  children,
+}: {
+  t: TFunction<'translation', undefined>
+  title: string
+  children: ReactNode
+}) {
+  return (
+    <VStack className='mt-16'>
+      <HStack className='mb-3 justify-between'>
+        <Heading size='2xl'>{t(title)}</Heading>
+        <Button variant='link'>
+          <ButtonText>{t('edit')}</ButtonText>
+        </Button>
+      </HStack>
+      {children}
+    </VStack>
+  )
 }
 
 export default function TrackerScreen() {
-  const [values, setValues] = useState('2')
+  const [day, setDay] = useState(2)
   const {
     t,
     i18n: { language },
@@ -76,7 +74,7 @@ export default function TrackerScreen() {
                 calendar: 'islamic',
                 year: 'numeric',
               }
-            ).format(new Date(`2025-03-${values}`))}
+            ).format(new Date(`2025-03-${day}`))}
           </Heading>
 
           <LinearGradient
@@ -91,99 +89,19 @@ export default function TrackerScreen() {
           />
         </Center>
 
-        <HStack className='mb-2' style={{ columnGap: gap }}>
-          {calendarDays[language].map((day) => (
-            <Text
-              size={language === 'ar-SA' ? 'xs' : 'lg'}
-              className='!text-center w-12'
-              key={day}
-            >
-              {day}
-            </Text>
-          ))}
-        </HStack>
+        <Calendar day={day} setDay={setDay} />
 
-        <HStack>
-          <RadioGroup
-            className='flex-row flex-wrap'
-            value={values}
-            onChange={setValues}
-            style={{ columnGap: gap, rowGap: gap }}
-          >
-            <Center className='w-12' />
-            <Center className='w-12' />
-            {days.map((e, i, arr) => (
-              <Radio
-                key={i}
-                value={(i + 1).toString()}
-                size='md'
-                isInvalid={false}
-                isDisabled={false}
-              >
-                <RadioIndicator className='h-12 w-12 border-0 overflow-hidden'>
-                  <Center className='relative flex-1'>
-                    <ProgressChart
-                      data={{
-                        labels: [''],
-                        data: [e / 100],
-                        colors: [
-                          `rgb(${
-                            colors.light[
-                              (i + 1).toString() === values
-                                ? '--color-primary-600'
-                                : '--color-neutral-300'
-                            ]
-                          })`,
-                        ],
-                      }}
-                      width={48}
-                      height={48}
-                      strokeWidth={(i + 1).toString() === values ? 8 : 4}
-                      radius={20}
-                      chartConfig={{
-                        backgroundGradientFromOpacity: 0,
-                        backgroundGradientToOpacity: 0,
-                        color: (opacity) =>
-                          `rgba(${colors.light[
-                            '--color-neutral-200'
-                          ].replaceAll(' ', ', ')}, ${opacity})`,
-                      }}
-                      withCustomBarColorFromData={true}
-                      hideLegend
-                      style={{
-                        position: 'absolute',
-                      }}
-                    />
+        <Wrapper t={t} title='fasting'>
+          <FastingStatus day={day} trackerView readOnly />
+        </Wrapper>
 
-                    <Text
-                      className={`!font-roboto text-neutral-500 ${
-                        (i + 1).toString() === values
-                          ? 'underline text-primary-700'
-                          : ''
-                      }`}
-                    >
-                      {i + 1}
-                    </Text>
-                  </Center>
-                </RadioIndicator>
-              </Radio>
-            ))}
-          </RadioGroup>
-        </HStack>
+        <Wrapper t={t} title='Prayers'>
+          <Prayers day={day} trackerView readOnly />
+        </Wrapper>
 
-        <VStack className='mt-16'>
-          <Heading size='2xl' className='mb-4'>
-            {t('Prayers')}
-          </Heading>
-          <Prayers day={+values} direction='vertical' />
-        </VStack>
-
-        <VStack className='mt-16'>
-          <Heading size='2xl' className='mb-4'>
-            {t('Quran Reading')}
-          </Heading>
-          <QuranReading day={+values} />
-        </VStack>
+        <Wrapper t={t} title='Quran Reading'>
+          <QuranReading day={day} trackerView readOnly />
+        </Wrapper>
       </ScrollView>
     </VStack>
   )
