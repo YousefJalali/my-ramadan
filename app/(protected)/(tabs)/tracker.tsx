@@ -19,6 +19,7 @@ import Prayers from '@/components/Prayers'
 import QuranReading from '@/components/QuranReading'
 import Constants from 'expo-constants'
 import { LinearGradient } from 'expo-linear-gradient'
+import { useTranslation } from 'react-i18next'
 
 const days = new Array(30).fill(0).map((e) => Math.floor(Math.random() * 101))
 
@@ -26,17 +27,34 @@ const WIDTH = Dimensions.get('window').width
 
 const gap = (WIDTH - 48 * 7) / 6
 
+const calendarDays: { [key: string]: string[] } = {
+  'en-US': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  'ar-SA': [
+    'الأحد',
+    'الإثنين',
+    'الثلاثاء',
+    'الأربعاء',
+    'الخميس',
+    'الجمعة',
+    'السبت',
+  ],
+}
+
 export default function TrackerScreen() {
   const [values, setValues] = useState('2')
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation()
 
   return (
-    <VStack className='p-6 mb-0 flex-1 bg-neutral-50'>
+    <VStack className='px-6 mb-0 flex-1 bg-neutral-50'>
       <ScrollView
         contentContainerStyle={{ paddingBottom: 100 }}
         stickyHeaderIndices={[1]}
       >
         <VStack
-          className='mt-6'
+          className='mt-8'
           style={{ paddingTop: Constants.statusBarHeight }}
         >
           <Heading size='4xl'>Tracker</Heading>
@@ -45,15 +63,20 @@ export default function TrackerScreen() {
 
         <Center>
           <Heading
-            className='bg-neutral-50 w-full text-center pb-4'
-            style={{ paddingTop: Constants.statusBarHeight }}
+            className='bg-neutral-50 w-full pb-4'
+            style={{ paddingTop: Constants.statusBarHeight + 16 }}
           >
-            {new Intl.DateTimeFormat('ar-TN-u-ca-islamic', {
-              day: 'numeric',
-              month: 'long',
-              calendar: 'islamic',
-              year: 'numeric',
-            }).format(new Date(`2025-03-${values}`))}
+            {new Intl.DateTimeFormat(
+              language === 'ar-SA'
+                ? 'ar-TN-u-ca-islamic'
+                : 'en-US-u-ca-islamic',
+              {
+                day: 'numeric',
+                month: 'long',
+                calendar: 'islamic',
+                year: 'numeric',
+              }
+            ).format(new Date(`2025-03-${values}`))}
           </Heading>
 
           <LinearGradient
@@ -69,8 +92,12 @@ export default function TrackerScreen() {
         </Center>
 
         <HStack className='mb-2' style={{ columnGap: gap }}>
-          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-            <Text className='!text-center w-12' key={day}>
+          {calendarDays[language].map((day) => (
+            <Text
+              size={language === 'ar-SA' ? 'xs' : 'lg'}
+              className='!text-center w-12'
+              key={day}
+            >
               {day}
             </Text>
           ))}
@@ -94,7 +121,7 @@ export default function TrackerScreen() {
                 isDisabled={false}
               >
                 <RadioIndicator className='h-12 w-12 border-0 overflow-hidden'>
-                  <Center className='relative flex-1 w-full'>
+                  <Center className='relative flex-1'>
                     <ProgressChart
                       data={{
                         labels: [''],
@@ -129,11 +156,11 @@ export default function TrackerScreen() {
                     />
 
                     <Text
-                      className={
+                      className={`!font-roboto text-neutral-500 ${
                         (i + 1).toString() === values
-                          ? 'text-primary-600 font-bold'
-                          : 'text-neutral-600'
-                      }
+                          ? 'underline text-primary-700'
+                          : ''
+                      }`}
                     >
                       {i + 1}
                     </Text>
@@ -144,11 +171,17 @@ export default function TrackerScreen() {
           </RadioGroup>
         </HStack>
 
-        <VStack className='mt-12'>
-          <Prayers day={+values} />
+        <VStack className='mt-16'>
+          <Heading size='2xl' className='mb-4'>
+            {t('Prayers')}
+          </Heading>
+          <Prayers day={+values} direction='vertical' />
         </VStack>
 
-        <VStack className='mt-12'>
+        <VStack className='mt-16'>
+          <Heading size='2xl' className='mb-4'>
+            {t('Quran Reading')}
+          </Heading>
           <QuranReading day={+values} />
         </VStack>
       </ScrollView>
