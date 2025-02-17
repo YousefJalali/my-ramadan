@@ -21,7 +21,8 @@ import PrayerCountdown from './PrayerCountdown'
 
 type Props = {
   day: number
-  direction?: 'vertical' | 'horizontal'
+  trackerView?: boolean
+  readOnly?: boolean
 }
 
 type Prayer = {
@@ -31,7 +32,11 @@ type Prayer = {
 
 const icons = ['sunrise', 'sun', 'cloud', 'sunset', 'moon']
 
-export default function Prayers({ day, direction = 'horizontal' }: Props) {
+export default function Prayers({
+  day,
+  trackerView = false,
+  readOnly = false,
+}: Props) {
   const [isPending, startTransition] = useTransition()
   const [prayers, setPrayers] = useState<Prayer[]>([])
   const [prayersStatus, setPrayersStatus] = useState<boolean[]>([
@@ -93,7 +98,7 @@ export default function Prayers({ day, direction = 'horizontal' }: Props) {
   }
 
   function verticalStyle(classes: string) {
-    return direction === 'vertical' ? `${classes}` : ''
+    return trackerView ? `${classes}` : ''
   }
 
   return isPending ? (
@@ -118,6 +123,7 @@ export default function Prayers({ day, direction = 'horizontal' }: Props) {
               className={`py-2.5 flex-col-reverse ${verticalStyle(
                 'flex-row space-between'
               )}`}
+              isDisabled={readOnly}
             >
               <Center
                 className={`justify-between gap-1 ${verticalStyle(
@@ -129,11 +135,11 @@ export default function Prayers({ day, direction = 'horizontal' }: Props) {
                     'flex-row-reverse gap-2 flex-1 justify-end'
                   )}
                 >
-                  <CheckboxLabel className='data-[checked=true]:text-primary-500'>
+                  <CheckboxLabel className='data-[checked=true]:text-primary-500 data-[disabled=true]:opacity-100 '>
                     {t(prayer)}
                   </CheckboxLabel>
 
-                  <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2'>
+                  <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2 data-[disabled=true]:opacity-100'>
                     <Feather
                       //@ts-ignore
                       name={icons[i]}
@@ -142,38 +148,34 @@ export default function Prayers({ day, direction = 'horizontal' }: Props) {
                   </CheckboxLabel>
                 </Center>
 
-                {direction === 'vertical' ? (
-                  <HStack className='flex-1 justify-end px-4'>
-                    <Badge
-                      size='md'
-                      variant='outline'
-                      action='success'
-                      className='gap-2 rounded-xl'
-                    >
-                      <BadgeText>{t('completed')}</BadgeText>
-                      <BadgeIcon as={Check} />
-                    </Badge>
-                  </HStack>
-                ) : null}
-
-                <CheckboxLabel className='data-[checked=true]:text-primary-500 text-sm'>
+                <CheckboxLabel className='data-[checked=true]:text-primary-500 data-[disabled=true]:opacity-100 text-sm'>
                   {formatTime(time)}
                 </CheckboxLabel>
               </Center>
 
-              <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
-                <CheckboxIcon as={CheckIcon} />
-              </CheckboxIndicator>
+              {readOnly ? (
+                <HStack className='flex-1 justify-end'>
+                  <Badge
+                    size='md'
+                    variant='outline'
+                    action='success'
+                    className='gap-2 rounded-xl'
+                  >
+                    <BadgeText>{t('completed')}</BadgeText>
+                    <BadgeIcon as={Check} />
+                  </Badge>
+                </HStack>
+              ) : (
+                <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
+                  <CheckboxIcon as={CheckIcon} />
+                </CheckboxIndicator>
+              )}
             </Checkbox>
           </VStack>
         ))}
       </HStack>
-      {direction === 'vertical' ? null : (
-        <PrayerCountdown day={day} />
-        // <Text size='sm' className='mt-1 text-neutral-600'>
-        //   {prayersStatus.filter((e) => e).length} {t('of')} 5 {t('completed')}
-        // </Text>
-      )}
+
+      {trackerView ? null : <PrayerCountdown day={day} />}
     </Center>
   ) : null
 }
