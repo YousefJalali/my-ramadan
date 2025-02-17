@@ -17,7 +17,7 @@ import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import { Badge, BadgeIcon, BadgeText } from './ui/badge'
 
-export default function FastingStatus({
+export default function Fasting({
   day,
   trackerView = false,
   readOnly = false,

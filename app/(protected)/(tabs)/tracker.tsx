@@ -12,7 +12,7 @@ import Constants from 'expo-constants'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonText } from '@/components/ui/button'
-import FastingStatus from '@/components/FastingStatus'
+import Fasting from '@/components/Fasting'
 import { TFunction } from 'i18next'
 import Calendar from '@/components/Calendar'
 
@@ -92,7 +92,7 @@ export default function TrackerScreen() {
         <Calendar day={day} setDay={setDay} />
 
         <Wrapper t={t} title='fasting'>
-          <FastingStatus day={day} trackerView readOnly />
+          <Fasting day={day} trackerView readOnly />
         </Wrapper>
 
         <Wrapper t={t} title='Prayers'>

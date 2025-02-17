@@ -11,7 +11,7 @@ import QuranReading from '@/components/QuranReading'
 import Azkar from '@/components/Azkar'
 import HijriAndGregorianDate from '@/components/HijriAndGregorianDate'
 import Section from '@/components/Section'
-import FastingStatus from '@/components/FastingStatus'
+import Fasting from '@/components/Fasting'
 
 export default function HomeScreen() {
   const [selectedDay, setSelectedDay] = useState(1)
@@ -35,7 +35,7 @@ export default function HomeScreen() {
         </Section>
 
         <Section title='fasting'>
-          <FastingStatus day={selectedDay} />
+          <Fasting day={selectedDay} />
         </Section>
 
         {/* <DaySelector day={selectedDay} onSelectDay={selectDayHandler} /> */}
