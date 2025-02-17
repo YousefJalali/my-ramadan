@@ -6,7 +6,7 @@ import { Text } from '@/components/ui/text'
 import Prayers from '@/components/Prayers'
 import { VStack } from '@/components/ui/vstack'
 import DailyDuaa from '@/components/DailyDuaa'
-import FastingAndPrayerCountdown from '@/components/fastingAndPrayerCountdown/FastingAndPrayerCountdown'
+import FastingCard from '@/components/fasting-card/FastingCard'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import QuranReading from '@/components/QuranReading'
 import Azkar from '@/components/Azkar'
@@ -131,9 +131,7 @@ export default function HomeScreen() {
   }
 
   return (
-    <ParallaxScrollView
-      headerImage={<FastingAndPrayerCountdown day={selectedDay - 1} />}
-    >
+    <ParallaxScrollView headerImage={<FastingCard day={selectedDay - 1} />}>
       <VStack className='relative py-6 pt-16 bg-neutral-50 gap-12'>
         {/* date */}
         <Center className='absolute h-20 -top-10 left-0 w-full'>

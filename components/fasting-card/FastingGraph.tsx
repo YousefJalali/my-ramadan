@@ -14,7 +14,7 @@ import { isDateBetween } from '@/utils/isDateBetween'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-export default function FastingCountdown({ day }: { day: number }) {
+export default function FastingGraph({ day }: { day: number }) {
   const [time, setTime] = useState(new Date())
   const [timeline, setTimeline] = useState(50)
 

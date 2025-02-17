@@ -5,10 +5,10 @@ import { Image } from '../ui/image'
 import prayerTime from '@/constants/prayerTime'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
-import PrayerCountdown from './PrayerCountdown'
+import FastingGraph from './FastingGraph'
 import FastingCountdown from './FastingCountdown'
 
-export default function FastingTimeline({ day }: { day: number }) {
+export default function FastingCard({ day }: { day: number }) {
   const {
     t,
     i18n: { language },
@@ -95,8 +95,9 @@ export default function FastingTimeline({ day }: { day: number }) {
         className='absolute bottom-0 h-[150%] opacity-10 mix-blend-multiply'
       />
 
+      <FastingGraph day={day} />
       <FastingCountdown day={day} />
-      <PrayerCountdown day={day} />
+      {/* <PrayerCountdown day={day} /> */}
 
       <HStack
         className={`justify-between w-full px-5 ${

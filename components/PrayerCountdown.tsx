@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import prayerTime from '@/constants/prayerTime'
-import { Text } from '../ui/text'
+import { Text } from './ui/text'
 
 export default function PrayerCountdown({ day }: { day: number }) {
   const [nextPrayer, setNextPrayer] = useState('')
@@ -92,12 +92,9 @@ export default function PrayerCountdown({ day }: { day: number }) {
   }, [day, language])
 
   return timeLeftToNextPrayer ? (
-    <Text className='text-primary-100'>
-      {t('Next prayer in')}{' '}
-      <Text className='text-primary-100' bold>
-        {timeLeftToNextPrayer}{' '}
-      </Text>
-      ({t(nextPrayer)})
+    <Text>
+      {t('Next prayer in')} <Text bold>{timeLeftToNextPrayer} </Text>(
+      {t(nextPrayer)})
     </Text>
   ) : null
 }
