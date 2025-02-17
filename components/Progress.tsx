@@ -6,22 +6,12 @@ import { useTranslation } from 'react-i18next'
 
 type Props = {
   data: {
-    prayers: number[]
-    quran: number[]
-    azkar: number[]
+    [key: string]: number[]
   }
 }
 
-export default function Progress({
-  data: { prayers = [0, 5], quran = [0, 20], azkar = [0, 10] },
-}: Props) {
+export default function Progress({ data }: Props) {
   const { t } = useTranslation()
-
-  const data: { [key: string]: number[] } = {
-    [t('Prayers')]: prayers,
-    [t('Quran Reading')]: quran,
-    [t('Azkar')]: azkar,
-  }
 
   return (
     <HStack className='bg-neutral-100 rounded-2xl mt-2 gap-2 items-center'>
@@ -30,7 +20,7 @@ export default function Progress({
       <VStack className='gap-4 flex-1'>
         {Object.keys(data).map((p) => (
           <VStack key={p}>
-            <Text className='capitalize'>{p}</Text>
+            <Text className='capitalize'>{t(p)}</Text>
             <Text bold size='xl'>
               {data[p][0]} / {data[p][1]}
             </Text>

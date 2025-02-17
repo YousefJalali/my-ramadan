@@ -4,6 +4,7 @@ import { Text } from './ui/text'
 import useCountdown from '@/hooks/useCountdown'
 import { addZero } from '@/hooks/addZero'
 import { HStack } from './ui/hstack'
+import { formatCountdown } from '@/utils/formatCountdown'
 
 function getNextPrayer(day: number) {
   const today = new Date()
@@ -25,7 +26,10 @@ function getNextPrayer(day: number) {
 }
 
 export default function PrayerCountdown({ day }: { day: number }) {
-  const { t } = useTranslation()
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation()
 
   const nextPrayer = getNextPrayer(day)
 
@@ -35,8 +39,11 @@ export default function PrayerCountdown({ day }: { day: number }) {
     <HStack space='xs'>
       <Text>{t('Next prayer in')}</Text>
       <Text>
-        {hours ? hours + ':' : ''}
-        {addZero(minutes)}:{addZero(seconds)} ({t(nextPrayer.prayer)})
+        {hours + minutes + seconds === 0
+          ? ''
+          : `${formatCountdown(hours, minutes, language)} (${t(
+              nextPrayer.prayer
+            )})`}
       </Text>
     </HStack>
   )

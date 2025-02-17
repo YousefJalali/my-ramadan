@@ -2,24 +2,41 @@ import useCountdown from '@/hooks/useCountdown'
 import { Text } from '../ui/text'
 import prayerTime from '@/constants/prayerTime'
 import { HStack } from '../ui/hstack'
-import { addZero } from '@/hooks/addZero'
 import { useTranslation } from 'react-i18next'
+import { formatCountdown } from '@/utils/formatCountdown'
 
-export default function FastingCountdown({ day }: { day: number }) {
-  //change now to prayer date
+function setPrayerDateToToday(date: string) {
   const now = new Date()
-  const d = new Date(prayerTime[day][3].time)
+  const d = new Date(date)
   d.setFullYear(now.getFullYear(), now.getMonth(), now.getDate())
 
-  const { hours, minutes, seconds } = useCountdown(d)
-  const { t } = useTranslation()
+  return d
+}
+
+export default function FastingCountdown({ day }: { day: number }) {
+  const { hours, minutes, seconds } = useCountdown(
+    setPrayerDateToToday(prayerTime[day][3].time)
+  )
+
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation()
 
   return (
     <HStack className='mt-1' space='xs'>
-      <Text bold className='text-primary-50'>
-        {hours}:{addZero(minutes)}:{addZero(seconds)}
-      </Text>
-      <Text className='text-primary-100 '>{t('left to break fasting')}</Text>
+      {hours + minutes > 0 ? (
+        <>
+          <Text bold className='text-primary-50'>
+            {formatCountdown(hours, minutes, language)}
+          </Text>
+          <Text className='text-primary-100 '>
+            {t('left to break fasting')}
+          </Text>
+        </>
+      ) : (
+        <Text className='text-primary-50'>تقبل الله صيامكم و شهية طيبة ❤️</Text>
+      )}
     </HStack>
   )
 }
