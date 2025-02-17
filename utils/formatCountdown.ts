@@ -1,4 +1,4 @@
-import { addZero } from '@/hooks/addZero'
+import { addZero } from '@/utils/addZero'
 
 export function formatCountdown(hrs: number, min: number, lang = 'en-US') {
   let hours = hrs.toString()
