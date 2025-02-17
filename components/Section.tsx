@@ -26,7 +26,7 @@ export default function Section({
   return (
     <VStack className={`mx-6 flex-1 ${className}`}>
       <HStack className='space-between w-full '>
-        <HStack className='items-center' space='sm'>
+        <HStack className='items-center mb-2' space='sm'>
           <Heading size='xl'>{t(title)}</Heading>
           {icon ? <Icon as={icon} size='xl' /> : null}
         </HStack>
