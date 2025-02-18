@@ -1,7 +1,7 @@
 {
   "language": "Language",
   "Next prayer in": "Next prayer in",
-  "Daily progress": "Daily progress",
+  "monthly progress": "Monthly progress",
   "Prayers": "Prayers",
   "Fajr": "Fajr",
   "Dhuhr": "Dhuhr",
@@ -78,5 +78,8 @@
   "left": "left",
   "you did not fast this day": "you did not fast this day",
   "you fasted this day": "you fasted this day",
-  "missed": "missed"
+  "missed": "missed",
+  "day": "day",
+  "prayer": "prayer",
+  "page": "page"
 }

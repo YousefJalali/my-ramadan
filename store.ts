@@ -261,6 +261,18 @@ export const progress$ = observable({
 
     return ((fasting + prayers + quranReading) * 100) / 7
   },
+  totalProgress: () => {
+    let total = {
+      fasting: progress$.fasting.get().filter((e) => e).length,
+      prayers: progress$.prayers
+        .get()
+        .flat()
+        .filter((e) => e).length,
+      quranReading: progress$.quranReading.get().filter((e) => e).length,
+    }
+
+    return total
+  },
 })
 
 // fasting: [

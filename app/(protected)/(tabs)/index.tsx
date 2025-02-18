@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Progress from '@/components/Progress'
+import TotalProgress from '@/components/TotalProgress'
 import OnThisDayCard from '@/components/OnThisDayCard'
 import { Center } from '@/components/ui/center'
 import Prayers from '@/components/Prayers'
@@ -24,14 +24,8 @@ export default function HomeScreen() {
           <HijriAndGregorianDate />
         </Center>
 
-        <Section title='Daily progress'>
-          <Progress
-            data={{
-              fasting: [dayIndex, 30],
-              Prayers: [4, 5],
-              'Quran Reading': [5, 20],
-            }}
-          />
+        <Section title='monthly progress'>
+          <TotalProgress />
         </Section>
 
         <Section title='fasting'>

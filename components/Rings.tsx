@@ -6,11 +6,12 @@ type Props = {
   data: {
     [key: string]: number[]
   }
+  colors: string[]
 }
 
 const SIZE = Dimensions.get('window').width / 2
 
-export default function Rings({ data }: Props) {
+export default function Rings({ data, colors }: Props) {
   const values = Object.values(data)
   const d = {
     labels: Object.keys(data), // optional
@@ -19,7 +20,7 @@ export default function Rings({ data }: Props) {
       values[1][0] / values[1][1],
       values[2][0] / values[2][1],
     ],
-    colors: ['rgb(255 161 122)', 'rgb(86 171 239)', 'rgb(173 153 229)'],
+    colors,
   }
 
   return (
