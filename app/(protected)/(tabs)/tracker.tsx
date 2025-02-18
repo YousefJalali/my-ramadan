@@ -13,33 +13,36 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { useTranslation } from 'react-i18next'
 import { Button, ButtonText } from '@/components/ui/button'
 import Fasting from '@/components/Fasting'
-import { TFunction } from 'i18next'
 import Calendar from '@/components/calendar/Calendar'
+import { use$, useObservable } from '@legendapp/state/react'
 
 function Wrapper({
-  t,
   title,
   children,
 }: {
-  t: TFunction<'translation', undefined>
   title: string
-  children: ReactNode
+  children: (readonly: boolean) => ReactNode
 }) {
+  const readonly$ = useObservable(true)
+  const readonly = use$(readonly$)
+  const { t } = useTranslation()
+
   return (
     <VStack className='mt-16'>
       <HStack className='mb-3 justify-between'>
         <Heading size='2xl'>{t(title)}</Heading>
-        <Button variant='link'>
-          <ButtonText>{t('edit')}</ButtonText>
+        <Button variant='link' onPress={() => readonly$.set(!readonly)}>
+          <ButtonText>{t(readonly ? 'edit' : 'save')}</ButtonText>
         </Button>
       </HStack>
-      {children}
+
+      {children(readonly)}
     </VStack>
   )
 }
 
 export default function TrackerScreen() {
-  const [dayIndex, setDayIndex] = useState(1)
+  const [dayIndex, setDayIndex] = useState(0)
   const {
     t,
     i18n: { language },
@@ -91,16 +94,22 @@ export default function TrackerScreen() {
 
         <Calendar dayIndex={dayIndex} setDayIndex={setDayIndex} />
 
-        <Wrapper t={t} title='fasting'>
-          <Fasting dayIndex={dayIndex} trackerView readOnly />
+        <Wrapper title='fasting'>
+          {(readonly) => (
+            <Fasting dayIndex={dayIndex} trackerView readOnly={readonly} />
+          )}
         </Wrapper>
 
-        <Wrapper t={t} title='Prayers'>
-          <Prayers dayIndex={dayIndex} trackerView readOnly />
+        <Wrapper title='Prayers'>
+          {(readonly) => (
+            <Prayers dayIndex={dayIndex} trackerView readOnly={readonly} />
+          )}
         </Wrapper>
 
-        <Wrapper t={t} title='Quran Reading'>
-          <QuranReading dayIndex={dayIndex} trackerView readOnly />
+        <Wrapper title='Quran Reading'>
+          {(readonly) => (
+            <QuranReading dayIndex={dayIndex} trackerView readOnly={readonly} />
+          )}
         </Wrapper>
       </ScrollView>
     </VStack>

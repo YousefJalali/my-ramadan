@@ -68,6 +68,7 @@ export default function QuranReading({
             size='md'
             isInvalid={false}
             isDisabled={false}
+            isChecked={readingProgress[dayIndex]}
             value={'' + readingProgress[dayIndex]}
             onChange={() =>
               progress$.quranReading[dayIndex].set(!readingProgress[dayIndex])

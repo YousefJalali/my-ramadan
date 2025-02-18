@@ -98,7 +98,7 @@ export default function Prayers({
               <Center
                 className={`justify-between gap-1 ${cn(
                   trackerView,
-                  'flex-row space-between flex-1'
+                  'flex-row flex-1'
                 )}`}
               >
                 <Center
@@ -120,22 +120,27 @@ export default function Prayers({
                   </CheckboxLabel>
                 </Center>
 
-                <CheckboxLabel className='data-[checked=true]:text-primary-500 data-[disabled=true]:opacity-100 text-sm'>
+                <CheckboxLabel
+                  className={`data-[checked=true]:text-primary-500 data-[disabled=true]:opacity-100 text-sm ${cn(
+                    trackerView,
+                    'flex-1 text-center'
+                  )}`}
+                >
                   {formatTime(time)}
                 </CheckboxLabel>
               </Center>
 
-              {readOnly ? (
-                <HStack className='flex-1 justify-end'>
+              <Center className='basis-1/3 items-end'>
+                {readOnly ? (
                   <StatusBadge
                     isCompleted={prayersProgress[prayerIndex][dayIndex]}
                   />
-                </HStack>
-              ) : (
-                <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
-                  <CheckboxIcon as={CheckIcon} />
-                </CheckboxIndicator>
-              )}
+                ) : (
+                  <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
+                    <CheckboxIcon as={CheckIcon} />
+                  </CheckboxIndicator>
+                )}
+              </Center>
             </Checkbox>
           </VStack>
         ))}

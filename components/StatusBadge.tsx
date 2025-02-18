@@ -7,10 +7,10 @@ export default function StatusBadge({ isCompleted }: { isCompleted: boolean }) {
 
   return (
     <Badge
-      size='md'
+      size='lg'
       variant='outline'
       action={isCompleted ? 'success' : 'error'}
-      className='gap-2 rounded-xl'
+      className='gap-2 rounded-xl h-8'
     >
       <BadgeText>{t(isCompleted ? 'completed' : 'missed')}</BadgeText>
       <BadgeIcon as={isCompleted ? Check : X} />

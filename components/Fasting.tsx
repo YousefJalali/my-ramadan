@@ -95,6 +95,7 @@ export default function Fasting({
             isInvalid={false}
             isDisabled={false}
             value={'' + fasting[dayIndex]}
+            isChecked={fasting[dayIndex]}
             onChange={() => progress$.fasting[dayIndex].set(!fasting[dayIndex])}
           >
             <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
@@ -124,11 +125,13 @@ export default function Fasting({
                   {formatCountdown(hours, minutes, language)}
                 </Text>
               ) : null}
+
               <Text size='sm' className='text-neutral-500'>
                 {formatTime(prayerTime[dayIndex][3].time)} | {t('Iftar')}
               </Text>
             </HStack>
           </Box>
+
           <Text
             bold
             className={`text-sm mt-4 ${
