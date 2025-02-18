@@ -21,7 +21,7 @@ import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 
 type Props = {
-  day: number
+  dayIndex: number
   trackerView?: boolean
   readOnly?: boolean
 }
@@ -29,19 +29,19 @@ type Props = {
 const icons = ['sunrise', 'sun', 'cloud', 'sunset', 'moon']
 
 export default function Prayers({
-  day,
+  dayIndex,
   trackerView = false,
   readOnly = false,
 }: Props) {
-  const prayers = prayerTime[day - 1]
+  const prayers = prayerTime[dayIndex]
   const { prayers: prayersProgress } = use$(progress$)
 
   const toast = useToast()
   const { t } = useTranslation()
 
   async function checkTask(prayerIdx: number) {
-    progress$.prayers[prayerIdx][day - 1].set(
-      !prayersProgress[prayerIdx][day - 1]
+    progress$.prayers[prayerIdx][dayIndex].set(
+      !prayersProgress[prayerIdx][dayIndex]
     )
 
     // const today = new Date()
@@ -65,8 +65,8 @@ export default function Prayers({
     //     },
     //   })
     // } else {
-    //   progress$.prayers[prayerIdx][day - 1].set(
-    //     !prayersProgress[prayerIdx][day - 1]
+    //   progress$.prayers[prayerIdx][dayIndex].set(
+    //     !prayersProgress[prayerIdx][dayIndex]
     //   )
     // }
   }
@@ -88,7 +88,7 @@ export default function Prayers({
               size='md'
               aria-label={prayer}
               value={prayer}
-              isChecked={prayersProgress[prayerIndex][day - 1]}
+              isChecked={prayersProgress[prayerIndex][dayIndex]}
               className={`py-2.5 flex-col-reverse ${cn(
                 trackerView,
                 'flex-row space-between'
@@ -128,7 +128,7 @@ export default function Prayers({
               {readOnly ? (
                 <HStack className='flex-1 justify-end'>
                   <StatusBadge
-                    isCompleted={prayersProgress[prayerIndex][day - 1]}
+                    isCompleted={prayersProgress[prayerIndex][dayIndex]}
                   />
                 </HStack>
               ) : (
@@ -141,7 +141,7 @@ export default function Prayers({
         ))}
       </HStack>
 
-      {trackerView ? null : <PrayerCountdown day={day} />}
+      {trackerView ? null : <PrayerCountdown dayIndex={dayIndex} />}
     </Center>
   )
 }

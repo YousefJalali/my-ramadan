@@ -5,10 +5,10 @@ import useCountdown from '@/hooks/useCountdown'
 import { HStack } from './ui/hstack'
 import { formatCountdown } from '@/utils/formatCountdown'
 
-function getNextPrayer(day: number) {
+function getNextPrayer(dayIndex: number) {
   const today = new Date()
 
-  for (const prayer of prayerTime[day]) {
+  for (const prayer of prayerTime[dayIndex]) {
     const prayerDate = new Date(prayer.time)
 
     //change prayer date to now
@@ -21,16 +21,16 @@ function getNextPrayer(day: number) {
     if (today.getTime() < prayerDate.getTime()) return prayer
   }
 
-  return prayerTime[day][0]
+  return prayerTime[dayIndex][0]
 }
 
-export default function PrayerCountdown({ day }: { day: number }) {
+export default function PrayerCountdown({ dayIndex }: { dayIndex: number }) {
   const {
     t,
     i18n: { language },
   } = useTranslation()
 
-  const nextPrayer = getNextPrayer(day)
+  const nextPrayer = getNextPrayer(dayIndex)
 
   const { hours, minutes, seconds } = useCountdown(nextPrayer.time)
 

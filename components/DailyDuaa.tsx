@@ -3,17 +3,17 @@ import { Text } from './ui/text'
 import { useTranslation } from 'react-i18next'
 
 type Props = {
-  day: number
+  dayIndex: number
 }
 
-export default function DailyDuaa({ day }: Props) {
+export default function DailyDuaa({ dayIndex }: Props) {
   const {
     i18n: { language },
   } = useTranslation()
 
   return (
     <Text className='bg-neutral-100 rounded-2xl p-4'>
-      {dailyDuaa[language][day]}
+      {dailyDuaa[language][dayIndex]}
     </Text>
   )
 }

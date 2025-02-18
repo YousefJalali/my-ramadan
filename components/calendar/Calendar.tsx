@@ -27,11 +27,11 @@ const calendarDays: { [key: string]: string[] } = {
 }
 
 export default function Calendar({
-  day,
-  setDay,
+  dayIndex,
+  setDayIndex,
 }: {
-  day: number
-  setDay: Dispatch<SetStateAction<number>>
+  dayIndex: number
+  setDayIndex: Dispatch<SetStateAction<number>>
 }) {
   const {
     t,
@@ -55,8 +55,8 @@ export default function Calendar({
       <HStack>
         <RadioGroup
           className='flex-row flex-wrap'
-          value={'' + day}
-          onChange={setDay}
+          value={'' + dayIndex}
+          onChange={setDayIndex}
           style={{ columnGap: gap, rowGap: gap }}
         >
           <Center className='w-12' />
@@ -70,7 +70,7 @@ export default function Calendar({
               isDisabled={false}
             >
               <RadioIndicator className='h-12 w-12 border-0 overflow-hidden'>
-                <DayItem day={day} dayIndexInCalendar={d} />
+                <DayItem dayIndex={dayIndex} dayIndexInCalendar={d} />
               </RadioIndicator>
             </Radio>
           ))}

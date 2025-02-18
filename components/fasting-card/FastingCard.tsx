@@ -8,7 +8,7 @@ import { formatTime } from '@/utils/formatTime'
 import FastingGraph from './FastingGraph'
 import FastingCountdown from './FastingCountdown'
 
-export default function FastingCard({ day }: { day: number }) {
+export default function FastingCard({ dayIndex }: { dayIndex: number }) {
   const {
     t,
     i18n: { language },
@@ -95,8 +95,8 @@ export default function FastingCard({ day }: { day: number }) {
         className='absolute bottom-0 h-[150%] opacity-10 mix-blend-multiply'
       />
 
-      <FastingGraph day={day} />
-      <FastingCountdown day={day} />
+      <FastingGraph dayIndex={dayIndex} />
+      <FastingCountdown dayIndex={dayIndex} />
       {/* <PrayerCountdown day={day} /> */}
 
       <HStack
@@ -113,7 +113,7 @@ export default function FastingCard({ day }: { day: number }) {
               {t(prayer)}
             </Text>
             <Text className='text-primary-100'>
-              {formatTime(prayerTime[day][prayerIndex].time)}
+              {formatTime(prayerTime[dayIndex][prayerIndex].time)}
             </Text>
           </Center>
         ))}

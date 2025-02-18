@@ -251,13 +251,13 @@ export const progress$ = observable({
     false,
     true,
   ],
-  dailyProgress: (day: number) => {
-    const fasting = progress$.fasting.get()[day] ? 1 : 0
+  dailyProgress: (dayIndex: number) => {
+    const fasting = progress$.fasting.get()[dayIndex] ? 1 : 0
     let prayers = 0
     progress$.prayers.get().forEach((p) => {
-      prayers = prayers + (p[day] ? 1 : 0)
+      prayers = prayers + (p[dayIndex] ? 1 : 0)
     })
-    const quranReading = progress$.quranReading.get()[day] ? 1 : 0
+    const quranReading = progress$.quranReading.get()[dayIndex] ? 1 : 0
 
     return ((fasting + prayers + quranReading) * 100) / 7
   },

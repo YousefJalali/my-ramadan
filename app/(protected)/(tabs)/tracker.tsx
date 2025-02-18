@@ -39,7 +39,7 @@ function Wrapper({
 }
 
 export default function TrackerScreen() {
-  const [day, setDay] = useState(1)
+  const [dayIndex, setDayIndex] = useState(1)
   const {
     t,
     i18n: { language },
@@ -74,7 +74,7 @@ export default function TrackerScreen() {
                 calendar: 'islamic',
                 year: 'numeric',
               }
-            ).format(new Date(`2025-03-${day}`))}
+            ).format(new Date(`2025-03-${dayIndex + 1}`))}
           </Heading>
 
           <LinearGradient
@@ -89,18 +89,18 @@ export default function TrackerScreen() {
           />
         </Center>
 
-        <Calendar day={day} setDay={setDay} />
+        <Calendar dayIndex={dayIndex} setDayIndex={setDayIndex} />
 
         <Wrapper t={t} title='fasting'>
-          <Fasting day={day} trackerView readOnly />
+          <Fasting dayIndex={dayIndex} trackerView readOnly />
         </Wrapper>
 
         <Wrapper t={t} title='Prayers'>
-          <Prayers day={day} trackerView readOnly />
+          <Prayers dayIndex={dayIndex} trackerView readOnly />
         </Wrapper>
 
         <Wrapper t={t} title='Quran Reading'>
-          <QuranReading day={day} trackerView readOnly />
+          <QuranReading dayIndex={dayIndex} trackerView readOnly />
         </Wrapper>
       </ScrollView>
     </VStack>

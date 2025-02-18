@@ -13,9 +13,9 @@ function setPrayerDateToToday(date: string) {
   return d
 }
 
-export default function FastingCountdown({ day }: { day: number }) {
+export default function FastingCountdown({ dayIndex }: { dayIndex: number }) {
   const { hours, minutes, seconds } = useCountdown(
-    setPrayerDateToToday(prayerTime[day][3].time)
+    setPrayerDateToToday(prayerTime[dayIndex][3].time)
   )
 
   const {

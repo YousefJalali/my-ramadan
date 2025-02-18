@@ -21,11 +21,11 @@ import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 
 export default function Fasting({
-  day,
+  dayIndex,
   trackerView = false,
   readOnly = false,
 }: {
-  day: number
+  dayIndex: number
   trackerView?: boolean
   readOnly?: boolean
 }) {
@@ -36,7 +36,7 @@ export default function Fasting({
     i18n: { language },
   } = useTranslation()
 
-  const prayerDate = setToTodaysDate(prayerTime[day][3].time)
+  const prayerDate = setToTodaysDate(prayerTime[dayIndex][3].time)
 
   const { hours, minutes } = useCountdown(prayerDate)
 
@@ -75,7 +75,7 @@ export default function Fasting({
       <HStack space='md' className='items-center flex-1 justify-between'>
         {readOnly ? (
           <Text size='xl'>
-            {fasting[day - 1]
+            {fasting[dayIndex]
               ? t('you fasted this day')
               : t('you did not fast this day')}
           </Text>
@@ -88,14 +88,14 @@ export default function Fasting({
         )}
 
         {readOnly ? (
-          <StatusBadge isCompleted={fasting[day - 1]} />
+          <StatusBadge isCompleted={fasting[dayIndex]} />
         ) : (
           <Checkbox
             size='md'
             isInvalid={false}
             isDisabled={false}
-            value={'' + fasting[day - 1]}
-            onChange={() => progress$.fasting[day - 1].set(!fasting[day - 1])}
+            value={'' + fasting[dayIndex]}
+            onChange={() => progress$.fasting[dayIndex].set(!fasting[dayIndex])}
           >
             <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
               <CheckboxIcon as={CheckIcon} />
@@ -108,7 +108,7 @@ export default function Fasting({
         <>
           <Box className='mt-2'>
             <Progress
-              value={fasting[day - 1] ? 100 - progress : 0}
+              value={fasting[dayIndex] ? 100 - progress : 0}
               size='lg'
               className='bg-neutral-200'
             >
@@ -117,7 +117,7 @@ export default function Fasting({
 
             <HStack className='justify-between mt-1'>
               <Text size='sm' className='text-neutral-500'>
-                {t('Suhur')} | {formatTime(prayerTime[day][0].time)}
+                {t('Suhur')} | {formatTime(prayerTime[dayIndex][0].time)}
               </Text>
               {hours + minutes > 0 ? (
                 <Text size='sm'>
@@ -125,17 +125,17 @@ export default function Fasting({
                 </Text>
               ) : null}
               <Text size='sm' className='text-neutral-500'>
-                {formatTime(prayerTime[day][3].time)} | {t('Iftar')}
+                {formatTime(prayerTime[dayIndex][3].time)} | {t('Iftar')}
               </Text>
             </HStack>
           </Box>
           <Text
             bold
             className={`text-sm mt-4 ${
-              fasting[day - 1] ? 'text-success-600' : ''
+              fasting[dayIndex] ? 'text-success-600' : ''
             }`}
           >
-            {fasting[day - 1]
+            {fasting[dayIndex]
               ? t('🏆 Great job! Keep it up! 💪')
               : t('Stay consistent! You got this! 🚀')}
           </Text>

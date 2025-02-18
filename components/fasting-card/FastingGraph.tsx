@@ -14,7 +14,7 @@ import { isDateBetween } from '@/utils/isDateBetween'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-export default function FastingGraph({ day }: { day: number }) {
+export default function FastingGraph({ dayIndex }: { dayIndex: number }) {
   const [time, setTime] = useState(new Date())
   const [timeline, setTimeline] = useState(50)
 
@@ -31,8 +31,8 @@ export default function FastingGraph({ day }: { day: number }) {
     }, 1000)
 
     const now = new Date()
-    const start = new Date(prayerTime[day][0].time) //Suhur
-    const end = new Date(prayerTime[day][3].time) //Iftar
+    const start = new Date(prayerTime[dayIndex][0].time) //Suhur
+    const end = new Date(prayerTime[dayIndex][3].time) //Iftar
 
     const prayerDate = new Date(start)
 

@@ -14,10 +14,10 @@ import Section from '@/components/Section'
 import Fasting from '@/components/Fasting'
 
 export default function HomeScreen() {
-  const [selectedDay, setSelectedDay] = useState(1)
+  const dayIndex = 0
 
   return (
-    <ParallaxScrollView headerImage={<FastingCard day={selectedDay} />}>
+    <ParallaxScrollView headerImage={<FastingCard dayIndex={dayIndex} />}>
       <VStack className='relative py-6 pt-16 bg-neutral-50 gap-12'>
         {/* date */}
         <Center className='absolute h-20 -top-10 left-0 w-full'>
@@ -27,7 +27,7 @@ export default function HomeScreen() {
         <Section title='Daily progress'>
           <Progress
             data={{
-              fasting: [selectedDay, 30],
+              fasting: [dayIndex, 30],
               Prayers: [4, 5],
               'Quran Reading': [5, 20],
             }}
@@ -35,24 +35,24 @@ export default function HomeScreen() {
         </Section>
 
         <Section title='fasting'>
-          <Fasting day={selectedDay} />
+          <Fasting dayIndex={dayIndex} />
         </Section>
 
-        {/* <DaySelector day={selectedDay} onSelectDay={selectDayHandler} /> */}
+        {/* <DaySelector dayIndex={dayIndex} onSelectDay={selectDayHandler} /> */}
         <Section title='Prayers'>
-          <Prayers day={selectedDay} />
+          <Prayers dayIndex={dayIndex} />
         </Section>
 
         <Section title='Daily Duaa'>
-          <DailyDuaa day={selectedDay} />
+          <DailyDuaa dayIndex={dayIndex} />
         </Section>
 
         <Section title='Quran Reading'>
-          <QuranReading day={selectedDay} />
+          <QuranReading dayIndex={dayIndex} />
         </Section>
 
         <Section title='On This Day'>
-          <OnThisDayCard day={selectedDay} />
+          <OnThisDayCard dayIndex={dayIndex} />
         </Section>
 
         <Section title='Azkar'>
