@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next'
 import { Button, ButtonText } from '@/components/ui/button'
 import Fasting from '@/components/Fasting'
 import { TFunction } from 'i18next'
-import Calendar from '@/components/Calendar'
+import Calendar from '@/components/calendar/Calendar'
 
 function Wrapper({
   t,
