@@ -5,8 +5,10 @@ import { Image } from '../ui/image'
 import prayerTime from '@/constants/prayerTime'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
-import FastingGraph from './FastingGraph'
 import FastingCountdown from './FastingCountdown'
+import { Heading } from '../ui/heading'
+import DigitalClock from './DigitalClock'
+import LocationDisplay from '../LocationDisplay'
 
 export default function FastingCard({ dayIndex }: { dayIndex: number }) {
   const {
@@ -95,9 +97,17 @@ export default function FastingCard({ dayIndex }: { dayIndex: number }) {
         className='absolute bottom-0 h-[150%] opacity-10 mix-blend-multiply'
       />
 
-      <FastingGraph dayIndex={dayIndex} />
       <FastingCountdown dayIndex={dayIndex} />
-      {/* <PrayerCountdown day={day} /> */}
+
+      <Center className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+        <LocationDisplay />
+      </Center>
+
+      <Center>
+        <Heading size='3xl' className='text-primary-50'>
+          <DigitalClock />
+        </Heading>
+      </Center>
 
       <HStack
         className={`justify-between w-full px-5 ${

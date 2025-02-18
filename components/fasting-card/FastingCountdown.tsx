@@ -4,18 +4,20 @@ import prayerTime from '@/constants/prayerTime'
 import { HStack } from '../ui/hstack'
 import { useTranslation } from 'react-i18next'
 import { formatCountdown } from '@/utils/formatCountdown'
+import { ProgressChart } from 'react-native-chart-kit'
+import { Center } from '../ui/center'
+import { Heading } from '../ui/heading'
+import { Dimensions } from 'react-native'
+import DigitalClock from './DigitalClock'
+import { setToTodaysDate } from '@/utils/setToTodaysDate'
+import { toMinutes } from '@/utils/toMinutes'
+import { mapRange } from '@/utils/mapRange'
 
-function setPrayerDateToToday(date: string) {
-  const now = new Date()
-  const d = new Date(date)
-  d.setFullYear(now.getFullYear(), now.getMonth(), now.getDate())
-
-  return d
-}
+const SCREEN_WIDTH = Dimensions.get('window').width
 
 export default function FastingCountdown({ dayIndex }: { dayIndex: number }) {
-  const { hours, minutes, seconds } = useCountdown(
-    setPrayerDateToToday(prayerTime[dayIndex][3].time)
+  const { hours, minutes } = useCountdown(
+    setToTodaysDate(prayerTime[dayIndex][3].time)
   )
 
   const {
@@ -23,20 +25,62 @@ export default function FastingCountdown({ dayIndex }: { dayIndex: number }) {
     i18n: { language },
   } = useTranslation()
 
+  //suhur
+  const start = toMinutes(setToTodaysDate(prayerTime[dayIndex][0].time))
+  //iftar
+  const end = toMinutes(setToTodaysDate(prayerTime[dayIndex][3].time))
+  const now = hours * 60 + minutes
+
+  const d = {
+    labels: [''],
+    data: [mapRange(now, end, start, 0, 50) / 100],
+    colors: ['#95ffed'],
+  }
+
   return (
-    <HStack className='mt-1' space='xs'>
-      {hours + minutes > 0 ? (
-        <>
-          <Text bold className='text-primary-50'>
-            {formatCountdown(hours, minutes, language)}
+    <Center
+      className='relative px-6 w-full justify-end '
+      style={{ height: SCREEN_WIDTH / 2 }}
+    >
+      <ProgressChart
+        data={d}
+        width={SCREEN_WIDTH - 48}
+        height={SCREEN_WIDTH}
+        chartConfig={{
+          backgroundGradientFromOpacity: 0,
+          backgroundGradientToOpacity: 0,
+          color: () => `rgba(0, 0, 0, 0)`,
+          style: {
+            borderRadius: 16,
+          },
+        }}
+        withCustomBarColorFromData={true}
+        hideLegend
+        radius={(SCREEN_WIDTH - 72) / 2}
+        strokeWidth={24}
+        style={{
+          position: 'absolute',
+          top: 16,
+          transform: 'rotate(-90deg)',
+        }}
+      />
+
+      <HStack className='mb-2' space='xs'>
+        {hours + minutes > 0 ? (
+          <>
+            <Text bold className='text-primary-50'>
+              {formatCountdown(hours, minutes, language)}
+            </Text>
+            <Text className='text-primary-100 '>
+              {t('left to break fasting')}
+            </Text>
+          </>
+        ) : (
+          <Text className='text-primary-50'>
+            تقبل الله صيامكم و شهية طيبة ❤️
           </Text>
-          <Text className='text-primary-100 '>
-            {t('left to break fasting')}
-          </Text>
-        </>
-      ) : (
-        <Text className='text-primary-50'>تقبل الله صيامكم و شهية طيبة ❤️</Text>
-      )}
-    </HStack>
+        )}
+      </HStack>
+    </Center>
   )
 }
