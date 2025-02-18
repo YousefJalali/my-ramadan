@@ -40,29 +40,35 @@ export default function Prayers({
   const { t } = useTranslation()
 
   async function checkTask(prayerIdx: number) {
-    const today = new Date()
+    progress$.prayers[prayerIdx][day - 1].set(
+      !prayersProgress[prayerIdx][day - 1]
+    )
 
-    const prayerDate = setToTodaysDate(prayers[prayerIdx].time)
+    // const today = new Date()
 
-    if (prayerDate.getTime() > today.getTime()) {
-      toast.show({
-        id: '' + Math.random(),
-        placement: 'bottom',
-        duration: 3000,
-        render: ({ id }) => {
-          const uniqueToastId = 'toast-' + id
-          return (
-            <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
-              <ToastDescription>
-                {t("Prayer time hasn't arrived yet")}
-              </ToastDescription>
-            </Toast>
-          )
-        },
-      })
-    } else {
-      prayersProgress[prayerIdx][day - 1] = !prayersProgress[prayerIdx][day - 1]
-    }
+    // const prayerDate = setToTodaysDate(prayers[prayerIdx].time)
+
+    // if (prayerDate.getTime() > today.getTime()) {
+    //   toast.show({
+    //     id: '' + Math.random(),
+    //     placement: 'bottom',
+    //     duration: 3000,
+    //     render: ({ id }) => {
+    //       const uniqueToastId = 'toast-' + id
+    //       return (
+    //         <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
+    //           <ToastDescription>
+    //             {t("Prayer time hasn't arrived yet")}
+    //           </ToastDescription>
+    //         </Toast>
+    //       )
+    //     },
+    //   })
+    // } else {
+    //   progress$.prayers[prayerIdx][day - 1].set(
+    //     !prayersProgress[prayerIdx][day - 1]
+    //   )
+    // }
   }
 
   return (
