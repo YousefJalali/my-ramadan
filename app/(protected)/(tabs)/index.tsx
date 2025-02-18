@@ -27,7 +27,7 @@ export default function HomeScreen() {
         <Section title='Daily progress'>
           <Progress
             data={{
-              Fasting: [selectedDay, 30],
+              fasting: [selectedDay, 30],
               Prayers: [4, 5],
               'Quran Reading': [5, 20],
             }}

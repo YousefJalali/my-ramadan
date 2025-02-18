@@ -74,5 +74,9 @@
   "are you fasting today?": "Are you fasting today?",
   "did you fast today?": "Did you fast today?",
   "🏆 Great job! Keep it up! 💪": "🏆 Great job! Keep it up! 💪",
-  "Stay consistent! You got this! 🚀": "Stay consistent! You got this! 🚀"
+  "Stay consistent! You got this! 🚀": "Stay consistent! You got this! 🚀",
+  "left": "left",
+  "you did not fast this day": "you did not fast this day",
+  "you fasted this day": "you fasted this day",
+  "missed": "missed"
 }

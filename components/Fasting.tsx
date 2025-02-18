@@ -62,7 +62,7 @@ export default function Fasting({
             {t('fasts completed')}{' '}
           </Text> */}
           <Text size='sm' className='text-neutral-600'>
-            🔥{' '}
+            🎯{' '}
             <Text bold size='sm'>
               7
             </Text>{' '}
@@ -76,8 +76,8 @@ export default function Fasting({
         {readOnly ? (
           <Text size='xl'>
             {fasting[day - 1]
-              ? t('you fasted today')
-              : t('you did not fast today')}
+              ? t('you fasted this day')
+              : t('you did not fast this day')}
           </Text>
         ) : (
           <Text size='xl'>
@@ -121,7 +121,7 @@ export default function Fasting({
               </Text>
               {hours + minutes > 0 ? (
                 <Text size='sm'>
-                  {formatCountdown(hours, minutes, language)} left
+                  {formatCountdown(hours, minutes, language)}
                 </Text>
               ) : null}
               <Text size='sm' className='text-neutral-500'>

@@ -74,5 +74,9 @@
   "are you fasting today?": "هل تصوم اليوم؟",
   "did you fast today?": "هل صمت اليوم؟",
   "🏆 Great job! Keep it up! 💪": "🏆 عمل رائع! استمر! 💪",
-  "Stay consistent! You got this! 🚀": "استمر أنت قادر على ذلك! 🚀"
+  "Stay consistent! You got this! 🚀": "استمر أنت قادر على ذلك! 🚀",
+  "left": "متبقي",
+  "you did not fast this day": "لم تصم هذا اليوم",
+  "you fasted this day": "لقد صمت هذا اليوم",
+  "missed": "فاتك"
 }

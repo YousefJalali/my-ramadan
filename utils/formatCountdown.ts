@@ -1,4 +1,4 @@
-import { addZero } from '@/utils/addZero'
+import { addZero } from './addZero'
 
 export function formatCountdown(hrs: number, min: number, lang = 'en-US') {
   let hours = hrs.toString()
@@ -12,7 +12,7 @@ export function formatCountdown(hrs: number, min: number, lang = 'en-US') {
     minutesLabel =
       min === 1
         ? 'دقيقة واحدة'
-        : hrs === 2
+        : min === 2
         ? 'دقيقتين'
         : min < 11
         ? ' دقائق'
