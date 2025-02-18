@@ -3,19 +3,22 @@ import { VStack } from './ui/vstack'
 import { Text } from './ui/text'
 import { HStack } from './ui/hstack'
 import { Progress, ProgressFilledTrack } from '@/components/ui/progress'
-import { useState } from 'react'
 import {
   Checkbox,
   CheckboxIndicator,
   CheckboxIcon,
 } from '@/components/ui/checkbox'
-import { Check, CheckIcon } from 'lucide-react-native'
+import { CheckIcon } from 'lucide-react-native'
 import useCountdown from '@/hooks/useCountdown'
 import prayerTime from '@/constants/prayerTime'
 import { formatCountdown } from '@/utils/formatCountdown'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
-import { Badge, BadgeIcon, BadgeText } from './ui/badge'
+import { use$ } from '@legendapp/state/react'
+import { progress$ } from '@/store'
+import { setToTodaysDate } from '@/utils/setToTodaysDate'
+import { cn } from '@/utils/cn'
+import StatusBadge from './StatusBadge'
 
 export default function Fasting({
   day,
@@ -26,30 +29,25 @@ export default function Fasting({
   trackerView?: boolean
   readOnly?: boolean
 }) {
-  const [fastConfirmed, setFastConfirmed] = useState(false)
+  const { fasting } = use$(progress$)
 
   const {
     t,
     i18n: { language },
   } = useTranslation()
 
-  //change now to prayer date
-  const now = new Date()
-  const d = new Date(prayerTime[day][3].time)
-  d.setFullYear(now.getFullYear(), now.getMonth(), now.getDate())
+  const prayerDate = setToTodaysDate(prayerTime[day][3].time)
 
-  const { hours, minutes } = useCountdown(d)
+  const { hours, minutes } = useCountdown(prayerDate)
 
   const progress =
-    ((hours * 60 + minutes) * 100) / (d.getHours() * 60 + d.getMinutes())
-
-  function trackerViewStyle(classes: string) {
-    return trackerView ? `${classes}` : ''
-  }
+    ((hours * 60 + minutes) * 100) /
+    (prayerDate.getHours() * 60 + prayerDate.getMinutes())
 
   return (
     <VStack
-      className={`bg-neutral-100 p-4 rounded-2xl ${trackerViewStyle(
+      className={`bg-neutral-100 p-4 rounded-2xl ${cn(
+        trackerView,
         'bg-neutral-50 p-0'
       )}`}
     >
@@ -77,7 +75,7 @@ export default function Fasting({
       <HStack space='md' className='items-center flex-1 justify-between'>
         {readOnly ? (
           <Text size='xl'>
-            {fastConfirmed
+            {fasting[day - 1]
               ? t('you fasted today')
               : t('you did not fast today')}
           </Text>
@@ -90,23 +88,14 @@ export default function Fasting({
         )}
 
         {readOnly ? (
-          <Badge
-            size='md'
-            variant='outline'
-            action={fastConfirmed ? 'success' : 'error'}
-            className='gap-2 rounded-xl'
-          >
-            <BadgeText>{t(fastConfirmed ? 'completed' : 'missed')}</BadgeText>
-            <BadgeIcon as={Check} />
-          </Badge>
+          <StatusBadge isCompleted={fasting[day - 1]} />
         ) : (
           <Checkbox
-            value='false'
             size='md'
             isInvalid={false}
             isDisabled={false}
-            isChecked={fastConfirmed}
-            onChange={setFastConfirmed}
+            value={'' + fasting[day - 1]}
+            onChange={() => progress$.fasting[day - 1].set(!fasting[day - 1])}
           >
             <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
               <CheckboxIcon as={CheckIcon} />
@@ -119,7 +108,7 @@ export default function Fasting({
         <>
           <Box className='mt-2'>
             <Progress
-              value={fastConfirmed ? 100 - progress : 0}
+              value={fasting[day - 1] ? 100 - progress : 0}
               size='lg'
               className='bg-neutral-200'
             >
@@ -143,10 +132,10 @@ export default function Fasting({
           <Text
             bold
             className={`text-sm mt-4 ${
-              fastConfirmed ? 'text-success-600' : ''
+              fasting[day - 1] ? 'text-success-600' : ''
             }`}
           >
-            {fastConfirmed
+            {fasting[day - 1]
               ? t('🏆 Great job! Keep it up! 💪')
               : t('Stay consistent! You got this! 🚀')}
           </Text>

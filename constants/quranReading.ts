@@ -1,6 +1,6 @@
 export const ramadanQuranReading = {
-  'en-US': {
-    '1': {
+  'en-US': [
+    {
       pageFrom: 1,
       pageTo: 20,
       surah: 'Al-Fatiha to Al-Baqara (2:141)',
@@ -8,7 +8,7 @@ export const ramadanQuranReading = {
       description:
         'Start with Surah Al-Fatiha and proceed to the first part of Surah Al-Baqara, covering key foundational verses of Islam.',
     },
-    '2': {
+    {
       pageFrom: 21,
       pageTo: 40,
       surah: 'Al-Baqara (2:142) to Al-Baqara (2:252)',
@@ -16,7 +16,7 @@ export const ramadanQuranReading = {
       description:
         'Continue Surah Al-Baqara, discussing themes of guidance, laws, and stories of past nations.',
     },
-    '3': {
+    {
       pageFrom: 41,
       pageTo: 60,
       surah: 'Al-Baqara (2:253) to Al-Imran (3:91)',
@@ -24,7 +24,7 @@ export const ramadanQuranReading = {
       description:
         'Complete Surah Al-Baqara and begin Surah Al-Imran, focusing on faith, obedience, and family values.',
     },
-    '4': {
+    {
       pageFrom: 61,
       pageTo: 80,
       surah: 'Al-Imran (3:92) to An-Nisa (4:23)',
@@ -32,7 +32,7 @@ export const ramadanQuranReading = {
       description:
         'Read through the conclusion of Surah Al-Imran and begin Surah An-Nisa, emphasizing community welfare and justice.',
     },
-    '5': {
+    {
       pageFrom: 81,
       pageTo: 100,
       surah: 'An-Nisa (4:24) to An-Nisa (4:147)',
@@ -40,7 +40,7 @@ export const ramadanQuranReading = {
       description:
         'Continue Surah An-Nisa, focusing on family laws, women’s rights, and societal harmony.',
     },
-    '6': {
+    {
       pageFrom: 101,
       pageTo: 120,
       surah: 'An-Nisa (4:148) to Al-Maida (5:81)',
@@ -48,7 +48,7 @@ export const ramadanQuranReading = {
       description:
         'Complete Surah An-Nisa and begin Surah Al-Maida, which addresses dietary laws and covenants.',
     },
-    '7': {
+    {
       pageFrom: 121,
       pageTo: 140,
       surah: 'Al-Maida (5:82) to Al-Anam (6:110)',
@@ -56,7 +56,7 @@ export const ramadanQuranReading = {
       description:
         'Finish Surah Al-Maida and proceed into Surah Al-Anam, focusing on monotheism and rejecting polytheism.',
     },
-    '8': {
+    {
       pageFrom: 141,
       pageTo: 160,
       surah: 'Al-Anam (6:111) to Al-Araf (7:87)',
@@ -64,7 +64,7 @@ export const ramadanQuranReading = {
       description:
         'Complete Surah Al-Anam and begin Surah Al-Araf, narrating stories of prophets and disobedience.',
     },
-    '9': {
+    {
       pageFrom: 161,
       pageTo: 180,
       surah: 'Al-Araf (7:88) to Al-Anfal (8:40)',
@@ -72,7 +72,7 @@ export const ramadanQuranReading = {
       description:
         'Finish Surah Al-Araf and start Surah Al-Anfal, which discusses themes of victory and gratitude.',
     },
-    '10': {
+    {
       pageFrom: 181,
       pageTo: 200,
       surah: 'Al-Anfal (8:41) to Yunus (10:25)',
@@ -80,7 +80,7 @@ export const ramadanQuranReading = {
       description:
         'Complete Surah Al-Anfal and begin Surah Yunus, emphasizing divine mercy and human accountability.',
     },
-    '11': {
+    {
       pageFrom: 201,
       pageTo: 220,
       surah: 'Yunus (10:26) to Hud (11:67)',
@@ -88,7 +88,7 @@ export const ramadanQuranReading = {
       description:
         'Finish Surah Yunus and proceed into Surah Hud, focusing on patience and trust in Allah.',
     },
-    '12': {
+    {
       pageFrom: 221,
       pageTo: 240,
       surah: 'Hud (11:68) to Yusuf (12:52)',
@@ -96,7 +96,7 @@ export const ramadanQuranReading = {
       description:
         'Conclude Surah Hud and begin Surah Yusuf, recounting the inspiring story of Prophet Yusuf (Joseph).',
     },
-    '13': {
+    {
       pageFrom: 241,
       pageTo: 260,
       surah: 'Yusuf (12:53) to Ibrahim (14:52)',
@@ -104,7 +104,7 @@ export const ramadanQuranReading = {
       description:
         'Complete Surah Yusuf and move through Surahs Ar-Rad and Ibrahim, emphasizing guidance and gratitude.',
     },
-    '14': {
+    {
       pageFrom: 261,
       pageTo: 280,
       surah: 'Al-Hijr (15:1) to An-Nahl (16:50)',
@@ -112,7 +112,7 @@ export const ramadanQuranReading = {
       description:
         'Read through Surahs Al-Hijr and An-Nahl, reflecting on Allah’s creations and blessings.',
     },
-    '15': {
+    {
       pageFrom: 281,
       pageTo: 300,
       surah: 'An-Nahl (16:51) to Al-Isra (17:111)',
@@ -120,7 +120,7 @@ export const ramadanQuranReading = {
       description:
         'Finish Surah An-Nahl and begin Surah Al-Isra, emphasizing the Night Journey and moral conduct.',
     },
-    '16': {
+    {
       pageFrom: 301,
       pageTo: 320,
       surah: 'Al-Kahf (18:1) to Maryam (19:58)',
@@ -128,7 +128,7 @@ export const ramadanQuranReading = {
       description:
         'Read Surahs Al-Kahf and Maryam, focusing on faith, trials, and the lives of prophets.',
     },
-    '17': {
+    {
       pageFrom: 321,
       pageTo: 340,
       surah: 'Maryam (19:59) to Taha (20:135)',
@@ -136,7 +136,7 @@ export const ramadanQuranReading = {
       description:
         'Finish Surah Maryam and continue through Surah Taha, which highlights Prophet Musa’s (Moses) story.',
     },
-    '18': {
+    {
       pageFrom: 341,
       pageTo: 360,
       surah: 'Al-Anbiya (21:1) to Al-Hajj (22:78)',
@@ -144,7 +144,7 @@ export const ramadanQuranReading = {
       description:
         'Read Surahs Al-Anbiya and Al-Hajj, which focus on the prophets and the rituals of Hajj.',
     },
-    '19': {
+    {
       pageFrom: 361,
       pageTo: 380,
       surah: 'Al-Muminun (23:1) to An-Nur (24:64)',
@@ -152,7 +152,7 @@ export const ramadanQuranReading = {
       description:
         'Cover Surahs Al-Muminun and An-Nur, emphasizing purity, modesty, and moral conduct.',
     },
-    '20': {
+    {
       pageFrom: 381,
       pageTo: 400,
       surah: 'Al-Furqan (25:1) to Ash-Shuara (26:227)',
@@ -160,7 +160,7 @@ export const ramadanQuranReading = {
       description:
         'Read Surahs Al-Furqan and Ash-Shuara, discussing divine guidance and poetic arguments.',
     },
-    '21': {
+    {
       pageFrom: 401,
       pageTo: 420,
       surah: 'An-Naml (27:1) to Al-Qasas (28:88)',
@@ -168,7 +168,7 @@ export const ramadanQuranReading = {
       description:
         'Focus on Surahs An-Naml and Al-Qasas, which highlight the wisdom of Prophets Dawud, Sulaiman, and Musa.',
     },
-    '22': {
+    {
       pageFrom: 421,
       pageTo: 440,
       surah: 'Al-Ankabut (29:1) to Luqman (31:34)',
@@ -176,7 +176,7 @@ export const ramadanQuranReading = {
       description:
         'Reflect on Surahs Al-Ankabut, Ar-Rum, and Luqman, emphasizing patience and wisdom.',
     },
-    '23': {
+    {
       pageFrom: 441,
       pageTo: 460,
       surah: 'As-Sajda (32:1) to Saba (34:54)',
@@ -184,7 +184,7 @@ export const ramadanQuranReading = {
       description:
         'Continue through Surahs As-Sajda, Al-Ahzab, and Saba, focusing on submission and thankfulness.',
     },
-    '24': {
+    {
       pageFrom: 461,
       pageTo: 480,
       surah: 'Fatir (35:1) to Ya-Sin (36:83)',
@@ -192,7 +192,7 @@ export const ramadanQuranReading = {
       description:
         'Read Surahs Fatir and Ya-Sin, which emphasize Allah’s creation and the Day of Judgment.',
     },
-    '25': {
+    {
       pageFrom: 481,
       pageTo: 500,
       surah: 'As-Saffat (37:1) to Az-Zumar (39:31)',
@@ -200,7 +200,7 @@ export const ramadanQuranReading = {
       description:
         'Focus on Surahs As-Saffat and Az-Zumar, highlighting belief and accountability.',
     },
-    '26': {
+    {
       pageFrom: 501,
       pageTo: 520,
       surah: 'Az-Zumar (39:32) to Fussilat (41:46)',
@@ -208,7 +208,7 @@ export const ramadanQuranReading = {
       description:
         'Complete Surah Az-Zumar and read Surah Fussilat, focusing on monotheism and submission.',
     },
-    '27': {
+    {
       pageFrom: 521,
       pageTo: 540,
       surah: 'Ash-Shura (42:1) to Al-Jathiya (45:37)',
@@ -216,7 +216,7 @@ export const ramadanQuranReading = {
       description:
         'Read through Surahs Ash-Shura to Al-Jathiya, highlighting divine mercy and justice.',
     },
-    '28': {
+    {
       pageFrom: 541,
       pageTo: 560,
       surah: 'Al-Ahqaf (46:1) to Az-Zariyat (51:30)',
@@ -224,7 +224,7 @@ export const ramadanQuranReading = {
       description:
         'Focus on Surahs Al-Ahqaf to Az-Zariyat, reflecting on creation and divine signs.',
     },
-    '29': {
+    {
       pageFrom: 561,
       pageTo: 580,
       surah: 'Az-Zariyat (51:31) to Al-Hadid (57:29)',
@@ -232,7 +232,7 @@ export const ramadanQuranReading = {
       description:
         'Complete Surah Az-Zariyat and read to Surah Al-Hadid, focusing on spiritual purification.',
     },
-    '30': {
+    {
       pageFrom: 581,
       pageTo: 604,
       surah: 'Al-Mujadila (58:1) to An-Nas (114:6)',
@@ -240,9 +240,9 @@ export const ramadanQuranReading = {
       description:
         'Finish the Quran, covering Surahs Al-Mujadila to An-Nas, concluding with supplications for guidance and protection.',
     },
-  },
-  'ar-SA': {
-    '1': {
+  ],
+  'ar-SA': [
+    {
       pageFrom: 1,
       pageTo: 20,
       surah: 'الفاتحة إلى البقرة (2:141)',
@@ -250,7 +250,7 @@ export const ramadanQuranReading = {
       description:
         'ابدأ بسورة الفاتحة ثم انتقل إلى الجزء الأول من سورة البقرة، مغطياً الآيات الأساسية في الإسلام.',
     },
-    '2': {
+    {
       pageFrom: 21,
       pageTo: 40,
       surah: 'البقرة (2:142) إلى البقرة (2:252)',
@@ -258,7 +258,7 @@ export const ramadanQuranReading = {
       description:
         'تابع سورة البقرة، وناقش مواضيع الهداية، والقوانين، وقصص الأمم السابقة.',
     },
-    '3': {
+    {
       pageFrom: 41,
       pageTo: 60,
       surah: 'البقرة (2:253) إلى آل عمران (3:91)',
@@ -266,7 +266,7 @@ export const ramadanQuranReading = {
       description:
         'أكمل سورة البقرة وابدأ سورة آل عمران، مع التركيز على الإيمان، والطاعة، وقيم الأسرة.',
     },
-    '4': {
+    {
       pageFrom: 61,
       pageTo: 80,
       surah: 'آل عمران (3:92) إلى النساء (4:23)',
@@ -274,7 +274,7 @@ export const ramadanQuranReading = {
       description:
         'اقرأ من نهاية سورة آل عمران وابدأ سورة النساء، مع التأكيد على رفاهية المجتمع والعدالة.',
     },
-    '5': {
+    {
       pageFrom: 81,
       pageTo: 100,
       surah: 'النساء (4:24) إلى النساء (4:147)',
@@ -282,7 +282,7 @@ export const ramadanQuranReading = {
       description:
         'تابع سورة النساء، مع التركيز على قوانين الأسرة، حقوق النساء، وتناغم المجتمع.',
     },
-    '6': {
+    {
       pageFrom: 101,
       pageTo: 120,
       surah: 'النساء (4:148) إلى المائدة (5:81)',
@@ -290,7 +290,7 @@ export const ramadanQuranReading = {
       description:
         'أكمل سورة النساء وابدأ سورة المائدة، التي تتناول قوانين الطعام والعهد.',
     },
-    '7': {
+    {
       pageFrom: 121,
       pageTo: 140,
       surah: 'المائدة (5:82) إلى الأنعام (6:110)',
@@ -298,7 +298,7 @@ export const ramadanQuranReading = {
       description:
         'أنهِ سورة المائدة وابدأ سورة الأنعام، مع التركيز على التوحيد ورفض الشرك.',
     },
-    '8': {
+    {
       pageFrom: 141,
       pageTo: 160,
       surah: 'الأنعام (6:111) إلى الأعراف (7:87)',
@@ -306,7 +306,7 @@ export const ramadanQuranReading = {
       description:
         'أكمل سورة الأنعام وابدأ سورة الأعراف، التي تروي قصص الأنبياء والعصيان.',
     },
-    '9': {
+    {
       pageFrom: 161,
       pageTo: 180,
       surah: 'الأعراف (7:88) إلى الأنفال (8:40)',
@@ -314,7 +314,7 @@ export const ramadanQuranReading = {
       description:
         'أنهِ سورة الأعراف وابدأ سورة الأنفال، التي تناقش موضوعات النصر والامتنان.',
     },
-    '10': {
+    {
       pageFrom: 181,
       pageTo: 200,
       surah: 'الأنفال (8:41) إلى يونس (10:25)',
@@ -322,7 +322,7 @@ export const ramadanQuranReading = {
       description:
         'أكمل سورة الأنفال وابدأ سورة يونس، مع التركيز على الرحمة الإلهية والمسؤولية الإنسانية.',
     },
-    '11': {
+    {
       pageFrom: 201,
       pageTo: 220,
       surah: 'يونس (10:26) إلى هود (11:67)',
@@ -330,7 +330,7 @@ export const ramadanQuranReading = {
       description:
         'أنهِ سورة يونس وابدأ سورة هود، مع التركيز على الصبر والثقة في الله.',
     },
-    '12': {
+    {
       pageFrom: 221,
       pageTo: 240,
       surah: 'هود (11:68) إلى يوسف (12:52)',
@@ -338,7 +338,7 @@ export const ramadanQuranReading = {
       description:
         'اختتم سورة هود وابدأ سورة يوسف، التي تروي القصة الملهمة للنبي يوسف.',
     },
-    '13': {
+    {
       pageFrom: 241,
       pageTo: 260,
       surah: 'يوسف (12:53) إلى إبراهيم (14:52)',
@@ -346,14 +346,14 @@ export const ramadanQuranReading = {
       description:
         'أكمل سورة يوسف ومر عبر سورتي الرعد وإبراهيم، مع التركيز على الهداية والامتنان.',
     },
-    '14': {
+    {
       pageFrom: 261,
       pageTo: 280,
       surah: 'الحجر (15:1) إلى النحل (16:50)',
       hizb: 'الجزء 27-28',
       description: 'اقرأ في سورتي الحجر والنحل، مع التأمل في خلق الله ونعمه.',
     },
-    '15': {
+    {
       pageFrom: 281,
       pageTo: 300,
       surah: 'النحل (16:51) إلى الإسراء (17:111)',
@@ -361,7 +361,7 @@ export const ramadanQuranReading = {
       description:
         'أنهِ سورة النحل وابدأ سورة الإسراء، مع التركيز على الرحلة الليلية والسلوك الأخلاقي.',
     },
-    '16': {
+    {
       pageFrom: 301,
       pageTo: 320,
       surah: 'الكهف (18:1) إلى مريم (19:58)',
@@ -369,7 +369,7 @@ export const ramadanQuranReading = {
       description:
         'اقرأ في سورتي الكهف ومريم، مع التركيز على الإيمان، والابتلاءات، وحياة الأنبياء.',
     },
-    '17': {
+    {
       pageFrom: 321,
       pageTo: 340,
       surah: 'مريم (19:59) إلى طه (20:135)',
@@ -377,7 +377,7 @@ export const ramadanQuranReading = {
       description:
         'أنهِ سورة مريم وواصل في سورة طه، التي تسلط الضوء على قصة النبي موسى.',
     },
-    '18': {
+    {
       pageFrom: 341,
       pageTo: 360,
       surah: 'الأنبياء (21:1) إلى الحج (22:78)',
@@ -385,7 +385,7 @@ export const ramadanQuranReading = {
       description:
         'اقرأ في سورتي الأنبياء والحج، مع التركيز على الأنبياء وطقوس الحج.',
     },
-    '19': {
+    {
       pageFrom: 361,
       pageTo: 380,
       surah: 'المؤمنون (23:1) إلى النور (24:64)',
@@ -393,7 +393,7 @@ export const ramadanQuranReading = {
       description:
         'غطِ سورتي المؤمنون والنور، مع التركيز على الطهارة، والتواضع، والسلوك الأخلاقي.',
     },
-    '20': {
+    {
       pageFrom: 381,
       pageTo: 400,
       surah: 'الفرقان (25:1) إلى الشعراء (26:227)',
@@ -401,7 +401,7 @@ export const ramadanQuranReading = {
       description:
         'اقرأ في سورتي الفرقان والشعراء، مع مناقشة الهداية الإلهية والحجج الشعرية.',
     },
-    '21': {
+    {
       pageFrom: 401,
       pageTo: 420,
       surah: 'النمل (27:1) إلى القصص (28:88)',
@@ -409,7 +409,7 @@ export const ramadanQuranReading = {
       description:
         'ركز على سورتي النمل والقصص، التي تبرز حكمة الأنبياء داوود، سليمان، وموسى.',
     },
-    '22': {
+    {
       pageFrom: 421,
       pageTo: 440,
       surah: 'العنكبوت (29:1) إلى لقمان (31:34)',
@@ -417,7 +417,7 @@ export const ramadanQuranReading = {
       description:
         'تأمل في سور العنكبوت، الروم، ولقمان، مع التركيز على الصبر والحكمة.',
     },
-    '23': {
+    {
       pageFrom: 441,
       pageTo: 460,
       surah: 'السجدة (32:1) إلى سبأ (34:54)',
@@ -425,14 +425,14 @@ export const ramadanQuranReading = {
       description:
         'تابع في سور السجدة، الأحزاب، وسبأ، مع التركيز على الاستسلام والامتنان.',
     },
-    '24': {
+    {
       pageFrom: 461,
       pageTo: 480,
       surah: 'فاطر (35:1) إلى يس (36:83)',
       hizb: 'الجزء 47-48',
       description: 'اقرأ في سور فاطر ويس، التي تركز على خلق الله ويوم القيامة.',
     },
-    '25': {
+    {
       pageFrom: 481,
       pageTo: 500,
       surah: 'الصافات (37:1) إلى الزمر (39:31)',
@@ -440,7 +440,7 @@ export const ramadanQuranReading = {
       description:
         'ركز على سور الصافات والزمر، مع تسليط الضوء على الإيمان والمسؤولية.',
     },
-    '26': {
+    {
       pageFrom: 501,
       pageTo: 520,
       surah: 'الزمر (39:32) إلى فصلت (41:46)',
@@ -448,7 +448,7 @@ export const ramadanQuranReading = {
       description:
         'أكمل سورة الزمر وقرأ سورة فصلت، مع التركيز على التوحيد والاستسلام.',
     },
-    '27': {
+    {
       pageFrom: 521,
       pageTo: 540,
       surah: 'الشورى (42:1) إلى الجاثية (45:37)',
@@ -456,7 +456,7 @@ export const ramadanQuranReading = {
       description:
         'اقرأ في سور الشورى والجاثية، مع التركيز على الرحمة الإلهية والعدالة.',
     },
-    '28': {
+    {
       pageFrom: 541,
       pageTo: 560,
       surah: 'الأحقاف (46:1) إلى الذاريات (51:30)',
@@ -464,7 +464,7 @@ export const ramadanQuranReading = {
       description:
         'ركز على سور الأحقاف إلى الذاريات، مع التأمل في الخلق وآيات الله.',
     },
-    '29': {
+    {
       pageFrom: 561,
       pageTo: 580,
       surah: 'الذاريات (51:31) إلى الحديد (57:29)',
@@ -472,7 +472,7 @@ export const ramadanQuranReading = {
       description:
         'أكمل سورة الذاريات وقرأ إلى سورة الحديد، مع التركيز على التطهير الروحي.',
     },
-    '30': {
+    {
       pageFrom: 581,
       pageTo: 604,
       surah: 'المجادلة (58:1) إلى الناس (114:6)',
@@ -480,5 +480,5 @@ export const ramadanQuranReading = {
       description:
         'أنهِ القرآن، مع تغطية سور المجادلة إلى الناس، وختاماً بالدعاء للهداية والحماية.',
     },
-  },
+  ],
 }

@@ -10,8 +10,10 @@ import {
 } from '@/components/ui/checkbox'
 import { CheckIcon } from '@/components/ui/icon'
 import { useTranslation } from 'react-i18next'
-import { Badge, BadgeIcon, BadgeText } from './ui/badge'
-import { Check } from 'lucide-react-native'
+import { use$ } from '@legendapp/state/react'
+import { progress$ } from '@/store'
+import { cn } from '@/utils/cn'
+import StatusBadge from './StatusBadge'
 
 export default function QuranReading({
   day,
@@ -22,58 +24,54 @@ export default function QuranReading({
   trackerView?: boolean
   readOnly?: boolean
 }) {
+  const { quranReading: readingProgress } = use$(progress$)
+
   const {
     t,
     i18n: { language },
   } = useTranslation()
 
   //@ts-ignore
-  const q = ramadanQuranReading[language][day]
-
-  function trackerViewStyle(classes: string) {
-    return trackerView ? `${classes}` : ''
-  }
+  const dayReading = ramadanQuranReading[language][day - 1]
 
   return (
     <VStack
-      className={`bg-neutral-100 p-3 rounded-2xl ${trackerViewStyle(
+      className={`bg-neutral-100 p-3 rounded-2xl ${cn(
+        trackerView,
         'bg-neutral-50 p-0'
       )}`}
     >
       {trackerView ? null : (
         <>
-          <Text className='text-neutral-600'>{q.description}</Text>
+          <Text className='text-neutral-600'>{dayReading.description}</Text>
           <Divider className='my-2 bg-neutral-200' />
         </>
       )}
       <HStack
-        className={`space-between w-full ${trackerViewStyle('items-start')}`}
+        space='sm'
+        className={`space-between w-full ${cn(trackerView, 'items-start')}`}
       >
         <VStack className='flex-1'>
           <Text bold size='lg'>
-            {q.surah}
+            {dayReading.surah}
           </Text>
           <Text size='sm'>
-            {t('Page')} {q.pageFrom} {t('to')} {q.pageTo} ({q.hizb})
+            {t('Page')} {dayReading.pageFrom} {t('to')} {dayReading.pageTo} (
+            {dayReading.hizb})
           </Text>
         </VStack>
 
         {readOnly ? (
-          <Badge
-            size='md'
-            variant='outline'
-            action='success'
-            className='gap-2 rounded-xl'
-          >
-            <BadgeText>{t('completed')}</BadgeText>
-            <BadgeIcon as={Check} />
-          </Badge>
+          <StatusBadge isCompleted={readingProgress[day - 1]} />
         ) : (
           <Checkbox
-            value='false'
             size='md'
             isInvalid={false}
             isDisabled={false}
+            value={'' + readingProgress[day - 1]}
+            onChange={() =>
+              progress$.quranReading[day - 1].set(!readingProgress[day - 1])
+            }
           >
             <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
               <CheckboxIcon as={CheckIcon} />
