@@ -15,8 +15,29 @@ const getNormalizedLocale = () => {
   return locale
 }
 
+type Location = {
+  city: string
+  country: string
+  latitude: number
+  longitude: number
+}
+
+type PrayerTimes = {
+  prayers: {
+    [date: string]: string[]
+  }
+  method: string
+  offset: number[] //minutes
+  latitudeAdjustmentMethod: string
+  midnightMode: string
+  school: string
+  timezone: string
+  lastUpdate: Date
+}
+
 export const settings$ = observable({
   language: getNormalizedLocale(),
+  location: null as Location | null,
   notifications: {
     prayers: true,
     azkar: true,

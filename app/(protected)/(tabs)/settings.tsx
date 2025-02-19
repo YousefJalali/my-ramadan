@@ -9,6 +9,7 @@ import {
   ChevronRight,
   CircleUserRound,
   Languages,
+  MapPinned,
   type LucideIcon,
 } from 'lucide-react-native'
 import { Icon } from '@/components/ui/icon'
@@ -50,6 +51,11 @@ const sections: Section[] = [
         iconName: Bell,
         subText: 'notifications',
         path: '/settings/notifications',
+      },
+      {
+        iconName: MapPinned,
+        subText: 'location',
+        path: '/settings/location',
       },
     ],
   },

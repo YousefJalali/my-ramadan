@@ -6,9 +6,10 @@ import { session$, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
+import { getLocation } from '@/utils/getLocation'
 
 export default function ProtectedLayout() {
-  const { language } = use$(settings$)
+  const { language, location } = use$(settings$)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -25,6 +26,26 @@ export default function ProtectedLayout() {
         session$.set(null)
       }
     })
+  }, [])
+
+  useEffect(() => {
+    async function setLocation() {
+      console.log('setLocation')
+      const { location, error, region } = await getLocation()
+
+      if (!error && region?.country && region?.city && location) {
+        settings$.location.set({
+          country: region.country,
+          city: region.city,
+          longitude: location.coords.longitude,
+          latitude: location.coords.latitude,
+        })
+      }
+    }
+
+    if (!location) {
+      setLocation()
+    }
   }, [])
 
   const options: NativeStackNavigationOptions = {

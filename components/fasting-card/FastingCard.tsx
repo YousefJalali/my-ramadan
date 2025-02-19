@@ -8,13 +8,19 @@ import { formatTime } from '@/utils/formatTime'
 import FastingCountdown from './FastingCountdown'
 import { Heading } from '../ui/heading'
 import DigitalClock from './DigitalClock'
-import LocationDisplay from '../LocationDisplay'
+import { settings$ } from '@/store'
+import { use$ } from '@legendapp/state/react'
+import { Link } from 'expo-router'
+import { Icon } from '../ui/icon'
+import { MapPin } from 'lucide-react-native'
 
 export default function FastingCard({ dayIndex }: { dayIndex: number }) {
   const {
     t,
     i18n: { language },
   } = useTranslation()
+
+  const currentLocation = use$(settings$.location)
 
   // console.log(location)
 
@@ -99,9 +105,19 @@ export default function FastingCard({ dayIndex }: { dayIndex: number }) {
 
       <FastingCountdown dayIndex={dayIndex} />
 
-      <Center className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
-        <LocationDisplay />
-      </Center>
+      {currentLocation ? (
+        <Center className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
+          <Link href='/(protected)/settings/location'>
+            <HStack
+              space='xs'
+              className='bg-neutral-100/20 p-3 py-1 rounded-2xl'
+            >
+              <Text className='text-neutral-200'>{`${currentLocation.city}, ${currentLocation.country}`}</Text>
+              <Icon as={MapPin} className='text-neutral-200' />
+            </HStack>
+          </Link>
+        </Center>
+      ) : null}
 
       <Center>
         <Heading size='3xl' className='text-primary-50'>
