@@ -15,6 +15,12 @@ const getNormalizedLocale = () => {
   return locale
 }
 
+export type Notification = {
+  prayers: boolean
+  azkar: boolean
+  quranReading: boolean
+}
+
 type Location = {
   city: string
   country: string
@@ -22,18 +28,22 @@ type Location = {
   longitude: number
 }
 
-type PrayerTimes = {
-  prayers: {
-    [date: string]: string[]
-  }
-  method: string
-  offset: number[] //minutes
-  latitudeAdjustmentMethod: string
-  midnightMode: string
-  school: string
-  timezone: string
-  lastUpdate: Date
+type PrayerTimesType = {
+  isRecommendedEnabled: boolean
+  calculationMethod: number
+  shafaq?: string
+  latitudeAdjustmentMethod?: number
+  midnightMode: number
+  school: number
+  prayerTimeAdjustment?: number[] //minutes
+  timezone?: string
+  lastUpdate: number
 }
+
+export type PrayerTimesKeys = keyof Pick<
+  PrayerTimesType,
+  'calculationMethod' | 'latitudeAdjustmentMethod' | 'midnightMode' | 'school'
+>
 
 export const settings$ = observable({
   language: getNormalizedLocale(),
@@ -41,8 +51,19 @@ export const settings$ = observable({
   notifications: {
     prayers: true,
     azkar: true,
-    quran: true,
-  },
+    quranReading: true,
+  } as Notification,
+  prayerTimes: {
+    isRecommendedEnabled: true,
+    calculationMethod: 3,
+    shafaq: undefined,
+    latitudeAdjustmentMethod: undefined,
+    midnightMode: 0,
+    school: 0,
+    prayerTimeAdjustment: undefined,
+    timezone: undefined,
+    lastUpdate: +new Date(),
+  } as PrayerTimesType,
 })
 
 export const progress$ = observable({
