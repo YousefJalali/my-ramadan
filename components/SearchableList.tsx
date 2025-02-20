@@ -47,7 +47,11 @@ export default function SearchableList<T extends { name: string }>({
 
       {/* Loading Indicator */}
       {loading && (
-        <Spinner size='small' color={colors.light['--color-primary-600']} />
+        <Spinner
+          size='small'
+          className='my-8'
+          color={colors.light['--color-primary-600']}
+        />
       )}
 
       {/* Error Message */}

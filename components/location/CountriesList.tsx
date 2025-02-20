@@ -11,107 +11,81 @@ import {
 } from '@/components/ui/actionsheet'
 import { Pressable } from '@/components/ui/pressable'
 import SearchableList from '@/components/SearchableList'
-import { settings$ } from '@/store'
-
-const item = {
-  id: 1,
-  name: 'Afghanistan',
-  iso3: 'AFG',
-  iso2: 'AF',
-  numeric_code: '004',
-  phonecode: '93',
-  capital: 'Kabul',
-  currency: 'AFN',
-  currency_name: 'Afghan afghani',
-  currency_symbol: '؋',
-  tld: '.af',
-  native: 'افغانستان',
-  region: 'Asia',
-  region_id: 3,
-  subregion: 'Southern Asia',
-  subregion_id: 14,
-  nationality: 'Afghan',
-  timezones: [
-    {
-      zoneName: 'Asia/Kabul',
-      gmtOffset: 16200,
-      gmtOffsetName: 'UTC+04:30',
-      abbreviation: 'AFT',
-      tzName: 'Afghanistan Time',
-    },
-  ],
-  translations: {
-    ko: '아프가니스탄',
-    'pt-BR': 'Afeganistão',
-  },
-  latitude: '33.00000000',
-  longitude: '65.00000000',
-  emoji: '🇦🇫',
-  emojiU: 'U+1F1E6 U+1F1EB',
-  cities: [
-    {
-      id: 141,
-      name: '‘Alāqahdārī Dīshū',
-      latitude: '30.43206000',
-      longitude: '63.29802000',
-    },
-  ],
-}
-
-type Country = typeof item
-type City = (typeof item.cities)[0]
+import { useTranslation } from 'react-i18next'
+import { Heading } from '../ui/heading'
+import { getCountries, insertCountries, setupDatabase } from '@/utils/sqlite'
+import { Country } from '@/types'
+import CitiesList from './CitiesList'
 
 export default function CountriesList() {
+  const { t } = useTranslation()
+
   const [countries, setCountries] = useState<Country[]>([])
-  const [country, setCountry] = useState<Country | null>(null)
+  const [selectedCountry, setSelectedCountry] = useState<Pick<
+    Country,
+    'iso2' | 'name' | 'emoji'
+  > | null>(null)
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  useEffect(() => {
-    const loadCities = async (retryCount = 3) => {
-      try {
-        setLoading(true)
-        setError(null)
+  const fetchCountries = async (retryCount = 3) => {
+    try {
+      setLoading(true)
+      setError(null)
 
-        const response = await fetch(
-          'https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/refs/heads/master/json/countries%2Bcities.json'
-        )
+      const response = await fetch(
+        'https://buwskjtoapwcxnsgsqrs.supabase.co/storage/v1/object/public/countries//countries.json'
+      )
 
-        if (!response.ok) throw new Error('Failed to fetch cities')
+      if (!response.ok) throw new Error('Failed to fetch cities')
 
-        const data = await response.json()
-        setCountries(data)
-      } catch (error) {
-        console.error('Error loading cities:', error)
-        setError('Failed to load cities. Please try again.')
+      const data = await response.json()
 
-        if (retryCount > 0) {
-          setTimeout(() => loadCities(retryCount - 1), 2000) // Retry after 2 seconds
-        }
-      } finally {
-        setLoading(false)
+      setCountries(data)
+
+      insertCountries(data)
+    } catch (error) {
+      console.error('Error loading cities:', error)
+      setError('Failed to load cities. Please try again.')
+
+      if (retryCount > 0) {
+        setTimeout(() => fetchCountries(retryCount - 1), 2000) // Retry after 2 seconds
       }
+    } finally {
+      setLoading(false)
     }
+  }
 
-    loadCities()
+  async function getCountriesFromDb() {
+    try {
+      setLoading(true)
+
+      const res = await getCountries()
+      if (res?.length === 0) {
+        await fetchCountries()
+      } else {
+        setCountries(res)
+      }
+    } catch (error) {
+      console.error('Error fetching countries from db:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    setupDatabase()
+
+    getCountriesFromDb()
   }, [])
 
   function handleClose() {
-    setCountry(null)
+    setSelectedCountry(null)
   }
 
-  function handleCityPress({ name, longitude, latitude }: City) {
-    if (!country) return
-
-    settings$.location.set({
-      country: country.name,
-      city: name,
-      longitude: +longitude,
-      latitude: +latitude,
-    })
-
-    handleClose()
+  const handleCountryPress = ({ name, iso2, emoji }: Country) => {
+    setSelectedCountry({ name, iso2, emoji })
   }
 
   return (
@@ -123,18 +97,18 @@ export default function CountriesList() {
         placeholder='Search Country...'
       >
         {({ item, index }) => (
-          <Pressable onPress={() => setCountry(item)}>
+          <Pressable onPress={() => handleCountryPress(item)}>
             <HStack className='py-3' space='sm'>
               <Text>{item.emoji}</Text>
-              <Text>{item.name}</Text>
+              <Text>{t(item.name)}</Text>
             </HStack>
           </Pressable>
         )}
       </SearchableList>
 
-      {country ? (
+      {selectedCountry ? (
         <Actionsheet
-          isOpen={!!country}
+          isOpen={!!selectedCountry}
           onClose={handleClose}
           snapPoints={[90]}
           className=''
@@ -147,18 +121,13 @@ export default function CountriesList() {
             </ActionsheetDragIndicatorWrapper>
 
             <VStack className='flex-1 h-full w-full'>
-              <SearchableList<City>
-                loading={false}
-                error=''
-                list={country.cities}
-                placeholder='Search City...'
-              >
-                {({ item, index }) => (
-                  <Pressable onPress={() => handleCityPress(item)}>
-                    <Text className='py-3'>{item.name}</Text>
-                  </Pressable>
-                )}
-              </SearchableList>
+              <Heading className='my-3' size='2xl'>
+                {selectedCountry.name} {selectedCountry.emoji}
+              </Heading>
+              <CitiesList
+                iso2={selectedCountry.iso2}
+                handleClose={handleClose}
+              />
             </VStack>
           </ActionsheetContent>
         </Actionsheet>
