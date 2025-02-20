@@ -6,6 +6,7 @@ import { VStack } from '@/components/ui/vstack'
 import { PRAYER_SETTINGS } from '@/constants/prayerTimesSettings'
 import { PrayerTimesKeys, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
+import { t } from 'i18next'
 
 const timeCalculationMethods: (SettingsLinkType & {
   key: PrayerTimesKeys
@@ -57,7 +58,7 @@ export default function PrayerTimes() {
     <VStack className='flex-1'>
       <VStack className='mb-3'>
         <LabeledSwitch
-          label='Recommended settings'
+          label={t('recommended settings')}
           value={isRecommendedEnabled}
           onChange={changeHandler}
         />

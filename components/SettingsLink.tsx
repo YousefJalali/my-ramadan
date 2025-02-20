@@ -40,10 +40,10 @@ export default function SettingsLink({
           {preview ? (
             <Text
               isTruncated={true}
-              className='text-neutral-900/70 line-clamp-2 flex-1 text-right'
+              className='text-neutral-900/70 line-clamp-2 flex-1 !text-right'
               size='sm'
             >
-              {preview}
+              {t(preview)}
             </Text>
           ) : null}
           <Icon as={language === 'ar-SA' ? ChevronLeft : ChevronRight} />
