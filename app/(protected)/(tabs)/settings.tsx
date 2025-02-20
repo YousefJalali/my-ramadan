@@ -1,36 +1,26 @@
 import React from 'react'
-import { HStack } from '@/components/ui/hstack'
-import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
 import {
   Bell,
   BookText,
-  ChevronLeft,
-  ChevronRight,
   CircleUserRound,
+  Clock,
   Languages,
   MapPinned,
-  type LucideIcon,
 } from 'lucide-react-native'
-import { Icon } from '@/components/ui/icon'
-import { Button, ButtonText } from '@/components/ui/button'
 import { Heading } from '@/components/ui/heading'
 import { ScrollView } from '@/components/ui/scroll-view'
 import { Divider } from '@/components/ui/divider'
-import { Href, Link } from 'expo-router'
 import Profile from '@/components/profile/Profile'
 import LogoutBtn from '@/components/profile/LogoutBtn'
 import { session$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { useTranslation } from 'react-i18next'
+import SettingsLink, { SettingsLinkType } from '@/components/SettingsLink'
 
 type Section = {
   sectionTitle: string
-  list: {
-    iconName: LucideIcon
-    subText: string
-    path: Href
-  }[]
+  list: SettingsLinkType[]
 }
 
 const sections: Section[] = [
@@ -57,6 +47,11 @@ const sections: Section[] = [
         subText: 'location',
         path: '/settings/location',
       },
+      {
+        iconName: Clock,
+        subText: 'prayer times',
+        path: '/settings/prayer-times',
+      },
     ],
   },
   {
@@ -78,10 +73,7 @@ const sections: Section[] = [
 
 export default function Settings() {
   const session = use$(session$)
-  const {
-    t,
-    i18n: { language },
-  } = useTranslation()
+  const { t } = useTranslation()
 
   return (
     <VStack className='h-full w-full my-12'>
@@ -131,23 +123,12 @@ export default function Settings() {
                       return null
                     return (
                       <React.Fragment key={subText}>
-                        <Link href={path}>
-                          <HStack className='justify-between items-center w-full flex-1 py-3'>
-                            <HStack className='items-center' space='lg'>
-                              <Icon as={iconName} size='xl' />
-                              <Text size='lg' className='text-neutral-900'>
-                                {t(subText)}
-                              </Text>
-                            </HStack>
-                            <Icon
-                              as={
-                                language === 'ar-SA'
-                                  ? ChevronLeft
-                                  : ChevronRight
-                              }
-                            />
-                          </HStack>
-                        </Link>
+                        <SettingsLink
+                          path={path}
+                          iconName={iconName}
+                          subText={subText}
+                        />
+
                         {list.length - 1 !== index && (
                           <Divider className='my-1' />
                         )}

@@ -1,36 +1,42 @@
-import { HStack } from '@/components/ui/hstack'
-import { Switch } from '@/components/ui/switch'
 import { VStack } from '@/components/ui/vstack'
-import { Text } from '@/components/ui/text'
 import { Divider } from '@/components/ui/divider'
 import React from 'react'
-import { colors } from '@/components/ui/gluestack-ui-provider/config'
-import { useTranslation } from 'react-i18next'
+import LabeledSwitch from '@/components/LabeledSwitch'
+import { use$ } from '@legendapp/state/react'
+import { settings$, Notification } from '@/store'
+
+const list: { key: keyof Notification; label: string }[] = [
+  {
+    key: 'prayers',
+    label: 'Prayers notifications',
+  },
+  {
+    key: 'azkar',
+    label: 'Azkar notifications',
+  },
+  {
+    key: 'quranReading',
+    label: 'Quran reading notifications',
+  },
+]
 
 export default function Notifications() {
-  const { t } = useTranslation()
+  const notifications = use$(settings$.notifications)
+
+  function changeHandler(key: keyof Notification) {
+    settings$.notifications[key].set(!notifications[key])
+  }
+
   return (
     <VStack>
-      {[
-        'Prayers notifications',
-        'Azkar notifications',
-        'Quran reading notifications',
-      ].map((n, i, arr) => (
-        <React.Fragment key={n}>
-          <HStack className='items-center justify-between w-full'>
-            <Text size='lg'>{t(n)}</Text>
-
-            <Switch
-              size='md'
-              trackColor={{
-                false: `rgb(${colors.light['--color-neutral-100']})`,
-                true: `rgb(${colors.light['--color-primary-600']})`,
-              }}
-              thumbColor={`rgb(${colors.light['--color-neutral-300']})`}
-              // activeThumbColor={colors.gray[50]}
-              ios_backgroundColor={`rgb(${colors.light['--color-primary-50']})`}
-            />
-          </HStack>
+      {list.map(({ key, label }, i, arr) => (
+        <React.Fragment key={key}>
+          <LabeledSwitch
+            key={label}
+            label={label}
+            value={notifications[key]}
+            onChange={() => changeHandler(key)}
+          />
 
           {i !== arr.length - 1 ? (
             <Divider className='my-4 bg-neutral-100' />
