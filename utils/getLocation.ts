@@ -24,7 +24,8 @@ export async function getLocation(): Promise<LocationResult> {
 
   let { status } = await Location.requestForegroundPermissionsAsync()
   if (status !== 'granted') {
-    result.error = 'Permission to access location was denied'
+    result.error =
+      'Location access is needed. Please enable it in settings and try again.'
     return result
   }
 

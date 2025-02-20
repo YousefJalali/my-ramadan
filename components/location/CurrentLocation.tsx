@@ -7,6 +7,11 @@ import { Text } from '@/components/ui/text'
 import { settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { useState } from 'react'
+import { Alert, AlertIcon, AlertText } from '../ui/alert'
+import { Icon } from '../ui/icon'
+import { InfoIcon, X } from 'lucide-react-native'
+import { Pressable } from '../ui/pressable'
+import { Linking } from 'react-native'
 
 export default function CurrentLocation() {
   const [loading, setLoading] = useState(false)
@@ -21,7 +26,7 @@ export default function CurrentLocation() {
     setLoading(false)
 
     if (error || !region?.country || !region?.city || !location) {
-      setError('Something went wrong! Try again')
+      setError(error)
       return
     }
 
@@ -34,27 +39,49 @@ export default function CurrentLocation() {
   }
 
   return (
-    <HStack className='mb-8 justify-between items-end'>
-      <VStack space='xs'>
-        <Heading size='md'>Current Location</Heading>
-        <Text className='leading-loose'>
-          {currentLocation
-            ? `${currentLocation.city}, ${currentLocation.country}`
-            : 'Nothing'}
-        </Text>
-      </VStack>
-
-      <VStack className='items-end'>
-        {error ? (
-          <Text size='sm' className='leading-loose text-error-600'>
-            {error}
+    <VStack className='mb-6'>
+      <HStack className='justify-between items-end'>
+        <VStack space='xs'>
+          <Heading size='md'>Current Location</Heading>
+          <Text className='leading-loose'>
+            {currentLocation
+              ? `${currentLocation.city}, ${currentLocation.country}`
+              : 'Nothing'}
           </Text>
-        ) : null}
+        </VStack>
 
-        <Button size='sm' variant='link' onPress={relocateHandler}>
-          <ButtonText>{loading ? 'Relocating...' : 'Relocate'}</ButtonText>
-        </Button>
-      </VStack>
-    </HStack>
+        <VStack className='items-end'>
+          <Button size='sm' variant='link' onPress={relocateHandler}>
+            <ButtonText>{loading ? 'Relocating...' : 'Relocate'}</ButtonText>
+          </Button>
+        </VStack>
+      </HStack>
+
+      {error ? (
+        <Alert action='warning' className='gap-4 items-start mt-2'>
+          <AlertIcon as={InfoIcon} className='mt-1' />
+          <VStack className='flex-1' space='sm'>
+            <AlertText className='font-semibold text-warning-900' size='sm'>
+              {error}
+            </AlertText>
+
+            <Button
+              size='sm'
+              variant='link'
+              className='self-start'
+              onPress={() => {
+                Linking.openSettings()
+              }}
+            >
+              <ButtonText>Open settings</ButtonText>
+            </Button>
+          </VStack>
+
+          <Pressable onPress={() => setError(null)}>
+            <Icon as={X} />
+          </Pressable>
+        </Alert>
+      ) : null}
+    </VStack>
   )
 }
