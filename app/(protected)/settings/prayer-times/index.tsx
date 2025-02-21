@@ -3,38 +3,33 @@ import SettingsLink, { SettingsLinkType } from '@/components/SettingsLink'
 import { Divider } from '@/components/ui/divider'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
-import { PRAYER_SETTINGS } from '@/constants/prayerTimesSettings'
-import { PrayerTimesKeys, settings$ } from '@/store'
+import { PRAYER_TIME_METHODS } from '@/constants/prayerTimeCalculation'
+import { PrayerTimeMethodsKeys, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { t } from 'i18next'
 
 const timeCalculationMethods: (SettingsLinkType & {
-  key: PrayerTimesKeys
-  constant: string
+  key: PrayerTimeMethodsKeys
 })[] = [
   {
     key: 'calculationMethod',
     subText: 'calculation method',
     path: '/settings/prayer-times/calculation-method',
-    constant: 'CALCULATION_METHODS',
   },
   {
     key: 'school',
     subText: 'school',
     path: '/settings/prayer-times/school',
-    constant: 'SCHOOL',
   },
   {
     key: 'latitudeAdjustmentMethod',
     subText: 'latitude adjustment method',
     path: '/settings/prayer-times/latitude-adjustment-method',
-    constant: 'LATITUDE_ADJUSTMENT_METHOD',
   },
   {
     key: 'midnightMode',
     subText: 'midnight mode',
     path: '/settings/prayer-times/midnight-mode',
-    constant: 'MIDNIGHT_MODE',
   },
 ]
 
@@ -46,12 +41,12 @@ const otherSettings: SettingsLinkType[] = [
 ]
 
 export default function PrayerTimes() {
-  const { prayerTimes } = use$(settings$)
+  const { prayerTimeMethods } = use$(settings$)
 
-  const { isRecommendedEnabled } = prayerTimes
+  const { isRecommendedEnabled } = prayerTimeMethods
 
   function changeHandler() {
-    settings$.prayerTimes.isRecommendedEnabled.set(!isRecommendedEnabled)
+    settings$.prayerTimeMethods.isRecommendedEnabled.set(!isRecommendedEnabled)
   }
 
   return (
@@ -69,12 +64,14 @@ export default function PrayerTimes() {
 
       {isRecommendedEnabled ? null : (
         <VStack space='xs'>
-          {timeCalculationMethods.map(({ path, subText, constant, key }) => (
+          {timeCalculationMethods.map(({ path, subText, key }) => (
             <SettingsLink
               key={key}
               path={path}
               subText={subText}
-              preview={PRAYER_SETTINGS[constant][prayerTimes[key] as number]}
+              preview={
+                PRAYER_TIME_METHODS[key][prayerTimeMethods[key] as number]
+              }
             />
           ))}
         </VStack>

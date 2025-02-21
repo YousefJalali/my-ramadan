@@ -39,10 +39,10 @@
 //   3: 'Angle Based',
 // }
 
-export const PRAYER_SETTINGS: {
+export const PRAYER_TIME_METHODS: {
   [settingName: string]: { [key: number]: string }
 } = {
-  CALCULATION_METHODS: {
+  calculationMethod: {
     0: 'Jafari / Shia Ithna-Ashari',
     1: 'University of Islamic Sciences, Karachi',
     2: 'Islamic Society of North America',
@@ -68,12 +68,12 @@ export const PRAYER_SETTINGS: {
     23: 'Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan',
   },
 
-  SCHOOL: { 0: 'Shafi', 1: 'Hanafi' },
-  MIDNIGHT_MODE: {
+  school: { 0: 'Shafi', 1: 'Hanafi' },
+  midnightMode: {
     0: 'Standard (Mid Sunset to Sunrise)',
     1: 'Jafari (Mid Sunset to Fajr)',
   },
-  LATITUDE_ADJUSTMENT_METHOD: {
+  latitudeAdjustmentMethod: {
     1: 'Middle of the Night',
     2: 'One Seventh',
     3: 'Angle Based',
@@ -82,7 +82,7 @@ export const PRAYER_SETTINGS: {
 
 export const SHAFAQ = ['general', 'ahmer', 'abyad']
 
-export function toList<T>(item: typeof PRAYER_SETTINGS.MIDNIGHT_MODE) {
+export function toList<T>(item: typeof PRAYER_TIME_METHODS.calculationMethod) {
   return Object.keys(item).map((key) => ({
     value: key,
     label: item[+key],

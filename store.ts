@@ -39,7 +39,7 @@ type Location = {
   longitude: number
 }
 
-type PrayerTimesType = {
+type PrayerTimeMethodsType = {
   isRecommendedEnabled: boolean
   calculationMethod: number
   shafaq?: string
@@ -51,8 +51,8 @@ type PrayerTimesType = {
   lastUpdate: number
 }
 
-export type PrayerTimesKeys = keyof Pick<
-  PrayerTimesType,
+export type PrayerTimeMethodsKeys = keyof Pick<
+  PrayerTimeMethodsType,
   'calculationMethod' | 'latitudeAdjustmentMethod' | 'midnightMode' | 'school'
 >
 
@@ -64,7 +64,7 @@ export const settings$ = observable({
     azkar: true,
     quranReading: true,
   } as Notification,
-  prayerTimes: {
+  prayerTimeMethods: {
     isRecommendedEnabled: true,
     calculationMethod: 3,
     shafaq: undefined,
@@ -74,7 +74,7 @@ export const settings$ = observable({
     prayerTimeAdjustment: [0, 0, 0, 0, 0],
     timezone: undefined,
     lastUpdate: +new Date(),
-  } as PrayerTimesType,
+  } as PrayerTimeMethodsType,
 })
 
 export const progress$ = observable({

@@ -9,16 +9,16 @@ import { useTranslation } from 'react-i18next'
 
 export default function PrayerTimeAdjustment() {
   const { t } = useTranslation()
-  const { prayerTimeAdjustment } = use$(settings$.prayerTimes)
+  const { prayerTimeAdjustment } = use$(settings$.prayerTimeMethods)
 
   function decrementTime(prayerIndex: number) {
-    settings$.prayerTimes.prayerTimeAdjustment[prayerIndex].set(
+    settings$.prayerTimeMethods.prayerTimeAdjustment[prayerIndex].set(
       prayerTimeAdjustment[prayerIndex] - 1
     )
   }
 
   function incrementTime(prayerIndex: number) {
-    settings$.prayerTimes.prayerTimeAdjustment[prayerIndex].set(
+    settings$.prayerTimeMethods.prayerTimeAdjustment[prayerIndex].set(
       prayerTimeAdjustment[prayerIndex] + 1
     )
   }
