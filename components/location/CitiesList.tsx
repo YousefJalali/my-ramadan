@@ -5,6 +5,7 @@ import { settings$ } from '@/store'
 import { Pressable } from '../ui/pressable'
 import { Text } from '@/components/ui/text'
 import { getCitiesByCountry, insertCities } from '@/utils/sqlite'
+import { useTranslation } from 'react-i18next'
 
 export default function CitiesList({
   iso2,
@@ -13,6 +14,7 @@ export default function CitiesList({
   iso2: string
   handleClose: () => void
 }) {
+  const { t } = useTranslation()
   const [cities, setCities] = useState<City[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -84,7 +86,7 @@ export default function CitiesList({
       loading={loading}
       error={error}
       list={cities}
-      placeholder='Search City...'
+      placeholder={`${t('search city')}...`}
     >
       {({ item, index }) => (
         <Pressable onPress={() => handleCityPress(item)}>

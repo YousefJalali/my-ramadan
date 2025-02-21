@@ -12,8 +12,11 @@ import { Icon } from '../ui/icon'
 import { InfoIcon, X } from 'lucide-react-native'
 import { Pressable } from '../ui/pressable'
 import { Linking } from 'react-native'
+import { useTranslation } from 'react-i18next'
 
 export default function CurrentLocation() {
+  const { t } = useTranslation()
+
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
@@ -42,7 +45,7 @@ export default function CurrentLocation() {
     <VStack className='mb-6'>
       <HStack className='justify-between items-end'>
         <VStack space='xs'>
-          <Heading size='md'>Current Location</Heading>
+          <Heading size='md'>{t('current location')}</Heading>
           <Text className='leading-loose'>
             {currentLocation
               ? `${currentLocation.city}, ${currentLocation.country}`
@@ -52,7 +55,9 @@ export default function CurrentLocation() {
 
         <VStack className='items-end'>
           <Button size='sm' variant='link' onPress={relocateHandler}>
-            <ButtonText>{loading ? 'Relocating...' : 'Relocate'}</ButtonText>
+            <ButtonText>
+              {loading ? t('relocating...') : t('relocate')}
+            </ButtonText>
           </Button>
         </VStack>
       </HStack>
@@ -62,7 +67,7 @@ export default function CurrentLocation() {
           <AlertIcon as={InfoIcon} className='mt-1' />
           <VStack className='flex-1' space='sm'>
             <AlertText className='font-semibold text-warning-900' size='sm'>
-              {error}
+              {t(error)}
             </AlertText>
 
             <Button
@@ -73,7 +78,7 @@ export default function CurrentLocation() {
                 Linking.openSettings()
               }}
             >
-              <ButtonText>Open settings</ButtonText>
+              <ButtonText>{t('open settings')}</ButtonText>
             </Button>
           </VStack>
 

@@ -94,7 +94,7 @@ export default function CountriesList() {
         loading={loading}
         error={error}
         list={countries}
-        placeholder='Search Country...'
+        placeholder={`${t('search country')}...`}
       >
         {({ item, index }) => (
           <Pressable onPress={() => handleCountryPress(item)}>

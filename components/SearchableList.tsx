@@ -34,7 +34,7 @@ export default function SearchableList<T extends { name: string }>({
   return (
     <>
       <Input variant='rounded' size='lg'>
-        <InputSlot className='pl-3'>
+        <InputSlot className='px-4'>
           <InputIcon as={SearchIcon} />
         </InputSlot>
 
@@ -42,6 +42,7 @@ export default function SearchableList<T extends { name: string }>({
           value={query}
           onChangeText={(text) => query$.set(text)}
           placeholder={placeholder}
+          className='p-0'
         />
       </Input>
 
