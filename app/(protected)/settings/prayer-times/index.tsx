@@ -41,7 +41,7 @@ const timeCalculationMethods: (SettingsLinkType & {
 const otherSettings: SettingsLinkType[] = [
   {
     subText: 'prayer time adjustment',
-    path: '/settings/language',
+    path: '/settings/prayer-times/prayer-time-adjustment',
   },
 ]
 

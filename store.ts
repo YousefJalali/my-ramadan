@@ -1,8 +1,19 @@
 import { observable } from '@legendapp/state'
 import { Session } from '@supabase/supabase-js'
 import * as Localization from 'expo-localization'
+import { ObservablePersistAsyncStorage } from '@legendapp/state/persist-plugins/async-storage'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export const session$ = observable<Session | null>(null)
+
+// configureObservablePersistence({
+//   pluginLocal: ObservablePersistAsyncStorage,
+//   localOptions: {
+//       asyncStorage: {
+//           AsyncStorage
+//       }
+//   }
+// })
 
 const getNormalizedLocale = () => {
   const locale = Localization.getLocales()[0]?.languageTag
@@ -35,7 +46,7 @@ type PrayerTimesType = {
   latitudeAdjustmentMethod?: number
   midnightMode: number
   school: number
-  prayerTimeAdjustment?: number[] //minutes
+  prayerTimeAdjustment: number[] //minutes
   timezone?: string
   lastUpdate: number
 }
@@ -60,7 +71,7 @@ export const settings$ = observable({
     latitudeAdjustmentMethod: undefined,
     midnightMode: 0,
     school: 0,
-    prayerTimeAdjustment: undefined,
+    prayerTimeAdjustment: [0, 0, 0, 0, 0],
     timezone: undefined,
     lastUpdate: +new Date(),
   } as PrayerTimesType,
