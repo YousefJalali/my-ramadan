@@ -9,18 +9,14 @@ import { useTranslation } from 'react-i18next'
 
 export default function PrayerTimeAdjustment() {
   const { t } = useTranslation()
-  const { prayerTimeAdjustment } = use$(settings$.prayerTimeMethods)
+  const { offset } = use$(settings$.prayerTimes)
 
   function decrementTime(prayerIndex: number) {
-    settings$.prayerTimeMethods.prayerTimeAdjustment[prayerIndex].set(
-      prayerTimeAdjustment[prayerIndex] - 1
-    )
+    settings$.prayerTimes.offset[prayerIndex].set(offset[prayerIndex] - 1)
   }
 
   function incrementTime(prayerIndex: number) {
-    settings$.prayerTimeMethods.prayerTimeAdjustment[prayerIndex].set(
-      prayerTimeAdjustment[prayerIndex] + 1
-    )
+    settings$.prayerTimes.offset[prayerIndex].set(offset[prayerIndex] + 1)
   }
 
   return (
@@ -39,7 +35,7 @@ export default function PrayerTimeAdjustment() {
               <ButtonIcon as={MinusCircle} className='w-8 h-8' />
             </Button>
             <Text size='lg' className='w-16 text-center'>
-              {prayerTimeAdjustment[i]}
+              {offset[i]}
             </Text>
             <Button variant='link' size='xl' onPress={() => incrementTime(i)}>
               <ButtonIcon as={PlusCircle} className='w-8 h-8' />

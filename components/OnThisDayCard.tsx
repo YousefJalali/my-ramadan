@@ -18,7 +18,7 @@ type Story = {
   description: string
 }
 
-export default function OnThisDayCard({ dayIndex }: { dayIndex: number }) {
+export default function OnThisDayCard({ day }: { day: number }) {
   const [stories, setStories] = useState<Story[]>([])
   const [isPending, startTransition] = useTransition()
 
@@ -29,7 +29,7 @@ export default function OnThisDayCard({ dayIndex }: { dayIndex: number }) {
 
   async function getStories() {
     try {
-      setStories(flashback[language][dayIndex])
+      setStories(flashback[language][day - 1])
     } catch (error) {
       console.log(error)
     }
@@ -39,7 +39,7 @@ export default function OnThisDayCard({ dayIndex }: { dayIndex: number }) {
     startTransition(() => {
       getStories()
     })
-  }, [dayIndex, language])
+  }, [day, language])
 
   return isPending ? (
     <Center>

@@ -8,14 +8,14 @@ import { Center } from '../ui/center'
 import { Dimensions } from 'react-native'
 import { toMinutes } from '@/utils/toMinutes'
 import { mapRange } from '@/utils/mapRange'
-import { todaysPrayerTimes$ } from '@/store'
+import { prayerTimes$ } from '@/store'
 import { parsePrayerTime } from '@/utils/parsePrayerTime'
 import { use$ } from '@legendapp/state/react'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
-export default function FastingCountdown({ dayIndex }: { dayIndex: number }) {
-  const { Fajr, Maghrib } = use$(todaysPrayerTimes$[dayIndex + 1].timings)
+export default function FastingCountdown({ day }: { day: number }) {
+  const { Fajr, Maghrib } = use$(prayerTimes$.timings[day])
 
   // console.log(parsePrayerTime(Maghrib))
 

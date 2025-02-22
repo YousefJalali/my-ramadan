@@ -1,4 +1,4 @@
-import { PrayerTimes, PrayerTimesAPIResponse } from '@/types'
+import { CachedPrayerTimes, PrayerTimesAPIResponse } from '@/types'
 import { openDatabaseSync } from 'expo-sqlite'
 
 // Open the database synchronously
@@ -14,6 +14,10 @@ export const setupPrayerTimesDB = async () => {
         timings TEXT, 
         hijriDate TEXT, 
         gregorianDate TEXT,
+        hijriDay NUMBER,
+        gregorianDay NUMBER,
+        hijriMonth NUMBER,
+        gregorianMonth NUMBER,
         latitude REAL,
         longitude REAL,
         method INTEGER,
@@ -40,14 +44,18 @@ export const insertPrayerTimes = async (
       // Insert country data
       await db.runAsync(
         `INSERT OR REPLACE INTO prayer_times 
-          (id, url, timings, hijriDate, gregorianDate, latitude, longitude, method, latitudeAdjustmentMethod, midnightMode, school, offset) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
+          (id, url, timings, hijriDate, gregorianDate, hijriDay, gregorianDay, hijriMonth, gregorianMonth, latitude, longitude, method, latitudeAdjustmentMethod, midnightMode, school, offset) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
 
         uniqueId,
         url,
         JSON.stringify(timings),
         date.hijri.date,
         date.gregorian.date,
+        date.hijri.day,
+        date.gregorian.day,
+        date.hijri.month.number,
+        date.gregorian.month.number,
         meta.latitude,
         meta.longitude,
         meta.method.id,
@@ -67,10 +75,10 @@ export const insertPrayerTimes = async (
 }
 
 export const getCachedPrayerTimes = async (url: string) => {
-  const result: (Omit<PrayerTimes, 'timings' | 'offset'> & {
-    offset: string
-    timings: string
-  })[] = await db.getAllAsync('SELECT * FROM prayer_times WHERE url = ?', url)
+  const result: CachedPrayerTimes[] = await db.getAllAsync(
+    'SELECT * FROM prayer_times WHERE url = ?',
+    url
+  )
   return result
 }
 

@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import PrayerCountdown from './PrayerCountdown'
 import { use$ } from '@legendapp/state/react'
-import { progress$, todaysPrayerTimes$ } from '@/store'
+import { progress$, prayerTimes$ } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 import { PRAYERS } from '@/constants/prayers'
@@ -21,7 +21,7 @@ import { parsePrayerTime } from '@/utils/parsePrayerTime'
 import { ExtendedPrayer } from '@/types'
 
 type Props = {
-  dayIndex: number
+  day: number
   trackerView?: boolean
   readOnly?: boolean
 }
@@ -29,20 +29,18 @@ type Props = {
 const icons = ['sunrise', 'sun', 'cloud', 'sunset', 'moon']
 
 export default function Prayers({
-  dayIndex,
+  day,
   trackerView = false,
   readOnly = false,
 }: Props) {
-  const { timings: prayers } = use$(todaysPrayerTimes$[dayIndex + 1])
-  const { prayers: prayersProgress } = use$(progress$.days[dayIndex + 1])
+  const prayers = use$(prayerTimes$.timings[day])
+  const { prayers: prayersProgress } = use$(progress$.days[day])
 
   // const toast = useToast()
   const { t } = useTranslation()
 
   async function checkTask(prayerIdx: number) {
-    progress$.days[dayIndex + 1].prayers[prayerIdx].set(
-      !prayersProgress[prayerIdx]
-    )
+    progress$.days[day].prayers[prayerIdx].set(!prayersProgress[prayerIdx])
 
     // const today = new Date()
 
@@ -148,7 +146,7 @@ export default function Prayers({
           ))}
       </HStack>
 
-      {trackerView ? null : <PrayerCountdown dayIndex={dayIndex} />}
+      {trackerView ? null : <PrayerCountdown day={day} />}
     </Center>
   )
 }

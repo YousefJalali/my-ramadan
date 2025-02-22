@@ -2,7 +2,7 @@ import { Stack } from 'expo-router'
 import { useEffect } from 'react'
 import { supabase } from '@/utils/supabase'
 import GoBackBtn from '@/components/GoBackBtn'
-import { session$, settings$, todaysPrayerTimes$ } from '@/store'
+import { session$, settings$, prayerTimes$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import { getLocation } from '@/utils/getLocation'
@@ -11,7 +11,7 @@ import {
   getCachedPrayerTimes,
   setupPrayerTimesDB,
 } from '@/sqlite/prayerTimesDB'
-import { PrayerTimes } from '@/types'
+import { CachedPrayerTimes, StoredPrayerTimes } from '@/types'
 
 export default function ProtectedLayout() {
   const {
@@ -98,44 +98,50 @@ export default function ProtectedLayout() {
 
   async function getPrayerTimes(url: string) {
     try {
-      let data = null
-      let obj: { [day: string]: PrayerTimes } = {}
+      let obj: StoredPrayerTimes
 
-      data = await getCachedPrayerTimes(url)
+      const res = await getCachedPrayerTimes(url)
 
-      if (data?.length) {
+      if (res?.length) {
         console.log('fetched from cache')
 
+        const data: CachedPrayerTimes[] = res
+
+        obj = {
+          ...data[0],
+          offset: JSON.parse(data[0].offset),
+          timings: {},
+        }
+
         data.forEach((dayPrayers) => {
-          const key = (+dayPrayers.hijriDate.split('-')[0]).toString()
-          obj[key] = {
-            ...dayPrayers,
-            timings: JSON.parse(dayPrayers.timings),
-            offset: JSON.parse(dayPrayers.offset),
-          }
+          obj.timings[dayPrayers.hijriDay] = JSON.parse(dayPrayers.timings)
         })
 
-        todaysPrayerTimes$.set(obj)
+        prayerTimes$.set(obj)
       } else {
-        data = await fetchPrayerTimes(url)
+        const data = await fetchPrayerTimes(url)
+
         if (typeof data !== 'string') {
+          const { date, meta } = data[0]
+          obj = {
+            id: `${url}-${date.hijri.date}`,
+            url: url,
+            hijriMonth: date.hijri.month.number,
+            gregorianMonth: date.gregorian.month.number,
+            latitude: meta.latitude,
+            longitude: meta.longitude,
+            method: meta.method.id,
+            latitudeAdjustmentMethod: meta.latitudeAdjustmentMethod,
+            midnightMode: meta.midnightMode,
+            school: meta.school,
+            offset: meta.offset,
+            timings: {},
+          }
+
           data.forEach((dayPrayers) => {
             const { timings, date, meta } = dayPrayers
-            const key = (+date.hijri.date.split('-')[0]).toString()
-            obj[key] = {
-              id: `${url}-${date.hijri.date}`,
-              url: url,
-              timings: timings,
-              hijriDate: date.hijri.date,
-              gregorianDate: date.gregorian.date,
-              latitude: meta.latitude,
-              longitude: meta.longitude,
-              method: meta.method.id,
-              latitudeAdjustmentMethod: meta.latitudeAdjustmentMethod,
-              midnightMode: meta.midnightMode,
-              school: meta.school,
-              offset: meta.offset,
-            }
+
+            obj.timings[date.hijri.day] = timings
           })
         } else {
           //set prayer times settings to math with url

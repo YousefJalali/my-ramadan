@@ -7,7 +7,7 @@ import { formatTime } from '@/utils/formatTime'
 import FastingCountdown from './FastingCountdown'
 import { Heading } from '../ui/heading'
 import DigitalClock from './DigitalClock'
-import { settings$, todaysPrayerTimes$ } from '@/store'
+import { settings$, prayerTimes$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { Link } from 'expo-router'
 import { Icon } from '../ui/icon'
@@ -15,14 +15,14 @@ import { MapPin } from 'lucide-react-native'
 import { parsePrayerTime } from '@/utils/parsePrayerTime'
 import { ExtendedPrayer } from '@/types'
 
-export default function FastingCard({ dayIndex }: { dayIndex: number }) {
+export default function FastingCard({ day }: { day: number }) {
   const {
     t,
     i18n: { language },
   } = useTranslation()
 
   const currentLocation = use$(settings$.location)
-  const prayers = use$(todaysPrayerTimes$[dayIndex + 1].timings)
+  const prayers = use$(prayerTimes$.timings[day])
 
   // console.log(location)
 
@@ -105,7 +105,7 @@ export default function FastingCard({ dayIndex }: { dayIndex: number }) {
         className='absolute bottom-0 h-[150%] opacity-10 mix-blend-multiply'
       />
 
-      <FastingCountdown dayIndex={dayIndex} />
+      <FastingCountdown day={day} />
 
       {currentLocation ? (
         <Center className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>

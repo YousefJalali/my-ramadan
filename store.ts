@@ -3,7 +3,7 @@ import { Session } from '@supabase/supabase-js'
 import * as Localization from 'expo-localization'
 import { ObservablePersistAsyncStorage } from '@legendapp/state/persist-plugins/async-storage'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { PrayerTimes } from './types'
+import { StoredPrayerTimes } from './types'
 
 export const session$ = observable<Session | null>(null)
 
@@ -255,8 +255,8 @@ export const progress$ = observable({
       quranReading: true,
     },
   },
-  dailyProgress: (dayIndex: number) => {
-    const day = progress$.days.get()[dayIndex + 1] || {}
+  dailyProgress: (d: number) => {
+    const day = progress$.days.get()['' + d] || {}
     const fasting = day.fasting ? 1 : 0
     const prayers = day.prayers ? day.prayers.filter((p) => p).length : 0
     const quranReading = day.quranReading ? 1 : 0
@@ -283,29 +283,29 @@ export const progress$ = observable({
 } as Progress)
 
 //prayer times
-export const todaysPrayerTimes$ = observable<{ [day: string]: PrayerTimes }>({
-  '1': {
-    gregorianDate: '23-03-2025',
-    hijriDate: '23-09-1446',
-    id: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA-23-09-1446',
-    latitude: 25.1973654,
-    latitudeAdjustmentMethod: 'ANGLE_BASED',
-    longitude: 51.4537109,
-    method: 3,
-    midnightMode: 'STANDARD',
-    offset: {
-      Asr: 0,
-      Dhuhr: 0,
-      Fajr: 0,
-      Imsak: 0,
-      Isha: 0,
-      Maghrib: 0,
-      Midnight: 0,
-      Sunrise: 0,
-      Sunset: 0,
-    },
-    school: 'STANDARD',
-    timings: {
+export const prayerTimes$ = observable<StoredPrayerTimes>({
+  gregorianMonth: 3,
+  hijriMonth: 9,
+  id: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA-23-09-1446',
+  latitude: 25.1973654,
+  latitudeAdjustmentMethod: 'ANGLE_BASED',
+  longitude: 51.4537109,
+  method: 3,
+  midnightMode: 'STANDARD',
+  offset: {
+    Asr: 0,
+    Dhuhr: 0,
+    Fajr: 0,
+    Imsak: 0,
+    Isha: 0,
+    Maghrib: 0,
+    Midnight: 0,
+    Sunrise: 0,
+    Sunset: 0,
+  },
+  school: 'STANDARD',
+  timings: {
+    '1': {
       Asr: '15:07 (+03)',
       Dhuhr: '11:41 (+03)',
       Fajr: '04:19 (+03)',
@@ -318,6 +318,6 @@ export const todaysPrayerTimes$ = observable<{ [day: string]: PrayerTimes }>({
       Sunrise: '05:35 (+03)',
       Sunset: '17:47 (+03)',
     },
-    url: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA',
   },
+  url: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA',
 })

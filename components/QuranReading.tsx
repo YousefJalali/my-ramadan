@@ -16,15 +16,15 @@ import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 
 export default function QuranReading({
-  dayIndex,
+  day,
   trackerView = false,
   readOnly = false,
 }: {
-  dayIndex: number
+  day: number
   trackerView?: boolean
   readOnly?: boolean
 }) {
-  const { quranReading: readingProgress } = use$(progress$.days[dayIndex + 1])
+  const { quranReading: readingProgress } = use$(progress$.days[day])
 
   const {
     t,
@@ -32,7 +32,7 @@ export default function QuranReading({
   } = useTranslation()
 
   //@ts-ignore
-  const dayReading = ramadanQuranReading[language][dayIndex]
+  const dayReading = ramadanQuranReading[language][day]
 
   return (
     <VStack
@@ -71,7 +71,7 @@ export default function QuranReading({
             isChecked={readingProgress}
             value={'' + readingProgress}
             onChange={() =>
-              progress$.days[dayIndex + 1].quranReading.set(!readingProgress)
+              progress$.days[day].quranReading.set(!readingProgress)
             }
           >
             <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>

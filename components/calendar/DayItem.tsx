@@ -6,13 +6,13 @@ import { use$ } from '@legendapp/state/react'
 import { progress$ } from '@/store'
 
 export default function DayItem({
-  dayIndex,
-  dayIndexInCalendar,
+  day,
+  dayInCalendar,
 }: {
-  dayIndex: number
-  dayIndexInCalendar: number
+  day: number
+  dayInCalendar: number
 }) {
-  const dailyProgress = use$(() => progress$.dailyProgress(dayIndexInCalendar))
+  const dailyProgress = use$(() => progress$.dailyProgress(dayInCalendar))
 
   return (
     <Center className='relative flex-1'>
@@ -23,7 +23,7 @@ export default function DayItem({
           colors: [
             `rgb(${
               colors.light[
-                dayIndexInCalendar == dayIndex
+                dayInCalendar == day
                   ? '--color-primary-600'
                   : '--color-neutral-300'
               ]
@@ -32,7 +32,7 @@ export default function DayItem({
         }}
         width={48}
         height={48}
-        strokeWidth={dayIndexInCalendar == dayIndex ? 8 : 4}
+        strokeWidth={dayInCalendar == day ? 8 : 4}
         radius={20}
         chartConfig={{
           backgroundGradientFromOpacity: 0,
@@ -52,10 +52,10 @@ export default function DayItem({
 
       <Text
         className={`!font-roboto text-neutral-500 ${
-          dayIndexInCalendar == dayIndex ? 'underline text-primary-700' : ''
+          dayInCalendar == day ? 'underline text-primary-700' : ''
         }`}
       >
-        {dayIndexInCalendar + 1}
+        {dayInCalendar}
       </Text>
     </Center>
   )

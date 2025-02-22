@@ -20,7 +20,7 @@ export const fetchPrayerTimes = async (
       throw new Error('Failed to fetch prayer times')
     }
 
-    const { data } = await response.json()
+    const { data }: { data: PrayerTimesAPIResponse } = await response.json()
 
     insertPrayerTimes(url, data)
 

@@ -14,22 +14,22 @@ import { formatCountdown } from '@/utils/formatCountdown'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import { use$ } from '@legendapp/state/react'
-import { progress$, todaysPrayerTimes$ } from '@/store'
+import { progress$, prayerTimes$ } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 import { parsePrayerTime } from '@/utils/parsePrayerTime'
 
 export default function Fasting({
-  dayIndex,
+  day,
   trackerView = false,
   readOnly = false,
 }: {
-  dayIndex: number
+  day: number
   trackerView?: boolean
   readOnly?: boolean
 }) {
-  const { Maghrib, Imsak } = use$(todaysPrayerTimes$[dayIndex + 1].timings)
-  const { fasting } = use$(progress$.days[dayIndex + 1])
+  const { Maghrib, Imsak } = use$(prayerTimes$.timings[day])
+  const { fasting } = use$(progress$.days[day])
 
   const {
     t,
@@ -96,7 +96,7 @@ export default function Fasting({
             isDisabled={false}
             value={'' + fasting}
             isChecked={fasting}
-            onChange={() => progress$.days[dayIndex + 1].fasting.set(!fasting)}
+            onChange={() => progress$.days[day].fasting.set(!fasting)}
           >
             <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
               <CheckboxIcon as={CheckIcon} />

@@ -4,7 +4,7 @@ import useCountdown from '@/hooks/useCountdown'
 import { HStack } from './ui/hstack'
 import { formatCountdown } from '@/utils/formatCountdown'
 import { use$ } from '@legendapp/state/react'
-import { todaysPrayerTimes$ } from '@/store'
+import { prayerTimes$ } from '@/store'
 import { ExtendedPrayer } from '@/types'
 import { parsePrayerTime } from '@/utils/parsePrayerTime'
 import { PRAYERS } from '@/constants/prayers'
@@ -27,8 +27,8 @@ function getNextPrayer(prayers: {
   return 'Fajr' as ExtendedPrayer
 }
 
-export default function PrayerCountdown({ dayIndex }: { dayIndex: number }) {
-  const prayers = use$(todaysPrayerTimes$[dayIndex + 1].timings)
+export default function PrayerCountdown({ day }: { day: number }) {
+  const prayers = use$(prayerTimes$.timings[day])
 
   const {
     t,
@@ -41,13 +41,11 @@ export default function PrayerCountdown({ dayIndex }: { dayIndex: number }) {
     parsePrayerTime(prayers[nextPrayer])
   )
 
-  return (
+  return hours + minutes + seconds === 0 ? null : (
     <HStack space='xs' className='mt-3'>
       <Text>{t('Next prayer in')}</Text>
       <Text>
-        {hours + minutes + seconds === 0
-          ? ''
-          : `${formatCountdown(hours, minutes, language)} (${t(nextPrayer)})`}
+        {`${formatCountdown(hours, minutes, language)} (${t(nextPrayer)})`}
       </Text>
     </HStack>
   )

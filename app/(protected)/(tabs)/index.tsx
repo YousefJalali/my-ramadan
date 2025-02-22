@@ -14,10 +14,10 @@ import Section from '@/components/Section'
 import Fasting from '@/components/Fasting'
 
 export default function HomeScreen() {
-  const dayIndex = 0
+  const day = 1
 
   return (
-    <ParallaxScrollView headerImage={<FastingCard dayIndex={dayIndex} />}>
+    <ParallaxScrollView headerImage={<FastingCard day={day} />}>
       <VStack className='relative py-6 pt-16 bg-neutral-50 gap-12'>
         {/* date */}
         <Center className='absolute h-20 -top-10 left-0 w-full'>
@@ -29,24 +29,24 @@ export default function HomeScreen() {
         </Section>
 
         <Section title='fasting'>
-          <Fasting dayIndex={dayIndex} />
+          <Fasting day={day} />
         </Section>
 
-        {/* <DaySelector dayIndex={dayIndex} onSelectDay={selectDayHandler} /> */}
+        {/* <DaySelector day={day} onSelectDay={selectDayHandler} /> */}
         <Section title='Prayers'>
-          <Prayers dayIndex={dayIndex} />
+          <Prayers day={day} />
         </Section>
 
         <Section title='Daily Duaa'>
-          <DailyDuaa dayIndex={dayIndex} />
+          <DailyDuaa day={day} />
         </Section>
 
         <Section title='Quran Reading'>
-          <QuranReading dayIndex={dayIndex} />
+          <QuranReading day={day} />
         </Section>
 
         <Section title='On This Day'>
-          <OnThisDayCard dayIndex={dayIndex} />
+          <OnThisDayCard day={day} />
         </Section>
 
         <Section title='Azkar'>

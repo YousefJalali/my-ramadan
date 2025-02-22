@@ -168,12 +168,11 @@ enum Prayer {
 }
 export type ExtendedPrayer = Prayer | 'Firstthird' | 'Lastthird'
 
-export type PrayerTimes = {
+type PrayerTimes = {
   id: string
   url: string
-  timings: { [key in ExtendedPrayer]: string }
-  hijriDate: string
-  gregorianDate: string
+  hijriMonth: number
+  gregorianMonth: number
   latitude: number
   longitude: number
   method: number
@@ -181,6 +180,20 @@ export type PrayerTimes = {
   midnightMode: string
   school: string
   offset: { [key in Prayer]: number }
+}
+
+export type StoredPrayerTimes = PrayerTimes & {
+  timings: { [day: string]: { [key in ExtendedPrayer]: string } }
+  offset: { [key in Prayer]: number }
+}
+
+export type CachedPrayerTimes = PrayerTimes & {
+  hijriDay: number
+  gregorianDay: number
+  hijriDate: string
+  gregorianDate: string
+  timings: string
+  offset: string
 }
 
 export type Country = typeof country
