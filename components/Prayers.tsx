@@ -10,13 +10,12 @@ import { HStack } from './ui/hstack'
 import { Center } from './ui/center'
 import prayerTime from '@/constants/prayerTime'
 import Feather from '@expo/vector-icons/Feather'
-import { useToast, Toast, ToastDescription } from '@/components/ui/toast'
+import { useToast } from '@/components/ui/toast'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import PrayerCountdown from './PrayerCountdown'
 import { use$ } from '@legendapp/state/react'
 import { progress$ } from '@/store'
-import { setToTodaysDate } from '@/utils/setToTodaysDate'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 
@@ -34,14 +33,14 @@ export default function Prayers({
   readOnly = false,
 }: Props) {
   const prayers = prayerTime[dayIndex]
-  const { prayers: prayersProgress } = use$(progress$)
+  const { prayers: prayersProgress } = use$(progress$.days[dayIndex + 1])
 
-  const toast = useToast()
+  // const toast = useToast()
   const { t } = useTranslation()
 
   async function checkTask(prayerIdx: number) {
-    progress$.prayers[prayerIdx][dayIndex].set(
-      !prayersProgress[prayerIdx][dayIndex]
+    progress$.days[dayIndex + 1].prayers[prayerIdx].set(
+      !prayersProgress[prayerIdx]
     )
 
     // const today = new Date()
@@ -88,7 +87,7 @@ export default function Prayers({
               size='md'
               aria-label={prayer}
               value={prayer}
-              isChecked={prayersProgress[prayerIndex][dayIndex]}
+              isChecked={prayersProgress[prayerIndex]}
               className={`py-2.5 flex-col-reverse ${cn(
                 trackerView,
                 'flex-row space-between'
@@ -132,9 +131,7 @@ export default function Prayers({
 
               <Center className='basis-1/3 items-end'>
                 {readOnly ? (
-                  <StatusBadge
-                    isCompleted={prayersProgress[prayerIndex][dayIndex]}
-                  />
+                  <StatusBadge isCompleted={prayersProgress[prayerIndex]} />
                 ) : (
                   <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
                     <CheckboxIcon as={CheckIcon} />

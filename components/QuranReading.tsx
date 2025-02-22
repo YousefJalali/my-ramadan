@@ -24,7 +24,7 @@ export default function QuranReading({
   trackerView?: boolean
   readOnly?: boolean
 }) {
-  const { quranReading: readingProgress } = use$(progress$)
+  const { quranReading: readingProgress } = use$(progress$.days[dayIndex + 1])
 
   const {
     t,
@@ -62,16 +62,16 @@ export default function QuranReading({
         </VStack>
 
         {readOnly ? (
-          <StatusBadge isCompleted={readingProgress[dayIndex]} />
+          <StatusBadge isCompleted={readingProgress} />
         ) : (
           <Checkbox
             size='md'
             isInvalid={false}
             isDisabled={false}
-            isChecked={readingProgress[dayIndex]}
-            value={'' + readingProgress[dayIndex]}
+            isChecked={readingProgress}
+            value={'' + readingProgress}
             onChange={() =>
-              progress$.quranReading[dayIndex].set(!readingProgress[dayIndex])
+              progress$.days[dayIndex + 1].quranReading.set(!readingProgress)
             }
           >
             <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>

@@ -29,7 +29,7 @@ export default function Fasting({
   trackerView?: boolean
   readOnly?: boolean
 }) {
-  const { fasting } = use$(progress$)
+  const { fasting } = use$(progress$.days[dayIndex + 1])
 
   const {
     t,
@@ -75,7 +75,7 @@ export default function Fasting({
       <HStack space='md' className='items-center flex-1 justify-between'>
         {readOnly ? (
           <Text size='xl'>
-            {fasting[dayIndex]
+            {fasting
               ? t('you fasted this day')
               : t('you did not fast this day')}
           </Text>
@@ -88,15 +88,15 @@ export default function Fasting({
         )}
 
         {readOnly ? (
-          <StatusBadge isCompleted={fasting[dayIndex]} />
+          <StatusBadge isCompleted={fasting} />
         ) : (
           <Checkbox
             size='md'
             isInvalid={false}
             isDisabled={false}
-            value={'' + fasting[dayIndex]}
-            isChecked={fasting[dayIndex]}
-            onChange={() => progress$.fasting[dayIndex].set(!fasting[dayIndex])}
+            value={'' + fasting}
+            isChecked={fasting}
+            onChange={() => progress$.days[dayIndex + 1].fasting.set(!fasting)}
           >
             <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
               <CheckboxIcon as={CheckIcon} />
@@ -109,7 +109,7 @@ export default function Fasting({
         <>
           <Box className='mt-2'>
             <Progress
-              value={fasting[dayIndex] ? 100 - progress : 0}
+              value={fasting ? 100 - progress : 0}
               size='lg'
               className='bg-neutral-200'
             >
@@ -134,11 +134,9 @@ export default function Fasting({
 
           <Text
             bold
-            className={`text-sm mt-4 ${
-              fasting[dayIndex] ? 'text-success-600' : ''
-            }`}
+            className={`text-sm mt-4 ${fasting ? 'text-success-600' : ''}`}
           >
-            {fasting[dayIndex]
+            {fasting
               ? t('🏆 Great job! Keep it up! 💪')
               : t('Stay consistent! You got this! 🚀')}
           </Text>
