@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { settings$ } from '@/store'
 import { Pressable } from '../ui/pressable'
 import { Text } from '@/components/ui/text'
-import { getCitiesByCountry, insertCities } from '@/utils/sqlite'
 import { useTranslation } from 'react-i18next'
+import { getCitiesByCountry, insertCities } from '@/sqlite/locationDB'
 
 export default function CitiesList({
   iso2,

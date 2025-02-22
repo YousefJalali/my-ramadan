@@ -7,7 +7,7 @@ const db = openDatabaseSync('countries.db')
 // Function to create the tables if they don't exist
 export const setupDatabase = async () => {
   try {
-    const co = await db.execAsync(`
+    await db.execAsync(`
       CREATE TABLE IF NOT EXISTS countries (
         id INTEGER PRIMARY KEY,
         name TEXT,
@@ -18,7 +18,7 @@ export const setupDatabase = async () => {
       );
     `)
 
-    const ci = await db.execAsync(`
+    await db.execAsync(`
       CREATE TABLE IF NOT EXISTS cities (
         id INTEGER PRIMARY KEY,
         name TEXT,

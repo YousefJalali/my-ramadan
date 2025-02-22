@@ -13,7 +13,11 @@ import { Pressable } from '@/components/ui/pressable'
 import SearchableList from '@/components/SearchableList'
 import { useTranslation } from 'react-i18next'
 import { Heading } from '../ui/heading'
-import { getCountries, insertCountries, setupDatabase } from '@/utils/sqlite'
+import {
+  getCountries,
+  insertCountries,
+  setupDatabase,
+} from '@/sqlite/locationDB'
 import { Country } from '@/types'
 import CitiesList from './CitiesList'
 

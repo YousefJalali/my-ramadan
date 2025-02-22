@@ -4,15 +4,15 @@ import { Divider } from '@/components/ui/divider'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
 import { PRAYER_TIME_METHODS } from '@/constants/prayerTimeCalculation'
-import { PrayerTimeMethodsKeys, settings$ } from '@/store'
+import { PrayerTimeSettingsKeys, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { t } from 'i18next'
 
 const timeCalculationMethods: (SettingsLinkType & {
-  key: PrayerTimeMethodsKeys
+  key: PrayerTimeSettingsKeys
 })[] = [
   {
-    key: 'calculationMethod',
+    key: 'method',
     subText: 'calculation method',
     path: '/settings/prayer-times/calculation-method',
   },
@@ -41,12 +41,12 @@ const otherSettings: SettingsLinkType[] = [
 ]
 
 export default function PrayerTimes() {
-  const { prayerTimeMethods } = use$(settings$)
+  const { prayerTimes } = use$(settings$)
 
-  const { isRecommendedEnabled } = prayerTimeMethods
+  const { isRecommendedEnabled } = prayerTimes
 
   function changeHandler() {
-    settings$.prayerTimeMethods.isRecommendedEnabled.set(!isRecommendedEnabled)
+    settings$.prayerTimes.isRecommendedEnabled.set(!isRecommendedEnabled)
   }
 
   return (
@@ -69,9 +69,7 @@ export default function PrayerTimes() {
               key={key}
               path={path}
               subText={subText}
-              preview={
-                PRAYER_TIME_METHODS[key][prayerTimeMethods[key] as number]
-              }
+              preview={PRAYER_TIME_METHODS[key][prayerTimes[key] as number]}
             />
           ))}
         </VStack>

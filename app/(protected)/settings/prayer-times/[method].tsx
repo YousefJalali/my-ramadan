@@ -1,15 +1,16 @@
 import RadioCheckList, { RadioCheckItem } from '@/components/RadioCheckList'
 import { RadioGroup } from '@/components/ui/radio'
 import { PRAYER_TIME_METHODS, toList } from '@/constants/prayerTimeCalculation'
-import { PrayerTimeMethodsKeys, settings$ } from '@/store'
+import { PrayerTimeSettingsKeys, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { Redirect, useLocalSearchParams } from 'expo-router'
 
-const methodName: { [key: string]: PrayerTimeMethodsKeys } = {
-  'calculation-method': 'calculationMethod',
+const methodName: { [key: string]: PrayerTimeSettingsKeys } = {
+  'calculation-method': 'method',
   school: 'school',
   'midnight-mode': 'midnightMode',
   'latitude-adjustment-method': 'latitudeAdjustmentMethod',
+  'calendar-method': 'calendarMethod',
 }
 
 export default function TimeCalculationMethod() {
@@ -27,10 +28,13 @@ export default function TimeCalculationMethod() {
 
   const list = toList<RadioCheckItem[]>(PRAYER_TIME_METHODS[method])
 
-  const storedMethod = use$(settings$.prayerTimeMethods[method])
+  const storedMethod = use$(settings$.prayerTimes[method])
 
   const changeHandler = async (v: string) => {
-    settings$.prayerTimeMethods[method].set(+v)
+    let value: string | number = v
+
+    if (method !== 'calendarMethod') value = +v //number
+    settings$.prayerTimes[method].set(value)
   }
 
   return (

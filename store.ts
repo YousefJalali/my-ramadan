@@ -39,21 +39,26 @@ type Location = {
   longitude: number
 }
 
-type PrayerTimeMethodsType = {
+type PrayerTimeSettings = {
   isRecommendedEnabled: boolean
-  calculationMethod: number
-  shafaq?: string
-  latitudeAdjustmentMethod?: number
-  midnightMode: number
-  school: number
-  prayerTimeAdjustment: number[] //minutes
-  timezone?: string
+  method: number
+  shafaq?: 'general' | 'ahmer' | 'abyad'
+  latitudeAdjustmentMethod?: 1 | 2 | 3
+  midnightMode: 0 | 1
+  school: 0 | 1
+  offset: number[] //minutes
+  calendarMethod: 'HJCoSA' | 'UAQ' | 'DIYANET'
+  timezonestring?: string
   lastUpdate: number
 }
 
-export type PrayerTimeMethodsKeys = keyof Pick<
-  PrayerTimeMethodsType,
-  'calculationMethod' | 'latitudeAdjustmentMethod' | 'midnightMode' | 'school'
+export type PrayerTimeSettingsKeys = keyof Pick<
+  PrayerTimeSettings,
+  | 'method'
+  | 'latitudeAdjustmentMethod'
+  | 'midnightMode'
+  | 'school'
+  | 'calendarMethod'
 >
 
 export const settings$ = observable({
@@ -64,17 +69,18 @@ export const settings$ = observable({
     azkar: true,
     quranReading: true,
   } as Notification,
-  prayerTimeMethods: {
+  prayerTimes: {
     isRecommendedEnabled: true,
-    calculationMethod: 3,
-    shafaq: undefined,
+    method: 3,
+    shafaq: 'general',
     latitudeAdjustmentMethod: undefined,
     midnightMode: 0,
     school: 0,
-    prayerTimeAdjustment: [0, 0, 0, 0, 0],
-    timezone: undefined,
+    offset: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    calendarMethod: 'HJCoSA',
+    timezonestring: 'UTC',
     lastUpdate: +new Date(),
-  } as PrayerTimeMethodsType,
+  } as PrayerTimeSettings,
 })
 
 export const progress$ = observable({
