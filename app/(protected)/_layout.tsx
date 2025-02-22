@@ -75,6 +75,7 @@ export default function ProtectedLayout() {
     }
   }, [])
 
+  //set prayer times
   useEffect(() => {
     setupPrayerTimesDB()
     console.log('location changed')
@@ -103,7 +104,7 @@ export default function ProtectedLayout() {
       const res = await getCachedPrayerTimes(url)
 
       if (res?.length) {
-        console.log('fetched from cache')
+        console.log('prayer times fetched from cache')
 
         const data: CachedPrayerTimes[] = res
 
@@ -143,10 +144,13 @@ export default function ProtectedLayout() {
 
             obj.timings[date.hijri.day] = timings
           })
+
+          prayerTimes$.set(obj)
         } else {
           //set prayer times settings to math with url
         }
       }
+      console.log(prayerTimes$.timings['1'].get())
     } catch (error) {
       console.error('Error fetching prayer times from db:', error)
     }

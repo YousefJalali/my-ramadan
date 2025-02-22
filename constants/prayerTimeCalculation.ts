@@ -42,7 +42,7 @@
 export const PRAYER_TIME_METHODS: {
   [settingName: string]: { [key: number | string]: string }
 } = {
-  calculationMethod: {
+  method: {
     0: 'Jafari / Shia Ithna-Ashari',
     1: 'University of Islamic Sciences, Karachi',
     2: 'Islamic Society of North America',
