@@ -6,9 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { formatCountdown } from '@/utils/formatCountdown'
 import { ProgressChart } from 'react-native-chart-kit'
 import { Center } from '../ui/center'
-import { Heading } from '../ui/heading'
 import { Dimensions } from 'react-native'
-import DigitalClock from './DigitalClock'
 import { setToTodaysDate } from '@/utils/setToTodaysDate'
 import { toMinutes } from '@/utils/toMinutes'
 import { mapRange } from '@/utils/mapRange'
@@ -31,9 +29,11 @@ export default function FastingCountdown({ dayIndex }: { dayIndex: number }) {
   const end = toMinutes(setToTodaysDate(prayerTime[dayIndex][3].time))
   const now = hours * 60 + minutes
 
+  const progress = mapRange(now + start, end, start, 0, 50)
+
   const d = {
     labels: [''],
-    data: [mapRange(now, end, start, 0, 50) / 100],
+    data: [progress / 100],
     colors: ['#95ffed'],
   }
 
