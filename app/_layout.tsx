@@ -9,6 +9,8 @@ import '../global.css'
 import '@/i18n'
 import { useTranslation } from 'react-i18next'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
+import { settings$ } from '@/store'
+import { getLocale } from '@/utils/getLocale'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -19,9 +21,17 @@ export default function RootLayout() {
     Cairo: require('../assets/fonts/Cairo-VariableFont_wght.ttf'),
     Rubik: require('../assets/fonts/Rubik-VariableFont_wght.ttf'),
   })
+
   const {
     i18n: { language },
   } = useTranslation()
+
+  //set local
+  useEffect(() => {
+    if (!settings$.language.peek()) {
+      settings$.language.set(getLocale())
+    }
+  }, [])
 
   useEffect(() => {
     if (loaded) {
