@@ -18,6 +18,8 @@ import { progress$, prayerTimes$ } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 import { parsePrayerTime } from '@/utils/parsePrayerTime'
+import { mapRange } from '@/utils/mapRange'
+import { toMinutes } from '@/utils/toMinutes'
 
 export default function Fasting({
   day,
@@ -36,13 +38,15 @@ export default function Fasting({
     i18n: { language },
   } = useTranslation()
 
-  const prayerDate = parsePrayerTime(Maghrib)
+  const iftarTime = parsePrayerTime(Maghrib)
 
-  const { hours, minutes } = useCountdown(prayerDate)
+  const { hours, minutes } = useCountdown(iftarTime)
 
-  const progress =
-    ((hours * 60 + minutes) * 100) /
-    (prayerDate.getHours() * 60 + prayerDate.getMinutes())
+  const suhur = toMinutes(parsePrayerTime(Imsak))
+  const iftar = toMinutes(iftarTime)
+  const now = hours * 60 + minutes
+
+  const progress = mapRange(now + suhur, iftar, suhur, 0, 100)
 
   return (
     <VStack
@@ -54,13 +58,6 @@ export default function Fasting({
       {/* Fasting Stats */}
       {trackerView ? null : (
         <VStack space='md' className='mb-4'>
-          {/* <Text size='sm' className='text-neutral-600'>
-            🎯{' '}
-            <Text bold size='sm'>
-              14/30
-            </Text>{' '}
-            {t('fasts completed')}{' '}
-          </Text> */}
           <Text size='sm' className='text-neutral-600'>
             🎯{' '}
             <Text bold size='sm'>
@@ -109,7 +106,7 @@ export default function Fasting({
         <>
           <Box className='mt-2'>
             <Progress
-              value={fasting ? 100 - progress : 0}
+              value={fasting ? progress : 0}
               size='lg'
               className='bg-neutral-200'
             >
@@ -120,7 +117,7 @@ export default function Fasting({
               <Text size='sm' className='text-neutral-500'>
                 {t('Imsak')} | {formatTime(parsePrayerTime(Imsak))}
               </Text>
-              {hours + minutes > 0 ? (
+              {progress > 0 && progress < 100 ? (
                 <Text size='sm'>
                   {formatCountdown(hours, minutes, language)}
                 </Text>
