@@ -1,31 +1,10 @@
 import { observable } from '@legendapp/state'
 import { Session } from '@supabase/supabase-js'
-import * as Localization from 'expo-localization'
-import { ObservablePersistAsyncStorage } from '@legendapp/state/persist-plugins/async-storage'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { StoredPrayerTimes } from './types'
+import { syncObservable } from '@legendapp/state/sync'
+import { ObservablePersistMMKV } from '@legendapp/state/persist-plugins/mmkv'
 
 export const session$ = observable<Session | null>(null)
-
-// configureObservablePersistence({
-//   pluginLocal: ObservablePersistAsyncStorage,
-//   localOptions: {
-//       asyncStorage: {
-//           AsyncStorage
-//       }
-//   }
-// })
-
-const getNormalizedLocale = () => {
-  const locale = Localization.getLocales()[0]?.languageTag
-
-  if (!locale) return 'en-US'
-
-  if (locale.startsWith('en')) return 'en-US'
-  if (locale.startsWith('ar')) return 'ar-SA'
-
-  return locale
-}
 
 export type Notification = {
   prayers: boolean
@@ -63,7 +42,7 @@ export type PrayerTimeSettingsKeys = keyof Pick<
 >
 
 export const settings$ = observable({
-  language: getNormalizedLocale(),
+  language: 'en-US',
   location: null as Location | null,
   notifications: {
     prayers: true,
@@ -320,4 +299,11 @@ export const prayerTimes$ = observable<StoredPrayerTimes>({
     },
   },
   url: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA',
+})
+
+syncObservable(settings$, {
+  persist: {
+    name: 'settings',
+    plugin: ObservablePersistMMKV,
+  },
 })
