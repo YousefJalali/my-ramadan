@@ -40,7 +40,7 @@
 // }
 
 export const PRAYER_TIME_METHODS: {
-  [settingName: string]: { [key: number]: string }
+  [settingName: string]: { [key: number | string]: string }
 } = {
   calculationMethod: {
     0: 'Jafari / Shia Ithna-Ashari',
@@ -77,6 +77,11 @@ export const PRAYER_TIME_METHODS: {
     1: 'Middle of the Night',
     2: 'One Seventh',
     3: 'Angle Based',
+  },
+  calendarMethod: {
+    HJCoSA: 'High Judicial Council of Saudi Arabia',
+    UAQ: 'Umm al-Qura',
+    DIYANET: 'Diyanet İşleri Başkanlığı',
   },
 }
 
