@@ -155,20 +155,127 @@ const prayerTimes = {
   },
 }
 
+enum Prayer {
+  Imsak = 'Imsak',
+  Fajr = 'Fajr',
+  Sunrise = 'Sunrise',
+  Dhuhr = 'Dhuhr',
+  Asr = 'Asr',
+  Sunset = 'Sunset',
+  Maghrib = 'Maghrib',
+  Isha = 'Isha',
+  Midnight = 'Midnight',
+}
+export type ExtendedPrayer = Prayer | 'Firstthird' | 'Lastthird'
+
 export type PrayerTimes = {
   id: string
-  timings: string
-  hijri_date: string
-  gregorian_date: string
+  url: string
+  timings: { [key in ExtendedPrayer]: string }
+  hijriDate: string
+  gregorianDate: string
   latitude: number
   longitude: number
-  method_id: number
+  method: number
   latitudeAdjustmentMethod: string
   midnightMode: string
   school: string
-  offset: string
+  offset: { [key in Prayer]: number }
 }
 
 export type Country = typeof country
 export type City = typeof city
-export type PrayerTimesResponse = typeof prayerTimes
+export type PrayerTimesAPIResponse = typeof apiRes
+const apiRes = [
+  {
+    timings: {
+      Fajr: '01:41 (UTC)',
+      Sunrise: '02:57 (UTC)',
+      Dhuhr: '08:46 (UTC)',
+      Asr: '12:06 (UTC)',
+      Sunset: '14:36 (UTC)',
+      Maghrib: '14:36 (UTC)',
+      Isha: '15:48 (UTC)',
+      Imsak: '01:31 (UTC)',
+      Midnight: '20:47 (UTC)',
+      Firstthird: '18:43 (UTC)',
+      Lastthird: '22:50 (UTC)',
+    },
+    date: {
+      readable: '01 Mar 2025',
+      timestamp: '1740819661',
+      gregorian: {
+        date: '01-03-2025',
+        format: 'DD-MM-YYYY',
+        day: '01',
+        weekday: {
+          en: 'Saturday',
+        },
+        month: {
+          number: 3,
+          en: 'March',
+        },
+        year: '2025',
+        designation: {
+          abbreviated: 'AD',
+          expanded: 'Anno Domini',
+        },
+        lunarSighting: false,
+      },
+      hijri: {
+        date: '01-09-1446',
+        format: 'DD-MM-YYYY',
+        day: '1',
+        weekday: {
+          en: 'Al Sabt',
+          ar: 'السبت',
+        },
+        month: {
+          number: 9,
+          en: 'Ramaḍān',
+          ar: 'رَمَضان',
+          days: 29,
+        },
+        year: '1446',
+        designation: {
+          abbreviated: 'AH',
+          expanded: 'Anno Hegirae',
+        },
+        holidays: ['1st Day of Ramadan'],
+        adjustedHolidays: [],
+        method: 'HJCoSA',
+      },
+    },
+    meta: {
+      latitude: 25.1974498,
+      longitude: 51.4537486,
+      timezone: 'UTC',
+      method: {
+        id: 3,
+        name: 'Muslim World League',
+        params: {
+          Fajr: 18,
+          Isha: 17,
+        },
+        location: {
+          latitude: 51.5194682,
+          longitude: -0.1360365,
+        },
+      },
+      latitudeAdjustmentMethod: 'ANGLE_BASED',
+      midnightMode: 'STANDARD',
+      school: 'STANDARD',
+      offset: {
+        Imsak: 0,
+        Fajr: 0,
+        Sunrise: 0,
+        Dhuhr: 0,
+        Asr: 0,
+        Maghrib: 0,
+        Sunset: 0,
+        Isha: 0,
+        Midnight: 0,
+      },
+    },
+  },
+]

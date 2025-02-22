@@ -3,6 +3,7 @@ import { Session } from '@supabase/supabase-js'
 import * as Localization from 'expo-localization'
 import { ObservablePersistAsyncStorage } from '@legendapp/state/persist-plugins/async-storage'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { PrayerTimes } from './types'
 
 export const session$ = observable<Session | null>(null)
 
@@ -78,11 +79,12 @@ export const settings$ = observable({
     school: 0,
     offset: [0, 0, 0, 0, 0, 0, 0, 0, 0],
     calendarMethod: 'HJCoSA',
-    timezonestring: 'UTC',
+    timezonestring: undefined,
     lastUpdate: +new Date(),
   } as PrayerTimeSettings,
 })
 
+//progress
 type Progress = {
   days: {
     [day: string]: {
@@ -279,3 +281,43 @@ export const progress$ = observable({
     }
   },
 } as Progress)
+
+//prayer times
+export const todaysPrayerTimes$ = observable<{ [day: string]: PrayerTimes }>({
+  '1': {
+    gregorianDate: '23-03-2025',
+    hijriDate: '23-09-1446',
+    id: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA-23-09-1446',
+    latitude: 25.1973654,
+    latitudeAdjustmentMethod: 'ANGLE_BASED',
+    longitude: 51.4537109,
+    method: 3,
+    midnightMode: 'STANDARD',
+    offset: {
+      Asr: 0,
+      Dhuhr: 0,
+      Fajr: 0,
+      Imsak: 0,
+      Isha: 0,
+      Maghrib: 0,
+      Midnight: 0,
+      Sunrise: 0,
+      Sunset: 0,
+    },
+    school: 'STANDARD',
+    timings: {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:41 (+03)',
+      Fajr: '04:19 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:09 (+03)',
+      Isha: '18:59 (+03)',
+      Lastthird: '01:39 (+03)',
+      Maghrib: '17:47 (+03)',
+      Midnight: '23:41 (+03)',
+      Sunrise: '05:35 (+03)',
+      Sunset: '17:47 (+03)',
+    },
+    url: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA',
+  },
+})

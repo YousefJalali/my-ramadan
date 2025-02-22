@@ -1,12 +1,13 @@
-import { getCachedPrayerTimes, insertPrayerTimes } from '@/sqlite/prayerTimesDB'
+import { insertPrayerTimes } from '@/sqlite/prayerTimesDB'
+import { PrayerTimesAPIResponse } from '@/types'
 import { fetch } from 'expo/fetch'
 
 export const fetchPrayerTimes = async (
   url: string,
   retryCount = 3
-): Promise<any> => {
+): Promise<PrayerTimesAPIResponse | string> => {
   try {
-    console.log('fetchingPrayerTimes')
+    console.log('fetching prayerTimes from API')
 
     const response = await fetch(url, {
       method: 'GET',
@@ -35,7 +36,7 @@ export const fetchPrayerTimes = async (
 }
 
 export function constructUrl(params: Record<string, any>) {
-  const baseUrl = 'https://api.aladhan.com/v1/hijriCalendar/1446/7'
+  const baseUrl = 'https://api.aladhan.com/v1/hijriCalendar/1446/9' //ramadan
 
   // Filter out undefined values
   const filteredParams = Object.fromEntries(
