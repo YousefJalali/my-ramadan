@@ -2,17 +2,18 @@ import { Center } from '../ui/center'
 import { Text } from '../ui/text'
 import { HStack } from '../ui/hstack'
 import { Image } from '../ui/image'
-import prayerTime from '@/constants/prayerTime'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import FastingCountdown from './FastingCountdown'
 import { Heading } from '../ui/heading'
 import DigitalClock from './DigitalClock'
-import { settings$ } from '@/store'
+import { settings$, todaysPrayerTimes$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { Link } from 'expo-router'
 import { Icon } from '../ui/icon'
 import { MapPin } from 'lucide-react-native'
+import { parsePrayerTime } from '@/utils/parsePrayerTime'
+import { ExtendedPrayer } from '@/types'
 
 export default function FastingCard({ dayIndex }: { dayIndex: number }) {
   const {
@@ -21,6 +22,7 @@ export default function FastingCard({ dayIndex }: { dayIndex: number }) {
   } = useTranslation()
 
   const currentLocation = use$(settings$.location)
+  const prayers = use$(todaysPrayerTimes$[dayIndex + 1].timings)
 
   // console.log(location)
 
@@ -131,15 +133,15 @@ export default function FastingCard({ dayIndex }: { dayIndex: number }) {
         }`}
       >
         {[
-          { prayer: 'Suhur', prayerIndex: 0 },
-          { prayer: 'Iftar', prayerIndex: 3 },
-        ].map(({ prayer, prayerIndex }, i) => (
+          { prayer: 'Imsak' as ExtendedPrayer, label: 'Imask' },
+          { prayer: 'Maghrib' as ExtendedPrayer, label: 'Iftar' },
+        ].map(({ prayer, label }) => (
           <Center key={prayer}>
             <Text size='lg' bold className='text-primary-50'>
-              {t(prayer)}
+              {t(label)}
             </Text>
             <Text className='text-primary-100'>
-              {formatTime(prayerTime[dayIndex][prayerIndex].time)}
+              {formatTime(parsePrayerTime(prayers[prayer]))}
             </Text>
           </Center>
         ))}

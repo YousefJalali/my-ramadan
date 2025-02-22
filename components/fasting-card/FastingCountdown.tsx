@@ -1,22 +1,25 @@
 import useCountdown from '@/hooks/useCountdown'
 import { Text } from '../ui/text'
-import prayerTime from '@/constants/prayerTime'
 import { HStack } from '../ui/hstack'
 import { useTranslation } from 'react-i18next'
 import { formatCountdown } from '@/utils/formatCountdown'
 import { ProgressChart } from 'react-native-chart-kit'
 import { Center } from '../ui/center'
 import { Dimensions } from 'react-native'
-import { setToTodaysDate } from '@/utils/setToTodaysDate'
 import { toMinutes } from '@/utils/toMinutes'
 import { mapRange } from '@/utils/mapRange'
+import { todaysPrayerTimes$ } from '@/store'
+import { parsePrayerTime } from '@/utils/parsePrayerTime'
+import { use$ } from '@legendapp/state/react'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
 export default function FastingCountdown({ dayIndex }: { dayIndex: number }) {
-  const { hours, minutes } = useCountdown(
-    setToTodaysDate(prayerTime[dayIndex][3].time)
-  )
+  const { Fajr, Maghrib } = use$(todaysPrayerTimes$[dayIndex + 1].timings)
+
+  // console.log(parsePrayerTime(Maghrib))
+
+  const { hours, minutes } = useCountdown(parsePrayerTime(Maghrib))
 
   const {
     t,
@@ -24,9 +27,9 @@ export default function FastingCountdown({ dayIndex }: { dayIndex: number }) {
   } = useTranslation()
 
   //suhur
-  const start = toMinutes(setToTodaysDate(prayerTime[dayIndex][0].time))
+  const start = toMinutes(parsePrayerTime(Fajr))
   //iftar
-  const end = toMinutes(setToTodaysDate(prayerTime[dayIndex][3].time))
+  const end = toMinutes(parsePrayerTime(Maghrib))
   const now = hours * 60 + minutes
 
   const progress = mapRange(now + start, end, start, 0, 50)

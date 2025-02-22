@@ -1,38 +1,45 @@
 import { useTranslation } from 'react-i18next'
-import prayerTime from '@/constants/prayerTime'
 import { Text } from './ui/text'
 import useCountdown from '@/hooks/useCountdown'
 import { HStack } from './ui/hstack'
 import { formatCountdown } from '@/utils/formatCountdown'
+import { use$ } from '@legendapp/state/react'
+import { todaysPrayerTimes$ } from '@/store'
+import { ExtendedPrayer } from '@/types'
+import { parsePrayerTime } from '@/utils/parsePrayerTime'
+import { PRAYERS } from '@/constants/prayers'
 
-function getNextPrayer(dayIndex: number) {
+function getNextPrayer(prayers: {
+  [key in ExtendedPrayer]: string
+}): ExtendedPrayer {
   const today = new Date()
 
-  for (const prayer of prayerTime[dayIndex]) {
-    const prayerDate = new Date(prayer.time)
+  for (let prayer in prayers) {
+    const prayerKey = prayer as ExtendedPrayer
 
-    //change prayer date to now
-    prayerDate.setFullYear(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate()
-    )
+    if (PRAYERS[prayerKey]) {
+      const prayerDate = parsePrayerTime(prayers[prayerKey])
 
-    if (today.getTime() < prayerDate.getTime()) return prayer
+      if (today.getTime() < prayerDate.getTime()) return prayerKey
+    }
   }
 
-  return prayerTime[dayIndex][0]
+  return 'Fajr' as ExtendedPrayer
 }
 
 export default function PrayerCountdown({ dayIndex }: { dayIndex: number }) {
+  const prayers = use$(todaysPrayerTimes$[dayIndex + 1].timings)
+
   const {
     t,
     i18n: { language },
   } = useTranslation()
 
-  const nextPrayer = getNextPrayer(dayIndex)
+  const nextPrayer = getNextPrayer(prayers)
 
-  const { hours, minutes, seconds } = useCountdown(nextPrayer.time)
+  const { hours, minutes, seconds } = useCountdown(
+    parsePrayerTime(prayers[nextPrayer])
+  )
 
   return (
     <HStack space='xs' className='mt-3'>
@@ -40,9 +47,7 @@ export default function PrayerCountdown({ dayIndex }: { dayIndex: number }) {
       <Text>
         {hours + minutes + seconds === 0
           ? ''
-          : `${formatCountdown(hours, minutes, language)} (${t(
-              nextPrayer.prayer
-            )})`}
+          : `${formatCountdown(hours, minutes, language)} (${t(nextPrayer)})`}
       </Text>
     </HStack>
   )

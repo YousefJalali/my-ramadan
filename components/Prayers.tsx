@@ -8,16 +8,17 @@ import { CheckIcon } from './ui/icon'
 import { VStack } from './ui/vstack'
 import { HStack } from './ui/hstack'
 import { Center } from './ui/center'
-import prayerTime from '@/constants/prayerTime'
 import Feather from '@expo/vector-icons/Feather'
-import { useToast } from '@/components/ui/toast'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import PrayerCountdown from './PrayerCountdown'
 import { use$ } from '@legendapp/state/react'
-import { progress$ } from '@/store'
+import { progress$, todaysPrayerTimes$ } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
+import { PRAYERS } from '@/constants/prayers'
+import { parsePrayerTime } from '@/utils/parsePrayerTime'
+import { ExtendedPrayer } from '@/types'
 
 type Props = {
   dayIndex: number
@@ -32,7 +33,7 @@ export default function Prayers({
   trackerView = false,
   readOnly = false,
 }: Props) {
-  const prayers = prayerTime[dayIndex]
+  const { timings: prayers } = use$(todaysPrayerTimes$[dayIndex + 1])
   const { prayers: prayersProgress } = use$(progress$.days[dayIndex + 1])
 
   // const toast = useToast()
@@ -80,67 +81,71 @@ export default function Prayers({
       <HStack
         className={`justify-between w-full ${cn(trackerView, 'flex-col')}`}
       >
-        {prayers.map(({ prayer, time }, prayerIndex) => (
-          <VStack key={prayer}>
-            <Checkbox
-              onChange={(_isChecked) => checkTask(prayerIndex)}
-              size='md'
-              aria-label={prayer}
-              value={prayer}
-              isChecked={prayersProgress[prayerIndex]}
-              className={`py-2.5 flex-col-reverse ${cn(
-                trackerView,
-                'flex-row space-between'
-              )}`}
-              isDisabled={readOnly}
-            >
-              <Center
-                className={`justify-between gap-1 ${cn(
+        {Object.entries(PRAYERS)
+          .filter(([key, v]) => v)
+          .map(([prayer], prayerIndex) => (
+            <VStack key={prayer}>
+              <Checkbox
+                onChange={(_isChecked) => checkTask(prayerIndex)}
+                size='md'
+                aria-label={prayer}
+                value={prayer}
+                isChecked={prayersProgress[prayerIndex]}
+                className={`py-2.5 flex-col-reverse ${cn(
                   trackerView,
-                  'flex-row flex-1'
+                  'flex-row space-between'
                 )}`}
+                isDisabled={readOnly}
               >
                 <Center
-                  className={cn(
+                  className={`justify-between gap-1 ${cn(
                     trackerView,
-                    'flex-row-reverse gap-2 flex-1 justify-end'
-                  )}
+                    'flex-row flex-1'
+                  )}`}
                 >
-                  <CheckboxLabel className='data-[checked=true]:text-primary-500 data-[disabled=true]:opacity-100 '>
-                    {t(prayer)}
-                  </CheckboxLabel>
+                  <Center
+                    className={cn(
+                      trackerView,
+                      'flex-row-reverse gap-2 flex-1 justify-end'
+                    )}
+                  >
+                    <CheckboxLabel className='data-[checked=true]:text-primary-500 data-[disabled=true]:opacity-100 '>
+                      {t(prayer)}
+                    </CheckboxLabel>
 
-                  <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2 data-[disabled=true]:opacity-100'>
-                    <Feather
-                      //@ts-ignore
-                      name={icons[prayerIndex]}
-                      size={24}
-                    />
+                    <CheckboxLabel className='data-[checked=true]:text-primary-500 py-2 data-[disabled=true]:opacity-100'>
+                      <Feather
+                        //@ts-ignore
+                        name={icons[prayerIndex]}
+                        size={24}
+                      />
+                    </CheckboxLabel>
+                  </Center>
+
+                  <CheckboxLabel
+                    className={`data-[checked=true]:text-primary-500 data-[disabled=true]:opacity-100 text-sm ${cn(
+                      trackerView,
+                      'flex-1 text-center'
+                    )}`}
+                  >
+                    {formatTime(
+                      parsePrayerTime(prayers[prayer as ExtendedPrayer])
+                    )}
                   </CheckboxLabel>
                 </Center>
 
-                <CheckboxLabel
-                  className={`data-[checked=true]:text-primary-500 data-[disabled=true]:opacity-100 text-sm ${cn(
-                    trackerView,
-                    'flex-1 text-center'
-                  )}`}
-                >
-                  {formatTime(time)}
-                </CheckboxLabel>
-              </Center>
-
-              <Center className='basis-1/3 items-end'>
-                {readOnly ? (
-                  <StatusBadge isCompleted={prayersProgress[prayerIndex]} />
-                ) : (
-                  <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
-                    <CheckboxIcon as={CheckIcon} />
-                  </CheckboxIndicator>
-                )}
-              </Center>
-            </Checkbox>
-          </VStack>
-        ))}
+                <Center className='basis-1/3 items-end'>
+                  {readOnly ? (
+                    <StatusBadge isCompleted={prayersProgress[prayerIndex]} />
+                  ) : (
+                    <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
+                      <CheckboxIcon as={CheckIcon} />
+                    </CheckboxIndicator>
+                  )}
+                </Center>
+              </Checkbox>
+            </VStack>
+          ))}
       </HStack>
 
       {trackerView ? null : <PrayerCountdown dayIndex={dayIndex} />}

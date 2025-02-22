@@ -10,15 +10,14 @@ import {
 } from '@/components/ui/checkbox'
 import { CheckIcon } from 'lucide-react-native'
 import useCountdown from '@/hooks/useCountdown'
-import prayerTime from '@/constants/prayerTime'
 import { formatCountdown } from '@/utils/formatCountdown'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import { use$ } from '@legendapp/state/react'
-import { progress$ } from '@/store'
-import { setToTodaysDate } from '@/utils/setToTodaysDate'
+import { progress$, todaysPrayerTimes$ } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
+import { parsePrayerTime } from '@/utils/parsePrayerTime'
 
 export default function Fasting({
   dayIndex,
@@ -29,6 +28,7 @@ export default function Fasting({
   trackerView?: boolean
   readOnly?: boolean
 }) {
+  const { Maghrib, Imsak } = use$(todaysPrayerTimes$[dayIndex + 1].timings)
   const { fasting } = use$(progress$.days[dayIndex + 1])
 
   const {
@@ -36,7 +36,7 @@ export default function Fasting({
     i18n: { language },
   } = useTranslation()
 
-  const prayerDate = setToTodaysDate(prayerTime[dayIndex][3].time)
+  const prayerDate = parsePrayerTime(Maghrib)
 
   const { hours, minutes } = useCountdown(prayerDate)
 
@@ -118,7 +118,7 @@ export default function Fasting({
 
             <HStack className='justify-between mt-1'>
               <Text size='sm' className='text-neutral-500'>
-                {t('Suhur')} | {formatTime(prayerTime[dayIndex][0].time)}
+                {t('Imsak')} | {formatTime(parsePrayerTime(Imsak))}
               </Text>
               {hours + minutes > 0 ? (
                 <Text size='sm'>
@@ -127,7 +127,7 @@ export default function Fasting({
               ) : null}
 
               <Text size='sm' className='text-neutral-500'>
-                {formatTime(prayerTime[dayIndex][3].time)} | {t('Iftar')}
+                {formatTime(parsePrayerTime(Maghrib))} | {t('Iftar')}
               </Text>
             </HStack>
           </Box>
