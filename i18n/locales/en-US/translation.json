@@ -249,6 +249,7 @@
   "Yemen": "Yemen",
   "Zambia": "Zambia",
   "Zimbabwe": "Zimbabwe",
+
   "language": "Language",
   "Next prayer in": "Next prayer in",
   "monthly progress": "Monthly progress",
@@ -263,7 +264,7 @@
   "of": "of",
   "Daily Duaa": "Daily Duaa",
   "Quran Reading": "Quran Reading",
-  "Azkar": "Azkar",
+  "Adhkar": "Adhkar",
   "Page": "Page",
   "to": "to",
   "Hizb": "Hizb",
@@ -287,7 +288,7 @@
   "Arabic": "Arabic",
   "English": "English",
   "Prayers notifications": "Prayers notifications",
-  "Azkar notifications": "Azkar notifications",
+  "Adhkar notifications": "Adhkar notifications",
   "Quran reading notifications": "Quran reading notifications",
   "Salaam Alikum": "Salaam Alikum",
   "Tap to": "Tap to",
@@ -373,5 +374,6 @@
   "One Seventh": "One Seventh",
   "Angle Based": "Angle Based",
   "Standard (Mid Sunset to Sunrise)": "Standard (Mid Sunset to Sunrise)",
-  "Jafari (Mid Sunset to Fajr)": "Jafari (Mid Sunset to Fajr)"
+  "Jafari (Mid Sunset to Fajr)": "Jafari (Mid Sunset to Fajr)",
+  "adhkar": "Adhkar"
 }

@@ -173,6 +173,7 @@ export default function ProtectedLayout() {
     >
       <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
       <Stack.Screen name='on-this-day/[title]' />
+      <Stack.Screen name='adhkar/index' />
       <Stack.Screen name='settings' />
     </Stack>
   )

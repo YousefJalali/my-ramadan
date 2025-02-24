@@ -183,7 +183,7 @@
   "of": "من",
   "Daily Duaa": "الدعاء اليومي",
   "Quran Reading": "قراءة القرآن",
-  "Azkar": "الأذكار",
+  "Adhkar": "الأذكار",
   "Page": "الصفحة",
   "to": "إلى",
   "Hizb": "الجزء",
@@ -207,7 +207,7 @@
   "Arabic": "العربية",
   "English": "الانجليزية",
   "Prayers notifications": "إشعارات الصلاة",
-  "Azkar notifications": "إشعارات الأذكار",
+  "Adhkar notifications": "إشعارات الأذكار",
   "Quran reading notifications": "إشعارات قراءة القرآن",
   "Salaam Alikum": "السلام عليكم",
   "Tap to": "انقر للـ",
@@ -293,5 +293,6 @@
   "One Seventh": "السبع الواحد",
   "Angle Based": "معتمد على الزاوية",
   "Standard (Mid Sunset to Sunrise)": "القياسي (منتصف الغروب إلى الفجر)",
-  "Jafari (Mid Sunset to Fajr)": "جَعفري (منتصف الغروب إلى الفجر)"
+  "Jafari (Mid Sunset to Fajr)": "جَعفري (منتصف الغروب إلى الفجر)",
+  "adhkar": "أذكار"
 }
