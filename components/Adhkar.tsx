@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import { HStack } from './ui/hstack'
 import { Text } from './ui/text'
 import { VStack } from './ui/vstack'
@@ -13,8 +13,12 @@ import {
 } from '@/components/ui/actionsheet'
 import { Pressable } from './ui/pressable'
 import Markdown from '@ronradtke/react-native-markdown-display'
-import { morning } from '@/constants/azkar'
 import { useTranslation } from 'react-i18next'
+import { morning } from '@/constants/adhkar'
+import { Box } from './ui/box'
+import { ScrollView } from 'react-native'
+import { Heading } from './ui/heading'
+import { Divider } from './ui/divider'
 
 const prayers = [
   {
@@ -35,7 +39,7 @@ const prayers = [
   },
 ]
 
-export default function Azkar() {
+export default function Adhkar() {
   const [selectedPrayer, setSelectedPrayer] = useState<null | string>(null)
 
   const { t } = useTranslation()
@@ -56,15 +60,42 @@ export default function Azkar() {
       <Actionsheet
         isOpen={!!selectedPrayer}
         onClose={() => setSelectedPrayer(null)}
+        snapPoints={[90]}
       >
         <ActionsheetBackdrop onPress={() => setSelectedPrayer(null)} />
         <ActionsheetContent>
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper>
-          <Text>
+          <ScrollView
+            contentContainerStyle={{ paddingBottom: 48 }}
+            stickyHeaderIndices={[0]}
+          >
+            <VStack className='pb-4 pt-2 bg-white'>
+              <Heading size='xl'>Morning Adhkar</Heading>
+            </VStack>
+            {morning.map((item) => (
+              <VStack
+                key={item.id}
+                className='mb-4 bg-neutral-100 p-2 rounded-2xl'
+              >
+                <VStack>
+                  {item.en.map((e, i) => (
+                    <Fragment key={i}>
+                      <Text>{e}</Text>
+                      <Divider className='my-2 bg-neutral-300' />
+                    </Fragment>
+                  ))}
+                </VStack>
+                <Text bold className='px-2'>
+                  Repeat x{item.repeat}
+                </Text>
+              </VStack>
+            ))}
+          </ScrollView>
+          {/* <Text>
             <Markdown>{morning}</Markdown>
-          </Text>
+          </Text> */}
         </ActionsheetContent>
       </Actionsheet>
     </>

@@ -8,7 +8,7 @@ import DailyDuaa from '@/components/DailyDuaa'
 import FastingCard from '@/components/fasting-card/FastingCard'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import QuranReading from '@/components/QuranReading'
-import Azkar from '@/components/Azkar'
+import Adhkar from '@/components/Adhkar'
 import HijriAndGregorianDate from '@/components/HijriAndGregorianDate'
 import Section from '@/components/Section'
 import Fasting from '@/components/Fasting'
@@ -49,8 +49,8 @@ export default function HomeScreen() {
           <OnThisDayCard day={day} />
         </Section>
 
-        <Section title='Azkar'>
-          <Azkar />
+        <Section title='Azkar' link='/(protected)/adhkar'>
+          <Adhkar />
         </Section>
       </VStack>
     </ParallaxScrollView>
