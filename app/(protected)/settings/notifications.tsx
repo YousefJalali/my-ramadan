@@ -12,7 +12,7 @@ const list: { key: keyof Notification; label: string }[] = [
   },
   {
     key: 'azkar',
-    label: 'Azkar notifications',
+    label: 'Adhkar notifications',
   },
   {
     key: 'quranReading',

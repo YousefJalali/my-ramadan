@@ -24,14 +24,15 @@ export default function SettingsLink({
   } = useTranslation()
 
   return (
-    <Link href={path}>
-      <HStack
-        className='justify-between basis-full items-center flex-1 h-14'
-        space='lg'
-      >
-        <HStack className='items-center' space='lg'>
+    <Link href={path} className='flex-1'>
+      <HStack className='justify-between items-center flex-1 h-14' space='lg'>
+        <HStack className='items-center w-' space='lg'>
           {iconName ? <Icon as={iconName} size='xl' /> : null}
-          <Text size='lg' className='text-neutral-900 whitespace-nowrap'>
+
+          <Text
+            size='lg'
+            className='text-neutral-900 leading-none line-clamp-1'
+          >
             {t(subText)}
           </Text>
         </HStack>
@@ -46,6 +47,7 @@ export default function SettingsLink({
               {t(preview)}
             </Text>
           ) : null}
+
           <Icon as={language === 'ar-SA' ? ChevronLeft : ChevronRight} />
         </HStack>
       </HStack>

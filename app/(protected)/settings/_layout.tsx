@@ -21,7 +21,7 @@ export default function SettingsLayout() {
   return (
     <VStack className='px-6 flex-1 bg-neutral-50'>
       <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
-        <Heading size='3xl' className='capitalize mb-6 mt-6'>
+        <Heading size='3xl' className='capitalize my-6'>
           {t(title)}
         </Heading>
         <Slot />
