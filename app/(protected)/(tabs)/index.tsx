@@ -49,7 +49,7 @@ export default function HomeScreen() {
           <OnThisDayCard day={day} />
         </Section>
 
-        <Section title='Azkar' link='/(protected)/adhkar'>
+        <Section title='Adhkar' link='/(protected)/adhkar'>
           <Adhkar />
         </Section>
       </VStack>
