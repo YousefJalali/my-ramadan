@@ -17,9 +17,10 @@ SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-    Cairo: require('../assets/fonts/Cairo-VariableFont_wght.ttf'),
+    Inter: require('../assets/fonts/Inter-VariableFont_opsz_wght.ttf'),
+    Montserrat: require('../assets/fonts/Montserrat-Bold.ttf'),
     Rubik: require('../assets/fonts/Rubik-VariableFont_wght.ttf'),
+    Beiruti: require('../assets/fonts/Beiruti-VariableFont_wght.ttf'),
   })
 
   const {
