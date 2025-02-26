@@ -5,6 +5,8 @@ import { Icon } from './ui/icon'
 import { VStack } from './ui/vstack'
 import { useTranslation } from 'react-i18next'
 import { Href, Link } from 'expo-router'
+import { Button, ButtonIcon, ButtonText } from './ui/button'
+import { ChevronLeft, ChevronRight } from 'lucide-react-native'
 
 type Props = {
   children: ReactNode
@@ -21,17 +23,31 @@ export default function Section({
   link,
   className = '',
 }: Props) {
-  const { t } = useTranslation()
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation()
 
   return (
     <VStack className={`mx-6 flex-1 ${className}`}>
       <HStack className='justify-between items-center mb-2'>
         <HStack className='items-center' space='sm'>
-          <Heading size='xl'>{t(title)}</Heading>
+          <Heading className='!font-semibold' size='xl'>
+            {t(title)}
+          </Heading>
           {icon ? <Icon as={icon} size='xl' /> : null}
         </HStack>
 
-        {link ? <Link href={link}>More</Link> : null}
+        {link ? (
+          <Link href={link}>
+            <Button variant='link' className='gap-1' disabled>
+              <ButtonText>{t('more')}</ButtonText>
+              <ButtonIcon
+                as={language === 'ar-SA' ? ChevronLeft : ChevronRight}
+              />
+            </Button>
+          </Link>
+        ) : null}
       </HStack>
 
       {children}

@@ -29,7 +29,7 @@ export default function GoBackBtn() {
     >
       <ButtonIcon
         as={isRTL ? right : left}
-        className='h-7 w-7 text-neutral-950 '
+        className='h-6 w-6 text-neutral-900'
       />
     </Button>
   )

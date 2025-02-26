@@ -26,12 +26,12 @@ export default function SettingsLink({
   return (
     <Link href={path} className='flex-1'>
       <HStack className='justify-between items-center flex-1 h-14' space='lg'>
-        <HStack className='items-center w-' space='lg'>
+        <HStack className='items-center max-w-[95%]' space='lg'>
           {iconName ? <Icon as={iconName} size='xl' /> : null}
 
           <Text
             size='lg'
-            className='text-neutral-900 leading-none line-clamp-1'
+            className='text-neutral-900 leading-normal line-clamp-1'
           >
             {t(subText)}
           </Text>

@@ -1,17 +1,17 @@
 import { Text } from '@/components/ui/text'
-import { VStack } from '@/components/ui/vstack'
 import { useLocalSearchParams } from 'expo-router'
 import adhkar from '@/data/adhkar.json'
-import { ScrollView } from 'react-native'
 import { Heading } from '@/components/ui/heading'
 import DikrCard from '@/components/DikrCard'
 import { useTranslation } from 'react-i18next'
 import { FlashList } from '@shopify/flash-list'
+import PageListLayout from '@/components/PageListLayout'
 
 export default function AdhkarCategory() {
   const { index } = useLocalSearchParams()
 
   const {
+    t,
     i18n: { language },
   } = useTranslation()
 
@@ -19,30 +19,39 @@ export default function AdhkarCategory() {
     return null
   }
 
-  return (
-    <VStack className='bg-neutral-50 flex-1'>
-      <Heading size='2xl' className='mt-6 px-6'>
-        {language === 'en-US' ? adhkar[+index].TITLE : adhkar[+index].TITLE_AR}
-      </Heading>
+  const list = adhkar[+index]
+  const title = language === 'en-US' ? list.title_en : list.title_ar
 
-      <VStack className='flex-1 p-6 pb-32'>
+  return (
+    <PageListLayout pageTitle={title}>
+      {(scrollHandler, getHeaderHeight) => (
         <FlashList
-          data={adhkar[+index].TEXT}
+          ListHeaderComponent={() => (
+            <Heading
+              onLayout={getHeaderHeight}
+              size='3xl'
+              className='capitalize mt-6 mb-4'
+            >
+              {title}
+            </Heading>
+          )}
+          onScroll={scrollHandler}
+          data={[...list.list]}
           renderItem={({
-            item: { ID, TRANSLATED_TEXT, ARABIC_TEXT, AUDIO, REPEAT },
+            item: { id, text_en, text_ar, repeat, audio_uri },
             index,
           }) => (
             <DikrCard
-              key={ID}
-              text={language === 'en-US' ? TRANSLATED_TEXT : ARABIC_TEXT}
-              count={REPEAT}
-              audioUri={AUDIO}
+              key={id}
+              text={language === 'en-US' ? text_en : text_ar}
+              count={repeat}
+              audioUri={audio_uri}
             />
           )}
           estimatedItemSize={250}
           ListEmptyComponent={<Text>No results found</Text>}
         />
-      </VStack>
-    </VStack>
+      )}
+    </PageListLayout>
   )
 }
