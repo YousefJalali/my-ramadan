@@ -7,7 +7,7 @@ import { Center } from '@/components/ui/center'
 import { ScrollView } from 'react-native'
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import Prayers from '@/components/Prayers'
-import QuranReading from '@/components/QuranReading'
+import KhatmQuran from '@/components/khatm-quran/KhatmQuran'
 import Constants from 'expo-constants'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useTranslation } from 'react-i18next'
@@ -101,9 +101,9 @@ export default function TrackerScreen() {
           {(readonly) => <Prayers day={day} trackerView readOnly={readonly} />}
         </Wrapper>
 
-        <Wrapper title='Quran Reading'>
+        <Wrapper title='Khatm Quran'>
           {(readonly) => (
-            <QuranReading day={day} trackerView readOnly={readonly} />
+            <KhatmQuran day={day} trackerView readOnly={readonly} />
           )}
         </Wrapper>
       </ScrollView>
