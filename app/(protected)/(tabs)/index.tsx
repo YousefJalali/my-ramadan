@@ -7,7 +7,7 @@ import { VStack } from '@/components/ui/vstack'
 import DailyDuaa from '@/components/DailyDuaa'
 import FastingCard from '@/components/fasting-card/FastingCard'
 import ParallaxScrollView from '@/components/ParallaxScrollView'
-import QuranReading from '@/components/QuranReading'
+import KhatmQuran from '@/components/khatm-quran/KhatmQuran'
 import Adhkar from '@/components/Adhkar'
 import HijriAndGregorianDate from '@/components/HijriAndGregorianDate'
 import Section from '@/components/Section'
@@ -41,8 +41,8 @@ export default function HomeScreen() {
           <DailyDuaa day={day} />
         </Section>
 
-        <Section title='Quran Reading'>
-          <QuranReading day={day} />
+        <Section title='Khatm Quran'>
+          <KhatmQuran day={day} />
         </Section>
 
         <Section title='On This Day'>
