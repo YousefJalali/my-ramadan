@@ -12,6 +12,7 @@ import {
   setupPrayerTimesDB,
 } from '@/sqlite/prayerTimesDB'
 import { CachedPrayerTimes, StoredPrayerTimes } from '@/types'
+import NetInfo from '@react-native-community/netinfo'
 
 export default function ProtectedLayout() {
   const {
@@ -28,6 +29,18 @@ export default function ProtectedLayout() {
       school,
     },
   } = use$(settings$)
+
+  //check internet connection
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener((state) => {
+      // console.log('Connection type', state.type)
+      console.log('Is connected?', state.isConnected)
+    })
+
+    return () => {
+      unsubscribe()
+    }
+  }, [])
 
   //auth
   useEffect(() => {
@@ -150,7 +163,7 @@ export default function ProtectedLayout() {
           //set prayer times settings to math with url
         }
       }
-      console.log(prayerTimes$.timings['1'].get())
+      // console.log(prayerTimes$.timings.get())
     } catch (error) {
       console.error('Error fetching prayer times from db:', error)
     }
