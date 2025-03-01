@@ -11,8 +11,8 @@ import { useTranslation } from 'react-i18next'
 import { progress$, khatmQuran$, QuranJuz } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from '../StatusBadge'
-import ReadingPlanForm from './form/ReadingPlanForm'
-import { Memo } from '@legendapp/state/react'
+// import ReadingPlanForm from './form/ReadingPlanForm'
+import { Computed, Memo } from '@legendapp/state/react'
 
 function formatSurahVerses(juzObject: QuranJuz) {
   const entries = juzObject.surah.map(({ name_en, verses }) => {
@@ -39,19 +39,18 @@ export default function QuranReading({
     i18n: { language },
   } = useTranslation()
 
-  console.log('renderedd')
-
   const dayReading =
     progress$.days[day].quranReading.get() || khatmQuran$.nextReading()
 
   function checkHandler() {
-    console.log(progress$.days[day].quranReading.get())
     if (progress$.days[day].quranReading.get()) {
+      console.log('uncheck')
       progress$.days[day].quranReading.set(null)
     } else {
+      console.log('check')
       const next = khatmQuran$.nextReading()
       progress$.days[day].quranReading.set(next)
-      console.log(JSON.stringify(next))
+      // console.log(JSON.stringify(next))
     }
 
     // progress$.days[day].quranReading.set(
@@ -80,10 +79,10 @@ export default function QuranReading({
           <Text bold size='xl'>
             {formatSurahVerses(dayReading)}
           </Text>
-          <ReadingPlanForm />
+          {/* <ReadingPlanForm /> */}
         </VStack>
 
-        <Memo>
+        <Computed>
           {() =>
             readOnly ? (
               <StatusBadge
@@ -104,7 +103,7 @@ export default function QuranReading({
               </Checkbox>
             )
           }
-        </Memo>
+        </Computed>
       </HStack>
     </VStack>
   )
