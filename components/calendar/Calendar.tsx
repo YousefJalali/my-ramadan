@@ -59,6 +59,10 @@ export default function Calendar({
         >
           <Center className='w-12' />
           <Center className='w-12' />
+          <Center className='w-12' />
+          <Center className='w-12' />
+          <Center className='w-12' />
+          <Center className='w-12' />
           {Object.keys(prayerTimes$.timings.get()).map((d) => (
             <Radio
               key={d}

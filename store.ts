@@ -296,6 +296,201 @@ export const prayerTimes$ = observable<StoredPrayerTimes>({
   school: 'STANDARD',
   timings: {
     '1': {
+      Asr: '15:06 (+03)',
+      Dhuhr: '11:46 (+03)',
+      Fajr: '04:41 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:31 (+03)',
+      Isha: '18:48 (+03)',
+      Lastthird: '01:50 (+03)',
+      Maghrib: '17:36 (+03)',
+      Midnight: '23:47 (+03)',
+      Sunrise: '05:57 (+03)',
+      Sunset: '17:36 (+03)',
+    },
+    '10': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:44 (+03)',
+      Fajr: '04:33 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:23 (+03)',
+      Isha: '18:52 (+03)',
+      Lastthird: '01:46 (+03)',
+      Maghrib: '17:41 (+03)',
+      Midnight: '23:45 (+03)',
+      Sunrise: '05:48 (+03)',
+      Sunset: '17:41 (+03)',
+    },
+    '11': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:44 (+03)',
+      Fajr: '04:32 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:22 (+03)',
+      Isha: '18:53 (+03)',
+      Lastthird: '01:45 (+03)',
+      Maghrib: '17:41 (+03)',
+      Midnight: '23:44 (+03)',
+      Sunrise: '05:47 (+03)',
+      Sunset: '17:41 (+03)',
+    },
+    '12': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:44 (+03)',
+      Fajr: '04:30 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:20 (+03)',
+      Isha: '18:53 (+03)',
+      Lastthird: '01:45 (+03)',
+      Maghrib: '17:42 (+03)',
+      Midnight: '23:44 (+03)',
+      Sunrise: '05:46 (+03)',
+      Sunset: '17:42 (+03)',
+    },
+    '13': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:44 (+03)',
+      Fajr: '04:29 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:19 (+03)',
+      Isha: '18:54 (+03)',
+      Lastthird: '01:44 (+03)',
+      Maghrib: '17:42 (+03)',
+      Midnight: '23:44 (+03)',
+      Sunrise: '05:45 (+03)',
+      Sunset: '17:42 (+03)',
+    },
+    '14': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:43 (+03)',
+      Fajr: '04:28 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:18 (+03)',
+      Isha: '18:54 (+03)',
+      Lastthird: '01:44 (+03)',
+      Maghrib: '17:43 (+03)',
+      Midnight: '23:44 (+03)',
+      Sunrise: '05:44 (+03)',
+      Sunset: '17:43 (+03)',
+    },
+    '15': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:43 (+03)',
+      Fajr: '04:27 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:17 (+03)',
+      Isha: '18:55 (+03)',
+      Lastthird: '01:43 (+03)',
+      Maghrib: '17:43 (+03)',
+      Midnight: '23:43 (+03)',
+      Sunrise: '05:43 (+03)',
+      Sunset: '17:43 (+03)',
+    },
+    '16': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:43 (+03)',
+      Fajr: '04:26 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:16 (+03)',
+      Isha: '18:55 (+03)',
+      Lastthird: '01:43 (+03)',
+      Maghrib: '17:44 (+03)',
+      Midnight: '23:43 (+03)',
+      Sunrise: '05:42 (+03)',
+      Sunset: '17:44 (+03)',
+    },
+    '17': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:42 (+03)',
+      Fajr: '04:25 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:15 (+03)',
+      Isha: '18:56 (+03)',
+      Lastthird: '01:42 (+03)',
+      Maghrib: '17:44 (+03)',
+      Midnight: '23:43 (+03)',
+      Sunrise: '05:41 (+03)',
+      Sunset: '17:44 (+03)',
+    },
+    '18': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:42 (+03)',
+      Fajr: '04:24 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:14 (+03)',
+      Isha: '18:56 (+03)',
+      Lastthird: '01:42 (+03)',
+      Maghrib: '17:45 (+03)',
+      Midnight: '23:42 (+03)',
+      Sunrise: '05:40 (+03)',
+      Sunset: '17:45 (+03)',
+    },
+    '19': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:42 (+03)',
+      Fajr: '04:23 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:13 (+03)',
+      Isha: '18:57 (+03)',
+      Lastthird: '01:41 (+03)',
+      Maghrib: '17:45 (+03)',
+      Midnight: '23:42 (+03)',
+      Sunrise: '05:39 (+03)',
+      Sunset: '17:45 (+03)',
+    },
+    '2': {
+      Asr: '15:06 (+03)',
+      Dhuhr: '11:46 (+03)',
+      Fajr: '04:40 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:30 (+03)',
+      Isha: '18:48 (+03)',
+      Lastthird: '01:50 (+03)',
+      Maghrib: '17:37 (+03)',
+      Midnight: '23:46 (+03)',
+      Sunrise: '05:56 (+03)',
+      Sunset: '17:37 (+03)',
+    },
+    '20': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:42 (+03)',
+      Fajr: '04:22 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:12 (+03)',
+      Isha: '18:57 (+03)',
+      Lastthird: '01:41 (+03)',
+      Maghrib: '17:45 (+03)',
+      Midnight: '23:42 (+03)',
+      Sunrise: '05:38 (+03)',
+      Sunset: '17:45 (+03)',
+    },
+    '21': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:41 (+03)',
+      Fajr: '04:21 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:11 (+03)',
+      Isha: '18:58 (+03)',
+      Lastthird: '01:40 (+03)',
+      Maghrib: '17:46 (+03)',
+      Midnight: '23:42 (+03)',
+      Sunrise: '05:37 (+03)',
+      Sunset: '17:46 (+03)',
+    },
+    '22': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:41 (+03)',
+      Fajr: '04:20 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:10 (+03)',
+      Isha: '18:58 (+03)',
+      Lastthird: '01:40 (+03)',
+      Maghrib: '17:46 (+03)',
+      Midnight: '23:41 (+03)',
+      Sunrise: '05:36 (+03)',
+      Sunset: '17:46 (+03)',
+    },
+    '23': {
       Asr: '15:07 (+03)',
       Dhuhr: '11:41 (+03)',
       Fajr: '04:19 (+03)',
@@ -308,31 +503,174 @@ export const prayerTimes$ = observable<StoredPrayerTimes>({
       Sunrise: '05:35 (+03)',
       Sunset: '17:47 (+03)',
     },
-    '2': {
+    '24': {
       Asr: '15:07 (+03)',
-      Dhuhr: '11:41 (+03)',
-      Fajr: '04:19 (+03)',
+      Dhuhr: '11:40 (+03)',
+      Fajr: '04:18 (+03)',
       Firstthird: '21:43 (+03)',
-      Imsak: '04:09 (+03)',
+      Imsak: '04:08 (+03)',
       Isha: '18:59 (+03)',
-      Lastthird: '01:39 (+03)',
+      Lastthird: '01:38 (+03)',
       Maghrib: '17:47 (+03)',
       Midnight: '23:41 (+03)',
-      Sunrise: '05:35 (+03)',
+      Sunrise: '05:34 (+03)',
       Sunset: '17:47 (+03)',
+    },
+    '25': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:40 (+03)',
+      Fajr: '04:17 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:07 (+03)',
+      Isha: '19:00 (+03)',
+      Lastthird: '01:38 (+03)',
+      Maghrib: '17:48 (+03)',
+      Midnight: '23:40 (+03)',
+      Sunrise: '05:33 (+03)',
+      Sunset: '17:48 (+03)',
+    },
+    '26': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:40 (+03)',
+      Fajr: '04:15 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:05 (+03)',
+      Isha: '19:00 (+03)',
+      Lastthird: '01:37 (+03)',
+      Maghrib: '17:48 (+03)',
+      Midnight: '23:40 (+03)',
+      Sunrise: '05:32 (+03)',
+      Sunset: '17:48 (+03)',
+    },
+    '27': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:40 (+03)',
+      Fajr: '04:14 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:04 (+03)',
+      Isha: '19:01 (+03)',
+      Lastthird: '01:37 (+03)',
+      Maghrib: '17:48 (+03)',
+      Midnight: '23:40 (+03)',
+      Sunrise: '05:31 (+03)',
+      Sunset: '17:48 (+03)',
+    },
+    '28': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:39 (+03)',
+      Fajr: '04:13 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:03 (+03)',
+      Isha: '19:01 (+03)',
+      Lastthird: '01:36 (+03)',
+      Maghrib: '17:49 (+03)',
+      Midnight: '23:39 (+03)',
+      Sunrise: '05:30 (+03)',
+      Sunset: '17:49 (+03)',
+    },
+    '29': {
+      Asr: '15:06 (+03)',
+      Dhuhr: '11:39 (+03)',
+      Fajr: '04:12 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:02 (+03)',
+      Isha: '19:02 (+03)',
+      Lastthird: '01:36 (+03)',
+      Maghrib: '17:49 (+03)',
+      Midnight: '23:39 (+03)',
+      Sunrise: '05:29 (+03)',
+      Sunset: '17:49 (+03)',
     },
     '3': {
       Asr: '15:07 (+03)',
-      Dhuhr: '11:41 (+03)',
-      Fajr: '04:19 (+03)',
+      Dhuhr: '11:46 (+03)',
+      Fajr: '04:39 (+03)',
       Firstthird: '21:43 (+03)',
-      Imsak: '04:09 (+03)',
-      Isha: '18:59 (+03)',
-      Lastthird: '01:39 (+03)',
-      Maghrib: '17:47 (+03)',
-      Midnight: '23:41 (+03)',
-      Sunrise: '05:35 (+03)',
-      Sunset: '17:47 (+03)',
+      Imsak: '04:29 (+03)',
+      Isha: '18:49 (+03)',
+      Lastthird: '01:49 (+03)',
+      Maghrib: '17:37 (+03)',
+      Midnight: '23:46 (+03)',
+      Sunrise: '05:55 (+03)',
+      Sunset: '17:37 (+03)',
+    },
+    '4': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:46 (+03)',
+      Fajr: '04:38 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:28 (+03)',
+      Isha: '18:49 (+03)',
+      Lastthird: '01:49 (+03)',
+      Maghrib: '17:38 (+03)',
+      Midnight: '23:46 (+03)',
+      Sunrise: '05:54 (+03)',
+      Sunset: '17:38 (+03)',
+    },
+    '5': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:46 (+03)',
+      Fajr: '04:37 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:27 (+03)',
+      Isha: '18:50 (+03)',
+      Lastthird: '01:48 (+03)',
+      Maghrib: '17:38 (+03)',
+      Midnight: '23:46 (+03)',
+      Sunrise: '05:53 (+03)',
+      Sunset: '17:38 (+03)',
+    },
+    '6': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:45 (+03)',
+      Fajr: '04:36 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:26 (+03)',
+      Isha: '18:50 (+03)',
+      Lastthird: '01:48 (+03)',
+      Maghrib: '17:39 (+03)',
+      Midnight: '23:46 (+03)',
+      Sunrise: '05:52 (+03)',
+      Sunset: '17:39 (+03)',
+    },
+    '7': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:45 (+03)',
+      Fajr: '04:35 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:25 (+03)',
+      Isha: '18:51 (+03)',
+      Lastthird: '01:47 (+03)',
+      Maghrib: '17:39 (+03)',
+      Midnight: '23:45 (+03)',
+      Sunrise: '05:51 (+03)',
+      Sunset: '17:39 (+03)',
+    },
+    '8': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:45 (+03)',
+      Fajr: '04:34 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:24 (+03)',
+      Isha: '18:51 (+03)',
+      Lastthird: '01:47 (+03)',
+      Maghrib: '17:40 (+03)',
+      Midnight: '23:45 (+03)',
+      Sunrise: '05:50 (+03)',
+      Sunset: '17:40 (+03)',
+    },
+    '9': {
+      Asr: '15:07 (+03)',
+      Dhuhr: '11:45 (+03)',
+      Fajr: '04:34 (+03)',
+      Firstthird: '21:43 (+03)',
+      Imsak: '04:24 (+03)',
+      Isha: '18:52 (+03)',
+      Lastthird: '01:46 (+03)',
+      Maghrib: '17:40 (+03)',
+      Midnight: '23:45 (+03)',
+      Sunrise: '05:49 (+03)',
+      Sunset: '17:40 (+03)',
     },
   },
   url: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA',
@@ -345,10 +683,10 @@ export const khatmQuran$ = observable({
 
   nextReading: () => {
     const last = khatmQuran$.lastReading()
-    console.log('called', last)
+    // console.log('called', last)
 
     if (!last) {
-      console.log('here 1')
+      // console.log('here 1')
       return {
         juz: '01',
         surah: [
@@ -369,8 +707,10 @@ export const khatmQuran$ = observable({
     let returnNextEle = false
 
     for (let j of QURAN_JUZ) {
-      console.log('here 2')
-      if (returnNextEle) return j
+      if (returnNextEle) {
+        // console.log('here 2')
+        return j
+      }
 
       if (j.juz === last.juz) {
         if (j.surah.length === last.surah.length) {
@@ -383,7 +723,7 @@ export const khatmQuran$ = observable({
             returnNextEle = true
           } else {
             //return same remaining verses
-            console.log('here 3')
+            // console.log('here 3')
             return {
               juz: j.juz,
               surah: [
@@ -398,20 +738,20 @@ export const khatmQuran$ = observable({
               ],
             }
           }
-        }
-
-        //missing surah
-        const currentSurahs = Object.values(last.surah)
-        let index = 0
-        for (let def of j.surah) {
-          if (!currentSurahs.find((cur) => cur.name_en === def.name_en)) {
-            console.log('here 4')
-            return {
-              juz: j.juz,
-              surah: j.surah.slice(index),
+        } else {
+          //missing surah
+          const currentSurahs = Object.values(last.surah)
+          let index = 0
+          for (let def of j.surah) {
+            if (!currentSurahs.find((cur) => cur.name_en === def.name_en)) {
+              // console.log('here 4')
+              return {
+                juz: j.juz,
+                surah: j.surah.slice(index),
+              }
             }
+            index++
           }
-          index++
         }
       }
     }
