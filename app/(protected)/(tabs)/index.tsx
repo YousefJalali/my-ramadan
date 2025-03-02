@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import TotalProgress from '@/components/TotalProgress'
+import TotalProgress from '@/components/total-progress/TotalProgress'
 import OnThisDayCard from '@/components/OnThisDayCard'
 import { Center } from '@/components/ui/center'
 import Prayers from '@/components/Prayers'
@@ -13,6 +12,7 @@ import HijriAndGregorianDate from '@/components/HijriAndGregorianDate'
 import Section from '@/components/Section'
 import Fasting from '@/components/Fasting'
 import { gregorianToHijri } from '@/utils/gregorianToHijri'
+import { Link } from 'expo-router'
 
 export default function HomeScreen() {
   const day = +gregorianToHijri(new Date())
@@ -26,7 +26,9 @@ export default function HomeScreen() {
         </Center>
 
         <Section title='monthly progress'>
-          <TotalProgress />
+          <Link href='/tracker'>
+            <TotalProgress />
+          </Link>
         </Section>
 
         <Section title='fasting'>

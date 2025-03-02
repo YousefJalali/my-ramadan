@@ -1,20 +1,20 @@
-import Rings from './Rings'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
 import { HStack } from '@/components/ui/hstack'
 import { useTranslation } from 'react-i18next'
 import { use$ } from '@legendapp/state/react'
 import { progress$ } from '@/store'
+import Rings from './Rings'
 
 const unit: { [key: string]: string } = {
   fasting: 'day',
   Prayers: 'prayer',
-  'Quran Reading': 'page',
+  'Khatm Quran': 'hizb',
 }
 
 // const champions = [
 //   'rgb(197 161 51)',
-//   'rgb(99 129 39)',
+//   'rgb(99 129 39)',P
 //   'rgb(255 161 122)',
 //   'rgb(86 171 239)',
 //   'rgb(173 153 229)',
@@ -24,7 +24,7 @@ const unit: { [key: string]: string } = {
 const colors: { [key: string]: string } = {
   fasting: 'rgb(197 161 51)',
   Prayers: 'rgb(86 171 239)',
-  'Quran Reading': 'rgb(241 138 84)',
+  'Khatm Quran': 'rgb(241 138 84)',
 }
 
 export default function TotalProgress() {
@@ -37,7 +37,7 @@ export default function TotalProgress() {
   const data: { [key: string]: number[] } = {
     fasting: [fasting, 30],
     Prayers: [prayers, 5 * 30],
-    'Quran Reading': [quranReading * 20, 604],
+    'Khatm Quran': [quranReading * 2, 60],
   }
 
   return (
@@ -49,10 +49,10 @@ export default function TotalProgress() {
           <VStack key={key} space='sm'>
             <Text className='capitalize'>{t(key)}</Text>
 
-            <HStack space='xs' className='items-end'>
+            <HStack space='sm' className='items-end'>
               <Text
                 size='2xl'
-                className='leading-none'
+                className='leading-none tracking-wider'
                 style={{ color: colors[key] }}
               >
                 {data[key][0]}/{data[key][1]}

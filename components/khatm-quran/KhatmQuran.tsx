@@ -12,7 +12,9 @@ import { progress$, khatmQuran$, QuranJuz } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from '../StatusBadge'
 // import ReadingPlanForm from './form/ReadingPlanForm'
-import { Computed } from '@legendapp/state/react'
+import { Computed, use$ } from '@legendapp/state/react'
+import { Progress, ProgressFilledTrack } from '@/components/ui/progress'
+import { mapRange } from '@/utils/mapRange'
 
 function formatSurahVerses(juzObject: QuranJuz, language = 'en-US') {
   const entries = juzObject.surah.map(({ name_en, name_ar, verses }) => {
@@ -80,21 +82,18 @@ export default function QuranReading({
 
   function checkHandler() {
     if (progress$.days[day].quranReading.get()) {
-      console.log('uncheck')
+      // console.log('uncheck')
       progress$.days[day].quranReading.set(null)
     } else {
-      console.log('check')
+      // console.log('check')
       const next = khatmQuran$.nextReading()
       progress$.days[day].quranReading.set(next)
-      // console.log(JSON.stringify(next))
     }
-
-    // progress$.days[day].quranReading.set(
-    //   readingProgress
-    //     ? [dayReading.pages[0], dayReading.pages[1]]
-    //     : null
-    // )
   }
+
+  const progress = use$(() =>
+    mapRange(progress$.totalProgress().quranReading, 0, 30, 0, 100)
+  )
 
   return (
     <VStack
@@ -148,6 +147,19 @@ export default function QuranReading({
           }
         </Computed>
       </HStack>
+
+      {!trackerView ? (
+        <VStack className='mt-6' space='xs'>
+          <HStack className='justify-between'>
+            <Text>{t('reading progress')}</Text>
+            <Text>{progress.toFixed(1)}%</Text>
+          </HStack>
+
+          <Progress value={progress} size='lg' className='bg-neutral-200'>
+            <ProgressFilledTrack className='bg-success-400' />
+          </Progress>
+        </VStack>
+      ) : null}
     </VStack>
   )
 }

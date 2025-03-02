@@ -251,7 +251,7 @@ export const progress$ = observable({
 
     Object.values(monthData).forEach((day) => {
       fasting += day.fasting ? 1 : 0
-      quranReading = 1
+      quranReading += day.quranReading ? 1 : 0
       prayers += day.prayers.filter((p) => p).length
     })
 
