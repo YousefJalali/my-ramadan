@@ -115,7 +115,7 @@ export default function Fasting({
 
             <HStack className='justify-between mt-1'>
               <Text size='sm' className='text-neutral-500'>
-                {t('Imsak')} | {formatTime(parsePrayerTime(Imsak))}
+                {t('imsak')} | {formatTime(parsePrayerTime(Imsak))}
               </Text>
               {progress > 0 && progress < 100 ? (
                 <Text size='sm'>

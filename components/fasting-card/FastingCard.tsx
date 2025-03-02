@@ -133,7 +133,7 @@ export default function FastingCard({ day }: { day: number }) {
         }`}
       >
         {[
-          { prayer: 'Imsak' as ExtendedPrayer, label: 'Imask' },
+          { prayer: 'Imsak' as ExtendedPrayer, label: 'imsak' },
           { prayer: 'Maghrib' as ExtendedPrayer, label: 'Iftar' },
         ].map(({ prayer, label }) => (
           <Center key={prayer}>

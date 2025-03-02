@@ -687,21 +687,7 @@ export const khatmQuran$ = observable({
 
     if (!last) {
       // console.log('here 1')
-      return {
-        juz: '01',
-        surah: [
-          {
-            name_en: 'Al-Fatiha',
-            name_ar: 'Al-Fatiha',
-            verses: [1, 7],
-          },
-          {
-            name_en: 'Al-Baqara',
-            name_ar: 'Al-Baqara',
-            verses: [1, 141],
-          },
-        ],
-      }
+      return QURAN_JUZ[0]
     }
 
     let returnNextEle = false
@@ -756,32 +742,9 @@ export const khatmQuran$ = observable({
       }
     }
 
-    return {
-      juz: '30',
-      surah: [
-        {
-          name_en: 'An-Nas',
-          name_ar: 'An-Nas',
-          verses: [1, 6],
-        },
-      ],
-    }
+    return QURAN_JUZ[QURAN_JUZ.length - 1]
   },
 })
-
-// const persistOptions = configureSynced({
-//   persist: {
-//     plugin: observablePersistSqlite(Storage),
-//   },
-// })
-// syncObservable(
-//   settings$,
-//   persistOptions({
-//     persist: {
-//       name: 'settings',
-//     },
-//   })
-// )
 
 syncObservable(settings$, {
   persist: {

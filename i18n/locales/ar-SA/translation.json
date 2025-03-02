@@ -182,7 +182,7 @@
   "completed": "مكتمل",
   "of": "من",
   "Daily Duaa": "الدعاء اليومي",
-  "Quran Reading": "قراءة القرآن",
+  "Khatm Quran": "ختم القرآن",
   "Adhkar": "الأذكار",
   "Page": "الصفحة",
   "to": "إلى",
@@ -295,5 +295,9 @@
   "Angle Based": "معتمد على الزاوية",
   "Standard (Mid Sunset to Sunrise)": "القياسي (منتصف الغروب إلى الفجر)",
   "Jafari (Mid Sunset to Fajr)": "جَعفري (منتصف الغروب إلى الفجر)",
-  "adhkar": "أذكار"
+  "adhkar": "أذكار",
+  "No reading logged this day": "لم تُسجل أي قراءة لهذا اليوم",
+  "try to finish Juz": "حاول إنهاء الجزء",
+  "today": "اليوم",
+  "imsak": "الإمساك"
 }

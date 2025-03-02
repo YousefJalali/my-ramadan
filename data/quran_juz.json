@@ -2,826 +2,286 @@
   {
     "juz": "01",
     "surah": [
-      {
-        "name_en": "Al-Fatiha",
-        "name_ar": "Al-Fatiha",
-        "verses": [1, 7]
-      },
-      {
-        "name_en": "Al-Baqara",
-        "name_ar": "Al-Baqara",
-        "verses": [1, 141]
-      }
+      { "name_en": "Al-Fatiha", "name_ar": "الفاتحة", "verses": [1, 7] },
+      { "name_en": "Al-Baqara", "name_ar": "البقرة", "verses": [1, 141] }
     ]
   },
   {
     "juz": "02",
     "surah": [
-      {
-        "name_en": "Al-Baqara",
-        "name_ar": "Al-Baqara",
-        "verses": [142, 252]
-      }
+      { "name_en": "Al-Baqara", "name_ar": "البقرة", "verses": [142, 252] }
     ]
   },
   {
     "juz": "03",
     "surah": [
-      {
-        "name_en": "Al-Baqara",
-        "name_ar": "Al-Baqara",
-        "verses": [253, 286]
-      },
-      {
-        "name_en": "Aal-Imran",
-        "name_ar": "Aal-Imran",
-        "verses": [1, 92]
-      }
+      { "name_en": "Al-Baqara", "name_ar": "البقرة", "verses": [253, 286] },
+      { "name_en": "Aal-Imran", "name_ar": "آل عمران", "verses": [1, 92] }
     ]
   },
   {
     "juz": "04",
     "surah": [
-      {
-        "name_en": "Aal-Imran",
-        "name_ar": "Aal-Imran",
-        "verses": [93, 200]
-      },
-      {
-        "name_en": "An-Nisaa'",
-        "name_ar": "An-Nisaa'",
-        "verses": [1, 23]
-      }
+      { "name_en": "Aal-Imran", "name_ar": "آل عمران", "verses": [93, 200] },
+      { "name_en": "An-Nisaa'", "name_ar": "النساء", "verses": [1, 23] }
     ]
   },
   {
     "juz": "05",
     "surah": [
-      {
-        "name_en": "An-Nisaa'",
-        "name_ar": "An-Nisaa'",
-        "verses": [24, 147]
-      }
+      { "name_en": "An-Nisaa'", "name_ar": "النساء", "verses": [24, 147] }
     ]
   },
   {
     "juz": "06",
     "surah": [
-      {
-        "name_en": "An-Nisaa'",
-        "name_ar": "An-Nisaa'",
-        "verses": [148, 176]
-      },
-      {
-        "name_en": "Al-Ma'ida",
-        "name_ar": "Al-Ma'ida",
-        "verses": [1, 81]
-      }
+      { "name_en": "An-Nisaa'", "name_ar": "النساء", "verses": [148, 176] },
+      { "name_en": "Al-Ma'ida", "name_ar": "المائدة", "verses": [1, 81] }
     ]
   },
   {
     "juz": "07",
     "surah": [
-      {
-        "name_en": "Al-Ma'ida",
-        "name_ar": "Al-Ma'ida",
-        "verses": [82, 120]
-      },
-      {
-        "name_en": "Al-An'am",
-        "name_ar": "Al-An'am",
-        "verses": [1, 110]
-      }
+      { "name_en": "Al-Ma'ida", "name_ar": "المائدة", "verses": [82, 120] },
+      { "name_en": "Al-An'am", "name_ar": "الأنعام", "verses": [1, 110] }
     ]
   },
   {
     "juz": "08",
     "surah": [
-      {
-        "name_en": "Al-An'am",
-        "name_ar": "Al-An'am",
-        "verses": [111, 165]
-      },
-      {
-        "name_en": "Al-A'raf",
-        "name_ar": "Al-A'raf",
-        "verses": [1, 87]
-      }
+      { "name_en": "Al-An'am", "name_ar": "الأنعام", "verses": [111, 165] },
+      { "name_en": "Al-A'raf", "name_ar": "الأعراف", "verses": [1, 87] }
     ]
   },
   {
     "juz": "09",
     "surah": [
-      {
-        "name_en": "Al-A'raf",
-        "name_ar": "Al-A'raf",
-        "verses": [88, 206]
-      },
-      {
-        "name_en": "Al-Anfal",
-        "name_ar": "Al-Anfal",
-        "verses": [1, 40]
-      }
+      { "name_en": "Al-A'raf", "name_ar": "الأعراف", "verses": [88, 206] },
+      { "name_en": "Al-Anfal", "name_ar": "الأنفال", "verses": [1, 40] }
     ]
   },
   {
     "juz": "10",
     "surah": [
-      {
-        "name_en": "Al-Anfal",
-        "name_ar": "Al-Anfal",
-        "verses": [41, 75]
-      },
-      {
-        "name_en": "Al-Tawba",
-        "name_ar": "Al-Tawba",
-        "verses": [1, 92]
-      }
+      { "name_en": "Al-Anfal", "name_ar": "الأنفال", "verses": [41, 75] },
+      { "name_en": "Al-Tawba", "name_ar": "التوبة", "verses": [1, 92] }
     ]
   },
   {
     "juz": "11",
     "surah": [
-      {
-        "name_en": "Al-Tawba",
-        "name_ar": "Al-Tawba",
-        "verses": [93, 129]
-      },
-      {
-        "name_en": "Yunus",
-        "name_ar": "Yunus",
-        "verses": [1, 109]
-      },
-      {
-        "name_en": "Hud",
-        "name_ar": "Hud",
-        "verses": [1, 5]
-      }
+      { "name_en": "Al-Tawba", "name_ar": "التوبة", "verses": [93, 129] },
+      { "name_en": "Yunus", "name_ar": "يونس", "verses": [1, 109] },
+      { "name_en": "Hud", "name_ar": "هود", "verses": [1, 5] }
     ]
   },
   {
     "juz": "12",
     "surah": [
-      {
-        "name_en": "Hud",
-        "name_ar": "Hud",
-        "verses": [6, 123]
-      },
-      {
-        "name_en": "Yusuf",
-        "name_ar": "Yusuf",
-        "verses": [1, 52]
-      }
+      { "name_en": "Hud", "name_ar": "هود", "verses": [6, 123] },
+      { "name_en": "Yusuf", "name_ar": "يوسف", "verses": [1, 52] }
     ]
   },
   {
     "juz": "13",
     "surah": [
-      {
-        "name_en": "Yusuf",
-        "name_ar": "Yusuf",
-        "verses": [53, 111]
-      },
-      {
-        "name_en": "Ar-Ra'd",
-        "name_ar": "Ar-Ra'd",
-        "verses": [1, 43]
-      },
-      {
-        "name_en": "Ibrahim",
-        "name_ar": "Ibrahim",
-        "verses": [1, 52]
-      }
+      { "name_en": "Yusuf", "name_ar": "يوسف", "verses": [53, 111] },
+      { "name_en": "Ar-Ra'd", "name_ar": "الرعد", "verses": [1, 43] },
+      { "name_en": "Ibrahim", "name_ar": "إبراهيم", "verses": [1, 52] }
     ]
   },
   {
     "juz": "14",
     "surah": [
-      {
-        "name_en": "Al-Hijr",
-        "name_ar": "Al-Hijr",
-        "verses": [1, 99]
-      },
-      {
-        "name_en": "An-Nahl",
-        "name_ar": "An-Nahl",
-        "verses": [1, 128]
-      }
+      { "name_en": "Al-Hijr", "name_ar": "الحجر", "verses": [1, 99] },
+      { "name_en": "An-Nahl", "name_ar": "النحل", "verses": [1, 128] }
     ]
   },
   {
     "juz": "15",
     "surah": [
-      {
-        "name_en": "Al-Israa",
-        "name_ar": "Al-Israa",
-        "verses": [1, 111]
-      },
-      {
-        "name_en": "Al-Kahf",
-        "name_ar": "Al-Kahf",
-        "verses": [1, 74]
-      }
+      { "name_en": "Al-Israa", "name_ar": "الإسراء", "verses": [1, 111] },
+      { "name_en": "Al-Kahf", "name_ar": "الكهف", "verses": [1, 74] }
     ]
   },
   {
     "juz": "16",
     "surah": [
-      {
-        "name_en": "Al-Kahf",
-        "name_ar": "Al-Kahf",
-        "verses": [75, 110]
-      },
-      {
-        "name_en": "Maryam",
-        "name_ar": "Maryam",
-        "verses": [1, 98]
-      },
-      {
-        "name_en": "Ta-Ha",
-        "name_ar": "Ta-Ha",
-        "verses": [1, 135]
-      }
+      { "name_en": "Al-Kahf", "name_ar": "الكهف", "verses": [75, 110] },
+      { "name_en": "Maryam", "name_ar": "مريم", "verses": [1, 98] },
+      { "name_en": "Ta-Ha", "name_ar": "طه", "verses": [1, 135] }
     ]
   },
   {
     "juz": "17",
     "surah": [
-      {
-        "name_en": "Al-Anbiya",
-        "name_ar": "Al-Anbiya",
-        "verses": [1, 112]
-      },
-      {
-        "name_en": "Al-Hajj",
-        "name_ar": "Al-Hajj",
-        "verses": [1, 78]
-      }
+      { "name_en": "Al-Anbiya", "name_ar": "الأنبياء", "verses": [1, 112] },
+      { "name_en": "Al-Hajj", "name_ar": "الحج", "verses": [1, 78] }
     ]
   },
   {
     "juz": "18",
     "surah": [
-      {
-        "name_en": "Al-Muminun",
-        "name_ar": "Al-Muminun",
-        "verses": [1, 118]
-      },
-      {
-        "name_en": "An-Nur",
-        "name_ar": "An-Nur",
-        "verses": [1, 64]
-      },
-      {
-        "name_en": "Al-Furqan",
-        "name_ar": "Al-Furqan",
-        "verses": [1, 20]
-      }
+      { "name_en": "Al-Muminun", "name_ar": "المؤمنون", "verses": [1, 118] },
+      { "name_en": "An-Nur", "name_ar": "النور", "verses": [1, 64] },
+      { "name_en": "Al-Furqan", "name_ar": "الفرقان", "verses": [1, 20] }
     ]
   },
   {
     "juz": "19",
     "surah": [
-      {
-        "name_en": "Al-Furqan",
-        "name_ar": "Al-Furqan",
-        "verses": [21, 77]
-      },
-      {
-        "name_en": "Ash-Shuara",
-        "name_ar": "Ash-Shuara",
-        "verses": [1, 227]
-      },
-      {
-        "name_en": "An-Naml",
-        "name_ar": "An-Naml",
-        "verses": [1, 55]
-      }
+      { "name_en": "Al-Furqan", "name_ar": "الفرقان", "verses": [21, 77] },
+      { "name_en": "Ash-Shuara", "name_ar": "الشعراء", "verses": [1, 227] },
+      { "name_en": "An-Naml", "name_ar": "النمل", "verses": [1, 55] }
     ]
   },
   {
     "juz": "20",
     "surah": [
-      {
-        "name_en": "An-Naml",
-        "name_ar": "An-Naml",
-        "verses": [56, 93]
-      },
-      {
-        "name_en": "Al-Qasas",
-        "name_ar": "Al-Qasas",
-        "verses": [1, 88]
-      },
-      {
-        "name_en": "Al-Ankabut",
-        "name_ar": "Al-Ankabut",
-        "verses": [1, 45]
-      }
+      { "name_en": "An-Naml", "name_ar": "النمل", "verses": [56, 93] },
+      { "name_en": "Al-Qasas", "name_ar": "القصص", "verses": [1, 88] },
+      { "name_en": "Al-Ankabut", "name_ar": "العنكبوت", "verses": [1, 45] }
     ]
   },
   {
     "juz": "21",
     "surah": [
-      {
-        "name_en": "Al-Ankabut",
-        "name_ar": "Al-Ankabut",
-        "verses": [46, 69]
-      },
-      {
-        "name_en": "Ar-Rum",
-        "name_ar": "Ar-Rum",
-        "verses": [1, 60]
-      },
-      {
-        "name_en": "Luqman",
-        "name_ar": "Luqman",
-        "verses": [1, 34]
-      },
-      {
-        "name_en": "As-Sajdah",
-        "name_ar": "As-Sajdah",
-        "verses": [1, 30]
-      },
-      {
-        "name_en": "Al-Ahzab",
-        "name_ar": "Al-Ahzab",
-        "verses": [1, 30]
-      }
+      { "name_en": "Al-Ankabut", "name_ar": "العنكبوت", "verses": [46, 69] },
+      { "name_en": "Ar-Rum", "name_ar": "الروم", "verses": [1, 60] },
+      { "name_en": "Luqman", "name_ar": "لقمان", "verses": [1, 34] },
+      { "name_en": "As-Sajdah", "name_ar": "السجدة", "verses": [1, 30] },
+      { "name_en": "Al-Ahzab", "name_ar": "الأحزاب", "verses": [1, 30] }
     ]
   },
   {
     "juz": "22",
     "surah": [
-      {
-        "name_en": "Al-Ahzab",
-        "name_ar": "Al-Ahzab",
-        "verses": [31, 73]
-      },
-      {
-        "name_en": "Saba",
-        "name_ar": "Saba",
-        "verses": [1, 54]
-      },
-      {
-        "name_en": "Fatir",
-        "name_ar": "Fatir",
-        "verses": [1, 45]
-      },
-      {
-        "name_en": "Yasin",
-        "name_ar": "Yasin",
-        "verses": [1, 27]
-      }
+      { "name_en": "Al-Ahzab", "name_ar": "الأحزاب", "verses": [31, 73] },
+      { "name_en": "Saba", "name_ar": "سبأ", "verses": [1, 54] },
+      { "name_en": "Fatir", "name_ar": "فاطر", "verses": [1, 45] },
+      { "name_en": "Yasin", "name_ar": "يس", "verses": [1, 27] }
     ]
   },
   {
     "juz": "23",
     "surah": [
-      {
-        "name_en": "Yasin",
-        "name_ar": "Yasin",
-        "verses": [28, 83]
-      },
-      {
-        "name_en": "As-Saffat",
-        "name_ar": "As-Saffat",
-        "verses": [1, 182]
-      },
-      {
-        "name_en": "Sad",
-        "name_ar": "Sad",
-        "verses": [1, 88]
-      },
-      {
-        "name_en": "Az-Zumar",
-        "name_ar": "Az-Zumar",
-        "verses": [1, 31]
-      }
+      { "name_en": "Yasin", "name_ar": "يس", "verses": [28, 83] },
+      { "name_en": "As-Saffat", "name_ar": "الصافات", "verses": [1, 182] },
+      { "name_en": "Sad", "name_ar": "ص", "verses": [1, 88] },
+      { "name_en": "Az-Zumar", "name_ar": "الزمر", "verses": [1, 31] }
     ]
   },
   {
     "juz": "24",
     "surah": [
-      {
-        "name_en": "Az-Zumar",
-        "name_ar": "Az-Zumar",
-        "verses": [32, 75]
-      },
-      {
-        "name_en": "Ghafir",
-        "name_ar": "Ghafir",
-        "verses": [1, 85]
-      },
-      {
-        "name_en": "Fussilat",
-        "name_ar": "Fussilat",
-        "verses": [1, 46]
-      }
+      { "name_en": "Az-Zumar", "name_ar": "الزمر", "verses": [32, 75] },
+      { "name_en": "Ghafir", "name_ar": "غافر", "verses": [1, 85] },
+      { "name_en": "Fussilat", "name_ar": "فصلت", "verses": [1, 46] }
     ]
   },
   {
     "juz": "25",
     "surah": [
-      {
-        "name_en": "Fussilat",
-        "name_ar": "Fussilat",
-        "verses": [47, 54]
-      },
-      {
-        "name_en": "Ash-Shura",
-        "name_ar": "Ash-Shura",
-        "verses": [1, 53]
-      },
-      {
-        "name_en": "Az-Zukhruf",
-        "name_ar": "Az-Zukhruf",
-        "verses": [1, 89]
-      },
-      {
-        "name_en": "Ad-Dukhan",
-        "name_ar": "Ad-Dukhan",
-        "verses": [1, 59]
-      },
-      {
-        "name_en": "Al-Jathiya",
-        "name_ar": "Al-Jathiya",
-        "verses": [1, 37]
-      }
+      { "name_en": "Fussilat", "name_ar": "فصلت", "verses": [47, 54] },
+      { "name_en": "Ash-Shura", "name_ar": "الشورى", "verses": [1, 53] },
+      { "name_en": "Az-Zukhruf", "name_ar": "الزخرف", "verses": [1, 89] },
+      { "name_en": "Ad-Dukhan", "name_ar": "الدخان", "verses": [1, 59] },
+      { "name_en": "Al-Jathiya", "name_ar": "الجاثية", "verses": [1, 37] }
     ]
   },
   {
     "juz": "26",
     "surah": [
-      {
-        "name_en": "Al-Ahqaf",
-        "name_ar": "Al-Ahqaf",
-        "verses": [1, 35]
-      },
-      {
-        "name_en": "Muhammad",
-        "name_ar": "Muhammad",
-        "verses": [1, 38]
-      },
-      {
-        "name_en": "Al-Fath",
-        "name_ar": "Al-Fath",
-        "verses": [1, 29]
-      },
-      {
-        "name_en": "Al-Hujurat",
-        "name_ar": "Al-Hujurat",
-        "verses": [1, 18]
-      },
-      {
-        "name_en": "Qaf",
-        "name_ar": "Qaf",
-        "verses": [1, 45]
-      },
-      {
-        "name_en": "Az-Zariyat",
-        "name_ar": "Az-Zariyat",
-        "verses": [1, 30]
-      }
+      { "name_en": "Al-Ahqaf", "name_ar": "الأحقاف", "verses": [1, 35] },
+      { "name_en": "Muhammad", "name_ar": "محمد", "verses": [1, 38] },
+      { "name_en": "Al-Fath", "name_ar": "الفتح", "verses": [1, 29] },
+      { "name_en": "Al-Hujurat", "name_ar": "الحجرات", "verses": [1, 18] },
+      { "name_en": "Qaf", "name_ar": "ق", "verses": [1, 45] },
+      { "name_en": "Az-Zariyat", "name_ar": "الذاريات", "verses": [1, 30] }
     ]
   },
   {
     "juz": "27",
     "surah": [
-      {
-        "name_en": "Az-Zariyat",
-        "name_ar": "Az-Zariyat",
-        "verses": [31, 60]
-      },
-      {
-        "name_en": "At-Tur",
-        "name_ar": "At-Tur",
-        "verses": [1, 49]
-      },
-      {
-        "name_en": "An-Najm",
-        "name_ar": "An-Najm",
-        "verses": [1, 62]
-      },
-      {
-        "name_en": "Al-Qamar",
-        "name_ar": "Al-Qamar",
-        "verses": [1, 55]
-      },
-      {
-        "name_en": "Ar-Rahman",
-        "name_ar": "Ar-Rahman",
-        "verses": [1, 78]
-      },
-      {
-        "name_en": "Al-Waqia",
-        "name_ar": "Al-Waqia",
-        "verses": [1, 96]
-      },
-      {
-        "name_en": "Al-Hadid",
-        "name_ar": "Al-Hadid",
-        "verses": [1, 29]
-      }
+      { "name_en": "Az-Zariyat", "name_ar": "الذاريات", "verses": [31, 60] },
+      { "name_en": "At-Tur", "name_ar": "الطور", "verses": [1, 49] },
+      { "name_en": "An-Najm", "name_ar": "النجم", "verses": [1, 62] },
+      { "name_en": "Al-Qamar", "name_ar": "القمر", "verses": [1, 55] },
+      { "name_en": "Ar-Rahman", "name_ar": "الرحمن", "verses": [1, 78] },
+      { "name_en": "Al-Waqia", "name_ar": "الواقعة", "verses": [1, 96] },
+      { "name_en": "Al-Hadid", "name_ar": "الحديد", "verses": [1, 29] }
     ]
   },
   {
     "juz": "28",
     "surah": [
-      {
-        "name_en": "Al-Mujadilah",
-        "name_ar": "Al-Mujadilah",
-        "verses": [1, 22]
-      },
-      {
-        "name_en": "Al-Hashr",
-        "name_ar": "Al-Hashr",
-        "verses": [1, 24]
-      },
-      {
-        "name_en": "Al-Mumtahinah",
-        "name_ar": "Al-Mumtahinah",
-        "verses": [1, 13]
-      },
-      {
-        "name_en": "As-Saff",
-        "name_ar": "As-Saff",
-        "verses": [1, 14]
-      },
-      {
-        "name_en": "Al-Jumu'ah",
-        "name_ar": "Al-Jumu'ah",
-        "verses": [1, 11]
-      },
-      {
-        "name_en": "Al-Munafiqun",
-        "name_ar": "Al-Munafiqun",
-        "verses": [1, 11]
-      },
-      {
-        "name_en": "At-Taghabun",
-        "name_ar": "At-Taghabun",
-        "verses": [1, 18]
-      },
-      {
-        "name_en": "At-Talaq",
-        "name_ar": "At-Talaq",
-        "verses": [1, 12]
-      },
-      {
-        "name_en": "At-Tahrim",
-        "name_ar": "At-Tahrim",
-        "verses": [1, 12]
-      }
+      { "name_en": "Al-Mujadilah", "name_ar": "المجادلة", "verses": [1, 22] },
+      { "name_en": "Al-Hashr", "name_ar": "الحشر", "verses": [1, 24] },
+      { "name_en": "Al-Mumtahinah", "name_ar": "الممتحنة", "verses": [1, 13] },
+      { "name_en": "As-Saff", "name_ar": "الصف", "verses": [1, 14] },
+      { "name_en": "Al-Jumu'ah", "name_ar": "الجمعة", "verses": [1, 11] },
+      { "name_en": "Al-Munafiqun", "name_ar": "المنافقون", "verses": [1, 11] },
+      { "name_en": "At-Taghabun", "name_ar": "التغابن", "verses": [1, 18] },
+      { "name_en": "At-Talaq", "name_ar": "الطلاق", "verses": [1, 12] },
+      { "name_en": "At-Tahrim", "name_ar": "التحريم", "verses": [1, 12] }
     ]
   },
   {
     "juz": "29",
     "surah": [
-      {
-        "name_en": "Al-Mulk",
-        "name_ar": "Al-Mulk",
-        "verses": [1, 30]
-      },
-      {
-        "name_en": "Al-Qalam",
-        "name_ar": "Al-Qalam",
-        "verses": [1, 52]
-      },
-      {
-        "name_en": "Al-Haqqah",
-        "name_ar": "Al-Haqqah",
-        "verses": [1, 52]
-      },
-      {
-        "name_en": "Al-Ma'arij",
-        "name_ar": "Al-Ma'arij",
-        "verses": [1, 44]
-      },
-      {
-        "name_en": "Nuh",
-        "name_ar": "Nuh",
-        "verses": [1, 28]
-      },
-      {
-        "name_en": "Al-Jinn",
-        "name_ar": "Al-Jinn",
-        "verses": [1, 28]
-      },
-      {
-        "name_en": "Al-Muzzammil",
-        "name_ar": "Al-Muzzammil",
-        "verses": [1, 20]
-      },
-      {
-        "name_en": "Al-Muddaththir",
-        "name_ar": "Al-Muddaththir",
-        "verses": [1, 56]
-      },
-      {
-        "name_en": "Al-Qiyamah",
-        "name_ar": "Al-Qiyamah",
-        "verses": [1, 40]
-      },
-      {
-        "name_en": "Al-Insan",
-        "name_ar": "Al-Insan",
-        "verses": [1, 31]
-      },
-      {
-        "name_en": "Al-Mursalat",
-        "name_ar": "Al-Mursalat",
-        "verses": [1, 50]
-      }
+      { "name_en": "Al-Mulk", "name_ar": "الملك", "verses": [1, 30] },
+      { "name_en": "Al-Qalam", "name_ar": "القلم", "verses": [1, 52] },
+      { "name_en": "Al-Haqqah", "name_ar": "الحاقة", "verses": [1, 52] },
+      { "name_en": "Al-Ma'arij", "name_ar": "المعارج", "verses": [1, 44] },
+      { "name_en": "Nuh", "name_ar": "نوح", "verses": [1, 28] },
+      { "name_en": "Al-Jinn", "name_ar": "الجن", "verses": [1, 28] },
+      { "name_en": "Al-Muzzammil", "name_ar": "المزمل", "verses": [1, 20] },
+      { "name_en": "Al-Muddaththir", "name_ar": "المدثر", "verses": [1, 56] },
+      { "name_en": "Al-Qiyamah", "name_ar": "القيامة", "verses": [1, 40] },
+      { "name_en": "Al-Insan", "name_ar": "الإنسان", "verses": [1, 31] },
+      { "name_en": "Al-Mursalat", "name_ar": "المرسلات", "verses": [1, 50] }
     ]
   },
   {
     "juz": "30",
     "surah": [
-      {
-        "name_en": "An-Naba",
-        "name_ar": "An-Naba",
-        "verses": [1, 40]
-      },
-      {
-        "name_en": "An-Naziat",
-        "name_ar": "An-Naziat",
-        "verses": [1, 46]
-      },
-      {
-        "name_en": "Abasa",
-        "name_ar": "Abasa",
-        "verses": [1, 42]
-      },
-      {
-        "name_en": "At-Takwir",
-        "name_ar": "At-Takwir",
-        "verses": [1, 29]
-      },
-      {
-        "name_en": "Al-Infitar",
-        "name_ar": "Al-Infitar",
-        "verses": [1, 19]
-      },
-      {
-        "name_en": "Al-Mutaffifin",
-        "name_ar": "Al-Mutaffifin",
-        "verses": [1, 36]
-      },
-      {
-        "name_en": "Al-Inshiqaq",
-        "name_ar": "Al-Inshiqaq",
-        "verses": [1, 25]
-      },
-      {
-        "name_en": "Al-Buruj",
-        "name_ar": "Al-Buruj",
-        "verses": [1, 22]
-      },
-      {
-        "name_en": "At-Tariq",
-        "name_ar": "At-Tariq",
-        "verses": [1, 17]
-      },
-      {
-        "name_en": "Al-Ala",
-        "name_ar": "Al-Ala",
-        "verses": [1, 19]
-      },
-      {
-        "name_en": "Al-Ghashiyah",
-        "name_ar": "Al-Ghashiyah",
-        "verses": [1, 26]
-      },
-      {
-        "name_en": "Al-Fajr",
-        "name_ar": "Al-Fajr",
-        "verses": [1, 30]
-      },
-      {
-        "name_en": "Al-Balad",
-        "name_ar": "Al-Balad",
-        "verses": [1, 20]
-      },
-      {
-        "name_en": "Ash-Shams",
-        "name_ar": "Ash-Shams",
-        "verses": [1, 15]
-      },
-      {
-        "name_en": "Al-Lail",
-        "name_ar": "Al-Lail",
-        "verses": [1, 21]
-      },
-      {
-        "name_en": "Ad-Duha",
-        "name_ar": "Ad-Duha",
-        "verses": [1, 11]
-      },
-      {
-        "name_en": "Ash-Sharh",
-        "name_ar": "Ash-Sharh",
-        "verses": [1, 8]
-      },
-      {
-        "name_en": "At-Tin",
-        "name_ar": "At-Tin",
-        "verses": [1, 8]
-      },
-      {
-        "name_en": "Al-Alaq",
-        "name_ar": "Al-Alaq",
-        "verses": [1, 19]
-      },
-      {
-        "name_en": "Al-Qadr",
-        "name_ar": "Al-Qadr",
-        "verses": [1, 5]
-      },
-      {
-        "name_en": "Al-Bayinah",
-        "name_ar": "Al-Bayinah",
-        "verses": [1, 8]
-      },
-      {
-        "name_en": "Az-Zalzalah",
-        "name_ar": "Az-Zalzalah",
-        "verses": [1, 8]
-      },
-      {
-        "name_en": "Al-Adiyat",
-        "name_ar": "Al-Adiyat",
-        "verses": [1, 11]
-      },
-      {
-        "name_en": "Al-Qariah",
-        "name_ar": "Al-Qariah",
-        "verses": [1, 11]
-      },
-      {
-        "name_en": "Al-Takathur",
-        "name_ar": "Al-Takathur",
-        "verses": [1, 8]
-      },
-      {
-        "name_en": "Al-Asr",
-        "name_ar": "Al-Asr",
-        "verses": [1, 3]
-      },
-      {
-        "name_en": "Al-Humazah",
-        "name_ar": "Al-Humazah",
-        "verses": [1, 9]
-      },
-      {
-        "name_en": "Al-Fil",
-        "name_ar": "Al-Fil",
-        "verses": [1, 5]
-      },
-      {
-        "name_en": "Quraish",
-        "name_ar": "Quraish",
-        "verses": [1, 4]
-      },
-      {
-        "name_en": "Al-Ma'un",
-        "name_ar": "Al-Ma'un",
-        "verses": [1, 7]
-      },
-      {
-        "name_en": "Al-Kauthar",
-        "name_ar": "Al-Kauthar",
-        "verses": [1, 3]
-      },
-      {
-        "name_en": "Al-Kafirun",
-        "name_ar": "Al-Kafirun",
-        "verses": [1, 6]
-      },
-      {
-        "name_en": "An-Nasr",
-        "name_ar": "An-Nasr",
-        "verses": [1, 3]
-      },
-      {
-        "name_en": "Al-Masad",
-        "name_ar": "Al-Masad",
-        "verses": [1, 5]
-      },
-      {
-        "name_en": "Al-Ikhlas",
-        "name_ar": "Al-Ikhlas",
-        "verses": [1, 4]
-      },
-      {
-        "name_en": "Al-Falaq",
-        "name_ar": "Al-Falaq",
-        "verses": [1, 5]
-      },
-      {
-        "name_en": "An-Nas",
-        "name_ar": "An-Nas",
-        "verses": [1, 6]
-      }
+      { "name_en": "An-Naba", "name_ar": "النبأ", "verses": [1, 40] },
+      { "name_en": "An-Naziat", "name_ar": "النازعات", "verses": [1, 46] },
+      { "name_en": "Abasa", "name_ar": "عبس", "verses": [1, 42] },
+      { "name_en": "At-Takwir", "name_ar": "التكوير", "verses": [1, 29] },
+      { "name_en": "Al-Infitar", "name_ar": "الإنفطار", "verses": [1, 19] },
+      { "name_en": "Al-Mutaffifin", "name_ar": "المطففين", "verses": [1, 36] },
+      { "name_en": "Al-Inshiqaq", "name_ar": "الإنشقاق", "verses": [1, 25] },
+      { "name_en": "Al-Buruj", "name_ar": "البروج", "verses": [1, 22] },
+      { "name_en": "At-Tariq", "name_ar": "الطارق", "verses": [1, 17] },
+      { "name_en": "Al-Ala", "name_ar": "الأعلى", "verses": [1, 19] },
+      { "name_en": "Al-Ghashiyah", "name_ar": "الغاشية", "verses": [1, 26] },
+      { "name_en": "Al-Fajr", "name_ar": "الفجر", "verses": [1, 30] },
+      { "name_en": "Al-Balad", "name_ar": "البلد", "verses": [1, 20] },
+      { "name_en": "Ash-Shams", "name_ar": "الشمس", "verses": [1, 15] },
+      { "name_en": "Al-Lail", "name_ar": "الليل", "verses": [1, 21] },
+      { "name_en": "Ad-Duha", "name_ar": "الضحى", "verses": [1, 11] },
+      { "name_en": "Ash-Sharh", "name_ar": "الشرح", "verses": [1, 8] },
+      { "name_en": "At-Tin", "name_ar": "التين", "verses": [1, 8] },
+      { "name_en": "Al-Alaq", "name_ar": "العلق", "verses": [1, 19] },
+      { "name_en": "Al-Qadr", "name_ar": "القدر", "verses": [1, 5] },
+      { "name_en": "Al-Bayinah", "name_ar": "البينة", "verses": [1, 8] },
+      { "name_en": "Az-Zalzalah", "name_ar": "الزلزلة", "verses": [1, 8] },
+      { "name_en": "Al-Adiyat", "name_ar": "العاديات", "verses": [1, 11] },
+      { "name_en": "Al-Qariah", "name_ar": "القارعة", "verses": [1, 11] },
+      { "name_en": "Al-Takathur", "name_ar": "التكاثر", "verses": [1, 8] },
+      { "name_en": "Al-Asr", "name_ar": "العصر", "verses": [1, 3] },
+      { "name_en": "Al-Humazah", "name_ar": "الهمزة", "verses": [1, 9] },
+      { "name_en": "Al-Fil", "name_ar": "الفيل", "verses": [1, 5] },
+      { "name_en": "Quraish", "name_ar": "قريش", "verses": [1, 4] },
+      { "name_en": "Al-Ma'un", "name_ar": "الماعون", "verses": [1, 7] },
+      { "name_en": "Al-Kauthar", "name_ar": "الكوثر", "verses": [1, 3] },
+      { "name_en": "Al-Kafirun", "name_ar": "الكافرون", "verses": [1, 6] },
+      { "name_en": "An-Nasr", "name_ar": "النصر", "verses": [1, 3] },
+      { "name_en": "Al-Masad", "name_ar": "المسد", "verses": [1, 5] },
+      { "name_en": "Al-Ikhlas", "name_ar": "الإخلاص", "verses": [1, 4] },
+      { "name_en": "Al-Falaq", "name_ar": "الفلق", "verses": [1, 5] },
+      { "name_en": "An-Nas", "name_ar": "الناس", "verses": [1, 6] }
     ]
   }
 ]

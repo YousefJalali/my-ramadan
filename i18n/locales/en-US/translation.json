@@ -263,7 +263,7 @@
   "completed": "completed",
   "of": "of",
   "Daily Duaa": "Daily Duaa",
-  "Quran Reading": "Quran Reading",
+  "Khatm Quran": "Khatm Quran",
   "Adhkar": "Adhkar",
   "Page": "Page",
   "to": "to",
@@ -376,5 +376,9 @@
   "Angle Based": "Angle Based",
   "Standard (Mid Sunset to Sunrise)": "Standard (Mid Sunset to Sunrise)",
   "Jafari (Mid Sunset to Fajr)": "Jafari (Mid Sunset to Fajr)",
-  "adhkar": "Adhkar"
+  "adhkar": "Adhkar",
+  "No reading logged this day": "No reading logged this day",
+  "try to finish Juz": "Try to finish Juz",
+  "today": "today",
+  "imsak": "Imsak"
 }
