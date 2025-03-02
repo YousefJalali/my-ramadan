@@ -9,13 +9,22 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "extra": {
-      "supportsRTL": true
+      "supportsRTL": true,
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "e1b8e233-a0e6-4b4d-a501-bb16f4d70726"
+      }
     },
     "ios": {
       "supportsTablet": true,
       "customBuildFlags": [
         "-DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_SNAPSHOT=1"
-      ]
+      ],
+      "infoPlist": {
+        "ExpoLocalization_supportsRTL": true
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -23,7 +32,14 @@
         "backgroundColor": "#ffffff"
       },
       "enableFTS": false,
-      "useSQLCipher": false
+      "useSQLCipher": false,
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ],
+      "package": "com.jbygoal.ramadanchecklist2025"
     },
     "web": {
       "bundler": "metro",
