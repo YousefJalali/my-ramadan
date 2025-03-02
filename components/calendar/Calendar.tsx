@@ -7,6 +7,7 @@ import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import DayItem from './DayItem'
 import { prayerTimes$ } from '@/store'
+import { gregorianToHijri } from '@/utils/gregorianToHijri'
 
 const WIDTH = Dimensions.get('window').width
 
@@ -35,6 +36,8 @@ export default function Calendar({
   const {
     i18n: { language },
   } = useTranslation()
+
+  const todayHijri = gregorianToHijri(new Date())
 
   return (
     <>
@@ -69,7 +72,7 @@ export default function Calendar({
               value={d.toString()}
               size='md'
               isInvalid={false}
-              isDisabled={false}
+              isDisabled={+todayHijri < +d}
             >
               <RadioIndicator className='h-12 w-12 border-0 overflow-hidden'>
                 <DayItem day={day} dayInCalendar={+d} />

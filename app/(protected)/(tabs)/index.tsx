@@ -12,9 +12,10 @@ import Adhkar from '@/components/Adhkar'
 import HijriAndGregorianDate from '@/components/HijriAndGregorianDate'
 import Section from '@/components/Section'
 import Fasting from '@/components/Fasting'
+import { gregorianToHijri } from '@/utils/gregorianToHijri'
 
 export default function HomeScreen() {
-  const day = 1
+  const day = +gregorianToHijri(new Date())
 
   return (
     <ParallaxScrollView headerImage={<FastingCard day={day} />}>

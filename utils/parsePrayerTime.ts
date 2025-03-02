@@ -1,4 +1,4 @@
-export function parsePrayerTime(timeString: string): Date {
+export function parsePrayerTime(timeString: string, day?: number): Date {
   const match = timeString.match(/^(\d{2}):(\d{2})\s\(\+?(-?\d{1,2})\)$/)
 
   if (!match) {
@@ -9,6 +9,9 @@ export function parsePrayerTime(timeString: string): Date {
 
   const now = new Date()
   now.setHours(hours, minutes, 0, 0) // Set the local time
+
+  if (day) now.setDate(day)
+
   const offsetInMinutes = timezoneOffset * 60
   now.setMinutes(now.getMinutes() + offsetInMinutes) // Adjust for the timezone offset
 

@@ -19,6 +19,7 @@ import StatusBadge from './StatusBadge'
 import { PRAYERS } from '@/constants/prayers'
 import { parsePrayerTime } from '@/utils/parsePrayerTime'
 import { ExtendedPrayer } from '@/types'
+import { Toast, ToastDescription, useToast } from './ui/toast'
 
 type Props = {
   day: number
@@ -36,37 +37,33 @@ export default function Prayers({
   const prayers = use$(prayerTimes$.timings[day])
   const { prayers: prayersProgress } = use$(progress$.days[day])
 
-  // const toast = useToast()
+  const toast = useToast()
   const { t } = useTranslation()
 
-  async function checkTask(prayerIdx: number) {
-    progress$.days[day].prayers[prayerIdx].set(!prayersProgress[prayerIdx])
+  async function checkTask(prayerIdx: number, prayer: string) {
+    const today = new Date()
 
-    // const today = new Date()
+    const prayerDate = parsePrayerTime(prayers[prayer as ExtendedPrayer], day)
 
-    // const prayerDate = setToTodaysDate(prayers[prayerIdx].time)
-
-    // if (prayerDate.getTime() > today.getTime()) {
-    //   toast.show({
-    //     id: '' + Math.random(),
-    //     placement: 'bottom',
-    //     duration: 3000,
-    //     render: ({ id }) => {
-    //       const uniqueToastId = 'toast-' + id
-    //       return (
-    //         <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
-    //           <ToastDescription>
-    //             {t("Prayer time hasn't arrived yet")}
-    //           </ToastDescription>
-    //         </Toast>
-    //       )
-    //     },
-    //   })
-    // } else {
-    //   progress$.prayers[prayerIdx][dayIndex].set(
-    //     !prayersProgress[prayerIdx][dayIndex]
-    //   )
-    // }
+    if (prayerDate.getTime() > today.getTime()) {
+      toast.show({
+        id: '' + Math.random(),
+        placement: 'bottom',
+        duration: 3000,
+        render: ({ id }) => {
+          const uniqueToastId = 'toast-' + id
+          return (
+            <Toast nativeID={uniqueToastId} action='muted' variant='solid'>
+              <ToastDescription>
+                {t("Prayer time hasn't arrived yet")}
+              </ToastDescription>
+            </Toast>
+          )
+        },
+      })
+    } else {
+      progress$.days[day].prayers[prayerIdx].set(!prayersProgress[prayerIdx])
+    }
   }
 
   return (
@@ -84,7 +81,7 @@ export default function Prayers({
           .map(([prayer], prayerIndex) => (
             <VStack key={prayer}>
               <Checkbox
-                onChange={(_isChecked) => checkTask(prayerIndex)}
+                onChange={(_isChecked) => checkTask(prayerIndex, prayer)}
                 size='md'
                 aria-label={prayer}
                 value={prayer}
