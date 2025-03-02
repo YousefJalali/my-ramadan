@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { Text } from './ui/text'
-import { VStack } from './ui/vstack'
-import { Button, ButtonIcon } from './ui/button'
+import { Text } from '@/components/ui/text'
+import { VStack } from '@/components/ui/vstack'
+import { Button, ButtonIcon } from '@/components/ui/button'
 import { Audio, AVPlaybackStatus } from 'expo-av'
-import { Badge, BadgeIcon, BadgeText } from './ui/badge'
+import { Badge, BadgeIcon, BadgeText } from '@/components/ui/badge'
 import { Pause, Play, Repeat } from 'lucide-react-native'
-import { Center } from './ui/center'
+import { Center } from '@/components/ui/center'
 
 export default function DikrCard({
   text,

@@ -1,6 +1,6 @@
-import { HStack } from '../ui/hstack'
-import { VStack } from '../ui/vstack'
-import { Text } from '../ui/text'
+import { HStack } from '@/components/ui/hstack'
+import { VStack } from '@/components/ui/vstack'
+import { Text } from '@/components/ui/text'
 import {
   Checkbox,
   CheckboxIndicator,

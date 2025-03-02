@@ -1,9 +1,9 @@
 import { use$ } from '@legendapp/state/react'
-import { Center } from './ui/center'
-import { Text } from './ui/text'
+import { Center } from '@/components/ui/center'
+import { Text } from '@/components/ui/text'
 import { settings$ } from '@/store'
 import Svg, { Path } from 'react-native-svg'
-import { colors } from './ui/gluestack-ui-provider/config'
+import { colors } from '@/components/ui/gluestack-ui-provider/config'
 
 export default function HijriAndGregorianDate() {
   const { language } = use$(settings$)

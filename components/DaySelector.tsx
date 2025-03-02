@@ -1,10 +1,10 @@
 import { ScrollView } from 'react-native'
 import { Text } from '@/components/ui/text'
 import { useRef } from 'react'
-import { VStack } from './ui/vstack'
-import { HStack } from './ui/hstack'
+import { VStack } from '@/components/ui/vstack'
+import { HStack } from '@/components/ui/hstack'
 import { Pressable } from '@/components/ui/pressable'
-import { Center } from './ui/center'
+import { Center } from '@/components/ui/center'
 
 type Props = {
   day: number

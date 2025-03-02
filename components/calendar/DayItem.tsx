@@ -1,6 +1,6 @@
 import { ProgressChart } from 'react-native-chart-kit'
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
-import { Center } from '../ui/center'
+import { Center } from '@/components/ui/center'
 import { Text } from '@/components/ui/text'
 import { use$ } from '@legendapp/state/react'
 import { progress$ } from '@/store'

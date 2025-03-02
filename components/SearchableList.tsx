@@ -1,12 +1,12 @@
 import { SearchIcon, X } from 'lucide-react-native'
-import { Input, InputField, InputIcon, InputSlot } from './ui/input'
+import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
 import { use$, useObservable } from '@legendapp/state/react'
-import { Spinner } from './ui/spinner'
-import { colors } from './ui/gluestack-ui-provider/config'
+import { Spinner } from '@/components/ui/spinner'
+import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import { Text } from '@/components/ui/text'
 import { FlashList, ListRenderItemInfo } from '@shopify/flash-list'
 import { ReactElement, useMemo } from 'react'
-import { Pressable } from './ui/pressable'
+import { Pressable } from '@/components/ui/pressable'
 
 type Props<T extends { name: string }> = {
   loading: boolean

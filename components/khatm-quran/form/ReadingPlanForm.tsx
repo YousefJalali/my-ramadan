@@ -6,10 +6,10 @@ import {
   ActionsheetDragIndicatorWrapper,
   ActionsheetBackdrop,
 } from '@/components/ui/actionsheet'
-import { Button, ButtonText } from '../../ui/button'
-import { Heading } from '../../ui/heading'
-import { Text } from '../../ui/text'
-import { VStack } from '../../ui/vstack'
+import { Button, ButtonText } from '@/components/ui/button'
+import { Heading } from '@/components/ui/heading'
+import { Text } from '@/components/ui/text'
+import { VStack } from '@/components/ui/vstack'
 import LastReading from './LastReading'
 import NextReading from './NextReading'
 

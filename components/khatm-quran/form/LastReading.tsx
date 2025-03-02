@@ -13,7 +13,7 @@ import {
 import { VStack } from '@/components/ui/vstack'
 import { khatmQuran$, QuranJuz } from '@/store'
 import { ChevronDownIcon } from 'lucide-react-native'
-import { Text } from '../../ui/text'
+import { Text } from '@/components/ui/text'
 
 function parseLastReading(data: QuranJuz) {
   return {

@@ -4,10 +4,10 @@ import {
   CheckboxIndicator,
   CheckboxLabel,
 } from '@/components/ui/checkbox'
-import { CheckIcon } from './ui/icon'
-import { VStack } from './ui/vstack'
-import { HStack } from './ui/hstack'
-import { Center } from './ui/center'
+import { CheckIcon } from '@/components/ui/icon'
+import { VStack } from '@/components/ui/vstack'
+import { HStack } from '@/components/ui/hstack'
+import { Center } from '@/components/ui/center'
 import Feather from '@expo/vector-icons/Feather'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
@@ -19,7 +19,7 @@ import StatusBadge from './StatusBadge'
 import { PRAYERS } from '@/constants/prayers'
 import { parsePrayerTime } from '@/utils/parsePrayerTime'
 import { ExtendedPrayer } from '@/types'
-import { Toast, ToastDescription, useToast } from './ui/toast'
+import { Toast, ToastDescription, useToast } from '@/components/ui/toast'
 
 type Props = {
   day: number

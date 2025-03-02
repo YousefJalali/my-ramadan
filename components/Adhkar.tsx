@@ -1,6 +1,6 @@
-import { HStack } from './ui/hstack'
-import { Text } from './ui/text'
-import { VStack } from './ui/vstack'
+import { HStack } from '@/components/ui/hstack'
+import { Text } from '@/components/ui/text'
+import { VStack } from '@/components/ui/vstack'
 import { Icon } from '@/components/ui/icon'
 import {
   AlarmClock,

@@ -1,6 +1,6 @@
 import { use$ } from '@legendapp/state/react'
-import { Button, ButtonText } from '../ui/button'
-import { Toast, ToastDescription, useToast } from '../ui/toast'
+import { Button, ButtonText } from '@/components/ui/button'
+import { Toast, ToastDescription, useToast } from '@/components/ui/toast'
 import { supabase } from '@/utils/supabase'
 import { session$ } from '@/store'
 import { useTranslation } from 'react-i18next'

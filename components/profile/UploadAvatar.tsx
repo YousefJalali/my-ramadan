@@ -2,7 +2,7 @@ import { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker'
 import { supabase } from '@/utils/supabase'
 import { Button, ButtonSpinner, ButtonText } from '@/components/ui/button'
-import { Pressable } from '../ui/pressable'
+import { Pressable } from '@/components/ui/pressable'
 
 export default function UploadAvatar() {
   const [uploading, setUploading] = useState(false)

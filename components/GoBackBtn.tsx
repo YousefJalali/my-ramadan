@@ -5,7 +5,7 @@ import {
   ChevronRight,
 } from 'lucide-react-native'
 import { Href, useRouter } from 'expo-router'
-import { Button, ButtonIcon } from './ui/button'
+import { Button, ButtonIcon } from '@/components/ui/button'
 import { useTranslation } from 'react-i18next'
 import { Platform } from 'react-native'
 

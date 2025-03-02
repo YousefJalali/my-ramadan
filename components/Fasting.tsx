@@ -1,7 +1,7 @@
-import { Box } from './ui/box'
-import { VStack } from './ui/vstack'
-import { Text } from './ui/text'
-import { HStack } from './ui/hstack'
+import { Box } from '@/components/ui/box'
+import { VStack } from '@/components/ui/vstack'
+import { Text } from '@/components/ui/text'
+import { HStack } from '@/components/ui/hstack'
 import { Progress, ProgressFilledTrack } from '@/components/ui/progress'
 import {
   Checkbox,

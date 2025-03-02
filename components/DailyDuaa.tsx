@@ -1,5 +1,5 @@
 import dailyDuaa from '@/constants/dailyDuaa'
-import { Text } from './ui/text'
+import { Text } from '@/components/ui/text'
 import { useTranslation } from 'react-i18next'
 
 type Props = {

@@ -1,5 +1,5 @@
 import { Memo, useObservable } from '@legendapp/state/react'
-import { VStack } from './ui/vstack'
+import { VStack } from '@/components/ui/vstack'
 import { Stack } from 'expo-router'
 import { useTranslation } from 'react-i18next'
 import {
@@ -7,7 +7,7 @@ import {
   NativeScrollEvent,
   NativeSyntheticEvent,
 } from 'react-native'
-import { Heading } from './ui/heading'
+import { Heading } from '@/components/ui/heading'
 import { ReactNode, useRef } from 'react'
 
 export default function PageListLayout({

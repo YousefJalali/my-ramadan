@@ -1,4 +1,4 @@
-import { VStack } from './ui/vstack'
+import { VStack } from '@/components/ui/vstack'
 import {
   Radio,
   RadioIndicator,

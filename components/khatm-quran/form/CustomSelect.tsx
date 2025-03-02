@@ -16,7 +16,7 @@ import {
   FormControl,
   FormControlLabel,
   FormControlLabelText,
-} from '../../ui/form-control'
+} from '@/components/ui/form-control'
 
 export default function CustomSelect({
   selectedValue,

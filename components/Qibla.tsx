@@ -55,9 +55,9 @@ const styles = StyleSheet.create({
 //   MagnetometerMeasurement,
 //   MagnetometerUncalibrated,
 // } from 'expo-sensors'
-// import { Center } from './ui/center'
-// import { HStack } from './ui/hstack'
-// import { VStack } from './ui/vstack'
+// import { Center } from '@/components/ui/center'
+// import { HStack } from '@/components/ui/hstack'
+// import { VStack } from '@/components/ui/vstack'
 
 // const { height, width } = Dimensions.get('window')
 

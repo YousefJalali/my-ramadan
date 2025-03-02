@@ -1,6 +1,6 @@
 import { Href, Link } from 'expo-router'
-import { HStack } from './ui/hstack'
-import { Icon } from './ui/icon'
+import { HStack } from '@/components/ui/hstack'
+import { Icon } from '@/components/ui/icon'
 import { Text } from '@/components/ui/text'
 import { ChevronLeft, ChevronRight, LucideIcon } from 'lucide-react-native'
 import { useTranslation } from 'react-i18next'

@@ -12,7 +12,7 @@ import {
 import { Pressable } from '@/components/ui/pressable'
 import SearchableList from '@/components/SearchableList'
 import { useTranslation } from 'react-i18next'
-import { Heading } from '../ui/heading'
+import { Heading } from '@/components/ui/heading'
 import {
   getCountries,
   insertCountries,

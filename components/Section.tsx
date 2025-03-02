@@ -1,11 +1,11 @@
 import { ReactNode } from 'react'
-import { Heading } from './ui/heading'
-import { HStack } from './ui/hstack'
-import { Icon } from './ui/icon'
-import { VStack } from './ui/vstack'
+import { Heading } from '@/components/ui/heading'
+import { HStack } from '@/components/ui/hstack'
+import { Icon } from '@/components/ui/icon'
+import { VStack } from '@/components/ui/vstack'
 import { useTranslation } from 'react-i18next'
 import { Href, Link } from 'expo-router'
-import { Button, ButtonIcon, ButtonText } from './ui/button'
+import { Button, ButtonIcon, ButtonText } from '@/components/ui/button'
 import { ChevronLeft, ChevronRight } from 'lucide-react-native'
 
 type Props = {

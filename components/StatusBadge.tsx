@@ -1,5 +1,5 @@
 import { Check, X } from 'lucide-react-native'
-import { Badge, BadgeIcon, BadgeText } from './ui/badge'
+import { Badge, BadgeIcon, BadgeText } from '@/components/ui/badge'
 import { useTranslation } from 'react-i18next'
 
 export default function StatusBadge({ isCompleted }: { isCompleted: boolean }) {
