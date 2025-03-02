@@ -769,9 +769,39 @@ export const khatmQuran$ = observable({
   },
 })
 
+// const persistOptions = configureSynced({
+//   persist: {
+//     plugin: observablePersistSqlite(Storage),
+//   },
+// })
+// syncObservable(
+//   settings$,
+//   persistOptions({
+//     persist: {
+//       name: 'settings',
+//     },
+//   })
+// )
+
 syncObservable(settings$, {
   persist: {
     name: 'settings',
     plugin: ObservablePersistMMKV,
   },
 })
+
+syncObservable(prayerTimes$, {
+  persist: {
+    name: 'prayerTimes',
+    plugin: ObservablePersistMMKV,
+  },
+})
+
+syncObservable(progress$, {
+  persist: {
+    name: 'progress',
+    plugin: ObservablePersistMMKV,
+  },
+})
+
+// const s = settings$.get()
