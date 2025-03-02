@@ -48,6 +48,7 @@ function Wrapper({
 
 export default function TrackerScreen() {
   const [day, setDay] = useState(1)
+
   const {
     t,
     i18n: { language },

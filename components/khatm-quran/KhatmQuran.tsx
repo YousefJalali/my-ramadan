@@ -110,7 +110,7 @@ export default function QuranReading({
           </Text>
         </>
       )}
-      <HStack space='xl' className={`mt-2 space-between w-full`}>
+      <HStack space='xl' className={`mt-2 space-between items-center w-full`}>
         <VStack className='flex-1 '>
           {trackerView && !progress$.days[day].quranReading.get() ? (
             <VStack space='sm'>
@@ -118,7 +118,7 @@ export default function QuranReading({
               <Text size='sm'>{getRandomMotivation(language)}</Text>
             </VStack>
           ) : (
-            <Text bold size='xl'>
+            <Text bold={!trackerView} size='xl'>
               {formatSurahVerses(dayReading, language)}
             </Text>
           )}
