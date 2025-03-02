@@ -16,7 +16,7 @@ export default function AuthLayout() {
   return (
     <VStack className='flex-1 m-6'>
       <HStack className='mt-12'>
-        <GoBackBtn />
+        <GoBackBtn href='/(protected)/(tabs)' />
       </HStack>
       <Center className='flex-1'>
         <Slot />

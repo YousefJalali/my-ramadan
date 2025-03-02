@@ -4,12 +4,12 @@ import {
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react-native'
-import { useRouter } from 'expo-router'
+import { Href, useRouter } from 'expo-router'
 import { Button, ButtonIcon } from './ui/button'
 import { useTranslation } from 'react-i18next'
 import { Platform } from 'react-native'
 
-export default function GoBackBtn() {
+export default function GoBackBtn({ href }: { href?: Href }) {
   const router = useRouter()
   const {
     i18n: { language },
@@ -24,7 +24,7 @@ export default function GoBackBtn() {
     <Button
       size='xl'
       variant='link'
-      onPress={() => router.back()}
+      onPress={() => (href ? router.push(href) : router.back())}
       className={`px-4 ${isRTL ? '-mr-4' : '-ml-4'}`}
     >
       <ButtonIcon
