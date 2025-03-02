@@ -1,5 +1,5 @@
 import type { PropsWithChildren, ReactElement } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -13,9 +13,14 @@ const HEADER_HEIGHT = 350
 
 type Props = PropsWithChildren<{
   headerImage: ReactElement
+  height?: number
 }>
 
-export default function ParallaxScrollView({ children, headerImage }: Props) {
+export default function ParallaxScrollView({
+  children,
+  headerImage,
+  height = HEADER_HEIGHT,
+}: Props) {
   const scrollRef = useAnimatedRef<Animated.ScrollView>()
   const scrollOffset = useScrollViewOffset(scrollRef)
   const bottom = useBottomTabOverflow()
@@ -25,14 +30,14 @@ export default function ParallaxScrollView({ children, headerImage }: Props) {
         {
           translateY: interpolate(
             scrollOffset.value,
-            [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
-            [-HEADER_HEIGHT / 2, 0, HEADER_HEIGHT * 0.75]
+            [-height, 0, height],
+            [-height / 2, 0, height * 0.75]
           ),
         },
         {
           scale: interpolate(
             scrollOffset.value,
-            [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
+            [-height, 0, height],
             [2, 1, 1]
           ),
         },
@@ -50,24 +55,12 @@ export default function ParallaxScrollView({ children, headerImage }: Props) {
       >
         <Animated.View
           className='bg-primary-600'
-          style={[styles.header, headerAnimatedStyle]}
+          style={[{ height, overflow: 'hidden' }, headerAnimatedStyle]}
         >
           {headerImage}
         </Animated.View>
-        <View style={styles.content}>{children}</View>
+        <View style={{ flex: 1 }}>{children}</View>
       </Animated.ScrollView>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  header: {
-    height: HEADER_HEIGHT,
-    overflow: 'hidden',
-  },
-  content: {
-    flex: 1,
-    // gap: 16,
-    // overflow: 'hidden',
-  },
-})

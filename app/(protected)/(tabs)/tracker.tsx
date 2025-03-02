@@ -19,9 +19,11 @@ import { use$, useObservable } from '@legendapp/state/react'
 function Wrapper({
   title,
   children,
+  showEditBtn = true,
 }: {
   title: string
   children: (readonly: boolean) => ReactNode
+  showEditBtn?: boolean
 }) {
   const readonly$ = useObservable(true)
   const readonly = use$(readonly$)
@@ -31,9 +33,12 @@ function Wrapper({
     <VStack className='mt-16'>
       <HStack className='mb-3 justify-between'>
         <Heading size='2xl'>{t(title)}</Heading>
-        <Button variant='link' onPress={() => readonly$.set(!readonly)}>
-          <ButtonText>{t(readonly ? 'edit' : 'save')}</ButtonText>
-        </Button>
+
+        {showEditBtn ? (
+          <Button variant='link' onPress={() => readonly$.set(!readonly)}>
+            <ButtonText>{t(readonly ? 'edit' : 'save')}</ButtonText>
+          </Button>
+        ) : null}
       </HStack>
 
       {children(readonly)}
@@ -44,6 +49,7 @@ function Wrapper({
 export default function TrackerScreen() {
   const [day, setDay] = useState(1)
   const {
+    t,
     i18n: { language },
   } = useTranslation()
 
@@ -54,13 +60,12 @@ export default function TrackerScreen() {
         stickyHeaderIndices={[1]}
       >
         <VStack
-          className='mt-8'
+          className='mt-12'
           style={{ paddingTop: Constants.statusBarHeight }}
         >
-          <Heading size='4xl'>Tracker</Heading>
-          <Text>Track your progress </Text>
+          <Heading size='3xl'>{t('Tracker title')}</Heading>
+          <Text>{t('Tracker description')}</Text>
         </VStack>
-
         <Center>
           <Heading
             className='bg-neutral-50 w-full pb-4'
@@ -101,10 +106,8 @@ export default function TrackerScreen() {
           {(readonly) => <Prayers day={day} trackerView readOnly={readonly} />}
         </Wrapper>
 
-        <Wrapper title='Khatm Quran'>
-          {(readonly) => (
-            <KhatmQuran day={day} trackerView readOnly={readonly} />
-          )}
+        <Wrapper title='Khatm Quran' showEditBtn={false}>
+          {(readonly) => <KhatmQuran day={day} trackerView readOnly={true} />}
         </Wrapper>
       </ScrollView>
     </VStack>
