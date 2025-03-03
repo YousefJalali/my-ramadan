@@ -34,7 +34,7 @@ export default function Profile() {
         />
         <UploadAvatar />
       </Avatar>
-      <Text size='2xl' className='mt-2 text-neutral-950'>
+      <Text size='2xl' className='mt-2 text-typography-950'>
         {session.user.user_metadata.name}
       </Text>
     </Center>

@@ -57,12 +57,12 @@ export default function DikrCard({
   }, [sound])
 
   return (
-    <VStack className='bg-neutral-100 p-2 rounded-xl mb-8'>
+    <VStack className='bg-background-100 p-2 rounded-xl mb-8'>
       <Badge
         size='md'
         variant='solid'
         action='muted'
-        className='self-baseline bg-neutral-200 rounded-lg mb-2'
+        className='self-baseline bg-background-200 rounded-lg mb-2'
       >
         <BadgeText>repeat {count}</BadgeText>
         <BadgeIcon as={Repeat} className='ml-2' />
@@ -70,7 +70,7 @@ export default function DikrCard({
 
       <Text>{text}</Text>
 
-      <Center className='-mb-7 bg-neutral-100 p-2 -ml-2 self-baseline rounded-full'>
+      <Center className='-mb-7 bg-background-100 p-2 -ml-2 self-baseline rounded-full'>
         {isPlaying ? (
           <Button
             size='lg'

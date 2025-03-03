@@ -46,7 +46,7 @@ export default function ParallaxScrollView({
   })
 
   return (
-    <View className='bg-neutral-50'>
+    <View className='bg-background-50'>
       <Animated.ScrollView
         ref={scrollRef}
         scrollEventThrottle={16}

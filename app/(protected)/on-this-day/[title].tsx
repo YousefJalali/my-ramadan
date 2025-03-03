@@ -15,7 +15,7 @@ export default function FlashbackDetails() {
   const article = flashback[language][0].find((c) => c.id === title)
 
   return (
-    <VStack className='px-6 flex-1 bg-neutral-50'>
+    <VStack className='px-6 flex-1 bg-background-50'>
       <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
         <Heading size='3xl' className='mt-6'>
           {article?.title}

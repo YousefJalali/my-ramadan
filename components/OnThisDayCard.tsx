@@ -52,7 +52,7 @@ export default function OnThisDayCard({ day }: { day: number }) {
           return (
             <VStack
               key={f.id}
-              className='flex-1 bg-neutral-100 p-4 rounded-2xl'
+              className='flex-1 bg-background-100 p-4 rounded-2xl'
               style={{ width: stories.length > 1 ? WIDTH * 0.9 : WIDTH }}
               space='xs'
             >

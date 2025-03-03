@@ -41,7 +41,7 @@ export default function TotalProgress() {
   }
 
   return (
-    <HStack className='bg-neutral-100 rounded-2xl gap-2 items-center'>
+    <HStack className='bg-background-100 rounded-2xl gap-2 items-center'>
       <Rings data={data} colors={Object.values(colors)} />
 
       <VStack className='gap-4 flex-1'>

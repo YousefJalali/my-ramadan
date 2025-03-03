@@ -50,15 +50,15 @@ export default function Fasting({
 
   return (
     <VStack
-      className={`bg-neutral-100 p-4 rounded-2xl ${cn(
+      className={`bg-background-100 p-4 rounded-2xl ${cn(
         trackerView,
-        'bg-neutral-50 p-0'
+        'bg-background-50 p-0'
       )}`}
     >
       {/* Fasting Stats */}
       {trackerView ? null : (
         <VStack space='md' className='mb-4'>
-          <Text size='sm' className='text-neutral-600'>
+          <Text size='sm' className='text-typography-600'>
             🎯{' '}
             <Text bold size='sm'>
               7
@@ -108,13 +108,13 @@ export default function Fasting({
             <Progress
               value={fasting ? progress : 0}
               size='lg'
-              className='bg-neutral-200'
+              className='bg-background-200'
             >
               <ProgressFilledTrack className='bg-success-400' />
             </Progress>
 
             <HStack className='justify-between mt-1'>
-              <Text size='sm' className='text-neutral-500'>
+              <Text size='sm' className='text-typography-500'>
                 {t('imsak')} | {formatTime(parsePrayerTime(Imsak))}
               </Text>
               {progress > 0 && progress < 100 ? (
@@ -123,7 +123,7 @@ export default function Fasting({
                 </Text>
               ) : null}
 
-              <Text size='sm' className='text-neutral-500'>
+              <Text size='sm' className='text-typography-500'>
                 {formatTime(parsePrayerTime(Maghrib))} | {t('Iftar')}
               </Text>
             </HStack>

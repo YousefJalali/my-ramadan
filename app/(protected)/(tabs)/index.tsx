@@ -19,7 +19,7 @@ export default function HomeScreen() {
 
   return (
     <ParallaxScrollView headerImage={<FastingCard day={day} />}>
-      <VStack className='relative py-6 pt-24 bg-neutral-50 gap-12'>
+      <VStack className='relative py-6 pt-24 bg-background-50 gap-12'>
         {/* date */}
         <Center className='absolute h-20 -top-10 left-0 w-full'>
           <HijriAndGregorianDate />

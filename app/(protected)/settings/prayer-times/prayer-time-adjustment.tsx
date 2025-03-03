@@ -21,7 +21,7 @@ export default function PrayerTimeAdjustment() {
 
   return (
     <VStack space='lg'>
-      <Text size='sm' className='text-neutral-900/70 leading-relaxed mb-2'>
+      <Text size='sm' className='text-typography-900/70 leading-relaxed mb-2'>
         Adjust the times of the five daily prayers in minutes to better suit
         your schedule. Fine-tune each prayer's time using the increment and
         decrement buttons for personalized customization.

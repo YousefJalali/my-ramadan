@@ -112,10 +112,10 @@ export default function FastingCard({ day }: { day: number }) {
           <Link href='/(protected)/settings/location'>
             <HStack
               space='xs'
-              className='bg-neutral-100/20 p-3 py-1 rounded-2xl'
+              className='bg-background-100/20 p-3 py-1 rounded-2xl'
             >
-              <Text className='text-neutral-200'>{`${currentLocation.city}, ${currentLocation.country}`}</Text>
-              <Icon as={MapPin} className='text-neutral-200' />
+              <Text className='text-typography-200'>{`${currentLocation.city}, ${currentLocation.country}`}</Text>
+              <Icon as={MapPin} className='text-typography-200' />
             </HStack>
           </Link>
         </Center>

@@ -96,7 +96,7 @@ export default function Settings() {
           <VStack className='mx-6' space='2xl'>
             {/* invite */}
             {/* <HStack
-              className='py-5 px-6 rounded-xl bg-neutral-100 justify-between items-center w-full'
+              className='py-5 px-6 rounded-xl bg-background-100 justify-between items-center w-full'
               space='2xl'
             >
               <HStack space='2xl' className='items-center'>

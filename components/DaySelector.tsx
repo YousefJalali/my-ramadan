@@ -34,11 +34,13 @@ export default function DaySelector({ day, onSelectDay }: Props) {
               {({ pressed }) => (
                 <Center
                   className={`h-12 w-12 rounded-full  ${
-                    day === i + 1 ? 'bg-primary-500' : 'bg-neutral-100'
+                    day === i + 1 ? 'bg-primary-500' : 'bg-background-100'
                   }`}
                 >
                   <Text
-                    className={day === i + 1 ? 'text-neutral-50 font-bold' : ''}
+                    className={
+                      day === i + 1 ? 'text-typography-50 font-bold' : ''
+                    }
                   >
                     {i + 1}
                   </Text>

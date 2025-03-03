@@ -68,7 +68,7 @@ export default function Prayers({
 
   return (
     <Center
-      className={`w-full bg-neutral-100 p-4 rounded-2xl ${cn(
+      className={`w-full bg-background-100 p-4 rounded-2xl ${cn(
         trackerView,
         'p-0 bg-transparent'
       )}`}

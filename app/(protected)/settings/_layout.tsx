@@ -19,7 +19,7 @@ export default function SettingsLayout() {
   if (method && typeof method === 'string') title = urlToTitle(method)
 
   return (
-    <VStack className='px-6 flex-1 bg-neutral-50'>
+    <VStack className='px-6 flex-1 bg-background-50'>
       <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
         <Heading size='3xl' className='capitalize my-6'>
           {t(title)}

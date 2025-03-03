@@ -39,7 +39,7 @@ export default function Notifications() {
           />
 
           {i !== arr.length - 1 ? (
-            <Divider className='my-4 bg-neutral-100' />
+            <Divider className='my-4 bg-background-100' />
           ) : null}
         </React.Fragment>
       ))}

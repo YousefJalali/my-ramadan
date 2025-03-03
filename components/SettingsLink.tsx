@@ -31,7 +31,7 @@ export default function SettingsLink({
 
           <Text
             size='lg'
-            className='text-neutral-900 leading-normal line-clamp-1'
+            className='text-typography-900 leading-normal line-clamp-1'
           >
             {t(subText)}
           </Text>
@@ -41,7 +41,7 @@ export default function SettingsLink({
           {preview ? (
             <Text
               isTruncated={true}
-              className='text-neutral-900/70 line-clamp-2 flex-1 !text-right'
+              className='text-typography-900/70 line-clamp-2 flex-1 !text-right'
               size='sm'
             >
               {t(preview)}

@@ -75,7 +75,7 @@ export default function PrayerTimes() {
         </VStack>
       )}
 
-      <Divider className='my-2 bg-neutral-100' />
+      <Divider className='my-2 bg-background-100' />
 
       <VStack space='xs'>
         {otherSettings.map(({ path, subText }) => (

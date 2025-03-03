@@ -29,7 +29,7 @@ export default function GoBackBtn({ href }: { href?: Href }) {
     >
       <ButtonIcon
         as={isRTL ? right : left}
-        className='h-6 w-6 text-neutral-900'
+        className='h-6 w-6 text-typography-900'
       />
     </Button>
   )

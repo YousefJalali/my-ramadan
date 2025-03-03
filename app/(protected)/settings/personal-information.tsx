@@ -32,7 +32,6 @@ import {
 } from '@/components/ui/alert-dialog'
 import { Heading } from '@/components/ui/heading'
 import { supabase } from '@/utils/supabase'
-// import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import colors from 'tailwindcss/colors'
 import { session$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
@@ -128,7 +127,7 @@ export default function PersonalInformation() {
         variant='filled'
         type='single'
         isCollapsible={true}
-        className='shadow-none p-0 bg-neutral-50'
+        className='shadow-none p-0 bg-background-50'
         value={selectedValues}
         onValueChange={(item) => setSelectedValues(item)}
       >
@@ -137,7 +136,7 @@ export default function PersonalInformation() {
           { field: 'email', value: email, setValue: setEmail },
         ].map(({ field, value, setValue }) => (
           <Fragment key={field}>
-            <AccordionItem value={field} className='bg-neutral-50'>
+            <AccordionItem value={field} className='bg-background-50'>
               <AccordionHeader>
                 <HStack className='items-start'>
                   <VStack className='flex-1' space='xs'>
@@ -159,7 +158,7 @@ export default function PersonalInformation() {
                       disabled={saving}
                       className='group'
                     >
-                      <ButtonText className='group-disabled:text-neutral-200'>
+                      <ButtonText className='group-disabled:text-typography-200'>
                         {t('cancel')}
                       </ButtonText>
                     </Button>
@@ -173,7 +172,7 @@ export default function PersonalInformation() {
                       }
                       className='group'
                     >
-                      <ButtonText className='group-disabled:text-neutral-200'>
+                      <ButtonText className='group-disabled:text-typography-200'>
                         {t('edit')}
                       </ButtonText>
                     </Button>

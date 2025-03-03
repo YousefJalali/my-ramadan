@@ -1,22 +1,7 @@
-'use client'
 import { vars } from 'nativewind'
 
-export const colors = {
+export const colors: { [colorMode: string]: { [color: string]: string } } = {
   light: {
-    /* Neutral  */
-    '--color-neutral-50': '243 248 247',
-    '--color-neutral-100': '225 236 234',
-    '--color-neutral-200': '197 220 216',
-    '--color-neutral-300': '158 194 188',
-    '--color-neutral-400': '110 162 154',
-    '--color-neutral-500': '83 135 128',
-    '--color-neutral-600': '71 115 112',
-    '--color-neutral-700': '63 95 93',
-    '--color-neutral-800': '57 81 80',
-    '--color-neutral-900': '51 70 70',
-    '--color-neutral-950': '2 3 3',
-
-    // Primary
     '--color-primary-50': '241 252 248',
     '--color-primary-100': '209 246 234',
     '--color-primary-200': '162 237 215',
@@ -142,18 +127,17 @@ export const colors = {
     '--color-outline-950': '26 23 23',
 
     /* Background */
-    '--color-background-0': '255 255 255',
-    '--color-background-50': '246 246 246',
-    '--color-background-100': '242 241 241',
-    '--color-background-200': '220 219 219',
-    '--color-background-300': '213 212 212',
-    '--color-background-400': '162 163 163',
-    '--color-background-500': '142 142 142',
-    '--color-background-600': '116 116 116',
-    '--color-background-700': '83 82 82',
-    '--color-background-800': '65 64 64',
-    '--color-background-900': '39 38 37',
-    '--color-background-950': '18 18 18',
+    '--color-background-50': '243 248 247',
+    '--color-background-100': '225 236 234',
+    '--color-background-200': '197 220 216',
+    '--color-background-300': '158 194 188',
+    '--color-background-400': '110 162 154',
+    '--color-background-500': '83 135 128',
+    '--color-background-600': '71 115 112',
+    '--color-background-700': '63 95 93',
+    '--color-background-800': '57 81 80',
+    '--color-background-900': '51 70 70',
+    '--color-background-950': '2 3 3',
 
     /* Background Special */
     '--color-background-error': '254 241 241',
@@ -166,6 +150,12 @@ export const colors = {
     '--color-indicator-primary': '55 55 55',
     '--color-indicator-info': '83 153 236',
     '--color-indicator-error': '185 28 28',
+
+    /* Content for text color */
+    '--color-content-50': '252 252 252',
+
+    /* Shade for background color */
+    '--color-shade-0': '38 38 38',
   },
   dark: {
     '--color-primary-0': '166 166 166',
@@ -318,10 +308,16 @@ export const colors = {
     '--color-indicator-primary': '247 247 247',
     '--color-indicator-info': '161 199 245',
     '--color-indicator-error': '232 70 69',
+
+    /* Content for text color */
+    '--color-content-50': '219 219 219',
+
+    /* Shade for background color */
+    '--color-shade-0': '64 64 64',
   },
 }
 
 export const config = {
   light: vars(colors.light),
-  dark: vars(colors.light),
+  dark: vars(colors.dark),
 }

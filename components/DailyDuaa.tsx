@@ -12,7 +12,7 @@ export default function DailyDuaa({ day }: Props) {
   } = useTranslation()
 
   return (
-    <Text className='bg-neutral-100 rounded-2xl p-4'>
+    <Text className='bg-background-100 rounded-2xl p-4'>
       {dailyDuaa[language][day]}
     </Text>
   )

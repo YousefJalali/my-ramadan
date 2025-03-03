@@ -97,14 +97,14 @@ export default function QuranReading({
 
   return (
     <VStack
-      className={`bg-neutral-100 p-3 rounded-2xl ${cn(
+      className={`bg-background-100 p-3 rounded-2xl ${cn(
         trackerView,
-        'bg-neutral-50 p-0'
+        'bg-background-50 p-0'
       )}`}
     >
       {trackerView ? null : (
         <>
-          <Text className='text-neutral-600' size='sm'>
+          <Text className='text-typography-600' size='sm'>
             {t('try to finish Juz')} {dayReading.juz} {t('today')}
           </Text>
         </>
@@ -155,7 +155,7 @@ export default function QuranReading({
             <Text>{progress.toFixed(1)}%</Text>
           </HStack>
 
-          <Progress value={progress} size='lg' className='bg-neutral-200'>
+          <Progress value={progress} size='lg' className='bg-background-200'>
             <ProgressFilledTrack className='bg-success-400' />
           </Progress>
         </VStack>

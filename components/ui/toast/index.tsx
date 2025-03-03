@@ -35,7 +35,7 @@ const toastStyle = tva({
 })
 
 const toastTitleStyle = tva({
-  base: 'text-neutral-0 font-medium font-body tracking-md text-left',
+  base: 'text-typography-0 font-medium font-body tracking-md text-left',
   variants: {
     isTruncated: {
       true: '',
@@ -136,8 +136,8 @@ const toastDescriptionStyle = tva({
   },
   parentVariants: {
     variant: {
-      solid: 'text-neutral-50',
-      outline: 'text-neutral-900',
+      solid: 'text-typography-50',
+      outline: 'text-typography-900',
     },
   },
 })
