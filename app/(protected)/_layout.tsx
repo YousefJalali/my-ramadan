@@ -177,7 +177,7 @@ export default function ProtectedLayout() {
         headerShown: true,
         headerBackVisible: false,
         headerStyle: {
-          backgroundColor: `rgb(${colors['--color-neutral-50']})`,
+          backgroundColor: `rgb(${colors['--color-background-50']})`,
         },
         title: '',
         headerLeft: () => (language === 'ar-SA' ? undefined : <GoBackBtn />),

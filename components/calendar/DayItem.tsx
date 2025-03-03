@@ -26,7 +26,7 @@ export default function DayItem({
               colors[
                 dayInCalendar == day
                   ? '--color-primary-600'
-                  : '--color-neutral-300'
+                  : '--color-background-300'
               ]
             })`,
           ],
@@ -39,7 +39,7 @@ export default function DayItem({
           backgroundGradientFromOpacity: 0,
           backgroundGradientToOpacity: 0,
           color: (opacity) =>
-            `rgba(${colors['--color-neutral-200'].replaceAll(
+            `rgba(${colors['--color-background-200'].replaceAll(
               ' ',
               ', '
             )}, ${opacity})`,
@@ -52,7 +52,7 @@ export default function DayItem({
       />
 
       <Text
-        className={`!font-roboto text-neutral-500 ${
+        className={`!font-roboto text-background-500 ${
           dayInCalendar == day ? 'underline text-primary-700' : ''
         }`}
       >

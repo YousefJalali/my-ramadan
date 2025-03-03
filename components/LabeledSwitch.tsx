@@ -25,7 +25,7 @@ export default function LabeledSwitch({ label, value, onChange }: Props) {
         onChange={onChange}
         size='md'
         trackColor={{
-          false: `rgb(${colors['--color-neutral-100']})`,
+          false: `rgb(${colors['--color-background-100']})`,
           true: `rgb(${colors['--color-primary-600']})`,
         }}
         thumbColor={`rgb(${colors['--color-background-300']})`}

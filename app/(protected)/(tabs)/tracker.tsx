@@ -57,7 +57,7 @@ export default function TrackerScreen() {
   } = useTranslation()
 
   return (
-    <VStack className='px-6 mb-0 flex-1 bg-neutral-50'>
+    <VStack className='px-6 mb-0 flex-1 bg-background-50'>
       <ScrollView
         contentContainerStyle={{ paddingBottom: 100 }}
         stickyHeaderIndices={[1]}
@@ -71,7 +71,7 @@ export default function TrackerScreen() {
         </VStack>
         <Center>
           <Heading
-            className='bg-neutral-50 w-full pb-4'
+            className='bg-background-50 w-full pb-4'
             style={{ paddingTop: Constants.statusBarHeight + 16 }}
           >
             {new Intl.DateTimeFormat(
@@ -89,7 +89,7 @@ export default function TrackerScreen() {
 
           <LinearGradient
             colors={[
-              `rgb(${colors['--color-neutral-50']})`,
+              `rgb(${colors['--color-background-50']})`,
               'rgba(255, 255, 255, 0)',
             ]}
             style={{

@@ -84,7 +84,7 @@ export default function FastingCard({ day }: { day: number }) {
   //   for (let i = 0; i < shades.length; i++) {
   //     res[shades[i]] = hexToRgb(Object.values(neutralHexObj)[i])
   //     console.log(
-  //       `'--color-neutral-${Object.keys(res)[i]}': '${Object.values(res)[
+  //       `'--color-background-${Object.keys(res)[i]}': '${Object.values(res)[
   //         i
   //       ].join(' ')}',`
   //     )

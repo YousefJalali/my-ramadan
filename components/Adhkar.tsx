@@ -42,7 +42,7 @@ export default function Adhkar() {
     <HStack className='gap-2 flex-wrap w-full'>
       {prayers.map(({ prayer, icon, href }) => (
         <Link key={prayer} href={href}>
-          <VStack className='border border-neutral-200 p-3 rounded-2xl gap-2.5'>
+          <VStack className='border border-background-200 p-3 rounded-2xl gap-2.5'>
             <Icon as={icon} size='xl' className='!text-primary-700' />
             <Text>{t(prayer)}</Text>
           </VStack>

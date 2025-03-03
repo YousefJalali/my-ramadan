@@ -95,7 +95,7 @@ export default function Fasting({
             isChecked={fasting}
             onChange={() => progress$.days[day].fasting.set(!fasting)}
           >
-            <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
+            <CheckboxIndicator className='rounded-full border-2 border-background-300 h-8 w-8'>
               <CheckboxIcon as={CheckIcon} />
             </CheckboxIndicator>
           </Checkbox>

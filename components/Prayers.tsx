@@ -133,7 +133,7 @@ export default function Prayers({
                   {readOnly ? (
                     <StatusBadge isCompleted={prayersProgress[prayerIndex]} />
                   ) : (
-                    <CheckboxIndicator className='rounded-full border-2 border-neutral-300 h-8 w-8'>
+                    <CheckboxIndicator className='rounded-full border-2 border-background-300 h-8 w-8'>
                       <CheckboxIcon as={CheckIcon} />
                     </CheckboxIndicator>
                   )}
