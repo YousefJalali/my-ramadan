@@ -5,6 +5,8 @@ import { syncObservable } from '@legendapp/state/sync'
 import { ObservablePersistMMKV } from '@legendapp/state/persist-plugins/mmkv'
 import QURAN_JUZ from '@/data/quran_juz.json'
 
+export const colorMode$ = observable<'light' | 'dark'>('light')
+
 export const session$ = observable<Session | null>(null)
 
 export type Notification = {

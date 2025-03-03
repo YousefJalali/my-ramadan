@@ -20,11 +20,14 @@
     "ios": {
       "supportsTablet": true,
       "customBuildFlags": [
+        "-DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_SNAPSHOT=1",
         "-DSQLITE_ENABLE_DBSTAT_VTAB=1 -DSQLITE_ENABLE_SNAPSHOT=1"
       ],
       "infoPlist": {
-        "ExpoLocalization_supportsRTL": true
-      }
+        "ExpoLocalization_supportsRTL": true,
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "bundleIdentifier": "com.jbygoal.ramadanchecklist2025"
     },
     "android": {
       "adaptiveIcon": {

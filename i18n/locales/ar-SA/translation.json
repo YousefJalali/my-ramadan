@@ -304,5 +304,9 @@
   "Tracker description": "تابع تقدمك خلال رمضان بتسجيل صلواتك وصيامك وقراءتك للقرآن.",
   "juz": "جزء",
   "hizb": "حزب",
-  "reading progress": "تقدم القراءة"
+  "reading progress": "تقدم القراءة",
+  "appearance": "الوضع الداكن",
+  "light": "فاتح",
+  "dark": "داكن",
+  "system": "النظام"
 }

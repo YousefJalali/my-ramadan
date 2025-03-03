@@ -323,5 +323,5 @@ export const colors = {
 
 export const config = {
   light: vars(colors.light),
-  dark: vars(colors.dark),
+  dark: vars(colors.light),
 }

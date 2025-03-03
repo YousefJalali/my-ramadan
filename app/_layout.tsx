@@ -9,8 +9,9 @@ import '../global.css'
 import '@/i18n'
 import { useTranslation } from 'react-i18next'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { settings$ } from '@/store'
+import { colorMode$, settings$ } from '@/store'
 import { getLocale } from '@/utils/getLocale'
+import { use$ } from '@legendapp/state/react'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -26,6 +27,8 @@ export default function RootLayout() {
   const {
     i18n: { language },
   } = useTranslation()
+
+  const colorMode = use$(colorMode$)
 
   //set local
   useEffect(() => {
@@ -52,7 +55,7 @@ export default function RootLayout() {
   }
 
   return (
-    <GluestackUIProvider>
+    <GluestackUIProvider mode={colorMode}>
       <Stack>
         <Stack.Screen
           name='(auth)'

@@ -7,6 +7,7 @@ import {
   Clock,
   Languages,
   MapPinned,
+  SunMoon,
 } from 'lucide-react-native'
 import { Heading } from '@/components/ui/heading'
 import { ScrollView } from '@/components/ui/scroll-view'
@@ -31,6 +32,11 @@ const sections: Section[] = [
         iconName: CircleUserRound,
         subText: 'Personal Information',
         path: '/settings/personal-information',
+      },
+      {
+        iconName: SunMoon,
+        subText: 'appearance',
+        path: '/settings/appearance',
       },
       {
         iconName: Languages,
