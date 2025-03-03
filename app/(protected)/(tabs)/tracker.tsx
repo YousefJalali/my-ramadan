@@ -5,7 +5,6 @@ import { Text } from '@/components/ui/text'
 import { HStack } from '@/components/ui/hstack'
 import { Center } from '@/components/ui/center'
 import { ScrollView } from 'react-native'
-import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import Prayers from '@/components/Prayers'
 import KhatmQuran from '@/components/khatm-quran/KhatmQuran'
 import Constants from 'expo-constants'
@@ -15,6 +14,7 @@ import { Button, ButtonText } from '@/components/ui/button'
 import Fasting from '@/components/Fasting'
 import Calendar from '@/components/calendar/Calendar'
 import { use$, useObservable } from '@legendapp/state/react'
+import useColors from '@/hooks/useColors'
 
 function Wrapper({
   title,
@@ -48,6 +48,8 @@ function Wrapper({
 
 export default function TrackerScreen() {
   const [day, setDay] = useState(1)
+
+  const colors = useColors()
 
   const {
     t,
@@ -87,7 +89,7 @@ export default function TrackerScreen() {
 
           <LinearGradient
             colors={[
-              `rgb(${colors.light['--color-neutral-50']})`,
+              `rgb(${colors['--color-neutral-50']})`,
               'rgba(255, 255, 255, 0)',
             ]}
             style={{

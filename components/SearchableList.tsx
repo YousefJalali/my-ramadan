@@ -2,11 +2,11 @@ import { SearchIcon, X } from 'lucide-react-native'
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
 import { use$, useObservable } from '@legendapp/state/react'
 import { Spinner } from '@/components/ui/spinner'
-import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import { Text } from '@/components/ui/text'
 import { FlashList, ListRenderItemInfo } from '@shopify/flash-list'
 import { ReactElement, useMemo } from 'react'
 import { Pressable } from '@/components/ui/pressable'
+import useColors from '@/hooks/useColors'
 
 type Props<T extends { name: string }> = {
   loading: boolean
@@ -25,6 +25,8 @@ export default function SearchableList<T extends { name: string }>({
 }: Props<T>) {
   const query$ = useObservable('')
   const query = use$(query$)
+
+  const colors = useColors()
 
   const filteredList = useMemo(
     () =>
@@ -60,7 +62,7 @@ export default function SearchableList<T extends { name: string }>({
         <Spinner
           size='small'
           className='my-8'
-          color={colors.light['--color-primary-600']}
+          color={colors['--color-primary-600']}
         />
       )}
 

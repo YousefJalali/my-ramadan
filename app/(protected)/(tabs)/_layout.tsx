@@ -4,16 +4,18 @@ import { HapticTab } from '@/components/HapticTab'
 import TabBarBackground from '@/components/ui/TabBarBackground'
 import { Icon } from '@/components/ui/icon'
 import { Activity, House, Settings } from 'lucide-react-native'
-import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import { useTranslation } from 'react-i18next'
+import useColors from '@/hooks/useColors'
 
 export default function TabLayout() {
   const { t } = useTranslation()
 
+  const colors = useColors()
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: `rgb(${colors.light['--color-primary-600']})`,
+        tabBarActiveTintColor: `rgb(${colors['--color-primary-600']})`,
         headerShown: false,
         tabBarButton: HapticTab,
         tabBarBackground: TabBarBackground,

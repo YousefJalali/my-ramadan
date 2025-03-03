@@ -1,8 +1,8 @@
 import { HStack } from '@/components/ui/hstack'
 import { Switch } from '@/components/ui/switch'
 import { Text } from '@/components/ui/text'
-import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import { useTranslation } from 'react-i18next'
+import useColors from '@/hooks/useColors'
 
 type Props = {
   label: string
@@ -12,10 +12,11 @@ type Props = {
 
 export default function LabeledSwitch({ label, value, onChange }: Props) {
   const { t } = useTranslation()
+  const colors = useColors()
 
   return (
     <HStack className='items-center justify-between w-full'>
-      <Text size='lg' className='text-neutral-900'>
+      <Text size='lg' className='text-typography-900'>
         {t(label)}
       </Text>
 
@@ -24,12 +25,11 @@ export default function LabeledSwitch({ label, value, onChange }: Props) {
         onChange={onChange}
         size='md'
         trackColor={{
-          false: `rgb(${colors.light['--color-neutral-100']})`,
-          true: `rgb(${colors.light['--color-primary-600']})`,
+          false: `rgb(${colors['--color-neutral-100']})`,
+          true: `rgb(${colors['--color-primary-600']})`,
         }}
-        thumbColor={`rgb(${colors.light['--color-neutral-300']})`}
-        // activeThumbColor={colors.gray[50]}
-        ios_backgroundColor={`rgb(${colors.light['--color-primary-50']})`}
+        thumbColor={`rgb(${colors['--color-background-300']})`}
+        ios_backgroundColor={`rgb(${colors['--color-primary-50']})`}
       />
     </HStack>
   )

@@ -4,7 +4,6 @@ import { supabase } from '@/utils/supabase'
 import GoBackBtn from '@/components/GoBackBtn'
 import { session$, settings$, prayerTimes$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
-import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import { getLocation } from '@/utils/getLocation'
 import { constructUrl, fetchPrayerTimes } from '@/utils/fetchPrayerTimes'
 import {
@@ -13,6 +12,7 @@ import {
 } from '@/sqlite/prayerTimesDB'
 import { CachedPrayerTimes, StoredPrayerTimes } from '@/types'
 import NetInfo from '@react-native-community/netinfo'
+import useColors from '@/hooks/useColors'
 
 export default function ProtectedLayout() {
   const {
@@ -29,6 +29,8 @@ export default function ProtectedLayout() {
       school,
     },
   } = use$(settings$)
+
+  const colors = useColors()
 
   //check internet connection
   useEffect(() => {
@@ -175,7 +177,7 @@ export default function ProtectedLayout() {
         headerShown: true,
         headerBackVisible: false,
         headerStyle: {
-          backgroundColor: `rgb(${colors.light['--color-neutral-50']})`,
+          backgroundColor: `rgb(${colors['--color-neutral-50']})`,
         },
         title: '',
         headerLeft: () => (language === 'ar-SA' ? undefined : <GoBackBtn />),

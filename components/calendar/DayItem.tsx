@@ -1,9 +1,9 @@
 import { ProgressChart } from 'react-native-chart-kit'
-import { colors } from '@/components/ui/gluestack-ui-provider/config'
 import { Center } from '@/components/ui/center'
 import { Text } from '@/components/ui/text'
 import { use$ } from '@legendapp/state/react'
 import { progress$ } from '@/store'
+import useColors from '@/hooks/useColors'
 
 export default function DayItem({
   day,
@@ -12,6 +12,7 @@ export default function DayItem({
   day: number
   dayInCalendar: number
 }) {
+  const colors = useColors()
   const dailyProgress = use$(() => progress$.dailyProgress(dayInCalendar))
 
   return (
@@ -22,7 +23,7 @@ export default function DayItem({
           data: [dailyProgress / 100],
           colors: [
             `rgb(${
-              colors.light[
+              colors[
                 dayInCalendar == day
                   ? '--color-primary-600'
                   : '--color-neutral-300'
@@ -38,7 +39,7 @@ export default function DayItem({
           backgroundGradientFromOpacity: 0,
           backgroundGradientToOpacity: 0,
           color: (opacity) =>
-            `rgba(${colors.light['--color-neutral-200'].replaceAll(
+            `rgba(${colors['--color-neutral-200'].replaceAll(
               ' ',
               ', '
             )}, ${opacity})`,
