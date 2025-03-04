@@ -27,6 +27,8 @@ export default function TabLayout() {
           },
           default: {
             backgroundColor: `rgb(${colors['--color-background-50']})`,
+            borderTopWidth: 1,
+            borderColor: `rgb(${colors['--color-background-100']})`,
           },
 
           // default: {

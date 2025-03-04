@@ -100,17 +100,17 @@ export const colors: { [colorMode: string]: { [color: string]: string } } = {
 
     /* Typography */
     '--color-typography-0': '254 254 255',
-    '--color-typography-50': '245 245 245',
-    '--color-typography-100': '229 229 229',
-    '--color-typography-200': '219 219 220',
-    '--color-typography-300': '212 212 212',
-    '--color-typography-400': '163 163 163',
-    '--color-typography-500': '140 140 140',
-    '--color-typography-600': '115 115 115',
-    '--color-typography-700': '82 82 82',
-    '--color-typography-800': '64 64 64',
-    '--color-typography-900': '38 38 39',
-    '--color-typography-950': '23 23 23',
+    '--color-typography-50': '243 248 247',
+    '--color-typography-100': '225 236 234',
+    '--color-typography-200': '197 220 216',
+    '--color-typography-300': '158 194 188',
+    '--color-typography-400': '110 162 154',
+    '--color-typography-500': '83 135 128',
+    '--color-typography-600': '71 115 112',
+    '--color-typography-700': '63 95 93',
+    '--color-typography-800': '57 81 80',
+    '--color-typography-900': '51 70 70',
+    '--color-typography-950': '2 3 3',
 
     /* Outline */
     '--color-outline-0': '253 254 254',

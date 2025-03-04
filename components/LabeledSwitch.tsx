@@ -28,6 +28,7 @@ export default function LabeledSwitch({ label, value, onChange }: Props) {
           // false: `rgb(${colors['--color-background-200']})`,
           true: `rgb(${colors['--color-primary-400']})`,
         }}
+        thumbColor='white'
         ios_backgroundColor={`rgb(${colors['--color-background-50']})`}
       />
     </HStack>

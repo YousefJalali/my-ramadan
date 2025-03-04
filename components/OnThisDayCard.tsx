@@ -64,7 +64,7 @@ export default function OnThisDayCard({ day }: { day: number }) {
 
               <Link
                 href={`/on-this-day/${slugify(f.id)}`}
-                className='mt-2 text-left'
+                className='mt-2 text-left text-primary-600'
               >
                 {t('Read More')}
               </Link>

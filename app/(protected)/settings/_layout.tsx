@@ -1,9 +1,9 @@
 import { Heading } from '@/components/ui/heading'
-import { VStack } from '@/components/ui/vstack'
 import { Slot } from 'expo-router'
 import { useGlobalSearchParams, useSegments } from 'expo-router/build/hooks'
 import { useTranslation } from 'react-i18next'
 import { ScrollView } from 'react-native'
+import PageListLayout from '@/components/PageListLayout'
 
 function urlToTitle(url: string) {
   return url.replaceAll('-', ' ').trim()
@@ -19,13 +19,18 @@ export default function SettingsLayout() {
   if (method && typeof method === 'string') title = urlToTitle(method)
 
   return (
-    <VStack className='px-6 flex-1 bg-background-50'>
-      <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
-        <Heading size='3xl' className='capitalize my-6'>
-          {t(title)}
-        </Heading>
-        <Slot />
-      </ScrollView>
-    </VStack>
+    <PageListLayout pageTitle={title}>
+      {(scrollHandler) => (
+        <ScrollView
+          onScroll={scrollHandler}
+          contentContainerStyle={{ paddingBottom: 200 }}
+        >
+          <Heading size='3xl' className='capitalize my-6'>
+            {t(title)}
+          </Heading>
+          <Slot />
+        </ScrollView>
+      )}
+    </PageListLayout>
   )
 }

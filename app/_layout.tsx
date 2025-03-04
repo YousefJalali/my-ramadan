@@ -12,6 +12,12 @@ import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
 import { colorMode$, settings$ } from '@/store'
 import { getLocale } from '@/utils/getLocale'
 import { use$ } from '@legendapp/state/react'
+import {
+  DarkTheme,
+  DefaultTheme,
+  ThemeProvider,
+} from '@react-navigation/native'
+import useColors from '@/hooks/useColors'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -29,6 +35,7 @@ export default function RootLayout() {
   } = useTranslation()
 
   const colorMode = use$(colorMode$)
+  const colors = useColors()
 
   //set local
   useEffect(() => {
@@ -55,21 +62,35 @@ export default function RootLayout() {
   }
 
   return (
-    <GluestackUIProvider mode={colorMode}>
-      <Stack>
-        <Stack.Screen
-          name='(auth)'
-          options={{
-            ...options,
-            animation:
-              language === 'ar-SA' ? 'slide_from_left' : 'slide_from_right',
-          }}
-        />
-        <Stack.Screen name='(protected)' options={options} />
-        <Stack.Screen name='+not-found' />
-      </Stack>
+    <ThemeProvider
+      value={
+        colorMode === 'dark'
+          ? {
+              ...DarkTheme,
+              colors: {
+                ...DarkTheme.colors,
+                background: `rgb(${colors['--color-background-50']})`,
+              },
+            }
+          : DefaultTheme
+      }
+    >
+      <GluestackUIProvider mode={colorMode}>
+        <Stack>
+          <Stack.Screen
+            name='(auth)'
+            options={{
+              ...options,
+              animation:
+                language === 'ar-SA' ? 'slide_from_left' : 'slide_from_right',
+            }}
+          />
+          <Stack.Screen name='(protected)' options={options} />
+          <Stack.Screen name='+not-found' />
+        </Stack>
 
-      <StatusBar style='auto' />
-    </GluestackUIProvider>
+        <StatusBar style='auto' />
+      </GluestackUIProvider>
+    </ThemeProvider>
   )
 }
