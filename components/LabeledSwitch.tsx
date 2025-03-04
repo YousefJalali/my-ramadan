@@ -25,11 +25,10 @@ export default function LabeledSwitch({ label, value, onChange }: Props) {
         onChange={onChange}
         size='md'
         trackColor={{
-          false: `rgb(${colors['--color-background-100']})`,
-          true: `rgb(${colors['--color-primary-600']})`,
+          // false: `rgb(${colors['--color-background-200']})`,
+          true: `rgb(${colors['--color-primary-400']})`,
         }}
-        thumbColor={`rgb(${colors['--color-background-300']})`}
-        ios_backgroundColor={`rgb(${colors['--color-primary-50']})`}
+        ios_backgroundColor={`rgb(${colors['--color-background-50']})`}
       />
     </HStack>
   )

@@ -90,7 +90,10 @@ export default function TrackerScreen() {
           <LinearGradient
             colors={[
               `rgb(${colors['--color-background-50']})`,
-              'rgba(255, 255, 255, 0)',
+              `rgba(${colors['--color-background-50'].replaceAll(
+                ' ',
+                ', '
+              )}, 0)`,
             ]}
             style={{
               height: 24,

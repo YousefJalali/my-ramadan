@@ -82,7 +82,7 @@ export default function Settings() {
   const { t } = useTranslation()
 
   return (
-    <VStack className='h-full w-full my-12'>
+    <VStack className='h-full w-full py-12 bg-background-50'>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{

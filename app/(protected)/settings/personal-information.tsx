@@ -187,7 +187,7 @@ export default function PersonalInformation() {
                     isDisabled={saving}
                     isInvalid={false}
                     isReadOnly={false}
-                    className='bg-white h-14 px-2'
+                    className='bg-background-100 h-14 px-2'
                   >
                     <InputField
                       value={value}

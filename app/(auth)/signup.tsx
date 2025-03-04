@@ -37,6 +37,7 @@ import { supabase } from '@/utils/supabase'
 import { Link } from 'expo-router'
 import { AlertTriangle } from 'lucide-react-native'
 import { useTranslation } from 'react-i18next'
+import { LinkText } from '@/components/ui/link'
 
 const signUpSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -328,7 +329,7 @@ export default function SignUp() {
           <Button className='w-full' onPress={handleSubmit(onSubmit)}>
             <ButtonText className='font-medium'>{t('sign up')}</ButtonText>
           </Button>
-          <Button
+          {/* <Button
             variant='outline'
             action='secondary'
             className='w-full gap-1'
@@ -337,15 +338,15 @@ export default function SignUp() {
             <ButtonText className='font-medium'>
               Continue with Google
             </ButtonText>
-            {/* <ButtonIcon as={GoogleIcon} /> */}
-          </Button>
+            <ButtonIcon as={GoogleIcon} />
+          </Button> */}
         </VStack>
         <HStack className='self-center' space='sm'>
           <Text size='md'>{t('already have an account?')}</Text>
           <Link href='/login'>
-            {t('log in')}
-            {/* <LinkText className='font-medium text-primary-700' size='md'>
-            </LinkText> */}
+            <LinkText className='font-medium text-primary-700' size='md'>
+              {t('log in')}
+            </LinkText>
           </Link>
         </HStack>
       </VStack>

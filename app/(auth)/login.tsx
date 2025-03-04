@@ -218,7 +218,7 @@ export default function Login() {
           <Button className='w-full' onPress={handleSubmit(onSubmit)}>
             <ButtonText className='font-medium'>{t('log in')}</ButtonText>
           </Button>
-          <Button
+          {/* <Button
             variant='outline'
             action='secondary'
             className='w-full gap-1'
@@ -227,16 +227,13 @@ export default function Login() {
             <ButtonText className='font-medium'>
               Continue with Google
             </ButtonText>
-            {/* <ButtonIcon as={GoogleIcon} /> */}
-          </Button>
+            <ButtonIcon as={GoogleIcon} />
+          </Button> */}
         </VStack>
         <HStack className='self-center' space='sm'>
           <Text size='md'>{t("don't have an account?")}</Text>
           <Link href='/signup'>
-            <LinkText
-              className='font-medium text-primary-700 group-hover/link:text-primary-600  group-hover/pressed:text-primary-700'
-              size='md'
-            >
+            <LinkText className='font-medium text-primary-700' size='md'>
               {t('sign up')}
             </LinkText>
           </Link>

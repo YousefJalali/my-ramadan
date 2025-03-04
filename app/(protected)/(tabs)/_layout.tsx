@@ -25,6 +25,10 @@ export default function TabLayout() {
             position: 'absolute',
             // direction: language === 'ar-SA' ? 'rtl' : 'ltr',
           },
+          default: {
+            backgroundColor: `rgb(${colors['--color-background-50']})`,
+          },
+
           // default: {
           //   direction: language === 'ar-SA' ? 'rtl' : 'ltr',
           // },

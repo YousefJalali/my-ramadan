@@ -48,7 +48,6 @@ export default function PageListLayout({
           <Stack.Screen
             options={{
               title: showTitle$.get() ? t(pageTitle) : '',
-              headerStyle: { backgroundColor: 'white' },
               headerShadowVisible: showTitle$.get() ? true : false,
               headerTitle: (props) => (
                 <Heading
@@ -65,7 +64,7 @@ export default function PageListLayout({
         )}
       </Memo>
 
-      <VStack className='flex-1 px-6 bg-white'>
+      <VStack className='flex-1 px-6 bg-background-50'>
         {children(scrollHandler, getHeaderHeight)}
       </VStack>
     </>
