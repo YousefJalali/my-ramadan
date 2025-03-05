@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "ramadan-checklist-2025",
+    "name": "My Ramadan",
     "slug": "ramadan-checklist-2025",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "my-ramadan",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "extra": {
@@ -27,7 +27,7 @@
         "ExpoLocalization_supportsRTL": true,
         "ITSAppUsesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.jbygoal.ramadanchecklist2025"
+      "bundleIdentifier": "com.jbygoal.my-ramadan"
     },
     "android": {
       "adaptiveIcon": {
@@ -42,7 +42,7 @@
         "android.permission.RECORD_AUDIO",
         "android.permission.MODIFY_AUDIO_SETTINGS"
       ],
-      "package": "com.jbygoal.ramadanchecklist2025"
+      "package": "com.jbygoal.my_ramadan"
     },
     "web": {
       "bundler": "metro",
@@ -88,6 +88,7 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "owner": "jbygoal"
   }
 }
