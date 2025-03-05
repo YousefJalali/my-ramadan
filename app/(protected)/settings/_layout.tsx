@@ -23,7 +23,7 @@ export default function SettingsLayout() {
       {(scrollHandler) => (
         <ScrollView
           onScroll={scrollHandler}
-          contentContainerStyle={{ paddingBottom: 200 }}
+          contentContainerStyle={{ paddingBottom: 120 }}
         >
           <Heading size='3xl' className='capitalize my-6'>
             {t(title)}

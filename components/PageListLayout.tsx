@@ -6,6 +6,7 @@ import {
   LayoutChangeEvent,
   NativeScrollEvent,
   NativeSyntheticEvent,
+  SafeAreaView,
 } from 'react-native'
 import { Heading } from '@/components/ui/heading'
 import { ReactNode, useRef } from 'react'
@@ -64,9 +65,11 @@ export default function PageListLayout({
         )}
       </Memo>
 
-      <VStack className='flex-1 px-6 bg-background-50'>
-        {children(scrollHandler, getHeaderHeight)}
-      </VStack>
+      <SafeAreaView style={{ flex: 1 }}>
+        <VStack className='flex-1 px-6 bg-background-50'>
+          {children(scrollHandler, getHeaderHeight)}
+        </VStack>
+      </SafeAreaView>
     </>
   )
 }
