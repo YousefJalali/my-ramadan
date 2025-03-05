@@ -39,7 +39,7 @@ export default function CountriesList() {
       setError(null)
 
       const response = await fetch(
-        'https://buwskjtoapwcxnsgsqrs.supabase.co/storage/v1/object/public/countries//countries.json'
+        `${process.env.EXPO_PUBLIC_SUPABASE_URL}/storage/v1/object/public/countries//countries.json`
       )
 
       if (!response.ok) throw new Error('Failed to fetch cities')

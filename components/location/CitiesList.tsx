@@ -25,7 +25,7 @@ export default function CitiesList({
       setError(null)
 
       const response = await fetch(
-        `https://buwskjtoapwcxnsgsqrs.supabase.co/storage/v1/object/public/cities//${iso2}.json`
+        `${process.env.EXPO_PUBLIC_SUPABASE_URL}/storage/v1/object/public/cities//${iso2}.json`
       )
 
       if (!response.ok) throw new Error(`Failed to fetch cities [${iso2}]`)

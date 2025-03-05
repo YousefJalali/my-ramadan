@@ -4,7 +4,6 @@ import { Avatar, AvatarFallbackText, AvatarImage } from '@/components/ui/avatar'
 import UploadAvatar from './UploadAvatar'
 import { VStack } from '@/components/ui/vstack'
 import { Text } from '@/components/ui/text'
-import { supabaseUrl } from '@/utils/supabase'
 import { HStack } from '@/components/ui/hstack'
 import { Heading } from '@/components/ui/heading'
 import { Link } from 'expo-router'
@@ -29,7 +28,7 @@ export default function Profile() {
           height={200}
           width={200}
           source={{
-            uri: `${supabaseUrl}/storage/v1/object/public/avatars/${session.user.user_metadata.avatar_url}`,
+            uri: `${process.env.EXPO_PUBLIC_SUPABASE_URL}/storage/v1/object/public/avatars/${session.user.user_metadata.avatar_url}`,
           }}
         />
         <UploadAvatar />
