@@ -5,6 +5,10 @@ import { VStack } from '@/components/ui/vstack'
 import { session$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { Redirect, Slot } from 'expo-router'
+// import {
+//   KeyboardAwareScrollView,
+//   KeyboardToolbar,
+// } from 'react-native-keyboard-controller'
 
 export default function AuthLayout() {
   let session = use$(session$)
@@ -19,7 +23,10 @@ export default function AuthLayout() {
         <GoBackBtn href='/(protected)/(tabs)' />
       </HStack>
       <Center className='flex-1'>
+        {/* <KeyboardAwareScrollView bottomOffset={62}> */}
         <Slot />
+        {/* </KeyboardAwareScrollView>
+        <KeyboardToolbar /> */}
       </Center>
     </VStack>
   )

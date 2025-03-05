@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Toast, ToastTitle, useToast } from '@/components/ui/toast'
 import { HStack } from '@/components/ui/hstack'
 import { VStack } from '@/components/ui/vstack'
@@ -14,25 +14,12 @@ import {
   FormControlLabelText,
 } from '@/components/ui/form-control'
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
-import {
-  Checkbox,
-  CheckboxIcon,
-  CheckboxIndicator,
-  CheckboxLabel,
-} from '@/components/ui/checkbox'
-import {
-  ArrowLeftIcon,
-  CheckIcon,
-  EyeIcon,
-  EyeOffIcon,
-  Icon,
-} from '@/components/ui/icon'
-import { Button, ButtonText, ButtonIcon } from '@/components/ui/button'
+import { EyeIcon, EyeOffIcon } from '@/components/ui/icon'
+import { Button, ButtonText } from '@/components/ui/button'
 import { Keyboard } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Pressable } from '@/components/ui/pressable'
 import { supabase } from '@/utils/supabase'
 import { Link } from 'expo-router'
 import { AlertTriangle } from 'lucide-react-native'
@@ -62,7 +49,6 @@ const signUpSchema = z.object({
       new RegExp('.*[`~<>?,./!@#$%^&*()\\-_+="\'|{}\\[\\];:\\\\].*'),
       'One special character'
     ),
-  rememberMe: z.boolean().optional(),
 })
 type SignUpSchemaType = z.infer<typeof signUpSchema>
 
@@ -122,11 +108,14 @@ export default function SignUp() {
         </Heading>
         <Text>{t('sign up to start using the app')}</Text>
       </VStack>
+
       <VStack className='w-full'>
         <VStack space='xl' className='w-full'>
           <FormControl isInvalid={!!errors.name}>
             <FormControlLabel>
-              <FormControlLabelText>{t('name')}</FormControlLabelText>
+              <FormControlLabelText className='capitalize flex-1'>
+                {t('name')}
+              </FormControlLabelText>
             </FormControlLabel>
             <Controller
               name='name'
@@ -160,14 +149,16 @@ export default function SignUp() {
             <FormControlError>
               <FormControlErrorIcon size='md' as={AlertTriangle} />
               <FormControlErrorText>
-                {errors?.name?.message}
+                {t(errors?.name?.message || '')}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>
 
           <FormControl isInvalid={!!errors.email}>
             <FormControlLabel>
-              <FormControlLabelText>{t('email')}</FormControlLabelText>
+              <FormControlLabelText className='capitalize flex-1'>
+                {t('email')}
+              </FormControlLabelText>
             </FormControlLabel>
             <Controller
               name='email'
@@ -201,7 +192,7 @@ export default function SignUp() {
             <FormControlError>
               <FormControlErrorIcon size='md' as={AlertTriangle} />
               <FormControlErrorText>
-                {errors?.email?.message}
+                {t(errors?.email?.message || '')}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>
@@ -247,7 +238,7 @@ export default function SignUp() {
             <FormControlError>
               <FormControlErrorIcon size='sm' as={AlertTriangle} />
               <FormControlErrorText>
-                {errors?.password?.message}
+                {t(errors?.password?.message || '')}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>
@@ -297,32 +288,10 @@ export default function SignUp() {
             <FormControlError>
               <FormControlErrorIcon size='sm' as={AlertTriangle} />
               <FormControlErrorText>
-                {errors?.confirmPassword?.message}
+                {t(errors?.confirmPassword?.message || '')}
               </FormControlErrorText>
             </FormControlError>
           </FormControl>
-
-          <Controller
-            name='rememberMe'
-            defaultValue={false}
-            control={control}
-            render={({ field: { onChange, value } }) => (
-              <Checkbox
-                size='sm'
-                value='Remember me'
-                isChecked={value}
-                onChange={onChange}
-                aria-label='Remember me'
-              >
-                <CheckboxIndicator>
-                  <CheckboxIcon as={CheckIcon} />
-                </CheckboxIndicator>
-                <CheckboxLabel>
-                  {t('I accept the Terms of Use & Privacy Policy')}
-                </CheckboxLabel>
-              </Checkbox>
-            )}
-          />
         </VStack>
 
         <VStack className='w-full my-7' space='lg'>

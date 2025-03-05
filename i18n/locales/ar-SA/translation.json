@@ -308,5 +308,14 @@
   "appearance": "الوضع الداكن",
   "light": "فاتح",
   "dark": "داكن",
-  "system": "النظام"
+  "system": "النظام",
+  "Name is required": "يجب إدخال الاسم",
+  "Email is required": "يجب إدخال البريد الإلكتروني",
+  "Password is required": "يجب إدخال كلمة المرور",
+  "Email ID not found": "لم يتم العثور على البريد الإلكتروني",
+  "Password incorrect": "كلمة المرور غير صحيحة",
+  "Must be at least 8 characters in length": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
+  "One uppercase character": "يجب أن تحتوي على حرف كبير واحد",
+  "One lowercase character": "يجب أن تحتوي على حرف صغير واحد",
+  "One number": "يجب أن تحتوي على رقم واحد"
 }
