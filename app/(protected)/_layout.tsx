@@ -2,17 +2,14 @@ import { Stack } from 'expo-router'
 import { useEffect } from 'react'
 import { supabase } from '@/utils/supabase'
 import GoBackBtn from '@/components/GoBackBtn'
-import { session$, settings$, prayerTimes$ } from '@/store'
+import { prayerTimes$, session$, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { getLocation } from '@/utils/getLocation'
-import { constructUrl, fetchPrayerTimes } from '@/utils/fetchPrayerTimes'
-import {
-  getCachedPrayerTimes,
-  setupPrayerTimesDB,
-} from '@/sqlite/prayerTimesDB'
-import { CachedPrayerTimes, StoredPrayerTimes } from '@/types'
+import { constructUrl } from '@/utils/constructUrl'
+import { setupPrayerTimesDB } from '@/sqlite/prayerTimesDB'
 import NetInfo from '@react-native-community/netinfo'
 import useColors from '@/hooks/useColors'
+import { getPrayerTimes } from '@/utils/getPrayerTimes'
 
 export default function ProtectedLayout() {
   const {
@@ -92,84 +89,33 @@ export default function ProtectedLayout() {
 
   //set prayer times
   useEffect(() => {
-    setupPrayerTimesDB()
-    console.log('location changed')
-    if (!location?.longitude || !location.latitude) return
+    ;(async () => {
+      await setupPrayerTimesDB()
 
-    const url = constructUrl({
-      latitude: location.latitude,
-      longitude: location.longitude,
-      method,
-      shafaq,
-      tune: offset.join(','),
-      latitudeAdjustmentMethod,
-      school,
-      midnightMode,
-      timezonestring,
-      calendarMethod,
-    })
+      console.log('location changed')
+      if (!location?.longitude || !location.latitude) return
 
-    getPrayerTimes(url)
+      const baseUrl = 'https://api.aladhan.com/v1/hijriCalendar/1446/9'
+      const url = constructUrl(baseUrl, {
+        latitude: location.latitude,
+        longitude: location.longitude,
+        method,
+        shafaq,
+        tune: offset.join(','),
+        latitudeAdjustmentMethod,
+        school,
+        midnightMode,
+        timezonestring,
+        calendarMethod,
+      })
+
+      console.log(location.latitude, location.longitude)
+
+      const prayerTimes = await getPrayerTimes(url)
+
+      if (prayerTimes) prayerTimes$.set(prayerTimes)
+    })()
   }, [location])
-
-  async function getPrayerTimes(url: string) {
-    try {
-      let obj: StoredPrayerTimes
-
-      const res = await getCachedPrayerTimes(url)
-
-      if (res?.length) {
-        console.log('prayer times fetched from cache')
-
-        const data: CachedPrayerTimes[] = res
-
-        obj = {
-          ...data[0],
-          offset: JSON.parse(data[0].offset),
-          timings: {},
-        }
-
-        data.forEach((dayPrayers) => {
-          obj.timings[dayPrayers.hijriDay] = JSON.parse(dayPrayers.timings)
-        })
-
-        prayerTimes$.set(obj)
-      } else {
-        const data = await fetchPrayerTimes(url)
-
-        if (typeof data !== 'string') {
-          const { date, meta } = data[0]
-          obj = {
-            id: `${url}-${date.hijri.date}`,
-            url: url,
-            hijriMonth: date.hijri.month.number,
-            gregorianMonth: date.gregorian.month.number,
-            latitude: meta.latitude,
-            longitude: meta.longitude,
-            method: meta.method.id,
-            latitudeAdjustmentMethod: meta.latitudeAdjustmentMethod,
-            midnightMode: meta.midnightMode,
-            school: meta.school,
-            offset: meta.offset,
-            timings: {},
-          }
-
-          data.forEach((dayPrayers) => {
-            const { timings, date, meta } = dayPrayers
-
-            obj.timings[date.hijri.day] = timings
-          })
-
-          prayerTimes$.set(obj)
-        } else {
-          //set prayer times settings to math with url
-        }
-      }
-      // console.log(prayerTimes$.timings.get())
-    } catch (error) {
-      console.error('Error fetching prayer times from db:', error)
-    }
-  }
 
   return (
     <Stack
