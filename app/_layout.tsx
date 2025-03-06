@@ -18,6 +18,7 @@ import {
   ThemeProvider,
 } from '@react-navigation/native'
 import useColors from '@/hooks/useColors'
+import { KeyboardProvider } from 'react-native-keyboard-controller'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -76,19 +77,20 @@ export default function RootLayout() {
       }
     >
       <GluestackUIProvider mode={colorMode}>
-        <Stack>
-          <Stack.Screen
-            name='(auth)'
-            options={{
-              ...options,
-              animation:
-                language === 'ar-SA' ? 'slide_from_left' : 'slide_from_right',
-            }}
-          />
-          <Stack.Screen name='(protected)' options={options} />
-          <Stack.Screen name='+not-found' />
-        </Stack>
-
+        <KeyboardProvider>
+          <Stack>
+            <Stack.Screen
+              name='(auth)'
+              options={{
+                ...options,
+                animation:
+                  language === 'ar-SA' ? 'slide_from_left' : 'slide_from_right',
+              }}
+            />
+            <Stack.Screen name='(protected)' options={options} />
+            <Stack.Screen name='+not-found' />
+          </Stack>
+        </KeyboardProvider>
         <StatusBar style='auto' />
       </GluestackUIProvider>
     </ThemeProvider>

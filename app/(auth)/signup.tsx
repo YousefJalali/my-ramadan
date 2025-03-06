@@ -25,6 +25,10 @@ import { Link } from 'expo-router'
 import { AlertTriangle } from 'lucide-react-native'
 import { useTranslation } from 'react-i18next'
 import { LinkText } from '@/components/ui/link'
+import {
+  KeyboardAwareScrollView,
+  KeyboardToolbar,
+} from 'react-native-keyboard-controller'
 
 const signUpSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -110,189 +114,192 @@ export default function SignUp() {
       </VStack>
 
       <VStack className='w-full'>
-        <VStack space='xl' className='w-full'>
-          <FormControl isInvalid={!!errors.name}>
-            <FormControlLabel>
-              <FormControlLabelText className='capitalize flex-1'>
-                {t('name')}
-              </FormControlLabelText>
-            </FormControlLabel>
-            <Controller
-              name='name'
-              defaultValue=''
-              control={control}
-              rules={{
-                validate: async (value) => {
-                  try {
-                    await signUpSchema.parseAsync({ name: value })
-                    return true
-                  } catch (error: any) {
-                    return error.message
-                  }
-                },
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Input>
-                  <InputField
-                    className='text-sm'
-                    placeholder={t('type here...')}
-                    type='text'
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    onSubmitEditing={handleKeyPress}
-                    returnKeyType='done'
-                  />
-                </Input>
-              )}
-            />
-            <FormControlError>
-              <FormControlErrorIcon size='md' as={AlertTriangle} />
-              <FormControlErrorText>
-                {t(errors?.name?.message || '')}
-              </FormControlErrorText>
-            </FormControlError>
-          </FormControl>
-
-          <FormControl isInvalid={!!errors.email}>
-            <FormControlLabel>
-              <FormControlLabelText className='capitalize flex-1'>
-                {t('email')}
-              </FormControlLabelText>
-            </FormControlLabel>
-            <Controller
-              name='email'
-              defaultValue=''
-              control={control}
-              rules={{
-                validate: async (value) => {
-                  try {
-                    await signUpSchema.parseAsync({ email: value })
-                    return true
-                  } catch (error: any) {
-                    return error.message
-                  }
-                },
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Input>
-                  <InputField
-                    className='text-sm'
-                    placeholder={t('type here...')}
-                    type='text'
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    onSubmitEditing={handleKeyPress}
-                    returnKeyType='done'
-                  />
-                </Input>
-              )}
-            />
-            <FormControlError>
-              <FormControlErrorIcon size='md' as={AlertTriangle} />
-              <FormControlErrorText>
-                {t(errors?.email?.message || '')}
-              </FormControlErrorText>
-            </FormControlError>
-          </FormControl>
-
-          <FormControl isInvalid={!!errors.password}>
-            <FormControlLabel>
-              <FormControlLabelText>{t('password')}</FormControlLabelText>
-            </FormControlLabel>
-            <Controller
-              defaultValue=''
-              name='password'
-              control={control}
-              rules={{
-                validate: async (value) => {
-                  try {
-                    await signUpSchema.parseAsync({
-                      password: value,
-                    })
-                    return true
-                  } catch (error: any) {
-                    return error.message
-                  }
-                },
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Input>
-                  <InputField
-                    className='text-sm'
-                    placeholder={t('type here...')}
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    onSubmitEditing={handleKeyPress}
-                    returnKeyType='done'
-                    type={showPassword ? 'text' : 'password'}
-                  />
-                  <InputSlot onPress={handleState} className='px-3'>
-                    <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
-                  </InputSlot>
-                </Input>
-              )}
-            />
-            <FormControlError>
-              <FormControlErrorIcon size='sm' as={AlertTriangle} />
-              <FormControlErrorText>
-                {t(errors?.password?.message || '')}
-              </FormControlErrorText>
-            </FormControlError>
-          </FormControl>
-          <FormControl isInvalid={!!errors.confirmPassword}>
-            <FormControlLabel>
-              <FormControlLabelText>
-                {t('confirm password')}
-              </FormControlLabelText>
-            </FormControlLabel>
-            <Controller
-              defaultValue=''
-              name='confirmPassword'
-              control={control}
-              rules={{
-                validate: async (value) => {
-                  try {
-                    await signUpSchema.parseAsync({
-                      password: value,
-                    })
-                    return true
-                  } catch (error: any) {
-                    return error.message
-                  }
-                },
-              }}
-              render={({ field: { onChange, onBlur, value } }) => (
-                <Input>
-                  <InputField
-                    placeholder={t('type here...')}
-                    className='text-sm'
-                    value={value}
-                    onChangeText={onChange}
-                    onBlur={onBlur}
-                    onSubmitEditing={handleKeyPress}
-                    returnKeyType='done'
-                    type={showConfirmPassword ? 'text' : 'password'}
-                  />
-
-                  <InputSlot onPress={handleConfirmPwState} className='px-3'>
-                    <InputIcon
-                      as={showConfirmPassword ? EyeIcon : EyeOffIcon}
+        <KeyboardAwareScrollView bottomOffset={-160}>
+          <VStack space='xl' className='w-full'>
+            <FormControl isInvalid={!!errors.name}>
+              <FormControlLabel>
+                <FormControlLabelText className='capitalize flex-1'>
+                  {t('name')}
+                </FormControlLabelText>
+              </FormControlLabel>
+              <Controller
+                name='name'
+                defaultValue=''
+                control={control}
+                rules={{
+                  validate: async (value) => {
+                    try {
+                      await signUpSchema.parseAsync({ name: value })
+                      return true
+                    } catch (error: any) {
+                      return error.message
+                    }
+                  },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <Input>
+                    <InputField
+                      className='text-sm'
+                      placeholder={t('type here...')}
+                      type='text'
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      onSubmitEditing={handleKeyPress}
+                      returnKeyType='done'
                     />
-                  </InputSlot>
-                </Input>
-              )}
-            />
-            <FormControlError>
-              <FormControlErrorIcon size='sm' as={AlertTriangle} />
-              <FormControlErrorText>
-                {t(errors?.confirmPassword?.message || '')}
-              </FormControlErrorText>
-            </FormControlError>
-          </FormControl>
-        </VStack>
+                  </Input>
+                )}
+              />
+              <FormControlError>
+                <FormControlErrorIcon size='md' as={AlertTriangle} />
+                <FormControlErrorText>
+                  {t(errors?.name?.message || '')}
+                </FormControlErrorText>
+              </FormControlError>
+            </FormControl>
+
+            <FormControl isInvalid={!!errors.email}>
+              <FormControlLabel>
+                <FormControlLabelText className='capitalize flex-1'>
+                  {t('email')}
+                </FormControlLabelText>
+              </FormControlLabel>
+              <Controller
+                name='email'
+                defaultValue=''
+                control={control}
+                rules={{
+                  validate: async (value) => {
+                    try {
+                      await signUpSchema.parseAsync({ email: value })
+                      return true
+                    } catch (error: any) {
+                      return error.message
+                    }
+                  },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <Input>
+                    <InputField
+                      className='text-sm'
+                      placeholder={t('type here...')}
+                      type='text'
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      onSubmitEditing={handleKeyPress}
+                      returnKeyType='done'
+                    />
+                  </Input>
+                )}
+              />
+              <FormControlError>
+                <FormControlErrorIcon size='md' as={AlertTriangle} />
+                <FormControlErrorText>
+                  {t(errors?.email?.message || '')}
+                </FormControlErrorText>
+              </FormControlError>
+            </FormControl>
+
+            <FormControl isInvalid={!!errors.password}>
+              <FormControlLabel>
+                <FormControlLabelText>{t('password')}</FormControlLabelText>
+              </FormControlLabel>
+              <Controller
+                defaultValue=''
+                name='password'
+                control={control}
+                rules={{
+                  validate: async (value) => {
+                    try {
+                      await signUpSchema.parseAsync({
+                        password: value,
+                      })
+                      return true
+                    } catch (error: any) {
+                      return error.message
+                    }
+                  },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <Input>
+                    <InputField
+                      className='text-sm'
+                      placeholder={t('type here...')}
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      onSubmitEditing={handleKeyPress}
+                      returnKeyType='done'
+                      type={showPassword ? 'text' : 'password'}
+                    />
+                    <InputSlot onPress={handleState} className='px-3'>
+                      <InputIcon as={showPassword ? EyeIcon : EyeOffIcon} />
+                    </InputSlot>
+                  </Input>
+                )}
+              />
+              <FormControlError>
+                <FormControlErrorIcon size='sm' as={AlertTriangle} />
+                <FormControlErrorText>
+                  {t(errors?.password?.message || '')}
+                </FormControlErrorText>
+              </FormControlError>
+            </FormControl>
+            <FormControl isInvalid={!!errors.confirmPassword}>
+              <FormControlLabel>
+                <FormControlLabelText>
+                  {t('confirm password')}
+                </FormControlLabelText>
+              </FormControlLabel>
+              <Controller
+                defaultValue=''
+                name='confirmPassword'
+                control={control}
+                rules={{
+                  validate: async (value) => {
+                    try {
+                      await signUpSchema.parseAsync({
+                        password: value,
+                      })
+                      return true
+                    } catch (error: any) {
+                      return error.message
+                    }
+                  },
+                }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <Input>
+                    <InputField
+                      placeholder={t('type here...')}
+                      className='text-sm'
+                      value={value}
+                      onChangeText={onChange}
+                      onBlur={onBlur}
+                      onSubmitEditing={handleKeyPress}
+                      returnKeyType='done'
+                      type={showConfirmPassword ? 'text' : 'password'}
+                    />
+
+                    <InputSlot onPress={handleConfirmPwState} className='px-3'>
+                      <InputIcon
+                        as={showConfirmPassword ? EyeIcon : EyeOffIcon}
+                      />
+                    </InputSlot>
+                  </Input>
+                )}
+              />
+              <FormControlError>
+                <FormControlErrorIcon size='sm' as={AlertTriangle} />
+                <FormControlErrorText>
+                  {t(errors?.confirmPassword?.message || '')}
+                </FormControlErrorText>
+              </FormControlError>
+            </FormControl>
+          </VStack>
+        </KeyboardAwareScrollView>
+        <KeyboardToolbar />
 
         <VStack className='w-full my-7' space='lg'>
           <Button className='w-full' onPress={handleSubmit(onSubmit)}>
