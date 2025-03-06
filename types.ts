@@ -180,6 +180,7 @@ type PrayerTimes = {
   midnightMode: string
   school: string
   offset: { [key in Prayer]: number }
+  timezone: string
 }
 
 export type StoredPrayerTimes = PrayerTimes & {

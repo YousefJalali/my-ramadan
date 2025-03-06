@@ -24,7 +24,8 @@ export const setupPrayerTimesDB = async () => {
         latitudeAdjustmentMethod TEXT,
         midnightMode TEXT,
         school TEXT,
-        offset TEXT
+        offset TEXT,
+        timezone TEXT
       )`)
   } catch (error) {
     console.error('Error setting up database:', error)
@@ -44,8 +45,8 @@ export const insertPrayerTimes = async (
       // Insert country data
       await db.runAsync(
         `INSERT OR REPLACE INTO prayer_times 
-          (id, url, timings, hijriDate, gregorianDate, hijriDay, gregorianDay, hijriMonth, gregorianMonth, latitude, longitude, method, latitudeAdjustmentMethod, midnightMode, school, offset) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
+          (id, url, timings, hijriDate, gregorianDate, hijriDay, gregorianDay, hijriMonth, gregorianMonth, latitude, longitude, method, latitudeAdjustmentMethod, midnightMode, school, offset, timezone) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);`,
 
         uniqueId,
         url,
@@ -62,7 +63,8 @@ export const insertPrayerTimes = async (
         meta.latitudeAdjustmentMethod,
         meta.midnightMode,
         meta.school,
-        JSON.stringify(meta.offset)
+        JSON.stringify(meta.offset),
+        meta.timezone
       )
 
       dayCount++

@@ -676,6 +676,7 @@ export const prayerTimes$ = observable<StoredPrayerTimes>({
     },
   },
   url: 'https://api.aladhan.com/v1/hijriCalendar/1446/9?latitude=25.1973654&longitude=51.4537109&method=3&shafaq=general&tune=0%2C0%2C0%2C0%2C0%2C0%2C0%2C0%2C0&school=0&midnightMode=0&calendarMethod=HJCoSA',
+  timezone: 'Asia/Qatar',
 })
 
 export const khatmQuran$ = observable({
