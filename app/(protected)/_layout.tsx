@@ -114,7 +114,7 @@ export default function ProtectedLayout() {
 
       if (prayerTimes) prayerTimes$.set(prayerTimes)
     })()
-  }, [location])
+  }, [location.current])
 
   return (
     <Stack
