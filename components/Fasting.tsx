@@ -47,12 +47,12 @@ export default function Fasting({
       )}`}
     >
       {/* Fasting Stats */}
-      {trackerView ? null : (
+      {trackerView ? null : progress$.fastingStreak(day) < 2 ? null : (
         <VStack space='md' className='mb-4'>
           <Text size='sm' className='text-typography-600'>
-            🎯{' '}
+            🌙{' '}
             <Text bold size='sm'>
-              7
+              {progress$.fastingStreak(day)}
             </Text>{' '}
             {t('days streak')}
           </Text>

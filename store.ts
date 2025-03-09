@@ -99,6 +99,7 @@ type Progress = {
     prayers: number
     quranReading: number
   }
+  fastingStreak: (day: number) => number
 }
 export const progress$ = observable({
   days: {
@@ -280,6 +281,20 @@ export const progress$ = observable({
       prayers,
       quranReading,
     }
+  },
+  fastingStreak: (day: number) => {
+    const monthFasting = progress$.days.get() || {}
+
+    let count = 0
+    for (let i = 1; i < day; i++) {
+      if (monthFasting[i]?.fasting) {
+        count++
+      } else {
+        count = 0
+      }
+    }
+
+    return count + (monthFasting[day].fasting ? 1 : 0)
   },
 } as Progress)
 
