@@ -20,15 +20,18 @@ import {
 } from '@/sqlite/locationDB'
 import { Country } from '@/types'
 import CitiesList from './CitiesList'
+import { settings$ } from '@/store'
+import { Button, ButtonText } from '../ui/button'
+import RecentLocations from './RecentLocations'
+
+type SelectedCountry = Pick<Country, 'iso2' | 'name' | 'emoji'>
 
 export default function CountriesList() {
   const { t } = useTranslation()
 
   const [countries, setCountries] = useState<Country[]>([])
-  const [selectedCountry, setSelectedCountry] = useState<Pick<
-    Country,
-    'iso2' | 'name' | 'emoji'
-  > | null>(null)
+  const [selectedCountry, setSelectedCountry] =
+    useState<SelectedCountry | null>(null)
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -88,7 +91,7 @@ export default function CountriesList() {
     setSelectedCountry(null)
   }
 
-  const handleCountryPress = ({ name, iso2, emoji }: Country) => {
+  const handleCountryPress = ({ name, iso2, emoji }: SelectedCountry) => {
     setSelectedCountry({ name, iso2, emoji })
   }
 
@@ -99,6 +102,7 @@ export default function CountriesList() {
         error={error}
         list={countries}
         placeholder={`${t('search country')}...`}
+        ListHeaderComponent={<RecentLocations />}
       >
         {({ item, index }) => (
           <Pressable onPress={() => handleCountryPress(item)}>
@@ -115,11 +119,10 @@ export default function CountriesList() {
           isOpen={!!selectedCountry}
           onClose={handleClose}
           snapPoints={[90]}
-          className=''
         >
           <ActionsheetBackdrop />
 
-          <ActionsheetContent>
+          <ActionsheetContent className='bg-background-50'>
             <ActionsheetDragIndicatorWrapper>
               <ActionsheetDragIndicator />
             </ActionsheetDragIndicatorWrapper>
@@ -129,7 +132,9 @@ export default function CountriesList() {
                 {selectedCountry.name} {selectedCountry.emoji}
               </Heading>
               <CitiesList
+                countryName={selectedCountry.name}
                 iso2={selectedCountry.iso2}
+                flag={selectedCountry.emoji}
                 handleClose={handleClose}
               />
             </VStack>
