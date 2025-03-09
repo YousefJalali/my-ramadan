@@ -65,7 +65,7 @@ export default function ProtectedLayout() {
       const { location, error, region } = await getLocation()
 
       if (!error && region?.country && region?.city && location) {
-        settings$.location.set({
+        settings$.location.current.set({
           country: region.country,
           city: region.city,
           longitude: location.coords.longitude,
@@ -73,7 +73,7 @@ export default function ProtectedLayout() {
         })
       } else {
         //set location to Mecca
-        settings$.location.set({
+        settings$.location.current.set({
           country: 'SA',
           city: 'Mecca',
           longitude: 39.82563,
@@ -93,23 +93,22 @@ export default function ProtectedLayout() {
       await setupPrayerTimesDB()
 
       console.log('location changed')
-      if (!location?.longitude || !location.latitude) return
+      if (!location.current?.longitude || !location.current.latitude) return
 
       const baseUrl = 'https://api.aladhan.com/v1/hijriCalendar/1446/9'
       const url = constructUrl(baseUrl, {
-        latitude: location.latitude,
-        longitude: location.longitude,
+        latitude: location.current.latitude,
+        longitude: location.current.longitude,
         method,
         shafaq,
         tune: offset.join(','),
         latitudeAdjustmentMethod,
         school,
         midnightMode,
-        timezonestring,
+        timezonestring: 'UTC',
         calendarMethod,
+        iso8601: 'true',
       })
-
-      console.log(location.latitude, location.longitude)
 
       const prayerTimes = await getPrayerTimes(url)
 

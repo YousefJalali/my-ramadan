@@ -14,6 +14,7 @@ type Props<T extends { name: string }> = {
   list: T[]
   children: (info: ListRenderItemInfo<T>) => ReactElement | null
   placeholder: string
+  ListHeaderComponent?: ReactElement
 }
 
 export default function SearchableList<T extends { name: string }>({
@@ -22,6 +23,7 @@ export default function SearchableList<T extends { name: string }>({
   list,
   children,
   placeholder,
+  ListHeaderComponent,
 }: Props<T>) {
   const query$ = useObservable('')
   const query = use$(query$)
@@ -77,6 +79,7 @@ export default function SearchableList<T extends { name: string }>({
           renderItem={children}
           estimatedItemSize={250}
           ListEmptyComponent={<Text>No results found</Text>}
+          ListHeaderComponent={ListHeaderComponent}
         />
       )}
     </>

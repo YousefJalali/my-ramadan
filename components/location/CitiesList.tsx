@@ -8,10 +8,14 @@ import { useTranslation } from 'react-i18next'
 import { getCitiesByCountry, insertCities } from '@/sqlite/locationDB'
 
 export default function CitiesList({
+  countryName,
   iso2,
+  flag,
   handleClose,
 }: {
+  countryName: string
   iso2: string
+  flag: string
   handleClose: () => void
 }) {
   const { t } = useTranslation()
@@ -71,11 +75,13 @@ export default function CitiesList({
   function handleCityPress({ name, longitude, latitude }: City) {
     if (!iso2) return
 
-    settings$.location.set({
-      country: iso2,
+    settings$.location.change({
+      country: countryName,
       city: name,
       longitude: +longitude,
       latitude: +latitude,
+      iso2,
+      flag,
     })
 
     handleClose()

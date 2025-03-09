@@ -20,7 +20,7 @@ export default function CurrentLocation() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const currentLocation = use$(settings$.location)
+  const storedLocation = use$(settings$.location)
 
   async function relocateHandler() {
     setError(null)
@@ -33,7 +33,7 @@ export default function CurrentLocation() {
       return
     }
 
-    settings$.location.set({
+    settings$.location.change({
       country: region.country,
       city: region.city,
       longitude: location.coords.longitude,
@@ -47,8 +47,8 @@ export default function CurrentLocation() {
         <VStack space='xs'>
           <Heading size='md'>{t('current location')}</Heading>
           <Text className='leading-loose'>
-            {currentLocation
-              ? `${currentLocation.city}, ${currentLocation.country}`
+            {storedLocation.current
+              ? `${storedLocation.current.city}, ${storedLocation.current.country}`
               : 'Nothing'}
           </Text>
         </VStack>

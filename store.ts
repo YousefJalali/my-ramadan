@@ -1,6 +1,6 @@
 import { observable } from '@legendapp/state'
 import { Session } from '@supabase/supabase-js'
-import { StoredPrayerTimes } from './types'
+import { ExtendedPrayer, StoredPrayerTimes } from './types'
 import { syncObservable } from '@legendapp/state/sync'
 import { ObservablePersistMMKV } from '@legendapp/state/persist-plugins/mmkv'
 import QURAN_JUZ from '@/data/quran_juz.json'
@@ -20,6 +20,8 @@ type Location = {
   country: string
   latitude: number
   longitude: number
+  flag: string
+  iso2: string
 }
 
 type PrayerTimeSettings = {
@@ -46,7 +48,22 @@ export type PrayerTimeSettingsKeys = keyof Pick<
 
 export const settings$ = observable({
   language: 'en-US',
-  location: null as Location | null,
+  location: {
+    current: null as Location | null,
+    history: [] as Location[],
+    change: (location: Location) => {
+      let history = settings$.location.history.get()
+
+      settings$.location.current.set(location)
+
+      history = history.filter((h) => h.city !== location.city)
+
+      if (history.length > 4) history.pop()
+
+      settings$.location.history.set([location, ...history])
+    },
+    clearHistory: () => settings$.location.history.set([]),
+  },
   notifications: {
     prayers: true,
     azkar: true,
