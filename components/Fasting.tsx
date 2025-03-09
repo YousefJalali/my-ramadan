@@ -9,7 +9,7 @@ import {
   CheckboxIcon,
 } from '@/components/ui/checkbox'
 import { CheckIcon } from 'lucide-react-native'
-import useCountdown, { useFastingCountdown } from '@/hooks/useCountdown'
+import { useFastingCountdown } from '@/hooks/useCountdown'
 import { formatCountdown } from '@/utils/formatCountdown'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
@@ -38,9 +38,6 @@ export default function Fasting({
   } = useTranslation()
 
   const { hours, minutes, progress } = useFastingCountdown(day)
-  // const progress = 50
-  // const hours = 5
-  // const minutes = 30
 
   return (
     <VStack

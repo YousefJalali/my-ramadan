@@ -1,4 +1,4 @@
-import useCountdown, { useFastingCountdown } from '@/hooks/useCountdown'
+import { useFastingCountdown } from '@/hooks/useCountdown'
 import { Text } from '@/components/ui/text'
 import { HStack } from '@/components/ui/hstack'
 import { useTranslation } from 'react-i18next'

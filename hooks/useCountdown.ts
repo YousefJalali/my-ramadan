@@ -1,10 +1,35 @@
 import { useState, useEffect } from 'react'
 import { mapRange } from '@/utils/mapRange'
-import { DateTime } from 'luxon'
+import { DateTime, Duration } from 'luxon'
 import { prayerTimes$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 
 const { floor } = Math
+
+const DEFAULT_COUNTDOWN = {
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  progress: 0,
+}
+
+function useCounter(
+  callback: () => typeof DEFAULT_COUNTDOWN,
+  dependencies: any[]
+) {
+  const [timeLeft, setTimeLeft] = useState(callback)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(callback())
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [...dependencies])
+
+  return timeLeft
+}
 
 export function useFastingCountdown(day: number) {
   const { Imsak, Maghrib } = use$(() =>
@@ -17,18 +42,11 @@ export function useFastingCountdown(day: number) {
     const difference = Maghrib.diff(now)
 
     if (difference.as('milliseconds') <= 0) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0, progress: 0 }
+      return DEFAULT_COUNTDOWN
     }
-
-    const days = floor(difference.as('days'))
-    const hours = floor(difference.as('hours'))
-    const minutes = floor(difference.as('minutes') - hours * 60)
-    const seconds = floor(difference.as('seconds'))
 
     const start = Imsak.toMillis()
     const end = Maghrib.toMillis()
-
-    // console.log(start, end)
 
     const progress = mapRange(
       difference.as('milliseconds') + start,
@@ -38,59 +56,45 @@ export function useFastingCountdown(day: number) {
       50
     )
 
-    // console.log(progress)
-
     return {
-      days,
-      hours,
-      minutes,
-      seconds,
+      ...getParts(difference),
       progress,
     }
   }
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft)
+  const count = useCounter(calculateTimeLeft, [Imsak, Maghrib])
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft())
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [Maghrib])
-
-  return timeLeft
+  return count
 }
 
-function useCountdown(targetDate: Date | string) {
+export function useNextPrayerCountdown(
+  nextPrayer: DateTime<true> | DateTime<false>
+) {
   const calculateTimeLeft = () => {
-    const now = new Date()
-    const endDate = new Date(targetDate)
-    const difference = endDate.getTime() - now.getTime()
+    const now = DateTime.fromISO(new Date().toISOString())
 
-    if (difference <= 0) {
-      return { days: 0, hours: 0, minutes: 0, seconds: 0 }
+    const difference = nextPrayer.diff(now)
+
+    if (difference.as('milliseconds') <= 0) {
+      return DEFAULT_COUNTDOWN
     }
 
     return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / (1000 * 60)) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
+      ...getParts(difference),
+      progress: 0,
     }
   }
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft)
+  const count = useCounter(calculateTimeLeft, [nextPrayer])
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft())
-    }, 1000)
-
-    return () => clearInterval(timer)
-  }, [targetDate])
-
-  return timeLeft
+  return count
 }
 
-export default useCountdown
+function getParts(difference: Duration) {
+  const days = floor(difference.as('days'))
+  const hours = floor(difference.as('hours'))
+  const minutes = floor(difference.as('minutes') - hours * 60)
+  const seconds = floor(difference.as('seconds'))
+
+  return { days, hours, minutes, seconds }
+}
