@@ -7,12 +7,11 @@ import { formatTime } from '@/utils/formatTime'
 import FastingCountdown from './FastingCountdown'
 import { Heading } from '@/components/ui/heading'
 import DigitalClock from './DigitalClock'
-import { settings$, prayerTimes$ } from '@/store'
+import { prayerTimes$, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { Link } from 'expo-router'
 import { Icon } from '@/components/ui/icon'
 import { MapPin } from 'lucide-react-native'
-import { parsePrayerTime } from '@/utils/parsePrayerTime'
 import { ExtendedPrayer } from '@/types'
 
 export default function FastingCard({ day }: { day: number }) {
@@ -21,79 +20,8 @@ export default function FastingCard({ day }: { day: number }) {
     i18n: { language },
   } = useTranslation()
 
-  const currentLocation = use$(settings$.location)
-  const prayers = use$(prayerTimes$.timings[day])
-
-  // console.log(location)
-
-  // const shades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
-  // const primaryHex = [
-  //   '#f1fcf8',
-  //   '#d1f6ea',
-  //   '#a2edd7',
-  //   '#6bddbf',
-  //   '#6bddbf',
-  //   '#24a88c',
-  //   '#1a8771',
-  //   '#196c5d',
-  //   '#18574c',
-  //   '#194840',
-  //   '#082b26',
-  // ]
-  // const neutralHex = [
-  //   '#f4f7f6',
-  //   '#e4e9e8',
-  //   '#cbd6d4',
-  //   '#a7b9b6',
-  //   '#7b9591',
-  //   '#607a77',
-  //   '#526866',
-  //   '#475755',
-  //   '#3f4b4b',
-  //   '#384140',
-  //   '#090b0b',
-  // ]
-  // const neutralHexObj = {
-  //   '50': '#f3f8f7',
-  //   '100': '#e1ecea',
-  //   '200': '#c5dcd8',
-  //   '300': '#9ec2bc',
-  //   '400': '#6ea29a',
-  //   '500': '#538780',
-  //   '600': '#477370',
-  //   '700': '#3f5f5d',
-  //   '800': '#395150',
-  //   '900': '#334646',
-  //   '950': '#020303',
-  // }
-
-  // const hexToRgb = (hex: string) =>
-  //   //@ts-ignore
-  //   hex
-  //     .replace(
-  //       /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
-  //       (m, r, g, b) => '#' + r + r + g + g + b + b
-  //     )
-  //     .substring(1)
-  //     .match(/.{2}/g)
-  //     .map((x) => parseInt(x, 16))
-
-  // function json() {
-  //   const res: { [key: string]: number[] } = {}
-
-  //   for (let i = 0; i < shades.length; i++) {
-  //     res[shades[i]] = hexToRgb(Object.values(neutralHexObj)[i])
-  //     console.log(
-  //       `'--color-background-${Object.keys(res)[i]}': '${Object.values(res)[
-  //         i
-  //       ].join(' ')}',`
-  //     )
-  //   }
-
-  //   // console.log(res)
-  // }
-
-  // console.log(json())
+  const location = use$(settings$.location)
+  const prayerTimes = use$(() => prayerTimes$.getDayParsedPrayerTimes(day))
 
   return (
     <Center className='relative h-full'>
@@ -107,11 +35,11 @@ export default function FastingCard({ day }: { day: number }) {
 
       <FastingCountdown day={day} />
 
-      {currentLocation ? (
+      {location.current ? (
         <Center className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2'>
           <Link href='/(protected)/settings/location'>
             <HStack space='xs' className='p-2 rounded-2xl'>
-              <Text className='text-typography-100 dark:text-typography-900'>{`${currentLocation.city}, ${currentLocation.country}`}</Text>
+              <Text className='text-typography-100 dark:text-typography-900'>{`${location.current.city}, ${location.current.country}`}</Text>
               <Icon
                 as={MapPin}
                 className='text-typography-100 dark:text-typography-900'
@@ -141,7 +69,7 @@ export default function FastingCard({ day }: { day: number }) {
               {t(label)}
             </Text>
             <Text className='text-primary-100'>
-              {formatTime(parsePrayerTime(prayers[prayer]))}
+              {formatTime(prayerTimes[prayer].toJSDate())}
             </Text>
           </Center>
         ))}

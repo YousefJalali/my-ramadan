@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon'
+
 const country = {
   id: 1,
   name: 'Afghanistan',
@@ -166,7 +168,18 @@ enum Prayer {
   Isha = 'Isha',
   Midnight = 'Midnight',
 }
-export type ExtendedPrayer = Prayer | 'Firstthird' | 'Lastthird'
+export type ExtendedPrayer =
+  | 'Imsak'
+  | 'Fajr'
+  | 'Sunrise'
+  | 'Dhuhr'
+  | 'Asr'
+  | 'Sunset'
+  | 'Maghrib'
+  | 'Isha'
+  | 'Midnight'
+  | 'Firstthird'
+  | 'Lastthird'
 
 type PrayerTimes = {
   id: string
@@ -183,9 +196,16 @@ type PrayerTimes = {
   timezone: string
 }
 
+export type ParsedPrayerTimes = {
+  [key in ExtendedPrayer]: DateTime<true> | DateTime<false>
+}
+
 export type StoredPrayerTimes = PrayerTimes & {
   timings: { [day: string]: { [key in ExtendedPrayer]: string } }
   offset: { [key in Prayer]: number }
+  getDayParsedPrayerTimes?: (day: number) => {
+    [prayer in ExtendedPrayer]: DateTime<true> | DateTime<false>
+  }
 }
 
 export type CachedPrayerTimes = PrayerTimes & {

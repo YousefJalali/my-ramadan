@@ -1,4 +1,4 @@
-import useCountdown from '@/hooks/useCountdown'
+import useCountdown, { useFastingCountdown } from '@/hooks/useCountdown'
 import { Text } from '@/components/ui/text'
 import { HStack } from '@/components/ui/hstack'
 import { useTranslation } from 'react-i18next'
@@ -6,33 +6,16 @@ import { formatCountdown } from '@/utils/formatCountdown'
 import { ProgressChart } from 'react-native-chart-kit'
 import { Center } from '@/components/ui/center'
 import { Dimensions } from 'react-native'
-import { toMinutes } from '@/utils/toMinutes'
-import { mapRange } from '@/utils/mapRange'
-import { prayerTimes$ } from '@/store'
-import { parsePrayerTime } from '@/utils/parsePrayerTime'
-import { use$ } from '@legendapp/state/react'
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
 export default function FastingCountdown({ day }: { day: number }) {
-  const { Fajr, Maghrib } = use$(prayerTimes$.timings[day])
-
-  // console.log(parsePrayerTime(Maghrib))
-
-  const { hours, minutes } = useCountdown(parsePrayerTime(Maghrib))
+  const { hours, minutes, progress } = useFastingCountdown(day)
 
   const {
     t,
     i18n: { language },
   } = useTranslation()
-
-  //suhur
-  const start = toMinutes(parsePrayerTime(Fajr))
-  //iftar
-  const end = toMinutes(parsePrayerTime(Maghrib))
-  const now = hours * 60 + minutes
-
-  const progress = mapRange(now + start, end, start, 0, 50)
 
   const d = {
     labels: [''],

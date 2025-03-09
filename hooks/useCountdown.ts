@@ -1,4 +1,66 @@
 import { useState, useEffect } from 'react'
+import { mapRange } from '@/utils/mapRange'
+import { DateTime } from 'luxon'
+import { prayerTimes$ } from '@/store'
+import { use$ } from '@legendapp/state/react'
+
+const { floor } = Math
+
+export function useFastingCountdown(day: number) {
+  const { Imsak, Maghrib } = use$(() =>
+    prayerTimes$.getDayParsedPrayerTimes(day)
+  )
+
+  const calculateTimeLeft = () => {
+    const now = DateTime.fromISO(new Date().toISOString())
+
+    const difference = Maghrib.diff(now)
+
+    if (difference.as('milliseconds') <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0, progress: 0 }
+    }
+
+    const days = floor(difference.as('days'))
+    const hours = floor(difference.as('hours'))
+    const minutes = floor(difference.as('minutes') - hours * 60)
+    const seconds = floor(difference.as('seconds'))
+
+    const start = Imsak.toMillis()
+    const end = Maghrib.toMillis()
+
+    // console.log(start, end)
+
+    const progress = mapRange(
+      difference.as('milliseconds') + start,
+      end,
+      start,
+      0,
+      50
+    )
+
+    // console.log(progress)
+
+    return {
+      days,
+      hours,
+      minutes,
+      seconds,
+      progress,
+    }
+  }
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft())
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [Maghrib])
+
+  return timeLeft
+}
 
 function useCountdown(targetDate: Date | string) {
   const calculateTimeLeft = () => {

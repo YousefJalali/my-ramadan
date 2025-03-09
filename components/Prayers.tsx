@@ -13,11 +13,10 @@ import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import PrayerCountdown from './PrayerCountdown'
 import { use$ } from '@legendapp/state/react'
-import { progress$, prayerTimes$ } from '@/store'
+import { prayerTimes$, progress$ } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 import { PRAYERS } from '@/constants/prayers'
-import { parsePrayerTime } from '@/utils/parsePrayerTime'
 import { ExtendedPrayer } from '@/types'
 import { Toast, ToastDescription, useToast } from '@/components/ui/toast'
 
@@ -34,7 +33,7 @@ export default function Prayers({
   trackerView = false,
   readOnly = false,
 }: Props) {
-  const prayers = use$(prayerTimes$.timings[day])
+  const prayerTimes = use$(() => prayerTimes$.getDayParsedPrayerTimes(day))
   const { prayers: prayersProgress } = use$(progress$.days[day])
 
   const toast = useToast()
@@ -43,9 +42,9 @@ export default function Prayers({
   async function checkTask(prayerIdx: number, prayer: string) {
     const today = new Date()
 
-    const prayerDate = parsePrayerTime(prayers[prayer as ExtendedPrayer], day)
+    const prayerDate = prayerTimes[prayer as ExtendedPrayer]
 
-    if (prayerDate.getTime() > today.getTime()) {
+    if (prayerDate.toMillis() > today.getTime()) {
       toast.show({
         id: '' + Math.random(),
         placement: 'bottom',
@@ -123,9 +122,7 @@ export default function Prayers({
                       'flex-1 text-center'
                     )}`}
                   >
-                    {formatTime(
-                      parsePrayerTime(prayers[prayer as ExtendedPrayer])
-                    )}
+                    {formatTime(prayerTimes[prayer as ExtendedPrayer])}
                   </CheckboxLabel>
                 </Center>
 
@@ -143,7 +140,7 @@ export default function Prayers({
           ))}
       </HStack>
 
-      {trackerView ? null : <PrayerCountdown day={day} />}
+      {trackerView ? null : <PrayerCountdown prayerTimes={prayerTimes} />}
     </Center>
   )
 }

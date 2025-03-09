@@ -1,18 +1,24 @@
+import { DateTime } from 'luxon'
+
 export function formatTime(
-  date: Date | string,
+  date: Date | string | DateTime<true> | DateTime<false>,
   is24Hour: boolean = true,
   useArabicNumbers: boolean = false
 ): string {
-  const parsedDate = typeof date === 'string' ? new Date(date) : date
-
   const locale = useArabicNumbers ? 'ar-SA' : 'en-US'
 
-  // Define the options for time formatting
-  const options: Intl.DateTimeFormatOptions = {
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: !is24Hour,
+  let d = null
+  if (DateTime.isDateTime(date)) {
+    d = date
+  } else {
+    d = typeof date === 'string' ? new Date(date) : date
+    d = DateTime.fromJSDate(d)
   }
 
-  return new Intl.DateTimeFormat(locale, options).format(parsedDate)
+  return (
+    d
+      .setLocale(locale)
+      // .setZone('America/Toronto')
+      .toLocaleString(DateTime.TIME_24_SIMPLE)
+  )
 }

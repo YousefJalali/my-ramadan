@@ -9,7 +9,7 @@ import {
   CheckboxIcon,
 } from '@/components/ui/checkbox'
 import { CheckIcon } from 'lucide-react-native'
-import useCountdown from '@/hooks/useCountdown'
+import useCountdown, { useFastingCountdown } from '@/hooks/useCountdown'
 import { formatCountdown } from '@/utils/formatCountdown'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
@@ -17,9 +17,6 @@ import { use$ } from '@legendapp/state/react'
 import { progress$, prayerTimes$ } from '@/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
-import { parsePrayerTime } from '@/utils/parsePrayerTime'
-import { mapRange } from '@/utils/mapRange'
-import { toMinutes } from '@/utils/toMinutes'
 
 export default function Fasting({
   day,
@@ -30,7 +27,9 @@ export default function Fasting({
   trackerView?: boolean
   readOnly?: boolean
 }) {
-  const { Maghrib, Imsak } = use$(prayerTimes$.timings[day])
+  const { Maghrib, Imsak } = use$(() =>
+    prayerTimes$.getDayParsedPrayerTimes(day)
+  )
   const { fasting } = use$(progress$.days[day])
 
   const {
@@ -38,15 +37,10 @@ export default function Fasting({
     i18n: { language },
   } = useTranslation()
 
-  const iftarTime = parsePrayerTime(Maghrib)
-
-  const { hours, minutes } = useCountdown(iftarTime)
-
-  const suhur = toMinutes(parsePrayerTime(Imsak))
-  const iftar = toMinutes(iftarTime)
-  const now = hours * 60 + minutes
-
-  const progress = mapRange(now + suhur, iftar, suhur, 0, 100)
+  const { hours, minutes, progress } = useFastingCountdown(day)
+  // const progress = 50
+  // const hours = 5
+  // const minutes = 30
 
   return (
     <VStack
@@ -106,7 +100,7 @@ export default function Fasting({
         <>
           <Box className='mt-2'>
             <Progress
-              value={fasting ? progress : 0}
+              value={fasting ? progress * 2 : 0}
               size='lg'
               className='bg-background-200'
             >
@@ -115,7 +109,7 @@ export default function Fasting({
 
             <HStack className='justify-between mt-1'>
               <Text size='sm' className='text-typography-500'>
-                {t('imsak')} | {formatTime(parsePrayerTime(Imsak))}
+                {t('imsak')} | {formatTime(Imsak)}
               </Text>
               {progress > 0 && progress < 100 ? (
                 <Text size='sm'>
@@ -124,7 +118,7 @@ export default function Fasting({
               ) : null}
 
               <Text size='sm' className='text-typography-500'>
-                {formatTime(parsePrayerTime(Maghrib))} | {t('Iftar')}
+                {formatTime(Maghrib)} | {t('Iftar')}
               </Text>
             </HStack>
           </Box>

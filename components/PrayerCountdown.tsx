@@ -3,14 +3,12 @@ import { Text } from '@/components/ui/text'
 import useCountdown from '@/hooks/useCountdown'
 import { HStack } from '@/components/ui/hstack'
 import { formatCountdown } from '@/utils/formatCountdown'
-import { use$ } from '@legendapp/state/react'
-import { prayerTimes$ } from '@/store'
-import { ExtendedPrayer } from '@/types'
-import { parsePrayerTime } from '@/utils/parsePrayerTime'
+import { ExtendedPrayer, ParsedPrayerTimes } from '@/types'
 import { PRAYERS } from '@/constants/prayers'
+import { DateTime } from 'luxon'
 
 function getNextPrayer(prayers: {
-  [key in ExtendedPrayer]: string
+  [key in ExtendedPrayer]: DateTime<true> | DateTime<false>
 }): ExtendedPrayer {
   const today = new Date()
 
@@ -18,27 +16,29 @@ function getNextPrayer(prayers: {
     const prayerKey = prayer as ExtendedPrayer
 
     if (PRAYERS[prayerKey]) {
-      const prayerDate = parsePrayerTime(prayers[prayerKey])
+      const prayerDate = prayers[prayerKey].toMillis()
 
-      if (today.getTime() < prayerDate.getTime()) return prayerKey
+      if (today.getTime() < prayerDate) return prayerKey
     }
   }
 
   return 'Fajr' as ExtendedPrayer
 }
 
-export default function PrayerCountdown({ day }: { day: number }) {
-  const prayers = use$(prayerTimes$.timings[day])
-
+export default function PrayerCountdown({
+  prayerTimes,
+}: {
+  prayerTimes: ParsedPrayerTimes
+}) {
   const {
     t,
     i18n: { language },
   } = useTranslation()
 
-  const nextPrayer = getNextPrayer(prayers)
+  const nextPrayer = getNextPrayer(prayerTimes)
 
   const { hours, minutes, seconds } = useCountdown(
-    parsePrayerTime(prayers[nextPrayer])
+    prayerTimes[nextPrayer].toJSDate()
   )
 
   return hours + minutes + seconds === 0 ? null : (
