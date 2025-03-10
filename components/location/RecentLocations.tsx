@@ -22,29 +22,27 @@ export default function RecentLocations() {
       <VStack className='flex-1 border-b border-background-100 mb-2'>
         <HStack className='justify-between items-center w-full'>
           <Heading size='xs' className='uppercase text-typography-700'>
-            Recent
+            {t('recent')}
           </Heading>
           <Button
             size='sm'
             variant='link'
             onPress={() => settings$.location.clearHistory()}
           >
-            <ButtonText>Clear</ButtonText>
+            <ButtonText>{t('clear')}</ButtonText>
           </Button>
         </HStack>
 
         <VStack className='w-full mb-1'>
-          {settings$.location.history
-            .get()
-            .map(({ country, city, flag, iso2 }, index) => (
-              <Pressable key={city} onPress={() => onPress(index)}>
-                <HStack className='py-2' space='sm'>
-                  <Text className='clamp-1'>
-                    {t(city)}, {t(country)}
-                  </Text>
-                </HStack>
-              </Pressable>
-            ))}
+          {settings$.location.history.get().map(({ country, city }, index) => (
+            <Pressable key={city} onPress={() => onPress(index)}>
+              <HStack className='py-2' space='sm'>
+                <Text className='clamp-1'>
+                  {t(city)}, {t(country)}
+                </Text>
+              </HStack>
+            </Pressable>
+          ))}
         </VStack>
       </VStack>
     )

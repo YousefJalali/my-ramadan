@@ -147,5 +147,7 @@
   "Must be at least 8 characters in length": "Must be at least 8 characters in length",
   "One uppercase character": "One uppercase character",
   "One lowercase character": "One lowercase character",
-  "One number": "One number"
+  "One number": "One number",
+  "recent": "recent",
+  "clear": "clear"
 }

@@ -9,11 +9,13 @@ import { getCitiesByCountry, insertCities } from '@/sqlite/locationDB'
 
 export default function CitiesList({
   countryName,
+  countryNameAr,
   iso2,
   flag,
   handleClose,
 }: {
   countryName: string
+  countryNameAr: string
   iso2: string
   flag: string
   handleClose: () => void
@@ -77,6 +79,7 @@ export default function CitiesList({
 
     settings$.location.change({
       country: countryName,
+      country_ar: countryNameAr,
       city: name,
       longitude: +longitude,
       latitude: +latitude,

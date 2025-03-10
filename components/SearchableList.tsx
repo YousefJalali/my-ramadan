@@ -1,11 +1,10 @@
-import { SearchIcon, X } from 'lucide-react-native'
+import { SearchIcon } from 'lucide-react-native'
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
 import { use$, useObservable } from '@legendapp/state/react'
 import { Spinner } from '@/components/ui/spinner'
 import { Text } from '@/components/ui/text'
 import { FlashList, ListRenderItemInfo } from '@shopify/flash-list'
 import { ReactElement, useMemo } from 'react'
-import { Pressable } from '@/components/ui/pressable'
 import useColors from '@/hooks/useColors'
 
 type Props<T extends { name: string }> = {
@@ -47,16 +46,8 @@ export default function SearchableList<T extends { name: string }>({
           value={query}
           onChangeText={(text) => query$.set(text)}
           placeholder={placeholder}
-          className='p-0'
+          className='placeholder:text-sm'
         />
-
-        {query.length ? (
-          <InputSlot className='px-4'>
-            <Pressable onPress={() => query$.set('')}>
-              <InputIcon as={X} />
-            </Pressable>
-          </InputSlot>
-        ) : null}
       </Input>
 
       {/* Loading Indicator */}

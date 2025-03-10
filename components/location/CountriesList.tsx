@@ -24,7 +24,7 @@ import { settings$ } from '@/store'
 import { Button, ButtonText } from '../ui/button'
 import RecentLocations from './RecentLocations'
 
-type SelectedCountry = Pick<Country, 'iso2' | 'name' | 'emoji'>
+type SelectedCountry = Pick<Country, 'iso2' | 'name' | 'emoji' | 'name_ar'>
 
 export default function CountriesList() {
   const {
@@ -94,8 +94,13 @@ export default function CountriesList() {
     setSelectedCountry(null)
   }
 
-  const handleCountryPress = ({ name, iso2, emoji }: SelectedCountry) => {
-    setSelectedCountry({ name, iso2, emoji })
+  const handleCountryPress = ({
+    name,
+    iso2,
+    emoji,
+    name_ar,
+  }: SelectedCountry) => {
+    setSelectedCountry({ name, iso2, emoji, name_ar })
   }
 
   return (
@@ -136,6 +141,7 @@ export default function CountriesList() {
               </Heading>
               <CitiesList
                 countryName={selectedCountry.name}
+                countryNameAr={selectedCountry.name_ar}
                 iso2={selectedCountry.iso2}
                 flag={selectedCountry.emoji}
                 handleClose={handleClose}

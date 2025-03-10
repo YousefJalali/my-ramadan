@@ -147,5 +147,7 @@
   "Must be at least 8 characters in length": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل",
   "One uppercase character": "يجب أن تحتوي على حرف كبير واحد",
   "One lowercase character": "يجب أن تحتوي على حرف صغير واحد",
-  "One number": "يجب أن تحتوي على رقم واحد"
+  "One number": "يجب أن تحتوي على رقم واحد",
+  "recent": "البحث الأخير",
+  "clear": "مسح"
 }
