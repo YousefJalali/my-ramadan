@@ -38,8 +38,8 @@
       "windowSoftInputMode": "adjustResize",
       "softwareKeyboardLayoutMode": "pan",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#F3F8F7"
       },
       "enableFTS": false,
       "useSQLCipher": false,
