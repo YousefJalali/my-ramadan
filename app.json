@@ -27,7 +27,12 @@
         "ExpoLocalization_supportsRTL": true,
         "ITSAppUsesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.jbygoal.my-ramadan"
+      "bundleIdentifier": "com.jbygoal.my-ramadan",
+      "icon": {
+        "dark": "./assets/images/ios-dark.png",
+        "light": "./assets/images/ios-light.png",
+        "tinted": "./assets/images/ios-tinted.png"
+      }
     },
     "android": {
       "windowSoftInputMode": "adjustResize",
@@ -56,10 +61,14 @@
       [
         "expo-splash-screen",
         {
+          "backgroundColor": "#F3F8F7",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "dark": {
+            "image": "./assets/images/splash-icon-dark.png",
+            "backgroundColor": "#020303"
+          }
         }
       ],
       [
