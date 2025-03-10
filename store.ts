@@ -51,7 +51,15 @@ export type PrayerTimeSettingsKeys = keyof Pick<
 export const settings$ = observable({
   language: 'en-US',
   location: {
-    current: null as Location | null,
+    current: {
+      city: 'Mecca',
+      country: 'Saudi Arabia',
+      country_ar: 'السعودية',
+      flag: '🇸🇦',
+      iso2: 'SA',
+      latitude: 21.42664,
+      longitude: 39.82563,
+    } as Location | null,
     history: [] as Location[],
     change: (location: Location) => {
       let history = settings$.location.history.get()
