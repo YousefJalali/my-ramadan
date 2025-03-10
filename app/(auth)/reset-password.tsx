@@ -66,7 +66,7 @@ export default function Login() {
   // const router = useRouter();
 
   return (
-    <VStack className='max-w-[440px] w-full' space='md'>
+    <VStack className='flex-1 w-full' space='md'>
       <VStack space='sm'>
         <Heading size='3xl'>{t('Forgot Password')}</Heading>
         <Text>
@@ -76,7 +76,7 @@ export default function Login() {
         </Text>
       </VStack>
 
-      <VStack className='w-full mt-6'>
+      <VStack className='flex-1 mt-6'>
         <VStack space='xl' className='w-full'>
           <FormControl isInvalid={!!errors?.email} className='w-full'>
             <FormControlLabel>
@@ -101,7 +101,7 @@ export default function Login() {
               render={({ field: { onChange, onBlur, value } }) => (
                 <Input>
                   <InputField
-                    placeholder={t('type here...')}
+                    placeholder={t('email')}
                     value={value}
                     onChangeText={onChange}
                     onBlur={onBlur}
@@ -119,6 +119,9 @@ export default function Login() {
               </FormControlErrorText>
             </FormControlError>
           </FormControl>
+
+          {success ? <Text>{success}</Text> : null}
+          {error ? <Text>{error}</Text> : null}
         </VStack>
         <VStack className='w-full my-7 ' space='lg'>
           <Button className='w-full' onPress={handleSubmit(onSubmit)}>

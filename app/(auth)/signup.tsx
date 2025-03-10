@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/form-control'
 import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
 import { EyeIcon, EyeOffIcon } from '@/components/ui/icon'
-import { Button, ButtonText } from '@/components/ui/button'
+import { Button, ButtonSpinner, ButtonText } from '@/components/ui/button'
 import { Keyboard } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
 import { z } from 'zod'
@@ -25,10 +25,8 @@ import { Link } from 'expo-router'
 import { AlertTriangle } from 'lucide-react-native'
 import { useTranslation } from 'react-i18next'
 import { LinkText } from '@/components/ui/link'
-import {
-  KeyboardAwareScrollView,
-  KeyboardToolbar,
-} from 'react-native-keyboard-controller'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-controller'
+import { AuthError } from '@supabase/supabase-js'
 
 const signUpSchema = z.object({
   name: z.string().min(1, 'Name is required'),
@@ -57,6 +55,11 @@ const signUpSchema = z.object({
 type SignUpSchemaType = z.infer<typeof signUpSchema>
 
 export default function SignUp() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<AuthError | null>(null)
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+
   const { t } = useTranslation()
 
   const {
@@ -69,7 +72,19 @@ export default function SignUp() {
   })
   const toast = useToast()
 
+  const handleState = () => {
+    setShowPassword((showState) => {
+      return !showState
+    })
+  }
+  const handleConfirmPwState = () => {
+    setShowConfirmPassword((showState) => {
+      return !showState
+    })
+  }
+
   const onSubmit = async (data: SignUpSchemaType) => {
+    setLoading(true)
     const {
       data: { session },
       error,
@@ -82,41 +97,29 @@ export default function SignUp() {
         },
       },
     })
+    setLoading(false)
 
-    if (error) alert(error.message)
-    if (!session) alert('Please check your inbox for email verification!')
+    if (error) setError(error)
   }
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
-  const handleState = () => {
-    setShowPassword((showState) => {
-      return !showState
-    })
-  }
-  const handleConfirmPwState = () => {
-    setShowConfirmPassword((showState) => {
-      return !showState
-    })
-  }
   const handleKeyPress = () => {
     Keyboard.dismiss()
     handleSubmit(onSubmit)()
   }
 
   return (
-    <VStack className='max-w-[440px] w-full' space='md'>
-      <VStack className='mb-6' space='sm'>
-        <Heading className='md:text-center' size='3xl'>
-          {t('sign up')}
-        </Heading>
-        <Text>{t('sign up to start using the app')}</Text>
-      </VStack>
+    <VStack className='w-full flex-1' space='md'>
+      <KeyboardAwareScrollView bottomOffset={50} style={{ flex: 1 }}>
+        <VStack className='mb-6' space='sm'>
+          <Heading className='md:text-center' size='3xl'>
+            {t('sign up')}
+          </Heading>
+          <Text>{t('sign up to start using the app')}</Text>
+        </VStack>
 
-      <VStack className='w-full'>
-        <KeyboardAwareScrollView bottomOffset={-160}>
-          <VStack space='xl' className='w-full'>
-            <FormControl isInvalid={!!errors.name}>
+        <VStack className='flex-1'>
+          <VStack space='xl'>
+            <FormControl isInvalid={!!errors.name} isDisabled={loading}>
               <FormControlLabel>
                 <FormControlLabelText className='capitalize flex-1'>
                   {t('name')}
@@ -140,7 +143,7 @@ export default function SignUp() {
                   <Input>
                     <InputField
                       className='text-sm'
-                      placeholder={t('type here...')}
+                      placeholder={t('name')}
                       type='text'
                       value={value}
                       onChangeText={onChange}
@@ -159,7 +162,7 @@ export default function SignUp() {
               </FormControlError>
             </FormControl>
 
-            <FormControl isInvalid={!!errors.email}>
+            <FormControl isInvalid={!!errors.email} isDisabled={loading}>
               <FormControlLabel>
                 <FormControlLabelText className='capitalize flex-1'>
                   {t('email')}
@@ -183,7 +186,7 @@ export default function SignUp() {
                   <Input>
                     <InputField
                       className='text-sm'
-                      placeholder={t('type here...')}
+                      placeholder={t('email')}
                       type='text'
                       value={value}
                       onChangeText={onChange}
@@ -202,7 +205,7 @@ export default function SignUp() {
               </FormControlError>
             </FormControl>
 
-            <FormControl isInvalid={!!errors.password}>
+            <FormControl isInvalid={!!errors.password} isDisabled={loading}>
               <FormControlLabel>
                 <FormControlLabelText>{t('password')}</FormControlLabelText>
               </FormControlLabel>
@@ -226,7 +229,7 @@ export default function SignUp() {
                   <Input>
                     <InputField
                       className='text-sm'
-                      placeholder={t('type here...')}
+                      placeholder={t('password')}
                       value={value}
                       onChangeText={onChange}
                       onBlur={onBlur}
@@ -247,7 +250,11 @@ export default function SignUp() {
                 </FormControlErrorText>
               </FormControlError>
             </FormControl>
-            <FormControl isInvalid={!!errors.confirmPassword}>
+
+            <FormControl
+              isInvalid={!!errors.confirmPassword}
+              isDisabled={loading}
+            >
               <FormControlLabel>
                 <FormControlLabelText>
                   {t('confirm password')}
@@ -272,7 +279,7 @@ export default function SignUp() {
                 render={({ field: { onChange, onBlur, value } }) => (
                   <Input>
                     <InputField
-                      placeholder={t('type here...')}
+                      placeholder={t('confirm password')}
                       className='text-sm'
                       value={value}
                       onChangeText={onChange}
@@ -298,34 +305,29 @@ export default function SignUp() {
               </FormControlError>
             </FormControl>
           </VStack>
-        </KeyboardAwareScrollView>
-        <KeyboardToolbar />
 
-        <VStack className='w-full my-7' space='lg'>
-          <Button className='w-full' onPress={handleSubmit(onSubmit)}>
-            <ButtonText className='font-medium'>{t('sign up')}</ButtonText>
-          </Button>
-          {/* <Button
-            variant='outline'
-            action='secondary'
-            className='w-full gap-1'
-            onPress={() => {}}
-          >
-            <ButtonText className='font-medium'>
-              Continue with Google
-            </ButtonText>
-            <ButtonIcon as={GoogleIcon} />
-          </Button> */}
+          {error ? (
+            <Text className='text-error-600'>{error.message}</Text>
+          ) : null}
+
+          <VStack className='my-7' space='lg'>
+            <Button className='w-full' onPress={handleSubmit(onSubmit)}>
+              {loading ? <ButtonSpinner /> : null}
+              <ButtonText className='font-medium'>
+                {loading ? 'Creating account...' : t('sign up')}
+              </ButtonText>
+            </Button>
+          </VStack>
+          <HStack className='self-center' space='sm'>
+            <Text size='md'>{t('already have an account?')}</Text>
+            <Link href='/login'>
+              <LinkText className='font-medium text-primary-700' size='md'>
+                {t('log in')}
+              </LinkText>
+            </Link>
+          </HStack>
         </VStack>
-        <HStack className='self-center' space='sm'>
-          <Text size='md'>{t('already have an account?')}</Text>
-          <Link href='/login'>
-            <LinkText className='font-medium text-primary-700' size='md'>
-              {t('log in')}
-            </LinkText>
-          </Link>
-        </HStack>
-      </VStack>
+      </KeyboardAwareScrollView>
     </VStack>
   )
 }
