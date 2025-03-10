@@ -24,7 +24,7 @@ export default function PrayerCountdown({
 
   return hours + minutes + seconds === 0 ? null : (
     <HStack space='xs' className='mt-3'>
-      <Text>{t('Next prayer in')}</Text>
+      <Text>⏳ {t('Next prayer in')}</Text>
       <Text>
         {`${formatCountdown(hours, minutes, language)} (${t(nextPrayer)})`}
       </Text>

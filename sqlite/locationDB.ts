@@ -7,14 +7,16 @@ const db = openDatabaseSync('countries.db')
 // Function to create the tables if they don't exist
 export const setupDatabase = async () => {
   try {
+    // DROP TABLE IF EXISTS countries;
     await db.execAsync(`
-      CREATE TABLE IF NOT EXISTS countries (
+    CREATE TABLE IF NOT EXISTS countries (
         id INTEGER PRIMARY KEY,
         name TEXT,
         iso2 TEXT UNIQUE,
         iso3 TEXT,
         phonecode TEXT,
-        emoji TEXT
+        emoji TEXT,
+        name_ar TEXT
       );
     `)
 
@@ -40,13 +42,14 @@ export const insertCountries = async (countries: Country[]) => {
     for (const country of countries) {
       // Insert country data
       await db.runAsync(
-        `INSERT OR IGNORE INTO countries (id, name, iso2, iso3, phonecode, emoji) VALUES (?, ?, ?, ?, ?, ?)`,
+        `INSERT OR IGNORE INTO countries (id, name, iso2, iso3, phonecode, emoji, name_ar) VALUES (?, ?, ?, ?, ?, ?, ?)`,
         country.id,
         country.name,
         country.iso2,
         country.iso3,
         country.phonecode,
-        country.emoji
+        country.emoji,
+        country.translations.ar
       )
 
       countryCount++

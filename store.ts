@@ -19,6 +19,7 @@ export type Notification = {
 type Location = {
   city: string
   country: string
+  country_ar: string
   latitude: number
   longitude: number
   flag?: string

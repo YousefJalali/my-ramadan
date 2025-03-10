@@ -35,6 +35,7 @@ export default function CurrentLocation() {
 
     settings$.location.change({
       country: region.country,
+      country_ar: region.country,
       city: region.city,
       longitude: location.coords.longitude,
       latitude: location.coords.latitude,

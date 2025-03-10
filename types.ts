@@ -28,22 +28,7 @@ const country = {
     },
   ],
   translations: {
-    ko: '아프가니스탄',
-    'pt-BR': 'Afeganistão',
-    pt: 'Afeganistão',
-    nl: 'Afghanistan',
-    hr: 'Afganistan',
-    fa: 'افغانستان',
-    de: 'Afghanistan',
-    es: 'Afganistán',
-    fr: 'Afghanistan',
-    ja: 'アフガニスタン',
-    it: 'Afghanistan',
-    'zh-CN': '阿富汗',
-    tr: 'Afganistan',
-    ru: 'Афганистан',
-    uk: 'Афганістан',
-    pl: 'Afganistan',
+    ar: 'افغانستان',
   },
   latitude: '33.00000000',
   longitude: '65.00000000',
@@ -217,7 +202,7 @@ export type CachedPrayerTimes = PrayerTimes & {
   offset: string
 }
 
-export type Country = typeof country
+export type Country = typeof country & { name_ar: string }
 export type City = typeof city
 export type PrayerTimesAPIResponse = typeof apiRes
 const apiRes = [

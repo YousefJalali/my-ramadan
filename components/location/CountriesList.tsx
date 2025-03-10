@@ -27,7 +27,10 @@ import RecentLocations from './RecentLocations'
 type SelectedCountry = Pick<Country, 'iso2' | 'name' | 'emoji'>
 
 export default function CountriesList() {
-  const { t } = useTranslation()
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation()
 
   const [countries, setCountries] = useState<Country[]>([])
   const [selectedCountry, setSelectedCountry] =
@@ -108,7 +111,7 @@ export default function CountriesList() {
           <Pressable onPress={() => handleCountryPress(item)}>
             <HStack className='py-3' space='sm'>
               <Text>{item.emoji}</Text>
-              <Text>{t(item.name)}</Text>
+              <Text>{language === 'ar-SA' ? item.name_ar : item.name}</Text>
             </HStack>
           </Pressable>
         )}
