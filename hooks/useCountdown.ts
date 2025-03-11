@@ -11,7 +11,7 @@ const DEFAULT_COUNTDOWN = {
   hours: 0,
   minutes: 0,
   seconds: 0,
-  progress: 0,
+  progress: 50,
 }
 
 function useCounter(
