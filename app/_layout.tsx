@@ -19,13 +19,12 @@ import {
 } from '@react-navigation/native'
 import useColors from '@/hooks/useColors'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
-import { View, Text } from 'react-native'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  const [loaded] = useFonts({
+  const [loaded, error] = useFonts({
     Inter: require('../assets/fonts/Inter-VariableFont_opsz_wght.ttf'),
     Montserrat: require('../assets/fonts/Montserrat-Bold.ttf'),
     Rubik: require('../assets/fonts/Rubik-VariableFont_wght.ttf'),
@@ -52,12 +51,12 @@ export default function RootLayout() {
     }
   }, [loaded])
 
+  if (error) {
+    console.error(error)
+  }
+
   if (!loaded) {
-    return (
-      <View>
-        <Text>Cant load the app</Text>
-      </View>
-    )
+    return null
   }
 
   const options: NativeStackNavigationOptions = {
