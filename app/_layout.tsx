@@ -19,6 +19,7 @@ import {
 } from '@react-navigation/native'
 import useColors from '@/hooks/useColors'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
+import { View, Text } from 'react-native'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -52,7 +53,11 @@ export default function RootLayout() {
   }, [loaded])
 
   if (!loaded) {
-    return null
+    return (
+      <View>
+        <Text>Cant load the app</Text>
+      </View>
+    )
   }
 
   const options: NativeStackNavigationOptions = {
