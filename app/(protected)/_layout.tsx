@@ -11,19 +11,9 @@ import useColors from '@/hooks/useColors'
 import { getPrayerTimes } from '@/utils/getPrayerTimes'
 
 export default function ProtectedLayout() {
-  const {
-    language,
-    location,
-    prayerTimes: {
-      method,
-      shafaq,
-      latitudeAdjustmentMethod,
-      midnightMode,
-      offset,
-      calendarMethod,
-      school,
-    },
-  } = use$(settings$)
+  const { language, location } = use$(settings$)
+
+  const prayerTimesUrl = use$(() => settings$.prayerTimes.url())
 
   const colors = useColors()
 
@@ -80,29 +70,11 @@ export default function ProtectedLayout() {
     ;(async () => {
       await setupPrayerTimesDB()
 
-      console.log('location changed')
-      if (!location.current?.longitude || !location.current.latitude) return
-
-      const baseUrl = 'https://api.aladhan.com/v1/hijriCalendar/1446/9'
-      const url = constructUrl(baseUrl, {
-        latitude: location.current.latitude,
-        longitude: location.current.longitude,
-        method,
-        shafaq,
-        tune: offset.join(','),
-        latitudeAdjustmentMethod,
-        school,
-        midnightMode,
-        timezonestring: 'UTC',
-        calendarMethod,
-        iso8601: 'true',
-      })
-
-      const prayerTimes = await getPrayerTimes(url)
+      const prayerTimes = await getPrayerTimes(prayerTimesUrl)
 
       if (prayerTimes) prayerTimes$.set(prayerTimes)
     })()
-  }, [location.current])
+  }, [prayerTimesUrl])
 
   return (
     <Stack

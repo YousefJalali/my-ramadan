@@ -5,6 +5,7 @@ import { syncObservable } from '@legendapp/state/sync'
 import { ObservablePersistMMKV } from '@legendapp/state/persist-plugins/mmkv'
 import QURAN_JUZ from '@/data/quran_juz.json'
 import { DateTime } from 'luxon'
+import { constructUrl } from './utils/constructUrl'
 
 export const colorMode$ = observable<'light' | 'dark'>('light')
 
@@ -27,7 +28,10 @@ type Location = {
 }
 
 type PrayerTimeSettings = {
-  isRecommendedEnabled: boolean
+  isRecommendedEnabled: {
+    value: boolean
+    change: () => void
+  }
   method: number
   shafaq?: 'general' | 'ahmer' | 'abyad'
   latitudeAdjustmentMethod?: 1 | 2 | 3
@@ -37,6 +41,7 @@ type PrayerTimeSettings = {
   calendarMethod: 'HJCoSA' | 'UAQ' | 'DIYANET'
   timezonestring?: string
   lastUpdate: number
+  url: () => string
 }
 
 export type PrayerTimeSettingsKeys = keyof Pick<
@@ -48,17 +53,32 @@ export type PrayerTimeSettingsKeys = keyof Pick<
   | 'calendarMethod'
 >
 
+const DEFAULT_LOCATION = {
+  city: 'Mecca',
+  country: 'Saudi Arabia',
+  country_ar: 'السعودية',
+  flag: '🇸🇦',
+  iso2: 'SA',
+  latitude: 21.42664,
+  longitude: 39.82563,
+}
+
+export const RECOMMENDED_PRAYER_TIMES_SETTINGS: Partial<PrayerTimeSettings> = {
+  method: 3,
+  shafaq: 'general',
+  latitudeAdjustmentMethod: undefined,
+  midnightMode: 0,
+  school: 0,
+  offset: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+  calendarMethod: 'HJCoSA',
+  timezonestring: 'UTC',
+}
+
 export const settings$ = observable({
   language: 'en-US',
   location: {
     current: {
-      city: 'Mecca',
-      country: 'Saudi Arabia',
-      country_ar: 'السعودية',
-      flag: '🇸🇦',
-      iso2: 'SA',
-      latitude: 21.42664,
-      longitude: 39.82563,
+      ...DEFAULT_LOCATION,
     } as Location | null,
     history: [] as Location[],
     change: (location: Location) => {
@@ -80,16 +100,54 @@ export const settings$ = observable({
     quranReading: true,
   } as Notification,
   prayerTimes: {
-    isRecommendedEnabled: true,
-    method: 3,
-    shafaq: 'general',
-    latitudeAdjustmentMethod: undefined,
-    midnightMode: 0,
-    school: 0,
-    offset: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    calendarMethod: 'HJCoSA',
-    timezonestring: undefined,
+    isRecommendedEnabled: {
+      value: true,
+      change: () => {
+        const curVal = settings$.prayerTimes.isRecommendedEnabled.value.get()
+
+        if (!curVal) {
+          settings$.prayerTimes.set({
+            ...settings$.prayerTimes.get(),
+            ...RECOMMENDED_PRAYER_TIMES_SETTINGS,
+          })
+        }
+
+        settings$.prayerTimes.isRecommendedEnabled.value.set(!curVal)
+      },
+    },
+    ...RECOMMENDED_PRAYER_TIMES_SETTINGS,
     lastUpdate: +new Date(),
+    url: () => {
+      const {
+        location: { current },
+        prayerTimes: {
+          method,
+          shafaq,
+          offset,
+          latitudeAdjustmentMethod,
+          school,
+          midnightMode,
+          timezonestring,
+          calendarMethod,
+        },
+      } = settings$.get()
+      const baseUrl = 'https://api.aladhan.com/v1/hijriCalendar/1446/9'
+      const url = constructUrl(baseUrl, {
+        latitude: current?.latitude || DEFAULT_LOCATION.latitude,
+        longitude: current?.longitude || DEFAULT_LOCATION.longitude,
+        method,
+        shafaq,
+        tune: offset.join(','),
+        latitudeAdjustmentMethod,
+        school,
+        midnightMode,
+        timezonestring,
+        calendarMethod,
+        iso8601: 'true',
+      })
+
+      return url
+    },
   } as PrayerTimeSettings,
 })
 

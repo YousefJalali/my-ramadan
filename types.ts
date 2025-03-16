@@ -142,7 +142,7 @@ const prayerTimes = {
   },
 }
 
-enum Prayer {
+export enum Prayer {
   Imsak = 'Imsak',
   Fajr = 'Fajr',
   Sunrise = 'Sunrise',

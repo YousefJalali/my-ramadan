@@ -6,7 +6,7 @@ import { VStack } from '@/components/ui/vstack'
 import { PRAYER_TIME_METHODS } from '@/constants/prayerTimeCalculation'
 import { PrayerTimeSettingsKeys, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
-import { t } from 'i18next'
+import { useTranslation } from 'react-i18next'
 
 const timeCalculationMethods: (SettingsLinkType & {
   key: PrayerTimeSettingsKeys
@@ -41,12 +41,13 @@ const otherSettings: SettingsLinkType[] = [
 ]
 
 export default function PrayerTimes() {
+  const { t } = useTranslation()
   const { prayerTimes } = use$(settings$)
 
-  const { isRecommendedEnabled } = prayerTimes
+  const isRecommendedEnabled = prayerTimes.isRecommendedEnabled.value
 
   function changeHandler() {
-    settings$.prayerTimes.isRecommendedEnabled.set(!isRecommendedEnabled)
+    settings$.prayerTimes.isRecommendedEnabled.change()
   }
 
   return (
@@ -57,9 +58,11 @@ export default function PrayerTimes() {
           value={isRecommendedEnabled}
           onChange={changeHandler}
         />
-        <Text size='sm' className='-mt-2'>
-          Recommended
-        </Text>
+        {isRecommendedEnabled ? (
+          <Text size='sm'>
+            {t(PRAYER_TIME_METHODS['method'][prayerTimes['method'] as number])}
+          </Text>
+        ) : null}
       </VStack>
 
       {isRecommendedEnabled ? null : (
