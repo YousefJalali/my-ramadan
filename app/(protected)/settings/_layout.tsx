@@ -28,6 +28,7 @@ export default function SettingsLayout() {
           <Heading size='3xl' className='capitalize my-6'>
             {t(title)}
           </Heading>
+
           <Slot />
         </ScrollView>
       )}

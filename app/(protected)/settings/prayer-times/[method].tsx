@@ -1,5 +1,6 @@
 import RadioCheckList, { RadioCheckItem } from '@/components/RadioCheckList'
 import { RadioGroup } from '@/components/ui/radio'
+import WithNetwork from '@/components/WithNetwork'
 import { PRAYER_TIME_METHODS, toList } from '@/constants/prayerTimeCalculation'
 import { PrayerTimeSettingsKeys, settings$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
@@ -38,12 +39,14 @@ export default function TimeCalculationMethod() {
   }
 
   return (
-    <RadioGroup
-      value={(storedMethod || 0).toString()}
-      onChange={changeHandler}
-      className='w-full flex-1'
-    >
-      <RadioCheckList list={list} />
-    </RadioGroup>
+    <WithNetwork>
+      <RadioGroup
+        value={(storedMethod || 0).toString()}
+        onChange={changeHandler}
+        className='w-full flex-1'
+      >
+        <RadioCheckList list={list} />
+      </RadioGroup>
+    </WithNetwork>
   )
 }
