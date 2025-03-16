@@ -66,12 +66,14 @@ const sections: Section[] = [
       {
         iconName: BookText,
         subText: 'terms of service',
-        path: '/settings/terms-of-service',
+        path: 'https://yousefjalali.github.io/my-ramadan/terms-of-service.html',
+        openInWebBrowser: true,
       },
       {
         iconName: BookText,
         subText: 'privacy policy',
-        path: '/settings/privacy-policy',
+        path: 'https://yousefjalali.github.io/my-ramadan/privacy-policy.html',
+        openInWebBrowser: true,
       },
     ],
   },
