@@ -152,5 +152,7 @@
   "clear": "clear",
   "Forgot Password": "Forgot Password",
   "Enter your email address below, and we will send you a link to reset your password.": "Enter your email address below, and we will send you a link to reset your password.",
-  "Send Reset Link": "Send Reset Link"
+  "Send Reset Link": "Send Reset Link",
+  "You're back online.": "You're back online.",
+  "No internet connection.": "No internet connection."
 }

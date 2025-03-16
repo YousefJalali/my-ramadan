@@ -19,6 +19,7 @@ import {
 } from '@react-navigation/native'
 import useColors from '@/hooks/useColors'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
+import CheckNetwork from '@/components/CheckConnection'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
@@ -96,6 +97,7 @@ export default function RootLayout() {
           </Stack>
         </KeyboardProvider>
         <StatusBar style='auto' />
+        <CheckNetwork />
       </GluestackUIProvider>
     </ThemeProvider>
   )

@@ -7,7 +7,6 @@ import { use$ } from '@legendapp/state/react'
 import { getLocation } from '@/utils/getLocation'
 import { constructUrl } from '@/utils/constructUrl'
 import { setupPrayerTimesDB } from '@/sqlite/prayerTimesDB'
-import NetInfo from '@react-native-community/netinfo'
 import useColors from '@/hooks/useColors'
 import { getPrayerTimes } from '@/utils/getPrayerTimes'
 
@@ -18,7 +17,6 @@ export default function ProtectedLayout() {
     prayerTimes: {
       method,
       shafaq,
-      timezonestring,
       latitudeAdjustmentMethod,
       midnightMode,
       offset,
@@ -28,18 +26,6 @@ export default function ProtectedLayout() {
   } = use$(settings$)
 
   const colors = useColors()
-
-  //check internet connection
-  useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener((state) => {
-      // console.log('Connection type', state.type)
-      console.log('Is connected?', state.isConnected)
-    })
-
-    return () => {
-      unsubscribe()
-    }
-  }, [])
 
   //auth
   useEffect(() => {
@@ -67,6 +53,7 @@ export default function ProtectedLayout() {
       if (!error && region?.country && region?.city && location) {
         settings$.location.current.set({
           country: region.country,
+          country_ar: region.country,
           city: region.city,
           longitude: location.coords.longitude,
           latitude: location.coords.latitude,
@@ -75,6 +62,7 @@ export default function ProtectedLayout() {
         //set location to Mecca
         settings$.location.current.set({
           country: 'SA',
+          country_ar: 'SA',
           city: 'Mecca',
           longitude: 39.82563,
           latitude: 21.42664,
