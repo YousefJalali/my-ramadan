@@ -1,5 +1,5 @@
 import { useFonts } from 'expo-font'
-import { Stack } from 'expo-router'
+import { Stack, useNavigationContainerRef } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { StatusBar } from 'expo-status-bar'
 import { useEffect } from 'react'
@@ -20,11 +20,29 @@ import {
 import useColors from '@/hooks/useColors'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import CheckNetwork from '@/components/CheckConnection'
+import * as Sentry from '@sentry/react-native'
+import { isRunningInExpoGo } from 'expo'
+
+//sentry
+// Construct a new integration instance. This is needed to communicate between the integration and React
+const navigationIntegration = Sentry.reactNavigationIntegration({
+  enableTimeToInitialDisplay: !isRunningInExpoGo(),
+})
+Sentry.init({
+  dsn: 'YOUR DSN HERE',
+  debug: true, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
+  tracesSampleRate: 1.0, // Set tracesSampleRate to 1.0 to capture 100% of transactions for tracing. Adjusting this value in production.
+  integrations: [
+    // Pass integration
+    navigationIntegration,
+  ],
+  enableNativeFramesTracking: !isRunningInExpoGo(), // Tracks slow and frozen frames in the application
+})
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
 
-export default function RootLayout() {
+function RootLayout() {
   const [loaded, error] = useFonts({
     Inter: require('../assets/fonts/Inter-VariableFont_opsz_wght.ttf'),
     Montserrat: require('../assets/fonts/Montserrat-Bold.ttf'),
@@ -38,6 +56,14 @@ export default function RootLayout() {
 
   const colorMode = use$(colorMode$)
   const colors = useColors()
+
+  const ref = useNavigationContainerRef()
+
+  useEffect(() => {
+    if (ref?.current) {
+      navigationIntegration.registerNavigationContainer(ref)
+    }
+  }, [ref])
 
   //set local
   useEffect(() => {
@@ -102,3 +128,5 @@ export default function RootLayout() {
     </ThemeProvider>
   )
 }
+
+export default Sentry.wrap(RootLayout)

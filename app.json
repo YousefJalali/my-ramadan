@@ -90,7 +90,13 @@
           }
         }
       ],
-      "expo-audio"
+      "expo-audio",
+      "@sentry/react-native/expo",
+      {
+        "organization": "jby-9s",
+        "project": "react-native",
+        "url": "https://sentry.io/"
+      }
     ],
     "experiments": {
       "typedRoutes": true
