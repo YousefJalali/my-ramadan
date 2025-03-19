@@ -18,6 +18,7 @@ import { session$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { useTranslation } from 'react-i18next'
 import SettingsLink, { SettingsLinkType } from '@/components/SettingsLink'
+import { Button } from 'react-native'
 
 type Section = {
   sectionTitle: string
@@ -149,6 +150,13 @@ export default function Settings() {
           </VStack>
 
           <LogoutBtn />
+
+          <Button
+            title='Press me'
+            onPress={() => {
+              throw new Error('Hello, again, Sentry!')
+            }}
+          />
         </VStack>
       </ScrollView>
     </VStack>
