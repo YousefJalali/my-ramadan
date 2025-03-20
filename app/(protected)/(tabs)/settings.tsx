@@ -10,6 +10,7 @@ import {
   SunMoon,
 } from 'lucide-react-native'
 import { Heading } from '@/components/ui/heading'
+import { Text } from '@/components/ui/text'
 import { ScrollView } from '@/components/ui/scroll-view'
 import { Divider } from '@/components/ui/divider'
 import Profile from '@/components/profile/Profile'
@@ -19,6 +20,10 @@ import { use$ } from '@legendapp/state/react'
 import { useTranslation } from 'react-i18next'
 import SettingsLink, { SettingsLinkType } from '@/components/SettingsLink'
 import { Button } from 'react-native'
+import {
+  captureException,
+  ErrorBoundary as SentryErrorBoundary,
+} from '@sentry/react-native'
 
 type Section = {
   sectionTitle: string
@@ -151,12 +156,14 @@ export default function Settings() {
 
           <LogoutBtn />
 
-          <Button
-            title='Press me'
-            onPress={() => {
-              throw new Error('Hello, again, Sentry!')
-            }}
-          />
+          <SentryErrorBoundary fallback={<Text>Error</Text>}>
+            <Button
+              title='Press me'
+              onPress={() => {
+                captureException(new Error('First error'))
+              }}
+            />
+          </SentryErrorBoundary>
         </VStack>
       </ScrollView>
     </VStack>
