@@ -20,9 +20,21 @@ import {
 import useColors from '@/hooks/useColors'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import CheckNetwork from '@/components/CheckConnection'
+import React from 'react'
+import Bugsnag from '@bugsnag/expo'
+import { View, Text } from 'react-native'
+import { Spinner } from '@/components/ui/spinner'
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync()
+
+Bugsnag.start()
+const ErrorBoundary = Bugsnag.getPlugin('react').createErrorBoundary(React)
+const ErrorView = () => (
+  <View>
+    <Text>Inform users of an error in the component tree.</Text>
+  </View>
+)
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
@@ -53,11 +65,23 @@ export default function RootLayout() {
   }, [loaded])
 
   if (error) {
-    console.error(error)
+    Bugsnag.notify(error)
+    return (
+      <View>
+        <Text>Could not load the app</Text>
+      </View>
+    )
   }
 
   if (!loaded) {
-    return null
+    return (
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        <Spinner
+          size='large'
+          color={`rgb(${colors['--color-background-500']})`}
+        />
+      </View>
+    )
   }
 
   const options: NativeStackNavigationOptions = {
@@ -68,37 +92,41 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider
-      value={
-        colorMode === 'dark'
-          ? {
-              ...DarkTheme,
-              colors: {
-                ...DarkTheme.colors,
-                background: `rgb(${colors['--color-background-50']})`,
-              },
-            }
-          : DefaultTheme
-      }
-    >
-      <GluestackUIProvider mode={colorMode}>
-        <KeyboardProvider>
-          <Stack>
-            <Stack.Screen
-              name='(auth)'
-              options={{
-                ...options,
-                animation:
-                  language === 'ar-SA' ? 'slide_from_left' : 'slide_from_right',
-              }}
-            />
-            <Stack.Screen name='(protected)' options={options} />
-            <Stack.Screen name='+not-found' />
-          </Stack>
-        </KeyboardProvider>
-        <StatusBar style='auto' />
-        <CheckNetwork />
-      </GluestackUIProvider>
-    </ThemeProvider>
+    <ErrorBoundary FallbackComponent={ErrorView}>
+      <ThemeProvider
+        value={
+          colorMode === 'dark'
+            ? {
+                ...DarkTheme,
+                colors: {
+                  ...DarkTheme.colors,
+                  background: `rgb(${colors['--color-background-50']})`,
+                },
+              }
+            : DefaultTheme
+        }
+      >
+        <GluestackUIProvider mode={colorMode}>
+          <KeyboardProvider>
+            <Stack>
+              <Stack.Screen
+                name='(auth)'
+                options={{
+                  ...options,
+                  animation:
+                    language === 'ar-SA'
+                      ? 'slide_from_left'
+                      : 'slide_from_right',
+                }}
+              />
+              <Stack.Screen name='(protected)' options={options} />
+              <Stack.Screen name='+not-found' />
+            </Stack>
+          </KeyboardProvider>
+          <StatusBar style='auto' />
+          <CheckNetwork />
+        </GluestackUIProvider>
+      </ThemeProvider>
+    </ErrorBoundary>
   )
 }

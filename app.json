@@ -15,6 +15,9 @@
       },
       "eas": {
         "projectId": "e1b8e233-a0e6-4b4d-a501-bb16f4d70726"
+      },
+      "bugsnag": {
+        "apiKey": "b830b52f550325fd3b8f31905693319d"
       }
     },
     "ios": {
@@ -95,6 +98,12 @@
     "experiments": {
       "typedRoutes": true
     },
-    "owner": "jbygoal"
+    "owner": "jbygoal",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/e1b8e233-a0e6-4b4d-a501-bb16f4d70726"
+    }
   }
 }
