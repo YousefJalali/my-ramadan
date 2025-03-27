@@ -4,6 +4,7 @@ import {
   PrayerTimesAPIResponse,
   StoredPrayerTimes,
 } from '@/types'
+import Bugsnag from '@bugsnag/expo'
 
 export async function getPrayerTimes(url: string) {
   try {
@@ -61,6 +62,7 @@ export async function getPrayerTimes(url: string) {
     }
     // console.log(prayerTimes$.timings.get())
   } catch (error) {
+    Bugsnag.notify(error as Error)
     console.error('Error fetching prayer times from db:', error)
   }
 }
@@ -93,7 +95,8 @@ const fetchPrayerTimes = async (
       await new Promise((resolve) => setTimeout(resolve, 2000)) // Wait 2 seconds before retrying
       return fetchPrayerTimes(url, retryCount - 1)
     }
-    console.log(error)
+    console.error(error)
+    Bugsnag.notify(error as Error)
     return 'Failed to load prayer times. Please try again.'
   }
 }

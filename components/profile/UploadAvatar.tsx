@@ -3,6 +3,7 @@ import * as ImagePicker from 'expo-image-picker'
 import { supabase } from '@/utils/supabase'
 import { Button, ButtonSpinner, ButtonText } from '@/components/ui/button'
 import { Pressable } from '@/components/ui/pressable'
+import Bugsnag from '@bugsnag/expo'
 
 export default function UploadAvatar() {
   const [uploading, setUploading] = useState(false)
@@ -51,13 +52,14 @@ export default function UploadAvatar() {
       })
 
       if (updateProfileError) {
-        console.error('Error updating user:', updateProfileError.message)
-      } else {
-        console.log('User updated successfully:')
+        throw updateProfileError
       }
+
+      console.log('User updated successfully:')
 
       // onUpload(data.path)
     } catch (error) {
+      Bugsnag.notify(error as Error)
       console.log('error', error)
       if (error instanceof Error) {
         console.log(error.message)

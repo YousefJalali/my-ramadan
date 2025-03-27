@@ -1,4 +1,5 @@
 import { CachedPrayerTimes, PrayerTimesAPIResponse } from '@/types'
+import Bugsnag from '@bugsnag/expo'
 import { openDatabaseSync } from 'expo-sqlite'
 
 // Open the database synchronously
@@ -28,6 +29,7 @@ export const setupPrayerTimesDB = async () => {
         timezone TEXT
       )`)
   } catch (error) {
+    Bugsnag.notify(error as Error)
     console.error('Error setting up database:', error)
   }
 }
@@ -72,6 +74,7 @@ export const insertPrayerTimes = async (
 
     console.log(`${dayCount} daily prayer times inserted successfully`)
   } catch (error) {
+    Bugsnag.notify(error as Error)
     console.error('Error inserting prayer times:', error)
   }
 }

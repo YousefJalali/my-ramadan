@@ -28,11 +28,7 @@ export default function OnThisDayCard({ day }: { day: number }) {
   } = useTranslation()
 
   async function getStories() {
-    try {
-      setStories(flashback[language][day - 1])
-    } catch (error) {
-      console.log(error)
-    }
+    setStories(flashback[language][day - 1])
   }
 
   useEffect(() => {

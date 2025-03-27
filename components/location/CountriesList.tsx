@@ -20,9 +20,8 @@ import {
 } from '@/sqlite/locationDB'
 import { Country } from '@/types'
 import CitiesList from './CitiesList'
-import { settings$ } from '@/store'
-import { Button, ButtonText } from '../ui/button'
 import RecentLocations from './RecentLocations'
+import Bugsnag from '@bugsnag/expo'
 
 type SelectedCountry = Pick<Country, 'iso2' | 'name' | 'emoji' | 'name_ar'>
 
@@ -56,6 +55,7 @@ export default function CountriesList() {
 
       insertCountries(data)
     } catch (error) {
+      Bugsnag.notify(error as Error)
       console.error('Error loading cities:', error)
       setError('Failed to load cities. Please try again.')
 
@@ -78,6 +78,7 @@ export default function CountriesList() {
         setCountries(res)
       }
     } catch (error) {
+      Bugsnag.notify(error as Error)
       console.error('Error fetching countries from db:', error)
     } finally {
       setLoading(false)

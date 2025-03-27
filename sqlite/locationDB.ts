@@ -1,4 +1,5 @@
 import { City, Country } from '@/types'
+import Bugsnag from '@bugsnag/expo'
 import { openDatabaseSync } from 'expo-sqlite'
 
 // Open the database synchronously
@@ -30,6 +31,7 @@ export const setupDatabase = async () => {
       );
     `)
   } catch (error) {
+    Bugsnag.notify(error as Error)
     console.error('Error setting up database:', error)
   }
 }
@@ -57,6 +59,7 @@ export const insertCountries = async (countries: Country[]) => {
 
     console.log(`${countryCount} Countries inserted successfully`)
   } catch (error) {
+    Bugsnag.notify(error as Error)
     console.error('Error inserting countries data:', error)
   }
 }
@@ -80,6 +83,7 @@ export const insertCities = async (cities: City[]) => {
 
     console.log(`${cityCount} cities inserted successfully`)
   } catch (error) {
+    Bugsnag.notify(error as Error)
     console.error('Error inserting cities data:', error)
   }
 }

@@ -1,12 +1,7 @@
 import { Fragment, useState } from 'react'
 import { HStack } from '@/components/ui/hstack'
 import { VStack } from '@/components/ui/vstack'
-import {
-  Button,
-  ButtonIcon,
-  ButtonSpinner,
-  ButtonText,
-} from '@/components/ui/button'
+import { Button, ButtonSpinner, ButtonText } from '@/components/ui/button'
 import { Text } from '@/components/ui/text'
 import { Input, InputField } from '@/components/ui/input'
 import {
@@ -37,6 +32,7 @@ import { session$ } from '@/store'
 import { use$ } from '@legendapp/state/react'
 import { Redirect } from 'expo-router'
 import { useTranslation } from 'react-i18next'
+import Bugsnag from '@bugsnag/expo'
 
 export default function PersonalInformation() {
   const session = use$(session$)
@@ -114,7 +110,7 @@ export default function PersonalInformation() {
     } catch (error) {
       setName(storeName)
       setEmail(storeEmail)
-      console.log(error)
+      Bugsnag.notify(error as Error)
     } finally {
       setSaving(false)
     }

@@ -6,6 +6,7 @@ import { Pressable } from '@/components/ui/pressable'
 import { Text } from '@/components/ui/text'
 import { useTranslation } from 'react-i18next'
 import { getCitiesByCountry, insertCities } from '@/sqlite/locationDB'
+import Bugsnag from '@bugsnag/expo'
 
 export default function CitiesList({
   countryName,
@@ -42,12 +43,13 @@ export default function CitiesList({
 
       insertCities(data)
     } catch (error) {
-      console.error('Error loading cities:', error)
-      setError('Failed to load cities. Please try again.')
-
       if (retryCount > 0) {
         setTimeout(() => fetchCities(retryCount - 1), 2000) // Retry after 2 seconds
       }
+
+      console.error('Error loading cities:', error)
+      Bugsnag.notify(error as Error)
+      setError('Failed to load cities. Please try again.')
     } finally {
       setLoading(false)
     }
@@ -64,6 +66,7 @@ export default function CitiesList({
         setCities(res)
       }
     } catch (error) {
+      Bugsnag.notify(error as Error)
       console.error('Error fetching cities from db:', error)
     } finally {
       setLoading(false)
