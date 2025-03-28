@@ -2,7 +2,7 @@ import RadioCheckList, { RadioCheckItem } from '@/components/RadioCheckList'
 import { RadioGroup } from '@/components/ui/radio'
 import WithNetwork from '@/components/WithNetwork'
 import { PRAYER_TIME_METHODS, toList } from '@/constants/prayerTimeCalculation'
-import { PrayerTimeSettingsKeys, settings$ } from '@/store'
+import { PrayerTimeSettingsKeys, settings$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 import { Redirect, useLocalSearchParams } from 'expo-router'
 

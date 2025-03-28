@@ -1,4 +1,4 @@
-import { ExtendedPrayer } from '@/types'
+import { ExtendedPrayer } from '@/types/types'
 
 export const PRAYERS: { [key in ExtendedPrayer]: boolean } = {
   Fajr: true,

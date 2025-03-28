@@ -6,7 +6,7 @@ import { Center } from '@/components/ui/center'
 import { Dimensions } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import DayItem from './DayItem'
-import { prayerTimes$ } from '@/store'
+import { prayerTimes$ } from '@/stores/store'
 import { gregorianToHijri } from '@/utils/gregorianToHijri'
 
 const WIDTH = Dimensions.get('window').width

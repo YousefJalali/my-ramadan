@@ -4,7 +4,7 @@ import { Divider } from '@/components/ui/divider'
 import { Text } from '@/components/ui/text'
 import { VStack } from '@/components/ui/vstack'
 import { PRAYER_TIME_METHODS } from '@/constants/prayerTimeCalculation'
-import { PrayerTimeSettingsKeys, settings$ } from '@/store'
+import { PrayerTimeSettingsKeys, settings$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 import { useTranslation } from 'react-i18next'
 

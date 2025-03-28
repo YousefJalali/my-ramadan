@@ -1,4 +1,4 @@
-import { ExtendedPrayer, ParsedPrayerTimes } from '@/types'
+import { ExtendedPrayer, ParsedPrayerTimes } from '@/types/types'
 import { DateTime } from 'luxon'
 import { PRAYERS } from '@/constants/prayers'
 

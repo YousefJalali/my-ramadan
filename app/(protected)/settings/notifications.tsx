@@ -3,7 +3,7 @@ import { Divider } from '@/components/ui/divider'
 import React from 'react'
 import LabeledSwitch from '@/components/LabeledSwitch'
 import { use$ } from '@legendapp/state/react'
-import { settings$, Notification } from '@/store'
+import { settings$, Notification } from '@/stores/store'
 
 const list: { key: keyof Notification; label: string }[] = [
   {

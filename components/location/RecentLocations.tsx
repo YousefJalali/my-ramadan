@@ -1,4 +1,4 @@
-import { settings$ } from '@/store'
+import { settings$ } from '@/stores/store'
 import { Button, ButtonText } from '@/components/ui/button'
 import { Heading } from '@/components/ui/heading'
 import { HStack } from '@/components/ui/hstack'

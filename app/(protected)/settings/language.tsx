@@ -1,6 +1,6 @@
 import { RadioGroup } from '@/components/ui/radio'
 import { useTranslation } from 'react-i18next'
-import { settings$ } from '@/store'
+import { settings$ } from '@/stores/store'
 import RadioCheckList, { RadioCheckItem } from '@/components/RadioCheckList'
 
 const l: RadioCheckItem[] = [

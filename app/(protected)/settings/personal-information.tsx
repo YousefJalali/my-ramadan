@@ -28,7 +28,7 @@ import {
 import { Heading } from '@/components/ui/heading'
 import { supabase } from '@/utils/supabase'
 import colors from 'tailwindcss/colors'
-import { session$ } from '@/store'
+import { session$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 import { Redirect } from 'expo-router'
 import { useTranslation } from 'react-i18next'

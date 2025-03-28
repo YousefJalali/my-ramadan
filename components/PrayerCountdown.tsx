@@ -4,7 +4,7 @@ import { useNextPrayerCountdown } from '@/hooks/useCountdown'
 import { HStack } from '@/components/ui/hstack'
 import { formatCountdown } from '@/utils/formatCountdown'
 import { findNextPrayer } from '@/utils/findNextPrayer'
-import { ParsedPrayerTimes } from '@/types'
+import { ParsedPrayerTimes } from '@/types/types'
 
 export default function PrayerCountdown({
   prayerTimes,

@@ -7,12 +7,12 @@ import { formatTime } from '@/utils/formatTime'
 import FastingCountdown from './FastingCountdown'
 import { Heading } from '@/components/ui/heading'
 import DigitalClock from './DigitalClock'
-import { prayerTimes$, settings$ } from '@/store'
+import { prayerTimes$, settings$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 import { Link } from 'expo-router'
 import { Icon } from '@/components/ui/icon'
 import { MapPin } from 'lucide-react-native'
-import { ExtendedPrayer } from '@/types'
+import { ExtendedPrayer } from '@/types/types'
 
 export default function FastingCard({ day }: { day: number }) {
   const {

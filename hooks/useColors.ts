@@ -1,5 +1,5 @@
 import { colors } from '@/components/ui/gluestack-ui-provider/config'
-import { colorMode$ } from '@/store'
+import { colorMode$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 
 export default function useColors() {

@@ -3,7 +3,7 @@ import { VStack } from '@/components/ui/vstack'
 import { HStack } from '@/components/ui/hstack'
 import { useTranslation } from 'react-i18next'
 import { use$ } from '@legendapp/state/react'
-import { progress$ } from '@/store'
+import { progress$ } from '@/stores/store'
 import Rings from './Rings'
 
 const unit: { [key: string]: string } = {

@@ -2,7 +2,7 @@ import GoBackBtn from '@/components/GoBackBtn'
 import { Center } from '@/components/ui/center'
 import { HStack } from '@/components/ui/hstack'
 import { VStack } from '@/components/ui/vstack'
-import { session$ } from '@/store'
+import { session$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 import { Redirect, Slot } from 'expo-router'
 

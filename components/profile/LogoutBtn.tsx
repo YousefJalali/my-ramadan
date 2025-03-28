@@ -2,7 +2,7 @@ import { use$ } from '@legendapp/state/react'
 import { Button, ButtonText } from '@/components/ui/button'
 import { Toast, ToastDescription, useToast } from '@/components/ui/toast'
 import { supabase } from '@/utils/supabase'
-import { session$ } from '@/store'
+import { session$ } from '@/stores/store'
 import { useTranslation } from 'react-i18next'
 
 export default function LogoutBtn() {

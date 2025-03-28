@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import translationEn from './locales/en-US/translation.json'
 import translationAr from './locales/ar-SA/translation.json'
-import { settings$ } from '@/store'
+import { settings$ } from '@/stores/store'
 
 const resources = {
   'ar-SA': { translation: translationAr },

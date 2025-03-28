@@ -3,7 +3,7 @@ import {
   CachedPrayerTimes,
   PrayerTimesAPIResponse,
   StoredPrayerTimes,
-} from '@/types'
+} from '@/types/types'
 import Bugsnag from '@bugsnag/expo'
 
 export async function getPrayerTimes(url: string) {

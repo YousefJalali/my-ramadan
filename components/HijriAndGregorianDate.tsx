@@ -1,7 +1,7 @@
 import { use$ } from '@legendapp/state/react'
 import { Center } from '@/components/ui/center'
 import { Text } from '@/components/ui/text'
-import { settings$ } from '@/store'
+import { settings$ } from '@/stores/store'
 import Svg, { Path } from 'react-native-svg'
 import useColors from '@/hooks/useColors'
 

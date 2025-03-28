@@ -14,7 +14,7 @@ import { ScrollView } from '@/components/ui/scroll-view'
 import { Divider } from '@/components/ui/divider'
 import Profile from '@/components/profile/Profile'
 import LogoutBtn from '@/components/profile/LogoutBtn'
-import { session$ } from '@/store'
+import { session$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 import { useTranslation } from 'react-i18next'
 import SettingsLink, { SettingsLinkType } from '@/components/SettingsLink'
@@ -66,13 +66,13 @@ const sections: Section[] = [
       {
         iconName: BookText,
         subText: 'terms of service',
-        path: 'https://yousefjalali.github.io/my-ramadan/terms-of-service.html',
+        path: 'https://yousefjalali.github.io/my-ramadan/public/terms-of-service.html',
         openInWebBrowser: true,
       },
       {
         iconName: BookText,
         subText: 'privacy policy',
-        path: 'https://yousefjalali.github.io/my-ramadan/privacy-policy.html',
+        path: 'https://yousefjalali.github.io/my-ramadan/public/privacy-policy.html',
         openInWebBrowser: true,
       },
     ],

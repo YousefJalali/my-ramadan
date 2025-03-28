@@ -11,7 +11,7 @@ import {
   SelectTrigger,
 } from '@/components/ui/select'
 import { VStack } from '@/components/ui/vstack'
-import { khatmQuran$, QuranJuz } from '@/store'
+import { khatmQuran$, QuranJuz } from '@/stores/store'
 import { ChevronDownIcon } from 'lucide-react-native'
 import { Text } from '@/components/ui/text'
 

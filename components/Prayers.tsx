@@ -13,11 +13,11 @@ import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import PrayerCountdown from './PrayerCountdown'
 import { use$ } from '@legendapp/state/react'
-import { prayerTimes$, progress$ } from '@/store'
+import { prayerTimes$, progress$ } from '@/stores/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 import { PRAYERS } from '@/constants/prayers'
-import { ExtendedPrayer } from '@/types'
+import { ExtendedPrayer } from '@/types/types'
 import { Toast, ToastDescription, useToast } from '@/components/ui/toast'
 
 type Props = {

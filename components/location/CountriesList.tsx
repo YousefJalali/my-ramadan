@@ -18,7 +18,7 @@ import {
   insertCountries,
   setupDatabase,
 } from '@/sqlite/locationDB'
-import { Country } from '@/types'
+import { Country } from '@/types/types'
 import CitiesList from './CitiesList'
 import RecentLocations from './RecentLocations'
 import Bugsnag from '@bugsnag/expo'

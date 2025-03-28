@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/checkbox'
 import { CheckIcon } from '@/components/ui/icon'
 import { useTranslation } from 'react-i18next'
-import { progress$, khatmQuran$, QuranJuz } from '@/store'
+import { progress$, khatmQuran$, QuranJuz } from '@/stores/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from '../StatusBadge'
 // import ReadingPlanForm from './form/ReadingPlanForm'

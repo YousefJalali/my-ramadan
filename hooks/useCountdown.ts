@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { mapRange } from '@/utils/mapRange'
 import { DateTime, Duration } from 'luxon'
-import { prayerTimes$ } from '@/store'
+import { prayerTimes$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 
 const { floor } = Math

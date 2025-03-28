@@ -1,4 +1,4 @@
-import { City, Country } from '@/types'
+import { City, Country } from '@/types/types'
 import Bugsnag from '@bugsnag/expo'
 import { openDatabaseSync } from 'expo-sqlite'
 

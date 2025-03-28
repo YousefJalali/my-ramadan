@@ -15,7 +15,7 @@ import QURAN_JUZ from '@/data/quran_juz.json'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
-import { khatmQuran$ } from '@/store'
+import { khatmQuran$ } from '@/stores/store'
 
 const schema = z.object({
   juzIndex: z.string(),

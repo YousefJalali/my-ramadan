@@ -9,7 +9,7 @@ import '../global.css'
 import '@/i18n'
 import { useTranslation } from 'react-i18next'
 import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { colorMode$, settings$ } from '@/store'
+import { colorMode$, settings$ } from '@/stores/store'
 import { getLocale } from '@/utils/getLocale'
 import { use$ } from '@legendapp/state/react'
 import {

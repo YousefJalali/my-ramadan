@@ -1,4 +1,4 @@
-import { settings$ } from '@/store'
+import { settings$ } from '@/stores/store'
 import { use$ } from '@legendapp/state/react'
 
 export function useRTL({

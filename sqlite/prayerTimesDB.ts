@@ -1,4 +1,4 @@
-import { CachedPrayerTimes, PrayerTimesAPIResponse } from '@/types'
+import { CachedPrayerTimes, PrayerTimesAPIResponse } from '@/types/types'
 import Bugsnag from '@bugsnag/expo'
 import { openDatabaseSync } from 'expo-sqlite'
 

@@ -1,5 +1,5 @@
 import { RadioGroup } from '@/components/ui/radio'
-import { colorMode$ } from '@/store'
+import { colorMode$ } from '@/stores/store'
 import RadioCheckList, { RadioCheckItem } from '@/components/RadioCheckList'
 import { use$ } from '@legendapp/state/react'
 

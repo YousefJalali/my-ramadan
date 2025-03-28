@@ -14,7 +14,7 @@ import { formatCountdown } from '@/utils/formatCountdown'
 import { useTranslation } from 'react-i18next'
 import { formatTime } from '@/utils/formatTime'
 import { use$ } from '@legendapp/state/react'
-import { progress$, prayerTimes$ } from '@/store'
+import { progress$, prayerTimes$ } from '@/stores/store'
 import { cn } from '@/utils/cn'
 import StatusBadge from './StatusBadge'
 

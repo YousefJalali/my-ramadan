@@ -1,4 +1,4 @@
-import { session$ } from '@/store'
+import { session$ } from '@/stores/store'
 import { Center } from '@/components/ui/center'
 import { Avatar, AvatarFallbackText, AvatarImage } from '@/components/ui/avatar'
 import UploadAvatar from './UploadAvatar'

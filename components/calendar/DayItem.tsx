@@ -2,7 +2,7 @@ import { ProgressChart } from 'react-native-chart-kit'
 import { Center } from '@/components/ui/center'
 import { Text } from '@/components/ui/text'
 import { use$ } from '@legendapp/state/react'
-import { progress$ } from '@/store'
+import { progress$ } from '@/stores/store'
 import useColors from '@/hooks/useColors'
 
 export default function DayItem({
