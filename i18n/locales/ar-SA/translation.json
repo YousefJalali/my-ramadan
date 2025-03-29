@@ -155,5 +155,10 @@
   "Send Reset Link": "إرسال رابط إعادة التعيين",
   "You're back online.": "أنت متصل بالإنترنت.",
   "No internet connection.": "لا يوجد اتصال بالإنترنت.",
-  "Adjust the times of the five daily prayers in minutes to better suit your schedule.": "قم بتعديل أوقات الصلوات الخمس اليومية بالدقائق لتناسب جدولك الزمني بشكل أفضل."
+  "Adjust the times of the five daily prayers in minutes to better suit your schedule.": "قم بتعديل أوقات الصلوات الخمس اليومية بالدقائق لتناسب جدولك الزمني بشكل أفضل.",
+  "enter new password": "إدخال كلمة مرور جديدة",
+  "set a new password to secure your account": "قم بتعيين كلمة مرور جديدة لتأمين حسابك",
+  "update password": "تحديث كلمة المرور",
+  "updating password...": "Updating Password...",
+  "try again": "حاول مرة أخرى"
 }

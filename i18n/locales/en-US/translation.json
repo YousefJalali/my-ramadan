@@ -155,5 +155,10 @@
   "Send Reset Link": "Send Reset Link",
   "You're back online.": "You're back online.",
   "No internet connection.": "No internet connection.",
-  "Adjust the times of the five daily prayers in minutes to better suit your schedule.": "Adjust the times of the five daily prayers in minutes to better suit your schedule."
+  "Adjust the times of the five daily prayers in minutes to better suit your schedule.": "Adjust the times of the five daily prayers in minutes to better suit your schedule.",
+  "enter new password": "Enter New Password",
+  "set a new password to secure your account": "Set a new password to secure your account",
+  "update password": "Update Password",
+  "updating password...": "جارٍ تحديث كلمة المرور...",
+  "try again": "Try Again"
 }
