@@ -24,7 +24,13 @@ export default function GoBackBtn({ href }: { href?: Href }) {
     <Button
       size='xl'
       variant='link'
-      onPress={() => (href ? router.push(href) : router.back())}
+      onPress={() =>
+        href
+          ? router.push(href)
+          : router.canGoBack()
+          ? router.back()
+          : router.push('/')
+      }
       className={`px-4 ${isRTL ? '-mr-4' : '-ml-4'}`}
     >
       <ButtonIcon
