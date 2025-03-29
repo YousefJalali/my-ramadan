@@ -1,10 +1,7 @@
 import { useState } from 'react'
-import { HStack } from '@/components/ui/hstack'
 import { VStack } from '@/components/ui/vstack'
 import { Heading } from '@/components/ui/heading'
 import { Text } from '@/components/ui/text'
-import { LinkText } from '@/components/ui/link'
-// import Link from "@unitools/link";
 import {
   FormControl,
   FormControlError,
@@ -12,18 +9,14 @@ import {
   FormControlLabel,
   FormControlLabelText,
 } from '@/components/ui/form-control'
-import { Input, InputField, InputIcon, InputSlot } from '@/components/ui/input'
-import { EyeIcon, EyeOffIcon } from '@/components/ui/icon'
+import { Input, InputField } from '@/components/ui/input'
 import { Button, ButtonText } from '@/components/ui/button'
 import { Keyboard } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { supabase } from '@/utils/supabase'
-import { Link } from 'expo-router'
 import { useTranslation } from 'react-i18next'
-// import useRouter from "@unitools/router";
-// import { AuthLayout } from "../layout";
 
 const schema = z.object({
   email: z.string().min(1, 'Email is required').email(),
@@ -34,6 +27,7 @@ type SchemaType = z.infer<typeof schema>
 export default function Login() {
   const [success, setSuccess] = useState('')
   const [error, setError] = useState('')
+
   const { t } = useTranslation()
 
   const {

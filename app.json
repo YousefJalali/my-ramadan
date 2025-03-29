@@ -48,7 +48,20 @@
       "blockedPermissions": [
         "android.permission.ACTIVITY_RECOGNITION, android.permission.CAMERA"
       ],
-      "package": "com.jbygoal.my_ramadan"
+      "package": "com.jbygoal.my_ramadan",
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "data": [
+            {
+              "scheme": "https",
+              "host": "my-ramadan-455012.web.app"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
     },
     "web": {
       "bundler": "metro",
