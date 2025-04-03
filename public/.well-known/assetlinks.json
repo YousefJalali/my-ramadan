@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.jbygoal.my_ramadan",
       "sha256_cert_fingerprints": [
-        "31:86:84:7E:CE:5A:D3:58:84:C5:C7:C8:B9:7F:0B:74:E8:88:0A:3C:36:61:0A:F6:35:42:6D:28:7C:D0:BA:8B"
+        "31:86:84:7E:CE:5A:D3:58:84:C5:C7:C8:B9:7F:0B:74:E8:88:0A:3C:36:61:0A:F6:35:42:6D:28:7C:D0:BA:8B",
+        "FA:C6:17:45:DC:09:03:78:6F:B9:ED:E6:2A:96:2B:39:9F:73:48:F0:BB:6F:89:9B:83:32:66:75:91:03:3B:9C"
       ]
     }
   }
